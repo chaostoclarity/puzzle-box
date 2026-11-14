@@ -1,27 +1,13 @@
-# Puzzle Box (prototype)
+# The Ninefold Seal
 
-A nested puzzle box with pixel art on real 3D surfaces. Godot 4.5, touch first.
+A Lovecraftian escape game of nested puzzle boxes, in 2.5D pixel art. Godot 4.5.
 
-## Run it
-1. Unzip anywhere. In Godot 4.5, click Import and pick `project.godot`.
-2. Press F5. A mouse works like a finger on desktop.
+Play: https://puzzle-box-chaos-to-clarity.vercel.app
 
-## Play
-- Drag the box: it follows your finger, then snaps to the next face.
-- Tap parts to interact. Tap the slot at the bottom to select the key.
-- Solution: back face clue -> set the left dials -> right panel slides up -> take the key -> select it -> tap the front lock -> tap the inner box.
+Milestone 1 (in progress): Seal I. Wren's study and the restricted stacks.
 
-## How the look works
-- 16 texels per world unit on every surface. Textures use nearest filtering, no mipmaps.
-- The game renders at 270x480 and scales up by whole numbers, so pixels stay square.
-- Orthographic camera. At rest a face points straight at you, like Fez.
-- Shader `shaders/pixel_surface.gdshader` snaps lighting to 4 steps as faces turn away.
-- Nested boxes: the camera zooms into the 0.4 scale inner box, then swaps it in at full size. The swap is invisible.
+- Drag sideways to turn to the next wall. Touch furniture to look closer. Touch a box to pick it up and drag to turn it.
+- Touch an item in the tray to select it, then touch where to use it. Hold an item to examine it.
+- Hint gives two honest nudges. The third time, something offers to help. It has a price.
 
-## Files
-- `scripts/pixel_box.gd` reusable box: 6 faces, optional hinged lid, tappable parts.
-- `scripts/main.gd` level 1 puzzle logic, input, HUD, autotest.
-- `tools/make_textures.py` generates all art in `assets/` (placeholder art, swap freely).
-
-## Automated check
-`godot --path . -- --autotest` plays the whole level and saves screenshots to `user://shots`.
+See CLAUDE.md for how the project is built and tested.

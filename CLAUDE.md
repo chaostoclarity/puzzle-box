@@ -1,19 +1,35 @@
-# Puzzle Box: notes for AI collaborators
+# The Ninefold Seal: notes for AI collaborators
 
 Eric directs, Claude builds. Eric does not hand-write code.
+Design brief (story, 18 rooms, mechanics catalog, milestones): https://claude.ai/artifact/XBSD4YXYsjNEh4fK9UwhS8
 
 ## Game
-The Room style nested puzzle boxes with escape room logic. 2.5D pixel art: real 3D boxes whose faces are pixel art textures. Fez-like look.
+Escape rooms and nested puzzle boxes, The Room style, Lovecraftian. You play Elias Thorne, breaking nine seals.
+2.5D pixel art: real 3D boxes and rooms whose faces are pixel art textures. Fez-like look. Puzzles grow more cursed act by act.
 
 ## Locked decisions
-- Godot 4.5, GL Compatibility renderer (runs on web and mobile).
+- Godot 4.5, GL Compatibility renderer. Ships as a web build on Vercel (web/), later phones and Steam.
 - Touch first. Mouse emulates touch on desktop.
-- Hybrid rotation: box follows the finger, snaps to 90 degree faces on release (commits past 30 degrees).
-- Orthographic camera. 16 texels per world unit everywhere. 2 game pixels per texel. Integer scaling only, game view fills the screen (see _fit_screen).
-- Lighting is unshaded with 4 quantized steps (shaders/pixel_surface.gdshader).
-- Nested boxes: zoom the camera into a 0.4 scale child box, then swap it in at full scale.
+- 16 texels per world unit everywhere. Whole-number zoom only: room view 1 game px per texel, boxes 2, zoomed furniture 2 to 4.
+- Orthographic camera. Every resting view is straight on. Lighting unshaded, quantized to 4 steps (shaders/pixel_surface.gdshader).
+- Hybrid rotation: boxes and rooms follow the finger, snap to 90 degrees, commit past 30 degrees.
+- Nested boxes: zoom the camera into the small box, then swap in its full-size twin (game.gd dive()).
+- No fail states, no timers. Two honest hint tiers, then the Whisper's bargain (costs a journal page, counted for the ending).
 
-## Workflow
-- Art: tools/make_textures.py generates assets/. Keep the palette and texel density.
-- Verify every change: `godot --path . -- --autotest` (under xvfb when headless) plays level 1 and saves screenshots to user://shots. Update the autotest when puzzles change.
-- After changes, rebuild the browser build: `godot --headless --path . --export-release "Web" web/index.html`. web/ is what gets hosted.
+## Code map
+- scripts/game.gd: camera, modes (ROOM, ZOOM, BOX), input, HUD, hints and bargains, journal, audio, autotest.
+- scripts/state.gd: autoload `State`. Flags, inventory, journal, bargains. Saved after every change.
+- scripts/room.gd: base room. Walls, furniture, sprites, hero boxes, steps, walkthrough.
+- scripts/pixel_box.gd: any box from six pixel faces. Parts, hinges.
+- scripts/rooms/roomN_*.gd: one file per room. build(), apply_state(), on_tap(), on_use(), steps, walkthrough.
+
+## Adding a room
+1. Art in tools/make_room_art.py (16 texels per unit). Run it.
+2. Room script: build the walls and objects, write apply_state() so every visual follows flags.
+3. steps: each with done(), two hints, and a solve() used by the bargain.
+4. walkthrough: the real taps that solve the room. The autotest plays it.
+5. Register it in game.gd ROOMS.
+
+## Verify every change
+- `xvfb-run -a godot --path . --rendering-driver opengl3 -- --autotest` plays every room with real taps, saves screenshots to user://shots, prints AUTOTEST FAILS. It must be 0.
+- Rebuild web: `godot --headless --path . --export-release "Web" web/index.html`. Pushing to main deploys to Vercel.
