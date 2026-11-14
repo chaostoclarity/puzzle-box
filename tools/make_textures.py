@@ -83,7 +83,7 @@ def wood_face(seed, pal=WOOD, caps=BRASS):
     return img
 
 SYMS = ["sun", "moon", "star", "eye"]
-CODE = ["moon", "eye", "star"]  # must match CODE in main.gd (1, 3, 2)
+RING = {10: "star", 1: "moon", 4: "eye", 7: "sun"}  # read from 10 o'clock clockwise: star, moon, eye, sun
 
 # ---- outer box faces ----
 front = wood_face(1)
@@ -95,21 +95,25 @@ save(front, "outer_front")
 
 back = wood_face(2)
 d = ImageDraw.Draw(back)
-d.rectangle([14, 34, 81, 61], fill=IVORY[1], outline=INK)
-d.line([15, 35, 80, 35], fill=IVORY[2]); d.line([15, 35, 15, 60], fill=IVORY[2])
-for i, s in enumerate(CODE):
-    engrave(back, 20 + i * 20, 41, s, INK, IVORY[0])
-# arrow hinting at the left face
-for i in range(6):
-    d.line([30 + i, 74 - i, 30 + i, 74 + i], fill=WOOD[0])
-d.line([36, 74, 64, 74], fill=WOOD[0])
+# A brass ring like a clock face, twelve ticks, four symbols at 10, 1, 4 and 7 o'clock.
+# The sampler says to read it from "our hour" (10, from Wren's watch) as the hands go.
+d.ellipse([18, 18, 77, 77], fill=IVORY[1], outline=INK)
+d.ellipse([22, 22, 73, 73], outline=IVORY[0])
+for k in range(12):
+    a_ = k * math.pi / 6
+    d.point((round(47.5 + 27 * math.sin(a_)), round(47.5 - 27 * math.cos(a_))), fill=INK)
+for hour, sym in RING.items():
+    a_ = hour * math.pi / 6
+    engrave(back, round(47.5 + 17 * math.sin(a_)) - 6, round(47.5 - 17 * math.cos(a_)) - 6, sym, INK, IVORY[0])
+d.ellipse([45, 45, 50, 50], fill=BRASS[1])
 save(back, "outer_back")
 
 left = wood_face(3)
 d = ImageDraw.Draw(left)
-for cx in (22, 48, 74):
-    d.ellipse([cx-12, 36, cx+12, 60], fill=WOOD[0])
-    d.ellipse([cx-11, 37, cx+11, 59], fill=INK)
+for cx in (16, 37, 59, 80):   # four dial sockets, uv x -2.0, -0.7, 0.7, 2.0
+    d.ellipse([cx-11, 37, cx+11, 59], fill=WOOD[0])
+    d.ellipse([cx-10, 38, cx+10, 58], fill=INK)
+d.rectangle([39, 70, 56, 81], fill=WOOD[0])   # catch socket at uv (0, -1.75)
 save(left, "outer_left")
 
 right = wood_face(4)
@@ -214,3 +218,7 @@ for name, seed, emblem in [("front", 11, "eye"), ("back", 12, None), ("left", 13
     save(ebony_face(seed, emblem), "inner_" + name)
 
 print("textures written to", os.path.abspath(OUT))
+
+catch = Image.new("RGBA", (16, 12), (0, 0, 0, 0)); d = ImageDraw.Draw(catch)
+d.rectangle([0, 0, 15, 11], fill=BRASS[0]); d.rectangle([1, 1, 14, 10], fill=BRASS[2]); d.rectangle([5, 4, 10, 7], fill=BRASS[3]); d.line([1, 1, 14, 1], fill=BRASS[4])
+save(catch, "catch")

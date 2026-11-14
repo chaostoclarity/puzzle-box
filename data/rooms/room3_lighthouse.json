@@ -282,8 +282,8 @@
     {
      "face": "front",
      "uv": [
-      -1.8,
-      1.6
+      -0.2,
+      -0.6
      ],
      "size": [
       0.75,
@@ -296,8 +296,8 @@
     {
      "face": "front",
      "uv": [
-      0.4,
-      2.0
+      0.6,
+      1.9
      ],
      "size": [
       0.75,
@@ -310,8 +310,8 @@
     {
      "face": "front",
      "uv": [
-      1.9,
-      0.6
+      -1.8,
+      1.8
      ],
      "size": [
       0.75,
@@ -324,8 +324,8 @@
     {
      "face": "front",
      "uv": [
-      -0.6,
-      -0.2
+      1.6,
+      1.6
      ],
      "size": [
       0.75,
@@ -338,8 +338,8 @@
     {
      "face": "front",
      "uv": [
-      1.0,
-      -1.8
+      1.9,
+      0.4
      ],
      "size": [
       0.75,
@@ -347,6 +347,62 @@
      ],
      "tex": "star",
      "id": "star_e",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      -2.0,
+      -1.6
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "star",
+     "id": "star_f",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      -1.2,
+      0.4
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "star",
+     "id": "star_g",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.2,
+      -0.8
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "star",
+     "id": "star_h",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.2,
+      0.8
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "star",
+     "id": "star_i",
      "depth": 0.04
     },
     {
@@ -543,6 +599,67 @@
   },
   {
    "type": "sprite",
+   "wall": "u",
+   "id": "rope_ceiling",
+   "center": [
+    1.5,
+    2
+   ],
+   "size": [
+    3,
+    4
+   ],
+   "tex": "rope_ceiling",
+   "depth": 0.02,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "u",
+   "id": "vent",
+   "center": [
+    0,
+    7.5
+   ],
+   "size": [
+    6,
+    6
+   ],
+   "tex": "clear",
+   "depth": 0.01
+  },
+  {
+   "type": "sprite",
+   "wall": "u",
+   "id": "star_chart",
+   "center": [
+    -3.5,
+    11
+   ],
+   "size": [
+    4,
+    4
+   ],
+   "tex": "star_chart",
+   "depth": 0.03
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "rope",
+   "center": [
+    0,
+    18.5
+   ],
+   "size": [
+    0.5,
+    6.5
+   ],
+   "tex": "rope",
+   "depth": 3.2
+  },
+  {
+   "type": "sprite",
    "wall": "d",
    "id": "hatch",
    "center": [
@@ -599,17 +716,17 @@
    "wall": "e",
    "id": "barometer",
    "pos": [
-    4,
-    7
+    3.75,
+    6
    ],
    "size": [
-    2.5,
-    5,
+    3,
+    6,
     0.5
    ],
    "faces": {
     "front": "baro_front",
-    "default": "iron_side_8x80"
+    "default": "iron_side_8x96"
    },
    "zoom": {
     "k": 3
@@ -619,7 +736,7 @@
      "face": "front",
      "uv": [
       0,
-      0.75
+      1.5
      ],
      "size": [
       2,
@@ -631,8 +748,62 @@
     {
      "face": "front",
      "uv": [
-      0,
-      -1.4
+      -0.9,
+      -0.9
+     ],
+     "size": [
+      0.75,
+      3
+     ],
+     "tex": "thermo_0",
+     "id": "thermo"
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.2,
+      -0.9
+     ],
+     "size": [
+      0.75,
+      3
+     ],
+     "tex": "thermo_scale",
+     "id": "thermo_scale",
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.8,
+      -0.5
+     ],
+     "size": [
+      1.25,
+      1.25
+     ],
+     "tex": "wind_0",
+     "id": "wind"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.8,
+      -1.55
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "tex": "baro_knob",
+     "id": "baro_knob",
+     "depth": 0.035
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.8,
+      -2.4
      ],
      "size": [
       0.75,
@@ -645,8 +816,8 @@
     {
      "face": "front",
      "uv": [
-      0,
-      -1.4
+      0.8,
+      -2.4
      ],
      "size": [
       1,
@@ -878,33 +1049,90 @@
    "kind": "cycler",
    "part": "baro_dial",
    "flag": "baro",
-   "count": 4,
-   "start": 0,
+   "count": 5,
    "spin": false,
    "sfx": "tick",
    "textures": [
     "baro_0",
     "baro_1",
     "baro_2",
-    "baro_3"
+    "baro_3",
+    "baro_4"
    ],
+   "lock": "baro_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "thermo",
+   "flag": "thermo",
+   "count": 6,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "thermo_0",
+    "thermo_1",
+    "thermo_2",
+    "thermo_3",
+    "thermo_4",
+    "thermo_5"
+   ],
+   "lock": "baro_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "wind",
+   "flag": "wind",
+   "count": 8,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "wind_0",
+    "wind_1",
+    "wind_2",
+    "wind_3",
+    "wind_4",
+    "wind_5",
+    "wind_6",
+    "wind_7"
+   ],
+   "lock": "baro_open"
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "baro",
+    "thermo",
+    "wind"
+   ],
+   "code": [
+    3,
+    3,
+    1
+   ],
+   "commit": "baro_knob",
    "lock": "baro_open",
-   "on": {
-    "3": [
-     {
-      "set": "baro_open"
-     },
-     {
-      "wait": 0.3
-     },
-     {
-      "sfx": "unlock"
-     },
-     {
-      "say": "FAIR. Click. A little door opens in the barometer's case."
-     }
-    ]
-   }
+   "fail": [
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "You tap the glass. The needles tremble and settle. Nothing opens."
+    }
+   ],
+   "do": [
+    {
+     "set": "baro_open"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "You tap the glass. A little door in the case springs open."
+    }
+   ]
   },
   {
    "kind": "pickup",
@@ -1229,29 +1457,38 @@
   {
    "kind": "sequence",
    "flag": "stars",
-   "order": "dbaec",
+   "order": "cgahe",
    "lock": "prism_open",
    "pulled_suffix": "_lit",
+   "silent": true,
    "parts": {
     "star_a": "a",
     "star_b": "b",
     "star_c": "c",
     "star_d": "d",
-    "star_e": "e"
+    "star_e": "e",
+    "star_f": "f",
+    "star_g": "g",
+    "star_h": "h",
+    "star_i": "i"
    },
    "tex": {
     "star_a": "star",
     "star_b": "star",
     "star_c": "star",
     "star_d": "star",
-    "star_e": "star"
+    "star_e": "star",
+    "star_f": "star",
+    "star_g": "star",
+    "star_h": "star",
+    "star_i": "star"
    },
    "fail": [
     {
      "sfx": "thunk"
     },
     {
-     "say": "The stars go dark again."
+     "say": "Five stars lit, and nothing. They go dark again."
     }
    ],
    "do": [
@@ -1387,6 +1624,28 @@
    "else": {
     "visible": false,
     "tappable": false
+   }
+  },
+  {
+   "target": "rope",
+   "when": "!cloth_off",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "rope_ceiling",
+   "when": "!cloth_off",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
    }
   },
   {
@@ -1704,7 +1963,7 @@
      "journal": [
       "pike_log",
       "Keeper's log",
-      "Asa Pike's log. The last entries, the hand getting worse:\n\n\"Oil locker key kept where the weather lives. It comes out in FAIR weather only, same as me.\"\n\n\"Locker bars are Pa's design. Each one pinned by the one beneath it.\"\n\n\"The tin with the hatch key opens to the Light's own character. Any keeper knows it by heart.\"\n\n\"Lit her at three bells. The beam went to sea and something out there TURNED. I covered her and tied the cloth off to the roof. I have locked the stair. I am not going down there again.\""
+      "Asa Pike's log. Most of it is weather. The last entries, the hand getting worse:\n\n\"Sept 28. RAIN. 48 deg. Wind SW. Stayed in.\"\n\n\"Oct 3. CHANGE. 55 deg. Wind W. Mended the boat.\"\n\n\"Oct 9. FAIR. 63 deg. Wind NE. Rowed out to the reef. Last good day on the water I'll have.\"\n\n\"Oct 12. STORM. 41 deg. Wind E. Lamp failed at midnight.\"\n\n\"Locker key is kept where the weather lives. Set the station to my last good day on the water and tap the glass.\"\n\n\"Locker bars are Pa's design. Each one pinned by the one beneath it.\"\n\n\"The tin with the hatch key opens to the Light's own character. Any keeper knows it by heart.\"\n\n\"Painted the Hook over the lamp so we'd never lose the order of it.\"\n\n\"Lit her at three bells. The beam went to sea and something out there TURNED. I covered her and tied the cloth off to the roof. I have locked the stair. I am not going down there again.\""
      ]
     },
     {
@@ -1744,6 +2003,40 @@
    "do": [
     {
      "say": "An iron cleat. The rope hangs loose now."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "rope",
+   "do": [
+    {
+     "say": "The rope runs from the sailcloth straight up to the ceiling."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "vent",
+   "do": [
+    {
+     "say": "The lamp's chimney. Cold air falls through it."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "star_chart",
+   "do": [
+    {
+     "journal": [
+      "hook",
+      "The Hook",
+      "Painted on the ceiling above the lamp: five stars joined in a curve, numbered 1 to 5, under the words THE HOOK."
+     ]
+    },
+    {
+     "say": "A star chart on the ceiling: THE HOOK, stars numbered 1 to 5. It's in your journal."
     }
    ]
   },
@@ -2159,8 +2452,8 @@
    "id": "baro",
    "done": "baro_open",
    "hints": [
-    "Pike's log says where he kept the locker key.",
-    "Set the barometer on the east wall to FAIR."
+    "Pike's log says the locker key is where the weather lives, and which day to set it to.",
+    "Set the weather station on the east wall to his last good day on the water: FAIR, 60, wind NE. Then tap the glass (the small knob)."
    ],
    "solve": [
     {
@@ -2168,10 +2461,18 @@
      "value": 3
     },
     {
+     "set": "thermo",
+     "value": 3
+    },
+    {
+     "set": "wind",
+     "value": 1
+    },
+    {
      "set": "baro_open"
     }
    ],
-   "said": "The barometer gives up its key."
+   "said": "The weather station gives up its key."
   },
   {
    "id": "lkey",
@@ -2362,13 +2663,13 @@
    "id": "prism",
    "done": "prism_open",
    "hints": [
-    "The star case has a pattern only the Lens shows.",
-    "With the Lens on, touch the stars along the lines, starting at the ringed one."
+    "Through the Lens, lines join five of the case's nine stars. The order is painted somewhere in the room.",
+    "The chart on the ceiling is the same five stars, turned a quarter turn. Match them up and touch the case's stars from 1 to 5."
    ],
    "solve": [
     {
      "set": "stars",
-     "value": "dbaec"
+     "value": "cgahe"
     },
     {
      "set": "prism_open"
@@ -2488,6 +2789,10 @@
    0.5
   ],
   [
+   "tap",
+   "baro_knob"
+  ],
+  [
    "repeat",
    3,
    [
@@ -2496,8 +2801,32 @@
    ]
   ],
   [
+   "repeat",
+   3,
+   [
+    "tap",
+    "thermo"
+   ]
+  ],
+  [
+   "tap",
+   "wind"
+  ],
+  [
    "shot",
    "baro"
+  ],
+  [
+   "tap",
+   "baro_knob"
+  ],
+  [
+   "wait",
+   0.6
+  ],
+  [
+   "expect",
+   "baro_open"
   ],
   [
    "tap",
@@ -2697,7 +3026,19 @@
   ],
   [
    "tap",
-   "star_d"
+   "star_chart"
+  ],
+  [
+   "tap",
+   "dive:prism"
+  ],
+  [
+   "tap",
+   "star_c"
+  ],
+  [
+   "tap",
+   "star_g"
   ],
   [
    "tap",
@@ -2705,15 +3046,39 @@
   ],
   [
    "tap",
-   "star_a"
+   "star_h"
   ],
   [
    "tap",
    "star_e"
   ],
   [
+   "wait",
+   1.2
+  ],
+  [
+   "shot",
+   "stars_wrong"
+  ],
+  [
    "tap",
    "star_c"
+  ],
+  [
+   "tap",
+   "star_g"
+  ],
+  [
+   "tap",
+   "star_a"
+  ],
+  [
+   "tap",
+   "star_h"
+  ],
+  [
+   "tap",
+   "star_e"
   ],
   [
    "wait",

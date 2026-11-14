@@ -99,7 +99,8 @@
      ],
      "tex": "clock_hand",
      "id": "clock_hand",
-     "depth": 0.04
+     "depth": 0.04,
+     "tappable": false
     },
     {
      "face": "front",
@@ -128,6 +129,49 @@
      "tex": "clock_door",
      "id": "clock_door",
      "depth": 0.035
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.875
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "clock_min",
+     "id": "clock_min",
+     "depth": 0.035,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.875
+     ],
+     "size": [
+      1.25,
+      1.25
+     ],
+     "tex": "clear",
+     "id": "clock_face",
+     "depth": 0.065
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.6,
+      0.2
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "tex": "clock_wind",
+     "id": "clock_wind",
+     "depth": 0.07
     }
    ]
   },
@@ -221,45 +265,6 @@
     {
      "face": "front",
      "uv": [
-      -0.875,
-      -0.094
-     ],
-     "size": [
-      0.5,
-      2
-     ],
-     "tex": "book_blue",
-     "id": "book_blue"
-    },
-    {
-     "face": "front",
-     "uv": [
-      -0.125,
-      -0.094
-     ],
-     "size": [
-      0.5,
-      2
-     ],
-     "tex": "book_red",
-     "id": "book_red"
-    },
-    {
-     "face": "front",
-     "uv": [
-      0.625,
-      -0.094
-     ],
-     "size": [
-      0.5,
-      2
-     ],
-     "tex": "book_green",
-     "id": "book_green"
-    },
-    {
-     "face": "front",
-     "uv": [
       2.5,
       -0.3
      ],
@@ -284,6 +289,71 @@
      "tex": "compartment",
      "id": "compartment",
      "depth": 0.035
+    },
+    {
+     "face": "front",
+     "uv": [
+      -1,
+      -0.094
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_ochre",
+     "id": "book_ochre"
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.5,
+      -0.094
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_red",
+     "id": "book_red"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -0.094
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_green",
+     "id": "book_green"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.5,
+      -0.094
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_plum",
+     "id": "book_plum"
+    },
+    {
+     "face": "front",
+     "uv": [
+      1,
+      -0.094
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_blue",
+     "id": "book_blue"
     }
    ]
   },
@@ -436,45 +506,6 @@
      "id": "walnut_lock"
     },
     {
-     "face": "left",
-     "uv": [
-      -1.6,
-      0
-     ],
-     "size": [
-      1.25,
-      1.25
-     ],
-     "tex": "dial_sun",
-     "id": "dial0"
-    },
-    {
-     "face": "left",
-     "uv": [
-      0,
-      0
-     ],
-     "size": [
-      1.25,
-      1.25
-     ],
-     "tex": "dial_sun",
-     "id": "dial1"
-    },
-    {
-     "face": "left",
-     "uv": [
-      1.6,
-      0
-     ],
-     "size": [
-      1.25,
-      1.25
-     ],
-     "tex": "dial_sun",
-     "id": "dial2"
-    },
-    {
      "face": "right",
      "uv": [
       0,
@@ -501,6 +532,72 @@
      "tex": "panel",
      "id": "panel",
      "depth": 0.03
+    },
+    {
+     "face": "left",
+     "uv": [
+      -2.0,
+      0
+     ],
+     "size": [
+      1.25,
+      1.25
+     ],
+     "tex": "dial_sun",
+     "id": "dial0"
+    },
+    {
+     "face": "left",
+     "uv": [
+      -0.65,
+      0
+     ],
+     "size": [
+      1.25,
+      1.25
+     ],
+     "tex": "dial_sun",
+     "id": "dial1"
+    },
+    {
+     "face": "left",
+     "uv": [
+      0.7,
+      0
+     ],
+     "size": [
+      1.25,
+      1.25
+     ],
+     "tex": "dial_sun",
+     "id": "dial2"
+    },
+    {
+     "face": "left",
+     "uv": [
+      2.0,
+      0
+     ],
+     "size": [
+      1.25,
+      1.25
+     ],
+     "tex": "dial_sun",
+     "id": "dial3"
+    },
+    {
+     "face": "left",
+     "uv": [
+      0,
+      -1.75
+     ],
+     "size": [
+      1,
+      0.75
+     ],
+     "tex": "catch",
+     "id": "dial_catch",
+     "depth": 0.035
     }
    ],
    "children": [
@@ -602,36 +699,54 @@
      ]
     }
    ]
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "watch_part",
+   "center": [
+    0,
+    12.5
+   ],
+   "size": [
+    0.75,
+    0.75
+   ],
+   "tex": "small_watch",
+   "depth": 0.03
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "loose_board",
+   "center": [
+    0,
+    12.5
+   ],
+   "size": [
+    3,
+    1
+   ],
+   "tex": "loose_board",
+   "depth": 0.045
+  },
+  {
+   "type": "sprite",
+   "wall": "u",
+   "id": "ceiling_rose",
+   "center": [
+    0,
+    7.5
+   ],
+   "size": [
+    4,
+    4
+   ],
+   "tex": "clear",
+   "depth": 0.03
   }
  ],
  "puzzles": [
-  {
-   "kind": "cycler",
-   "part": "clock_hand",
-   "flag": "clock_hour",
-   "count": 12,
-   "start": 7,
-   "rotate": -30,
-   "sfx": "tick",
-   "lock": "clock_open",
-   "locked_say": "The clock has given up its secret.",
-   "on": {
-    "3": [
-     {
-      "wait": 0.15
-     },
-     {
-      "set": "clock_open"
-     },
-     {
-      "sfx": "unlock"
-     },
-     {
-      "say": "Three. A little door in the clock's case clicks open."
-     }
-    ]
-   }
-  },
   {
    "kind": "pickup",
    "part": "clock_key",
@@ -641,73 +756,6 @@
    "then": [
     {
      "say": "A small brass key."
-    }
-   ]
-  },
-  {
-   "kind": "cycler",
-   "part": "dial0",
-   "flag": "dial0",
-   "count": 4,
-   "textures": [
-    "dial_sun",
-    "dial_moon",
-    "dial_star",
-    "dial_eye"
-   ],
-   "lock": "panel_open"
-  },
-  {
-   "kind": "cycler",
-   "part": "dial1",
-   "flag": "dial1",
-   "count": 4,
-   "textures": [
-    "dial_sun",
-    "dial_moon",
-    "dial_star",
-    "dial_eye"
-   ],
-   "lock": "panel_open"
-  },
-  {
-   "kind": "cycler",
-   "part": "dial2",
-   "flag": "dial2",
-   "count": 4,
-   "textures": [
-    "dial_sun",
-    "dial_moon",
-    "dial_star",
-    "dial_eye"
-   ],
-   "lock": "panel_open"
-  },
-  {
-   "kind": "combo",
-   "flags": [
-    "dial0",
-    "dial1",
-    "dial2"
-   ],
-   "code": [
-    1,
-    3,
-    2
-   ],
-   "lock": "panel_open",
-   "do": [
-    {
-     "set": "panel_open"
-    },
-    {
-     "sfx": "slide"
-    },
-    {
-     "refresh": true
-    },
-    {
-     "say": "Something clicks inside the box. A panel slides open."
     }
    ]
   },
@@ -747,7 +795,7 @@
      "journal": [
       "photo",
       "A photograph",
-      "Wren at his own bookshelf, younger. Someone has inked numbers over three of the books: 1, 2, 3."
+      "Wren at his own bookshelf, mid-reach. One book is out and lying flat on the shelf, one is half drawn, and his fingers are on top of a third. As if the shelf wanted them in that order."
      ]
     },
     {
@@ -769,21 +817,25 @@
    "order": "gbr",
    "lock": "comp_open",
    "parts": {
+    "book_ochre": "o",
+    "book_red": "r",
     "book_green": "g",
-    "book_blue": "b",
-    "book_red": "r"
+    "book_plum": "p",
+    "book_blue": "b"
    },
    "tex": {
+    "book_ochre": "book_ochre",
+    "book_red": "book_red",
     "book_green": "book_green",
-    "book_blue": "book_blue",
-    "book_red": "book_red"
+    "book_plum": "book_plum",
+    "book_blue": "book_blue"
    },
    "fail": [
     {
      "sfx": "thunk"
     },
     {
-     "say": "The books slide back into place on their own."
+     "say": "Nothing. The three books slide back into place on their own."
     }
    ],
    "do": [
@@ -799,7 +851,8 @@
     {
      "say": "A panel in the shelf swings open."
     }
-   ]
+   ],
+   "silent": true
   },
   {
    "kind": "pickup",
@@ -872,6 +925,173 @@
      }
     ]
    }
+  },
+  {
+   "kind": "radial",
+   "part": "clock_face",
+   "rotate": -30,
+   "count": 12,
+   "lock": "clock_open",
+   "sfx": "tick",
+   "rings": [
+    [
+     "clock_hand",
+     0.32
+    ],
+    [
+     "clock_min",
+     0.62
+    ]
+   ]
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "clock_hand",
+    "clock_min"
+   ],
+   "code": [
+    10,
+    4
+   ],
+   "lock": "clock_open",
+   "commit": "clock_wind",
+   "locked_say": "The clock has given up its secret.",
+   "fail": [
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "You wind the clock. It ticks twice and stops."
+    }
+   ],
+   "do": [
+    {
+     "sfx": "tick"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "set": "clock_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "Twenty past ten. The clock runs, and a little door in its case clicks open."
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "dial0",
+   "flag": "dial0",
+   "count": 4,
+   "textures": [
+    "dial_sun",
+    "dial_moon",
+    "dial_star",
+    "dial_eye"
+   ],
+   "lock": "panel_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "dial1",
+   "flag": "dial1",
+   "count": 4,
+   "textures": [
+    "dial_sun",
+    "dial_moon",
+    "dial_star",
+    "dial_eye"
+   ],
+   "lock": "panel_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "dial2",
+   "flag": "dial2",
+   "count": 4,
+   "textures": [
+    "dial_sun",
+    "dial_moon",
+    "dial_star",
+    "dial_eye"
+   ],
+   "lock": "panel_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "dial3",
+   "flag": "dial3",
+   "count": 4,
+   "textures": [
+    "dial_sun",
+    "dial_moon",
+    "dial_star",
+    "dial_eye"
+   ],
+   "lock": "panel_open"
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "dial0",
+    "dial1",
+    "dial2",
+    "dial3"
+   ],
+   "code": [
+    2,
+    1,
+    3,
+    0
+   ],
+   "lock": "panel_open",
+   "commit": "dial_catch",
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "You press the catch. Nothing gives."
+    }
+   ],
+   "do": [
+    {
+     "set": "panel_open"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "refresh": true
+    },
+    {
+     "say": "The catch gives. A panel slides open on the other side."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "watch_part",
+   "item": "watch",
+   "flag": "watch_taken",
+   "show_if": "board_up",
+   "then": [
+    {
+     "journal": [
+      "watch",
+      "Wren's watch",
+      "His pocket watch, stopped, hidden under a floorboard beneath his desk. The hands stand at twenty past ten. Engraved on the back: OUR HOUR. H.W.\n\nTwenty past ten. The hour he always kept free for me on Thursdays."
+     ]
+    },
+    {
+     "say": "Wren's pocket watch. Hold it in your tray to look closer."
+    }
+   ]
   }
  ],
  "bindings": [
@@ -1049,9 +1269,51 @@
    "then": {
     "texture": "globe_open"
    }
+  },
+  {
+   "target": "loose_board",
+   "when": "board_up",
+   "then": {
+    "texture": "loose_board_up",
+    "tappable": false
+   },
+   "else": {
+    "texture": "loose_board",
+    "tappable": true
+   }
   }
  ],
  "interactions": [
+  {
+   "on": "tap",
+   "id": "loose_board",
+   "when": "!board_up",
+   "do": [
+    {
+     "set": "board_up"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "One board under the desk is loose. You lift it."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "ceiling_rose",
+   "do": [
+    {
+     "say": "A plaster ceiling rose, cracked across. Damp has got in from somewhere."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "clock_hand",
+   "do": []
+  },
   {
    "on": "tap",
    "id": "letter",
@@ -1066,7 +1328,7 @@
      "journal": [
       "letter",
       "Wren's letter",
-      "\"Elias. Do not open it. I opened three.\n\nIf you must be the fool I was, begin at our hour. Three bells, as always. The box remembers what I forget.\n\nH.W.\""
+      "\"Elias. Do not open it. I opened three.\n\nIf you must be the fool I was, begin at our hour. I keep it where I keep everything that matters to me: under my feet, beneath my desk. Set my clock by it and wind it. The box remembers what I forget.\n\nH.W.\""
      ]
     },
     {
@@ -1350,7 +1612,14 @@
    "id": "sampler",
    "do": [
     {
-     "say": "Needlepoint, in a script you almost recognise."
+     "journal": [
+      "sampler",
+      "The sampler",
+      "A needlepoint sampler in Wren's study, stitched by his late wife: READ MY RING FROM OUR HOUR AS THE HANDS GO. H.W."
+     ]
+    },
+    {
+     "say": "A needlepoint sampler. It's in your journal."
     }
    ]
   },
@@ -1390,23 +1659,54 @@
      "journal": [
       "letter",
       "Wren's letter",
-      "\"Elias. Do not open it. I opened three.\n\nIf you must be the fool I was, begin at our hour. Three bells, as always. The box remembers what I forget.\n\nH.W.\""
+      "\"Elias. Do not open it. I opened three.\n\nIf you must be the fool I was, begin at our hour. I keep it where I keep everything that matters to me: under my feet, beneath my desk. Set my clock by it and wind it. The box remembers what I forget.\n\nH.W.\""
      ]
     }
    ],
    "said": "The letter unfolds itself on the desk."
   },
   {
-   "id": "clock",
-   "done": "clock_open",
+   "id": "watch",
+   "done": "watch_taken",
    "hints": [
-    "Wren's letter names an hour.",
-    "Tap the wall clock's hand until it points to three."
+    "Wren's letter says where he keeps your hour: under his feet, beneath his desk.",
+    "Drag up to look at the floor. Lift the loose board under the desk and take what's there."
    ],
    "solve": [
     {
-     "set": "clock_hour",
-     "value": 3
+     "set": "board_up"
+    },
+    {
+     "give": "watch"
+    },
+    {
+     "set": "watch_taken"
+    },
+    {
+     "journal": [
+      "watch",
+      "Wren's watch",
+      "His pocket watch, stopped, hidden under a floorboard beneath his desk. The hands stand at twenty past ten. Engraved on the back: OUR HOUR. H.W.\n\nTwenty past ten. The hour he always kept free for me on Thursdays."
+     ]
+    }
+   ],
+   "said": "The board lifts. Wren's watch is in your hand."
+  },
+  {
+   "id": "clock",
+   "done": "clock_open",
+   "hints": [
+    "Wren's watch is stopped at your hour. Hold it in the tray to look at it.",
+    "On the wall clock, touch near the middle to turn the hour hand and further out for the minute hand. Set twenty past ten, then turn the winding key."
+   ],
+   "solve": [
+    {
+     "set": "clock_hand",
+     "value": 10
+    },
+    {
+     "set": "clock_min",
+     "value": 4
     },
     {
      "set": "clock_open"
@@ -1435,21 +1735,25 @@
    "id": "dials",
    "done": "panel_open",
    "hints": [
-    "The walnut box has a plaque on one face and dials on another.",
-    "Turn the box's dials to moon, eye, star (left to right), as the back plaque shows."
+    "The plaque on the back of the walnut box is a ring like a clock face. The sampler on the south wall says how to read it.",
+    "Read the ring from ten o'clock, clockwise: star, moon, eye, sun. Set the four dials left to right, then press the catch."
    ],
    "solve": [
     {
      "set": "dial0",
-     "value": 1
+     "value": 2
     },
     {
      "set": "dial1",
-     "value": 3
+     "value": 1
     },
     {
      "set": "dial2",
-     "value": 2
+     "value": 3
+    },
+    {
+     "set": "dial3",
+     "value": 0
     },
     {
      "set": "panel_open"
@@ -1538,8 +1842,8 @@
    "id": "books",
    "done": "comp_open",
    "hints": [
-    "Hold the photograph to examine it. Someone numbered three books.",
-    "In the bookshelf, pull the green book, then the blue, then the red."
+    "The photograph shows Wren in the middle of opening his shelf. Some books are further along than others.",
+    "The book lying flat went first, the half-drawn one second, the one under his hand last: green, blue, red."
    ],
    "solve": [
     {
@@ -1665,10 +1969,6 @@
    "letter"
   ],
   [
-   "shot",
-   "letter"
-  ],
-  [
    "tap",
    "clock"
   ],
@@ -1677,15 +1977,79 @@
    "clock_zoom"
   ],
   [
+   "tap",
+   "clock_wind"
+  ],
+  [
    "back"
   ],
   [
+   "tap",
+   "loose_board"
+  ],
+  [
+   "shot",
+   "floor"
+  ],
+  [
+   "tap",
+   "watch_part"
+  ],
+  [
+   "examine",
+   "watch"
+  ],
+  [
+   "expect",
+   "watch_taken"
+  ],
+  [
+   "tap",
+   "ceiling_rose"
+  ],
+  [
+   "shot",
+   "ceiling"
+  ],
+  [
    "repeat",
-   8,
+   3,
    [
-    "tap",
-    "clock_hand"
+    "tapat",
+    "clock_face",
+    [
+     0,
+     0.15
+    ]
    ]
+  ],
+  [
+   "repeat",
+   4,
+   [
+    "tapat",
+    "clock_face",
+    [
+     0,
+     0.5
+    ]
+   ]
+  ],
+  [
+   "shot",
+   "clock_set"
+  ],
+  [
+   "tap",
+   "clock_wind"
+  ],
+  [
+   "wait",
+   0.8
+  ],
+  [
+   "expect",
+   "clock_open"
   ],
   [
    "shot",
@@ -1698,17 +2062,6 @@
   [
    "expect",
    "brass_taken"
-  ],
-  [
-   "tap",
-   "desk"
-  ],
-  [
-   "shot",
-   "desk_zoom"
-  ],
-  [
-   "back"
   ],
   [
    "tap",
@@ -1728,11 +2081,19 @@
   ],
   [
    "tap",
-   "dial0"
+   "sampler"
   ],
   [
    "repeat",
-   3,
+   2,
+   [
+    "tap",
+    "dial0"
+   ]
+  ],
+  [
+   "repeat",
+   1,
    [
     "tap",
     "dial1"
@@ -1740,11 +2101,15 @@
   ],
   [
    "repeat",
-   2,
+   3,
    [
     "tap",
     "dial2"
    ]
+  ],
+  [
+   "tap",
+   "dial_catch"
   ],
   [
    "wait",
@@ -1761,17 +2126,6 @@
   [
    "tap",
    "iron_key_part"
-  ],
-  [
-   "back"
-  ],
-  [
-   "tap",
-   "bookshelf"
-  ],
-  [
-   "shot",
-   "east_dark"
   ],
   [
    "back"
@@ -1804,15 +2158,23 @@
   ],
   [
    "tap",
+   "book_red"
+  ],
+  [
+   "tap",
    "book_green"
   ],
   [
    "tap",
-   "book_red"
+   "book_plum"
   ],
   [
    "wait",
    1.0
+  ],
+  [
+   "shot",
+   "books_wrong"
   ],
   [
    "tap",
@@ -1831,6 +2193,10 @@
    0.8
   ],
   [
+   "expect",
+   "comp_open"
+  ],
+  [
    "repeat",
    2,
    [
@@ -1843,14 +2209,6 @@
    0.6
   ],
   [
-   "expect",
-   "globe_open"
-  ],
-  [
-   "shot",
-   "globe_open"
-  ],
-  [
    "shot",
    "shelf_open"
   ],
@@ -1861,21 +2219,6 @@
   [
    "expect",
    "ring_taken"
-  ],
-  [
-   "tap",
-   "cabinet"
-  ],
-  [
-   "shot",
-   "west"
-  ],
-  [
-   "back"
-  ],
-  [
-   "tap",
-   "portrait"
   ],
   [
    "use",
@@ -1908,10 +2251,6 @@
    1.5
   ],
   [
-   "shot",
-   "inner_open"
-  ],
-  [
    "tap",
    "door_key_part"
   ],
@@ -1929,23 +2268,7 @@
    "journal"
   ],
   [
-   "swipe",
-   80.0
-  ],
-  [
-   "swipe",
-   80.0
-  ],
-  [
-   "shot",
-   "south_by_swipe"
-  ],
-  [
    "hint"
-  ],
-  [
-   "shot",
-   "hint1"
   ],
   [
    "hint"
@@ -1953,5 +2276,18 @@
   [
    "hint"
   ]
+ ],
+ "floor": "r1_floor",
+ "ceiling": "r1_ceiling",
+ "intro": "Drag sideways to turn. Drag up or down to look at the floor and ceiling.",
+ "on_enter": [
+  {
+   "set": "clock_hand",
+   "value": 7
+  },
+  {
+   "set": "clock_min",
+   "value": 0
+  }
  ]
 }

@@ -40,8 +40,9 @@ Furniture can have hinged faces ("hinges", same as boxes), so a wall panel can s
 
 ## Puzzle kinds
 - cycler: a part that steps through states each tap. `{"kind":"cycler","part":"clock_hand","flag":"clock_hour","count":12,"start":7,"rotate":-30}` or `"textures":[...]`. Options: lock (condition that freezes it), locked_say, sfx, spin (false = just swap pictures), on: `{"3":[actions]}` runs when it reaches that state.
-- combo: several flags matching a code. `{"kind":"combo","flags":["dial0","dial1","dial2"],"code":[1,3,2],"lock":"panel_open","do":[actions]}`
-- sequence: parts pulled in an order; a wrong pull resets. `{"kind":"sequence","flag":"books","parts":{"book_green":"g",...},"order":"gbr","tex":{...},"fail":[actions],"do":[actions]}`
+- combo: several flags matching a code. `{"kind":"combo","flags":["dial0","dial1","dial2"],"code":[1,3,2],"lock":"panel_open","commit":"catch","fail":[actions],"do":[actions]}`
+  With "commit" (use it for every real puzzle), the code is only tried when the player taps that part, and a wrong try gives no hint which part is wrong. Without it, the combo opens the moment it matches, which lets players turn things until something clicks.
+- sequence: parts pulled in an order; a wrong pull resets. With "silent": true, nothing resets or clicks until the whole sequence is in (use it whenever there are decoys, so it can't be solved one step at a time). `{"kind":"sequence","flag":"books","parts":{"book_green":"g",...},"order":"gbr","tex":{...},"fail":[actions],"do":[actions]}`
 - radial: concentric rings on one touch area; the ring is chosen by distance from the centre. `{"kind":"radial","part":"rings","rings":[["ring_core",0.7],["ring_mid",1.32],["ring_outer",2.05]],"rotate":-90}`
 - pickup: take an item. `{"kind":"pickup","part":"clock_key","item":"brass_key","flag":"brass_taken","show_if":"clock_open","then":[actions]}`
 - dark: a wall too dark to use until a flag. `{"kind":"dark","wall":"e","until":"lamp_lit","say":"Too dark..."}`

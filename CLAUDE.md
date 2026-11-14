@@ -33,6 +33,15 @@ Escape rooms and nested puzzle boxes, The Room style, Lovecraftian. You play Eli
 4. walkthrough: the real taps that solve it. The autotest plays it.
 5. New rooms: add to data/rooms/index.json. New items: data/items.json plus an item_<id>.png icon.
 6. Depth bar (Eric, Nov 2026: seal I was too simple): 12 to 16 steps per room, 3 nested layers, at least 5 puzzle types, clues that must be combined, and use the room itself (floor, ceiling, room state).
+
+## Puzzle rules (from Eric's playtests, Nov 2026)
+- The Lens reveals clues, never answers. Everything it shows must be combined with something seen without it (a cipher key, a chart, a log).
+- Nothing clicks open on the right setting. Anything with settings is tried only when the player commits (winds the clock, presses the catch, taps the glass): combos use "commit", and a wrong try doesn't say which part is wrong.
+- Sequences with decoys are "silent": no reset until the whole sequence is in, so they can't be solved one tap at a time.
+- A clue-solved puzzle needs enough possibilities (about 100 or more) that guessing is worse than thinking.
+- No puzzle type twice in one seal. A type that comes back in a later seal needs a twist.
+- Everything the player can see responds to touch, even if only with a line of text. Dead taps read as bugs.
+- The first touch on a part of a piece of furniture zooms in; parts are worked up close. Furniture worked from the room view sets "zoom": false.
 Art brief (style, sizes, palette rules): https://claude.ai/artifact/7zvHBNiA8YfQN7kr6eGhwy
 
 ## Verify every change

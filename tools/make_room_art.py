@@ -77,9 +77,14 @@ for k in range(12):
 glyph(clock, 14, 9, "3", INK) if False else None
 d.rectangle([9, 32, 22, 43], fill=INK); d.line([15, 33, 15, 40], fill=BRASS[2]); d.ellipse([13, 39, 18, 43], fill=BRASS[3])
 save(clock, "clock_front")
-hand = new(16, 16); d = ImageDraw.Draw(hand)
-d.line([7, 8, 7, 2], fill=INK); d.line([8, 8, 8, 2], fill=INK); d.point((7, 1), fill=INK); d.rectangle([6, 7, 9, 9], fill=BRASS[0])
+hand = new(16, 16); d = ImageDraw.Draw(hand)   # hour hand: short and thick
+d.rectangle([7, 4, 8, 8], fill=INK); d.rectangle([6, 4, 9, 5], fill=INK); d.rectangle([6, 7, 9, 9], fill=BRASS[0])
 save(hand, "clock_hand")
+mhand = new(16, 16); d = ImageDraw.Draw(mhand)  # minute hand: long and thin
+d.line([7, 8, 7, 1], fill=VELVET[1]); d.point((7, 0), fill=VELVET[1]); d.rectangle([6, 7, 9, 9], fill=BRASS[0])
+save(mhand, "clock_min")
+wind = new(8, 8); d = ImageDraw.Draw(wind); d.ellipse([0, 0, 7, 7], fill=BRASS[1]); d.rectangle([3, 1, 4, 6], fill=INK); d.rectangle([1, 3, 6, 4], fill=INK)
+save(wind, "clock_wind")
 cdoor = wood_face(20, 16, 33, DARKW); d = ImageDraw.Draw(cdoor); d.rectangle([9, 6, 10, 9], fill=BRASS[3])
 save(cdoor, "clock_door")
 cdo = new(20, 16, INK); bevel(cdo, DARKW, 1); save(cdo, "clock_door_open")
@@ -164,11 +169,9 @@ d.polygon([(6, 12), (17, 12), (20, 56), (3, 56)], fill=(40, 34, 44)); d.ellipse(
 save(coatrack, "coatrack")
 
 sampler = new(48, 32); d = ImageDraw.Draw(sampler)
-d.rectangle([0, 0, 47, 31], fill=DARKW[2]); d.rectangle([3, 3, 44, 28], fill=IVORY[1])
-rnd = random.Random(3)
-for y in range(7, 26, 4):
-    for x in range(7, 41, 2):
-        if rnd.random() < 0.7: d.point((x, y), fill=VELVET[2])
+d.rectangle([0, 0, 47, 31], fill=DARKW[2]); d.rectangle([2, 2, 45, 29], fill=IVORY[1])
+for i, line in enumerate(["READ MY RING", "FROM OUR HOUR", "AS THE HANDS", "GO.  H.W."]):
+    text(sampler, 24 - text_w(line) // 2, 4 + i * 6, line, VELVET[2])
 save(sampler, "sampler")
 
 window = new(64, 128); d = ImageDraw.Draw(window)
@@ -391,14 +394,21 @@ for n, img in it.items(): save(img, "item_" + n)
 
 # examine views 96x72
 ph = new(96, 72, IVORY[2]); d = ImageDraw.Draw(ph)
+# Wren at his shelf, mid-search: green already out and lying flat on the shelf, blue half drawn,
+# his fingers on top of red. Ochre and plum untouched. Order: green, blue, red.
 d.rectangle([4, 4, 91, 67], fill=(70, 62, 52))
 for x in range(8, 88, 5): d.rectangle([x, 26, x + 3, 50], fill=(100, 90, 76))
 d.rectangle([6, 50, 89, 53], fill=(120, 108, 90))
-order = [(30, GRN, "1"), (44, BLU, "2"), (58, RED, "3")]
-for x, c, n in order:
-    d.rectangle([x, 22, x + 5, 50], fill=c)
-    glyph(ph, x + 1, 12, n, (250, 245, 230))
-d.ellipse([68, 10, 84, 30], fill=(150, 130, 110)); d.rectangle([66, 30, 86, 50], fill=(40, 36, 40))
+cols = [((110, 84, 40), 0), (RED, 0), (GRN, None), ((70, 40, 80), 0), (BLU, 6)]
+for i, (c, out) in enumerate(cols):
+    x = 28 + i * 8
+    if out is None:
+        d.rectangle([x - 4, 46, x + 18, 49], fill=c)   # lying flat
+        continue
+    d.rectangle([x, 26 + out, x + 5, 50], fill=c)
+    if out: d.rectangle([x, 50, x + 5, 50 + out // 2], fill=c)
+d.ellipse([34, 18, 44, 28], fill=(150, 130, 110)); d.rectangle([36, 26, 40, 30], fill=(150, 130, 110))
+d.ellipse([68, 10, 84, 30], fill=(150, 130, 110)); d.rectangle([62, 30, 88, 50], fill=(40, 36, 40)); d.line([62, 34, 42, 24], fill=(40, 36, 40), width=3)
 save(ph, "examine_photo")
 print("room art written to", os.path.abspath(OUT))
 
@@ -443,3 +453,92 @@ for t in range(4):
     save(globe_view(t), "globe_%d" % t)
 save(globe_view(2, True), "globe_open")
 print("globe views done")
+
+
+# ================= Seal I rework (Nov 2026): floor, ceiling, watch, cipher, picture rings =================
+# floor: boards and a rug, with one loose board under the desk
+f = grain(240, 240, WOOD, 201, vertical=True); d = ImageDraw.Draw(f)
+for x in range(0, 240, 24): d.line([x, 0, x, 239], fill=WOOD[0])
+d.rectangle([40, 70, 199, 189], fill=VELVET[1], outline=BRASS[1]); d.rectangle([48, 78, 191, 181], outline=VELVET[2])
+save(f, "r1_floor")
+c = new(240, 240, (52, 46, 40)); d = ImageDraw.Draw(c); px = c.load()
+rnd = random.Random(202)
+for y in range(240):
+    for x in range(240):
+        if rnd.random() < 0.05: px[x, y] = (64, 58, 50, 255)
+d.ellipse([90, 90, 149, 149], outline=IVORY[0]); d.ellipse([100, 100, 139, 139], outline=IVORY[0]); d.ellipse([114, 114, 125, 125], fill=BRASS[1])
+d.line([20, 200, 60, 170, 70, 190, 110, 160], fill=(30, 26, 22))
+save(c, "r1_ceiling")
+lb = grain(48, 16, WOOD, 203); bevel(lb, WOOD, 1); d = ImageDraw.Draw(lb); d.rectangle([4, 6, 7, 9], fill=INK); save(lb, "loose_board")
+lbo = new(48, 16, INK); d = ImageDraw.Draw(lbo); d.rectangle([0, 0, 47, 15], outline=WOOD[0]); save(lbo, "loose_board_up")
+w = new(12, 12); d = ImageDraw.Draw(w); d.ellipse([0, 2, 9, 11], fill=BRASS[2], outline=BRASS[0]); d.ellipse([2, 4, 7, 9], fill=IVORY[2]); d.rectangle([4, 0, 5, 2], fill=BRASS[1])
+d.line([4, 6, 4, 7], fill=INK); d.line([5, 6, 6, 5], fill=INK); save(w, "small_watch")
+k = new(24, 24); d = ImageDraw.Draw(k); d.ellipse([3, 5, 20, 22], fill=BRASS[2], outline=BRASS[0]); d.ellipse([6, 8, 17, 19], fill=IVORY[2]); d.rectangle([10, 1, 13, 5], fill=BRASS[1])
+d.line([11, 13, 8, 11], fill=INK); d.line([11, 13, 14, 10], fill=VELVET[1]); save(k, "item_watch")
+ew = new(96, 72, (30, 24, 20)); d = ImageDraw.Draw(ew)
+d.ellipse([10, 6, 69, 65], fill=BRASS[2], outline=BRASS[0]); d.ellipse([15, 11, 64, 60], fill=IVORY[2])
+for h in range(12):
+    a_ = h * math.pi / 6; d.point((round(39.5 + 21 * math.sin(a_)), round(35.5 - 21 * math.cos(a_))), fill=INK)
+a_ = (10 + 20 / 60) * math.pi / 6; d.line([39.5, 35.5, 39.5 + 12 * math.sin(a_), 35.5 - 12 * math.cos(a_)], fill=INK, width=2)
+a_ = 20 / 60 * 2 * math.pi; d.line([39.5, 35.5, 39.5 + 19 * math.sin(a_), 35.5 - 19 * math.cos(a_)], fill=VELVET[1])
+d.ellipse([37, 33, 42, 38], fill=BRASS[0])
+text(ew, 72, 26, "OUR", IVORY[2]); text(ew, 70, 34, "HOUR", IVORY[2]); text(ew, 72, 46, "H.W", BRASS[2])
+save(ew, "examine_watch")
+
+# room 2: Wren's cipher. Glyphs on the stack (Lens only), the key on a catalog card (no Lens).
+GLYPHS = {
+ "A": ["10001", "01010", "00100", "01010", "10001"], "E": ["11111", "10000", "11100", "10000", "11111"][::-1],
+ "H": ["00100", "01110", "11111", "01110", "00100"], "L": ["10000", "11000", "10100", "10010", "11111"],
+ "N": ["11111", "00001", "00110", "01000", "10000"], "O": ["01110", "10001", "10101", "10001", "01110"],
+ "R": ["10101", "01010", "10101", "01010", "10101"], "W": ["00100", "00100", "11111", "00100", "01010"],
+}
+def glyph5(img, x, y, ch, col):
+    d = ImageDraw.Draw(img)
+    for r, row in enumerate(GLYPHS[ch]):
+        for c_, b in enumerate(row):
+            if b == "1": d.point((x + c_, y + r), fill=col)
+WORD = "WREN"
+gs = new(40, 32)
+for i, ch in enumerate(WORD): glyph5(gs, 2 + i * 10, 13, ch, (120, 255, 220))
+save(gs, "cipher_marks")
+pb = bookshelf(77, 104, 256, DARKW).crop((30, 128, 70, 160)); save(pb, "plain_books")
+pb2 = bookshelf(78, 104, 256, DARKW).crop((78, 136, 98, 160)); save(pb2, "plain_books_s")
+card = new(48, 32, IVORY[2]); d = ImageDraw.Draw(card); d.rectangle([0, 0, 47, 31], outline=IVORY[0]); d.line([0, 4, 47, 4], fill=RED)
+for i, ch in enumerate("AEHLNORW"):
+    x, y = 3 + (i % 4) * 11, 7 + (i // 4) * 12
+    glyph5(card, x, y, ch, INK); text(card, x + 6, y, ch, BLU)
+save(card, "cipher_card")
+for ch in "AEHLNORW":
+    lw = new(8, 12); d = ImageDraw.Draw(lw); d.rectangle([0, 0, 7, 11], fill=IVORY[2], outline=BRASS[0]); d.line([1, 1, 6, 1], fill=IVORY[1])
+    text(lw, 2, 4, ch, INK); save(lw, "wheel_" + ch)
+hd = new(16, 8); d = ImageDraw.Draw(hd); d.rectangle([0, 2, 15, 5], fill=BRASS[1]); d.rectangle([2, 0, 13, 7], outline=BRASS[0]); save(hd, "desk_pull")
+dro = new(48, 16, INK); d = ImageDraw.Draw(dro); d.rectangle([0, 0, 47, 15], outline=DARKW[2]); save(dro, "ldrawer_open")
+drc = new(48, 16, DARKW[2]); d = ImageDraw.Draw(drc); d.rectangle([0, 0, 47, 15], outline=DARKW[0]); save(drc, "ldrawer")
+
+# room 2: the cover rings carry pieces of one engraving (an open eye). Drawn solved; the game turns them.
+def picture_ring(size, inner, seed, r0, r1):
+    img = new(size, size); d = ImageDraw.Draw(img)
+    d.ellipse([0, 0, size - 1, size - 1], fill=BRASS[1]); d.ellipse([1, 1, size - 2, size - 2], fill=BRASS[2])
+    if inner:
+        d.ellipse([inner, inner, size - 1 - inner, size - 1 - inner], fill=(0, 0, 0, 0))
+        d.ellipse([inner - 1, inner - 1, size - inner, size - inner], outline=BRASS[0])
+    off = (72 - size) / 2
+    big = new(72, 72); bd = ImageDraw.Draw(big)
+    bd.arc([4, 18, 67, 70], 200, 340, fill=INK, width=2); bd.arc([4, 2, 67, 54], 20, 160, fill=INK, width=2)
+    bd.ellipse([24, 24, 47, 47], outline=INK, width=2); bd.ellipse([31, 31, 40, 40], fill=INK)
+    bd.polygon([(16, 44), (13, 52), (19, 52)], fill=INK)   # a tear at the inner corner: breaks the symmetry
+    bd.rectangle([32, 32, 33, 33], fill=(0, 0, 0, 0))       # the pupil's highlight, upper left
+    bd.line([45, 21, 51, 25], fill=INK); bd.point((52, 26), fill=INK)   # a crease above the lid, upper right only
+    for k_ in range(9):
+        a_ = math.pi + k_ * math.pi / 8; bd.line([35.5 + 26 * math.cos(a_), 30 + 22 * math.sin(a_), 35.5 + 31 * math.cos(a_), 30 + 27 * math.sin(a_)], fill=INK)
+    bp = big.load(); p_ = img.load()
+    for y in range(size):
+        for x in range(size):
+            r = math.hypot(x - size / 2 + 0.5, y - size / 2 + 0.5)
+            if r0 <= r < r1 and p_[x, y][3] > 0:
+                v = bp[int(x + off), int(y + off)]
+                if v[3] > 0: p_[x, y] = INK + (255,)
+                elif r < 6 and (int(x + off), int(y + off)) in [(32, 32), (33, 32), (32, 33), (33, 33)]: p_[x, y] = BRASS[4] + (255,)
+    return img
+save(picture_ring(64, 11, 1, 22, 31), "ring_outer"); save(picture_ring(44, 11, 2, 11, 21), "ring_mid")
+core = picture_ring(24, 0, 3, 0, 12); save(core, "ring_core")

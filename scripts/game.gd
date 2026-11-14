@@ -93,12 +93,27 @@ func _ready() -> void:
 	if autotest:
 		State.saving = false
 		State.reset()
-		load_room(1)
+		var start := 1
+		for arg in OS.get_cmdline_user_args():
+			if arg.begins_with("--start="):
+				start = int(arg.substr(8))
+		if start == 3:
+			State.inventory = ["lens"]
+		load_room(start)
 		_autotest()
 		return
-	if OS.has_feature("web") and "seal=2" in str(JavaScriptBridge.eval("location.search")):
+	var query := str(JavaScriptBridge.eval("location.search")) if OS.has_feature("web") else ""
+	if "seal=2" in query:
 		drone.play()
 		_skip_to_seal2()
+		return
+	if "room=" in query:
+		## Playtest link: ?room=3 or ?room=4 opens that room directly.
+		drone.play()
+		var n := int(query.split("room=")[1].split("&")[0])
+		State.reset()
+		State.inventory = ["lens"] + (["crank", "oil_can", "lantern"] if n == 4 else [])
+		load_room(n if n in ROOMS else 1)
 		return
 	var has_save := State.load_game()
 	load_room(State.room if has_save else 1)
@@ -371,6 +386,11 @@ func _tap(pos: Vector2, held_ms := 0) -> void:
 			return
 		await dive(node, id.substr(5))
 		return
+	# a part of a piece of furniture: the first touch brings the furniture up close
+	var holder := _zoom_holder(node)
+	if selected == "" and holder and mode == Mode.ROOM:
+		await zoom_to(holder)
+		return
 	if selected != "":
 		var item := selected
 		if await room.on_use(item, id, node):
@@ -409,6 +429,16 @@ func _pick(pos: Vector2) -> Dictionary:
 			return hit
 		exclude.append(hit.rid)
 	return {}
+
+
+## The piece of furniture a part belongs to, if it can be zoomed (null for the furniture itself).
+func _zoom_holder(node: Node) -> Node3D:
+	var n := node.get_parent()
+	while n and n != room:
+		if n.has_meta("zoom") and n is PixelBox:
+			return n
+		n = n.get_parent()
+	return null
 
 
 func _liftable(node: Node) -> String:
@@ -1057,13 +1087,17 @@ func test_tap(id: String, offset := Vector2.ZERO) -> void:
 			set_pitch(1 if w == room.FLOOR else -1)
 		elif w != "":
 			set_view(room.WALLS.find(w))
+	if not box_part and selected == "":
+		var holder := _zoom_holder(node)
+		if holder and mode == Mode.ROOM:
+			await zoom_to(holder)
 	await _wait(0.1)
 	var pos := camera.unproject_position(node.global_transform * Vector3(offset.x, offset.y, 0))
 	await _tap(pos)
 	await _wait(0.35)
 
 
-func _swipe(dx: float) -> void:
+func _swipe(dx: float, dy := 0.0) -> void:
 	var c := view_size / 2
 	var ft := get_viewport().get_final_transform()
 	var ev := InputEventScreenTouch.new()
@@ -1073,12 +1107,12 @@ func _swipe(dx: float) -> void:
 	Input.parse_input_event(ev)
 	for i in range(1, 7):
 		var dr := InputEventScreenDrag.new()
-		dr.position = ft * (c + Vector2(dx * i / 6.0, 0))
+		dr.position = ft * (c + Vector2(dx * i / 6.0, dy * i / 6.0))
 		dr.set_meta("test", true)
 		Input.parse_input_event(dr)
 		await get_tree().process_frame
 	var up := InputEventScreenTouch.new()
-	up.position = ft * (c + Vector2(dx, 0))
+	up.position = ft * (c + Vector2(dx, dy))
 	up.pressed = false
 	up.set_meta("test", true)
 	Input.parse_input_event(up)
@@ -1118,6 +1152,12 @@ func _autotest() -> void:
 					await _wait(0.2)
 				"face": await show_face(a[1])
 				"swipe": await _swipe(a[1])
+				"swipev": await _swipe(0.0, a[1])
+				"tapv":
+					## tap a target from the current view, as a player would after swiping
+					var tn: Node3D = room.ids[a[1]]
+					await _tap(camera.unproject_position(tn.global_position))
+					await _wait(0.35)
 				"hint":
 					await ask_hint()
 					await _wait(0.2)

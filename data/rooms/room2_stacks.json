@@ -8,6 +8,18 @@
     "The stacks",
     "Wren's door let me out two floors below the library, among the restricted shelves. The air smells of old paper and the sea. The door is gone from this side. Only wall."
    ]
+  },
+  {
+   "set": "ring_outer",
+   "value": 1
+  },
+  {
+   "set": "ring_mid",
+   "value": 2
+  },
+  {
+   "set": "ring_core",
+   "value": 3
   }
  ],
  "objects": [
@@ -90,28 +102,29 @@
     {
      "face": "front",
      "uv": [
-      -1.125,
-      -1.0625
+      -0.125,
+      -1.09
      ],
      "size": [
-      0.5,
+      2.5,
       2
      ],
-     "tex": "book_ochre",
-     "id": "book_ochre"
+     "tex": "plain_books",
+     "id": "plain_books",
+     "tappable": true
     },
     {
      "face": "front",
      "uv": [
-      -1.125,
-      -0.7
+      -0.125,
+      -1.09
      ],
      "size": [
-      0.75,
-      1
+      2.5,
+      2
      ],
-     "tex": "lensmark_2",
-     "id": "mark_o",
+     "tex": "cipher_marks",
+     "id": "cipher_marks",
      "depth": 0.045,
      "tappable": false,
      "lens": true
@@ -119,88 +132,15 @@
     {
      "face": "front",
      "uv": [
-      -0.375,
-      -1.0625
-     ],
-     "size": [
-      0.5,
-      2
-     ],
-     "tex": "book_plum",
-     "id": "book_plum"
-    },
-    {
-     "face": "front",
-     "uv": [
-      -0.375,
-      -0.7
-     ],
-     "size": [
-      0.75,
-      1
-     ],
-     "tex": "lensmark_3",
-     "id": "mark_p",
-     "depth": 0.045,
-     "tappable": false,
-     "lens": true
-    },
-    {
-     "face": "front",
-     "uv": [
-      0.375,
-      -1.0625
-     ],
-     "size": [
-      0.5,
-      2
-     ],
-     "tex": "book_slate",
-     "id": "book_slate"
-    },
-    {
-     "face": "front",
-     "uv": [
-      0.375,
-      -0.7
-     ],
-     "size": [
-      0.75,
-      1
-     ],
-     "tex": "lensmark_1",
-     "id": "mark_s",
-     "depth": 0.045,
-     "tappable": false,
-     "lens": true
-    },
-    {
-     "face": "front",
-     "uv": [
-      1.75,
+      2.25,
       -1.28
      ],
      "size": [
-      1.5,
+      1.25,
       1.5
      ],
-     "tex": "item_chain_key",
-     "id": "chain_key_part",
-     "depth": 0.025
-    },
-    {
-     "face": "front",
-     "uv": [
-      1.75,
-      -1.28
-     ],
-     "size": [
-      1.5,
-      1.5
-     ],
-     "tex": "niche",
-     "id": "niche",
-     "depth": 0.035
+     "tex": "plain_books_s",
+     "id": "plain_books_s"
     }
    ]
   },
@@ -293,10 +233,104 @@
     "default": "wood_side_40x48"
    },
    "zoom": {
-    "dy": 1.0,
-    "w": 6.5,
-    "h": 5
-   }
+    "k": 3,
+    "dy": 0.3
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.6
+     ],
+     "size": [
+      3,
+      1
+     ],
+     "tex": "ldrawer",
+     "id": "ldrawer"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.6
+     ],
+     "size": [
+      1,
+      0.5
+     ],
+     "tex": "desk_pull",
+     "id": "desk_pull",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.6
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "item_chain_key",
+     "id": "chain_key_part",
+     "depth": 0.045
+    },
+    {
+     "face": "front",
+     "uv": [
+      -1.35,
+      -0.55
+     ],
+     "size": [
+      0.5,
+      0.75
+     ],
+     "tex": "wheel_A",
+     "id": "lw0"
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.45,
+      -0.55
+     ],
+     "size": [
+      0.5,
+      0.75
+     ],
+     "tex": "wheel_A",
+     "id": "lw1"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.45,
+      -0.55
+     ],
+     "size": [
+      0.5,
+      0.75
+     ],
+     "tex": "wheel_A",
+     "id": "lw2"
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.35,
+      -0.55
+     ],
+     "size": [
+      0.5,
+      0.75
+     ],
+     "tex": "wheel_A",
+     "id": "lw3"
+    }
+   ]
   },
   {
    "type": "sprite",
@@ -330,7 +364,25 @@
     "front": "catalog_front",
     "default": "wood_side_32x96"
    },
-   "zoom": {}
+   "zoom": {
+    "k": 3
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      1.5
+     ],
+     "size": [
+      3,
+      2
+     ],
+     "tex": "cipher_card",
+     "id": "cipher_card",
+     "depth": 0.04
+    }
+   ]
   },
   {
    "type": "sprite",
@@ -439,22 +491,6 @@
      "tex": "clear",
      "id": "rings",
      "depth": 0.065
-    },
-    {
-     "face": "front",
-     "uv": [
-      0,
-      0.4
-     ],
-     "size": [
-      4.5,
-      4.5
-     ],
-     "tex": "ring_ghost",
-     "id": "ring_ghost",
-     "depth": 0.06,
-     "tappable": false,
-     "lens": true
     },
     {
      "face": "right",
@@ -589,49 +625,11 @@
  ],
  "puzzles": [
   {
-   "kind": "sequence",
-   "flag": "books2",
-   "order": "sop",
-   "lock": "niche_open",
-   "parts": {
-    "book_slate": "s",
-    "book_ochre": "o",
-    "book_plum": "p"
-   },
-   "tex": {
-    "book_slate": "book_slate",
-    "book_ochre": "book_ochre",
-    "book_plum": "book_plum"
-   },
-   "fail": [
-    {
-     "sfx": "thunk"
-    },
-    {
-     "say": "The books slide back into place on their own."
-    }
-   ],
-   "do": [
-    {
-     "set": "niche_open"
-    },
-    {
-     "wait": 0.3
-    },
-    {
-     "sfx": "unlock"
-    },
-    {
-     "say": "A niche opens between the shelves."
-    }
-   ]
-  },
-  {
    "kind": "pickup",
    "part": "chain_key_part",
    "item": "chain_key",
    "flag": "chain_key_taken",
-   "show_if": "niche_open",
+   "show_if": "ldrawer_open",
    "then": [
     {
      "say": "A tiny key on a ribbon, stamped with the library's seal."
@@ -667,9 +665,9 @@
     "ring_core"
    ],
    "code": [
-    1,
-    2,
-    3
+    0,
+    0,
+    0
    ],
    "lock": "cover_open",
    "do": [
@@ -690,6 +688,15 @@
     },
     {
      "say": "The cover swings open. The pages are hollowed out. Something sits inside."
+    }
+   ],
+   "commit": "clasp",
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The clasp won't open."
     }
    ]
   },
@@ -719,6 +726,121 @@
      ]
     }
    ]
+  },
+  {
+   "kind": "cycler",
+   "part": "lw0",
+   "flag": "lw0",
+   "count": 8,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "wheel_A",
+    "wheel_E",
+    "wheel_H",
+    "wheel_L",
+    "wheel_N",
+    "wheel_O",
+    "wheel_R",
+    "wheel_W"
+   ],
+   "lock": "ldrawer_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "lw1",
+   "flag": "lw1",
+   "count": 8,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "wheel_A",
+    "wheel_E",
+    "wheel_H",
+    "wheel_L",
+    "wheel_N",
+    "wheel_O",
+    "wheel_R",
+    "wheel_W"
+   ],
+   "lock": "ldrawer_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "lw2",
+   "flag": "lw2",
+   "count": 8,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "wheel_A",
+    "wheel_E",
+    "wheel_H",
+    "wheel_L",
+    "wheel_N",
+    "wheel_O",
+    "wheel_R",
+    "wheel_W"
+   ],
+   "lock": "ldrawer_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "lw3",
+   "flag": "lw3",
+   "count": 8,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "wheel_A",
+    "wheel_E",
+    "wheel_H",
+    "wheel_L",
+    "wheel_N",
+    "wheel_O",
+    "wheel_R",
+    "wheel_W"
+   ],
+   "lock": "ldrawer_open"
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "lw0",
+    "lw1",
+    "lw2",
+    "lw3"
+   ],
+   "code": [
+    7,
+    6,
+    1,
+    4
+   ],
+   "lock": "ldrawer_open",
+   "commit": "desk_pull",
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The drawer is locked. The letter wheels hold it."
+    }
+   ],
+   "do": [
+    {
+     "set": "ldrawer_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "W, R, E, N. The drawer slides open."
+    }
+   ]
   }
  ],
  "bindings": [
@@ -730,18 +852,6 @@
    },
    "else": {
     "texture": "lens_case"
-   }
-  },
-  {
-   "target": "niche",
-   "when": "niche_open",
-   "then": {
-    "texture": "niche_open",
-    "tappable": false
-   },
-   "else": {
-    "texture": "niche",
-    "tappable": true
    }
   },
   {
@@ -837,6 +947,28 @@
    "else": {
     "gone": false
    }
+  },
+  {
+   "target": "ldrawer",
+   "when": "ldrawer_open",
+   "then": {
+    "texture": "ldrawer_open"
+   },
+   "else": {
+    "texture": "ldrawer"
+   }
+  },
+  {
+   "target": "desk_pull",
+   "when": "ldrawer_open",
+   "then": {
+    "visible": false,
+    "tappable": false
+   },
+   "else": {
+    "visible": true,
+    "tappable": true
+   }
   }
  ],
  "interactions": [
@@ -871,16 +1003,6 @@
    "on": "tap",
    "id": "lens_case",
    "do": []
-  },
-  {
-   "on": "tap",
-   "id": "niche",
-   "when": "!niche_open",
-   "do": [
-    {
-     "say": "A wooden panel between the books. No handle, no keyhole."
-    }
-   ]
   },
   {
    "on": "tap",
@@ -964,16 +1086,6 @@
   },
   {
    "on": "tap",
-   "id": "clasp",
-   "when": "!cover_open",
-   "do": [
-    {
-     "say": "A brass clasp. The rings must be holding it shut."
-    }
-   ]
-  },
-  {
-   "on": "tap",
    "id": "plate",
    "do": [
     {
@@ -1014,11 +1126,11 @@
      "journal": [
       "catalog",
       "The card catalog",
-      "One card is filed out of place: \"Restricted volumes are marked in a light only the trained eye perceives. Fetch them in the order of their numbering.\""
+      "A card pinned to the front of the catalog, in Wren's hand: \"E.T. Our Cairo alphabet, in case you need it down here.\" Below it, eight symbols, each with its letter."
      ]
     },
     {
-     "say": "A card filed out of place. It's in your journal."
+     "say": "A card in Wren's hand. It's in your journal."
     }
    ]
   },
@@ -1048,6 +1160,37 @@
      "say": "Painted glass. There is no outside down here."
     }
    ]
+  },
+  {
+   "on": "tap",
+   "id": "cipher_card",
+   "do": [
+    {
+     "say": "Wren's Cairo alphabet. Eight symbols, eight letters."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "plain_books",
+    "plain_books_s"
+   ],
+   "do": [
+    {
+     "say": "Restricted volumes. Nothing written on the spines. Nothing you can see."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "ldrawer",
+   "do": [
+    {
+     "say": "The librarian's drawer. Four letter wheels below it, and a pull."
+    }
+   ],
+   "when": "!ldrawer_open"
   }
  ],
  "steps": [
@@ -1069,29 +1212,41 @@
    "said": "Wren's Lens is in your hand."
   },
   {
-   "id": "books",
-   "done": "niche_open",
+   "id": "cipher",
+   "done": "ldrawer_open",
    "hints": [
-    "The Lens shows what ink cannot. Look at the shelves through it.",
-    "With the Lens on, pull the marked books in the left stack in order: I, then II, then III."
+    "The librarian's desk has four letter wheels. Through the Lens, the stacks show four symbols. Wren left an alphabet somewhere in the room.",
+    "Turn the Lens on and read the symbols in the left stack, then decode them with the card on the catalog (west wall): W, R, E, N. Set the wheels and pull the drawer."
    ],
    "solve": [
     {
-     "set": "books2",
-     "value": "sop"
+     "set": "lw0",
+     "value": 7
     },
     {
-     "set": "niche_open"
+     "set": "lw1",
+     "value": 6
+    },
+    {
+     "set": "lw2",
+     "value": 1
+    },
+    {
+     "set": "lw3",
+     "value": 4
+    },
+    {
+     "set": "ldrawer_open"
     }
    ],
-   "said": "Three books slide out by themselves. A niche opens."
+   "said": "The wheels turn by themselves. The drawer opens."
   },
   {
    "id": "chain_key",
    "done": "chain_key_taken",
    "hints": [
-    "A niche opened in the left stack.",
-    "Take the little key from the niche in the left stack."
+    "The librarian's drawer is open.",
+    "Take the little key from the librarian's drawer."
    ],
    "solve": [
     {
@@ -1124,21 +1279,21 @@
    "id": "rings",
    "done": "cover_open",
    "hints": [
-    "The book's cover has three rings that turn.",
-    "Lift the book. With the Lens on, turn each ring until its notch meets a glowing mark."
+    "The three rings on the book's cover each carry part of one engraving.",
+    "Turn the rings until the engraving is one whole open eye, then press the clasp on the book's right side."
    ],
    "solve": [
     {
      "set": "ring_outer",
-     "value": 1
+     "value": 0
     },
     {
      "set": "ring_mid",
-     "value": 2
+     "value": 0
     },
     {
      "set": "ring_core",
-     "value": 3
+     "value": 0
     },
     {
      "set": "cover_open"
@@ -1208,12 +1363,20 @@
    "lens_case"
   ],
   [
-   "shot",
-   "lens_taken"
-  ],
-  [
    "examine",
    "lens"
+  ],
+  [
+   "tap",
+   "catalog"
+  ],
+  [
+   "tap",
+   "cipher_card"
+  ],
+  [
+   "shot",
+   "card"
   ],
   [
    "lens",
@@ -1232,38 +1395,6 @@
   ],
   [
    "tap",
-   "book_plum"
-  ],
-  [
-   "wait",
-   1.0
-  ],
-  [
-   "tap",
-   "book_slate"
-  ],
-  [
-   "tap",
-   "book_ochre"
-  ],
-  [
-   "tap",
-   "book_plum"
-  ],
-  [
-   "wait",
-   0.8
-  ],
-  [
-   "shot",
-   "niche_open"
-  ],
-  [
-   "tap",
-   "chain_key_part"
-  ],
-  [
-   "tap",
    "wren_book"
   ],
   [
@@ -1276,20 +1407,68 @@
   ],
   [
    "tap",
-   "bookbox"
+   "desk_pull"
   ],
   [
    "shot",
-   "chained"
+   "desk"
+  ],
+  [
+   "repeat",
+   7,
+   [
+    "tap",
+    "lw0"
+   ]
+  ],
+  [
+   "repeat",
+   6,
+   [
+    "tap",
+    "lw1"
+   ]
+  ],
+  [
+   "repeat",
+   1,
+   [
+    "tap",
+    "lw2"
+   ]
+  ],
+  [
+   "repeat",
+   4,
+   [
+    "tap",
+    "lw3"
+   ]
+  ],
+  [
+   "tap",
+   "desk_pull"
+  ],
+  [
+   "wait",
+   0.8
+  ],
+  [
+   "expect",
+   "ldrawer_open"
+  ],
+  [
+   "tap",
+   "chain_key_part"
+  ],
+  [
+   "tap",
+   "bookbox"
   ],
   [
    "use",
    "chain_key",
    "chain"
-  ],
-  [
-   "shot",
-   "chain_off"
   ],
   [
    "tap",
@@ -1300,60 +1479,48 @@
    "book_front"
   ],
   [
-   "lens",
-   true
+   "tap",
+   "clasp"
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tapat",
+    "rings",
+    [
+     0,
+     1.65
+    ]
+   ]
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tapat",
+    "rings",
+    [
+     1.0,
+     0
+    ]
+   ]
+  ],
+  [
+   "tapat",
+   "rings",
+   [
+    0,
+    0
+   ]
   ],
   [
    "shot",
-   "book_lens"
+   "rings_set"
   ],
   [
-   "tapat",
-   "rings",
-   [
-    0,
-    1.65
-   ]
-  ],
-  [
-   "tapat",
-   "rings",
-   [
-    1.0,
-    0
-   ]
-  ],
-  [
-   "tapat",
-   "rings",
-   [
-    0,
-    -1.0
-   ]
-  ],
-  [
-   "tapat",
-   "rings",
-   [
-    0.2,
-    0.2
-   ]
-  ],
-  [
-   "tapat",
-   "rings",
-   [
-    -0.2,
-    0.2
-   ]
-  ],
-  [
-   "tapat",
-   "rings",
-   [
-    0,
-    0
-   ]
+   "tap",
+   "clasp"
   ],
   [
    "wait",
@@ -1372,6 +1539,10 @@
    "dive:reliquary"
   ],
   [
+   "lens",
+   true
+  ],
+  [
    "shot",
    "reliquary_lens"
   ],
@@ -1384,12 +1555,12 @@
    1.5
   ],
   [
-   "shot",
-   "reliquary_open"
-  ],
-  [
    "expect",
    "reliq_open"
+  ],
+  [
+   "lens",
+   false
   ],
   [
    "tap",

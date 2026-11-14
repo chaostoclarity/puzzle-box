@@ -13,7 +13,7 @@
  ],
  "photo": [
   "Photograph",
-  "Wren at his bookshelf. Someone has inked numbers above three of the books."
+  "Wren at his bookshelf, mid-reach. One book lies flat, one is half drawn, his fingers are on a third."
  ],
  "ring": [
   "Signet ring",
@@ -62,5 +62,9 @@
  "seal_stone2": [
   "The second seal",
   "A stone like the first, cold and wet. It smells of the deep sea, and of lamp smoke."
+ ],
+ "watch": [
+  "Wren's pocket watch",
+  "Stopped at twenty past ten. Engraved on the back: OUR HOUR. H.W."
  ]
 }

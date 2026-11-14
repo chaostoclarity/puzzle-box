@@ -551,4 +551,82 @@ k = icon(); d = ImageDraw.Draw(k); d.ellipse([1, 7, 11, 16], fill=IRON[3], outli
 for x in (14, 17, 20): d.line([x, 13, x - 1, 17], fill=IRON[3])
 d.line([2, 6, 0, 3], fill=IRON[3]); d.line([10, 6, 12, 3], fill=IRON[3]); save(k, "item_chest_key")
 k = icon(); d = ImageDraw.Draw(k); d.polygon([(12, 1), (21, 8), (18, 21), (6, 21), (3, 8)], fill=(28, 40, 52), outline=(90, 200, 180)); d.line([7, 14, 9, 12, 12, 15, 15, 12, 17, 14], fill=GLOW); save(k, "item_seal_stone2")
+
+# ================= Seal II rework (Nov 2026) =================
+# Weather station: barometer word dial, thermometer, wind dial, a knob to tap the glass.
+bf = wood_face(48, 96, 62, DARKW); d = ImageDraw.Draw(bf)
+text(bf, 24 - text_w("PIKE") // 2, 3, "PIKE", BRASS[2])
+
+save(bf, "baro_front")
+save(metal(8, 96, IRON, 104), "iron_side_8x96")
+WORDS5 = ["STORM", "RAIN", "CHANGE", "FAIR", "DRY"]
+def baro5(v):
+    img = new(32, 32); d = ImageDraw.Draw(img)
+    d.ellipse([0, 0, 31, 31], fill=BRASS[1]); d.ellipse([2, 2, 29, 29], fill=IVORY[2])
+    for i in range(5):
+        a = math.pi * (0.75 + 0.375 * i)
+        d.line([16 + 9 * math.cos(a), 16 + 9 * math.sin(a), 16 + 12 * math.cos(a), 16 + 12 * math.sin(a)], fill=INK)
+    a = math.pi * (0.75 + 0.375 * v)
+    d.line([16, 16, 16 + 11 * math.cos(a), 16 + 11 * math.sin(a)], fill=RED)
+    w = WORDS5[v]; text(img, 16 - text_w(w) // 2, 21, w, INK)
+    d.ellipse([14, 14, 17, 17], fill=BRASS[0])
+    return img
+for v in range(5): save(baro5(v), "baro_%d" % v)
+for v in range(6):   # 30 .. 80 degrees, 12 x 48 (0.75 x 3 units)
+    t = new(12, 48); d = ImageDraw.Draw(t)
+    d.rectangle([3, 0, 8, 47], fill=IVORY[2], outline=BRASS[0]); d.ellipse([2, 40, 9, 47], fill=RED)
+    d.rectangle([5, 38 - v * 7, 6, 42], fill=RED)
+    for k in range(6): d.line([8, 38 - k * 7, 9, 38 - k * 7], fill=INK)
+    save(t, "thermo_%d" % v)
+DIRS8 = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+for v in range(8):
+    w_ = new(20, 20); d = ImageDraw.Draw(w_)
+    d.ellipse([0, 0, 19, 19], fill=BRASS[1]); d.ellipse([2, 2, 17, 17], fill=IVORY[2])
+    a = -math.pi / 2 + v * math.pi / 4
+    d.line([10 - 6 * math.cos(a), 10 - 6 * math.sin(a), 10 + 7 * math.cos(a), 10 + 7 * math.sin(a)], fill=INK)
+    d.point((round(10 + 7 * math.cos(a)), round(10 + 7 * math.sin(a))), fill=RED)
+    d.point((9, 2), fill=RED); d.point((10, 2), fill=RED)
+    save(w_, "wind_%d" % v)
+kn = new(8, 8); d = ImageDraw.Draw(kn); d.ellipse([0, 0, 7, 7], fill=BRASS[2], outline=BRASS[0]); d.point((3, 2), fill=BRASS[4]); save(kn, "baro_knob")
+# temperature scale beside the thermometer, painted on the case
+# (labels 30 .. 80 next to the ticks, drawn into a small plate part)
+sc = new(12, 48, (0, 0, 0, 0)); d = ImageDraw.Draw(sc)
+for k in range(6): text(sc, 1, 36 - k * 7, str(30 + 10 * k), BRASS[3])
+save(sc, "thermo_scale")
+
+# Visible rope from the sailcloth up to the ceiling cleat
+rp = new(8, 104); d = ImageDraw.Draw(rp)
+for y in range(0, 104, 2): d.point((3 + (y // 2) % 2, y), fill=WOOD[3]); d.point((4 - (y // 2) % 2, y + 1), fill=WOOD[2])
+save(rp, "rope")
+rc = new(48, 64); d = ImageDraw.Draw(rc)
+d.line([4, 63, 40, 6], fill=WOOD[3], width=2); d.line([5, 63, 41, 6], fill=WOOD[2])
+save(rc, "rope_ceiling")
+cle = new(48, 48); d = ImageDraw.Draw(cle)
+d.rectangle([18, 2, 29, 45], fill=IRON[3], outline=IRON[0]); d.rectangle([4, 17, 43, 28], fill=IRON[2], outline=IRON[0])
+for y in range(6, 42, 3): d.line([16, y, 31, y + 2], fill=WOOD[3]); d.line([16, y + 1, 31, y + 3], fill=WOOD[1])
+save(cle, "cleat")
+cle = new(48, 48); d = ImageDraw.Draw(cle)
+d.rectangle([18, 2, 29, 45], fill=IRON[3], outline=IRON[0]); d.rectangle([4, 17, 43, 28], fill=IRON[2], outline=IRON[0])
+save(cle, "cleat_free")
+
+# Star case: nine stars; through the Lens, lines join five of them (no start, no direction).
+HOOK = {"c": (-1.8, 1.8), "g": (-1.2, 0.4), "a": (-0.2, -0.6), "h": (1.2, -0.8), "e": (1.9, 0.4)}
+DECOY = {"b": (0.6, 1.9), "d": (1.6, 1.6), "f": (-2.0, -1.6), "i": (0.2, 0.8)}
+def spx2(p_): return (48 + p_[0] * 16, 48 - p_[1] * 16)
+ln = new(96, 96); d = ImageDraw.Draw(ln)
+for a_, b_ in zip("cgah", "gahe"): d.line([spx2(HOOK[a_]), spx2(HOOK[b_])], fill=GLOW)
+save(ln, "prism_lines")
+# The keepers' chart on the ceiling: the same hook turned a quarter turn, stars numbered in order.
+ch = new(64, 64, (20, 24, 40)); d = ImageDraw.Draw(ch); d.rectangle([0, 0, 63, 63], outline=BRASS[1])
+text(ch, 32 - text_w("THE HOOK") // 2, 3, "THE HOOK", BRASS[3])
+pts = []
+for i, k in enumerate("cgahe"):
+    x, y = HOOK[k]; x, y = y, -x                       # quarter turn clockwise
+    px_, py_ = 32 + x * 11, 36 - y * 11
+    pts.append((px_, py_))
+d.line(pts, fill=SILVER[1])
+for i, (px_, py_) in enumerate(pts):
+    stamp(ch, int(px_) - 3, int(py_) - 3, sym_mask("star", 7), SILVER[4])
+    text(ch, int(px_) + 4, int(py_) - 2, str(i + 1), LAMP[2])
+save(ch, "star_chart")
 print("seal 2 art written to", os.path.abspath(OUT))

@@ -65,9 +65,12 @@ func _faces(d: Dictionary) -> Dictionary:
 func _build_object(o: Dictionary) -> void:
 	match o["type"]:
 		"furniture":
-			var b := add_furniture(o["wall"], o["id"], _v2(o["pos"]), _v3(o["size"]), _faces(o["faces"]), o.get("zoom", {}))
+			var z = o.get("zoom", {})
+			var b := add_furniture(o["wall"], o["id"], _v2(o["pos"]), _v3(o["size"]), _faces(o["faces"]), z if z is Dictionary else {})
 			nodes[o["id"]] = b
 			box_nodes[o["id"]] = b
+			if o.get("zoom") is bool and not o["zoom"]:
+				b.remove_meta("zoom")   ## worked from the room view, never zoomed
 			for h in o.get("hinges", []):
 				b.hinge_face(h[0], h[1])
 			if not o.get("tappable", true):
@@ -382,6 +385,10 @@ func on_tap(id: String, node: Node) -> bool:
 				if p["parts"].has(id):
 					await _pull(p, p["parts"][id])
 					return true
+			"combo":
+				if p.get("commit", "") == id:
+					await _commit(p, node)
+					return true
 			"roll":
 				if p["buttons"].has(id):
 					await _roll(p, p["buttons"][id], node)
@@ -469,13 +476,30 @@ func _turn_radial(p: Dictionary, ring: String) -> void:
 
 func _check_combos() -> void:
 	for p in puzzles:
-		if p["kind"] != "combo" or cond(p.get("lock")) and p.has("lock"):
+		if p["kind"] != "combo" or p.has("commit") or cond(p.get("lock")) and p.has("lock"):
 			continue
 		var ok := true
 		for i in p["flags"].size():
 			ok = ok and int(State.flag_value(p["flags"][i], -1)) == int(p["code"][i])
 		if ok:
 			await run(p["do"])
+
+
+## A combination with a commit part (a winding key, a catch, a lever) is only tried when the
+## player works that part. A wrong try tells them nothing about which setting is wrong.
+func _commit(p: Dictionary, node: Node3D) -> void:
+	if p.has("lock") and cond(p["lock"]):
+		if p.has("locked_say"):
+			game.say(p["locked_say"])
+		return
+	var ok := true
+	for i in p["flags"].size():
+		var start = p.get("starts", {}).get(p["flags"][i], 0)
+		ok = ok and int(State.flag_value(p["flags"][i], start)) == int(p["code"][i])
+	if ok:
+		await run(p["do"], node)
+	else:
+		await run(p.get("fail", [{"sfx": "thunk"}, {"say": "Nothing happens."}]), node)
 
 
 func _pull(p: Dictionary, k: String) -> void:
@@ -487,6 +511,19 @@ func _pull(p: Dictionary, k: String) -> void:
 	game.play(p.get("sfx", "slide"), -4.0)
 	await refresh(false)
 	var order: String = p["order"]
+	if p.get("silent", false):
+		## Silent: nothing tells you you're wrong until the whole sequence is in.
+		if pulled.length() < order.length():
+			return
+		if pulled == order:
+			await run(p["do"])
+			return
+		game.busy = true
+		await get_tree().create_timer(0.6).timeout
+		State.set_flag(p["flag"], "")
+		game.busy = false
+		await run(p.get("fail", [{"sfx": "thunk"}, {"say": "They slide back into place."}]))
+		return
 	if not order.begins_with(pulled):
 		game.busy = true
 		await get_tree().create_timer(0.6).timeout

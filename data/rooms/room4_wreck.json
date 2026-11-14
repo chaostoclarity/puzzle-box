@@ -671,6 +671,7 @@
     "front": "pump_front",
     "default": "iron_side_24x176"
    },
+   "zoom": false,
    "parts": [
     {
      "face": "front",

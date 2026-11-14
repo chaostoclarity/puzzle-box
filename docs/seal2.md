@@ -10,14 +10,14 @@ visit 2 adds piled mail, a covered mirror, salt by the door and stains on the ce
 ## Room 3: the lamp room, Kingsport light (teaches beams and mirrors, and looking up and down)
 1. Keeper's log (east desk): where the locker key is, how the locker bars work, how the tin opens, and that he tied the lamp's cover to the roof.
 2. The sailcloth over the lamp is lashed to a cleat on the ceiling. Look up and free it.
-3. Barometer (east wall): set it to FAIR. Its little door opens: locker key.
+3. Weather station (east wall): barometer word, thermometer, wind dial. Pike's log lists days of weather; set it to his "last good day on the water" (FAIR, 60, NE) and tap the glass. Locker key.
 4. Oil locker (south): padlock off with the locker key.
 5. Three interlocked bars, each pinned by the one below: bottom to middle, middle to left, top to right, middle to right, bottom to left. The door opens: crank and oil can.
 6. Storm lantern from its hook by the west window.
 7. Oil can on the lamp, then the lantern on the lamp: the great lamp lights.
 8. Lift the brass carriage under the lamp. Fit the crank in its front socket: the mirrors on its top unlock.
 9. Beam puzzle on the carriage top (6x6, four mirrors, one post). Out to sea: something on the reef turns to look back (seen in the west window). The lid opens and the crank drops free.
-10. Dive into the star case inside. Through the Lens, lines join the stars from a ringed one: touch them in that order.
+10. Dive into the star case inside: nine stars. Through the Lens, lines join five of them. The order is on the ceiling chart, THE HOOK, drawn a quarter turn round: match it and touch 1 to 5 (silent).
 11. Dive into the keeper's tin inside the star case. Wheels marked FL, S, M; the Notice to Mariners (south wall) says FL 3, every 7 S, seen 9 M: 3 7 9. Hatch key.
 12. Look down: the stair hatch in the floor. Keeper's key, then go down.
 Optional, Wren's fragment II: send the beam inland first (last mirror to /). It lights a stone roundel on the east wall; read it through the Lens.

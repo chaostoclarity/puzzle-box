@@ -20,3 +20,12 @@ Flavor: portrait, cabinet (nine seals, three cracked), window, diploma, sampler,
 5. Dive into the reliquary. Its plate is blank. Through the Lens it reads ELIAS THORNE, and a button appears below it.
 6. Press it: the first seal stone. End of Seal I.
 Optional: Wren's fragment I, in a book marked W (Lens only) in the right stack.
+
+
+## Rework (Nov 14, after Eric's playtest: "once you have the Lens the rest is trivial"; "clock puzzles: just rotate until they click")
+Room 1: Wren's letter says your hour is under his feet. Look down: a loose board under the desk hides his watch (20 past 10, OUR HOUR).
+The clock has an hour and a minute hand (touch near the middle or further out) and a winding key; it only opens when wound at 10:20.
+The walnut box's back plaque is a clock-face ring with four symbols; the sampler says READ MY RING FROM OUR HOUR AS THE HANDS GO: star, moon, eye, sun, then press the catch.
+Five books on the shelf; the photo shows green out flat, blue half drawn, hand on red. Silent sequence.
+Room 2: the Lens shows four symbols on the left stack; Wren's alphabet card on the catalog decodes them: WREN, on the librarian's drawer wheels (8 letters each), then pull.
+The book cover's three rings each carry part of one engraved eye; complete the picture, then press the clasp.
