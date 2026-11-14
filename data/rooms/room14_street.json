@@ -1,0 +1,2013 @@
+{
+ "title": "The Street",
+ "walls": "r14_wall_",
+ "floor": "r14_floor",
+ "ceiling": "r14_ceiling",
+ "intro": "Five turns one way. Three the other.",
+ "street": {
+  "right": 5,
+  "left": 3,
+  "vane": "vane",
+  "vane_while": "cock_on"
+ },
+ "on_enter": [
+  {
+   "set": "facade",
+   "value": "home"
+  },
+  {
+   "set": "last_view",
+   "value": 0
+  },
+  {
+   "journal": [
+    "street",
+    "The street",
+    "The violist's street. Turn right and it takes five turns to bring me back to his door. Turn left and it takes three. I counted twice. I counted my fingers too, after."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "fac_home_n",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_home",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "fac_home_e",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_home",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "fac_home_s",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_home",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "fac_home_w",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_home",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "fac_r1_n",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r1",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "fac_r1_e",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r1",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "fac_r1_s",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r1",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "fac_r1_w",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r1",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "fac_r2_n",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r2",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "fac_r2_e",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r2",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "fac_r2_s",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r2",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "fac_r2_w",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r2",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "fac_r3_n",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r3",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "fac_r3_e",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r3",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "fac_r3_s",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r3",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "fac_r3_w",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r3",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "fac_r4_n",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r4",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "fac_r4_e",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r4",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "fac_r4_s",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r4",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "fac_r4_w",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_r4",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "fac_l1_n",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_l1",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "fac_l1_e",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_l1",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "fac_l1_s",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_l1",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "fac_l1_w",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_l1",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "fac_l2_n",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_l2",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "fac_l2_e",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_l2",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "fac_l2_s",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_l2",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "fac_l2_w",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    15,
+    22
+   ],
+   "tex": "fac_l2",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "vane_n",
+   "center": [
+    0,
+    17.6
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "vane_bare",
+   "depth": 0.05
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "rope_n",
+   "center": [
+    1.9,
+    9.5
+   ],
+   "size": [
+    0.5,
+    6
+   ],
+   "tex": "bell_rope",
+   "depth": 0.05
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "vane_e",
+   "center": [
+    0,
+    17.6
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "vane_bare",
+   "depth": 0.05
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "rope_e",
+   "center": [
+    1.9,
+    9.5
+   ],
+   "size": [
+    0.5,
+    6
+   ],
+   "tex": "bell_rope",
+   "depth": 0.05
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "vane_s",
+   "center": [
+    0,
+    17.6
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "vane_bare",
+   "depth": 0.05
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "rope_s",
+   "center": [
+    1.9,
+    9.5
+   ],
+   "size": [
+    0.5,
+    6
+   ],
+   "tex": "bell_rope",
+   "depth": 0.05
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "vane_w",
+   "center": [
+    0,
+    17.6
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "vane_bare",
+   "depth": 0.05
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "rope_w",
+   "center": [
+    1.9,
+    9.5
+   ],
+   "size": [
+    0.5,
+    6
+   ],
+   "tex": "bell_rope",
+   "depth": 0.05
+  },
+  {
+   "type": "box",
+   "name": "mbox",
+   "wall": "d",
+   "pos": [
+    0,
+    7.5
+   ],
+   "depth": 1.0,
+   "scale": 0.4,
+   "view": "front",
+   "size": [
+    6,
+    4,
+    4
+   ],
+   "faces": {
+    "front": "mbox_front",
+    "back": "mbox_back",
+    "left": "mbox_side",
+    "right": "mbox_side",
+    "top": "mbox_top",
+    "bottom": "mbox_top"
+   },
+   "liner": "mbox_liner",
+   "liner_skip": [
+    "top"
+   ],
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "mbox",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      -2,
+      0.4
+     ],
+     "size": [
+      0.875,
+      1.75
+     ],
+     "tex": "mkey_d",
+     "id": "slot0",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      -1,
+      0.4
+     ],
+     "size": [
+      0.875,
+      1.75
+     ],
+     "tex": "mkey_d",
+     "id": "slot1",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.4
+     ],
+     "size": [
+      0.875,
+      1.75
+     ],
+     "tex": "mkey_d",
+     "id": "slot2",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      1,
+      0.4
+     ],
+     "size": [
+      0.875,
+      1.75
+     ],
+     "tex": "mkey_d",
+     "id": "slot3",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      2,
+      0.4
+     ],
+     "size": [
+      0.875,
+      1.75
+     ],
+     "tex": "mkey_d",
+     "id": "slot4",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -1.4
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "vcase_clasp",
+     "id": "crank",
+     "depth": 0.04
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "stone_part",
+     "tex": "item_seal_stone7",
+     "size": [
+      1.5,
+      1.5
+     ],
+     "pos": [
+      0,
+      -1.4,
+      0
+     ],
+     "rot": [
+      -90,
+      0,
+      0
+     ],
+     "face": "top"
+    }
+   ]
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "swap",
+   "parts": [
+    "slot0",
+    "slot1",
+    "slot2",
+    "slot3",
+    "slot4"
+   ],
+   "flag": "mb",
+   "start": "deaga",
+   "tex": "mkey_%s",
+   "lock": "mbox_open"
+  },
+  {
+   "kind": "pickup",
+   "part": "stone_part",
+   "item": "seal_stone7",
+   "flag": "stone7_taken",
+   "show_if": "mbox_open",
+   "then": [
+    {
+     "say": "The seventh seal. Hold it to your ear: the street."
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "fac_home_n",
+   "when": "facade=home",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_home_e",
+   "when": "facade=home",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_home_s",
+   "when": "facade=home",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_home_w",
+   "when": "facade=home",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r1_n",
+   "when": "facade=r1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r1_e",
+   "when": "facade=r1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r1_s",
+   "when": "facade=r1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r1_w",
+   "when": "facade=r1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r2_n",
+   "when": "facade=r2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r2_e",
+   "when": "facade=r2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r2_s",
+   "when": "facade=r2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r2_w",
+   "when": "facade=r2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_n",
+   "when": "facade=r3",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_e",
+   "when": "facade=r3",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_s",
+   "when": "facade=r3",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_w",
+   "when": "facade=r3",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r4_n",
+   "when": "facade=r4",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r4_e",
+   "when": "facade=r4",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r4_s",
+   "when": "facade=r4",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r4_w",
+   "when": "facade=r4",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_l1_n",
+   "when": "facade=l1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_l1_e",
+   "when": "facade=l1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_l1_s",
+   "when": "facade=l1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_l1_w",
+   "when": "facade=l1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_l2_n",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_l2_e",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_l2_s",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_l2_w",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_n",
+   "when": "facade=r3",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_n",
+   "when": "bdoor_open",
+   "then": {
+    "texture": "fac_r3_open"
+   },
+   "else": {
+    "texture": "fac_r3"
+   }
+  },
+  {
+   "target": "vane_n",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "vane_n",
+   "when": "cock_on",
+   "then": {
+    "texture": "vane_{vane:7}"
+   },
+   "else": {
+    "texture": "vane_bare"
+   }
+  },
+  {
+   "target": "rope_n",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_e",
+   "when": "facade=r3",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_e",
+   "when": "bdoor_open",
+   "then": {
+    "texture": "fac_r3_open"
+   },
+   "else": {
+    "texture": "fac_r3"
+   }
+  },
+  {
+   "target": "vane_e",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "vane_e",
+   "when": "cock_on",
+   "then": {
+    "texture": "vane_{vane:7}"
+   },
+   "else": {
+    "texture": "vane_bare"
+   }
+  },
+  {
+   "target": "rope_e",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_s",
+   "when": "facade=r3",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_s",
+   "when": "bdoor_open",
+   "then": {
+    "texture": "fac_r3_open"
+   },
+   "else": {
+    "texture": "fac_r3"
+   }
+  },
+  {
+   "target": "vane_s",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "vane_s",
+   "when": "cock_on",
+   "then": {
+    "texture": "vane_{vane:7}"
+   },
+   "else": {
+    "texture": "vane_bare"
+   }
+  },
+  {
+   "target": "rope_s",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_w",
+   "when": "facade=r3",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "fac_r3_w",
+   "when": "bdoor_open",
+   "then": {
+    "texture": "fac_r3_open"
+   },
+   "else": {
+    "texture": "fac_r3"
+   }
+  },
+  {
+   "target": "vane_w",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "vane_w",
+   "when": "cock_on",
+   "then": {
+    "texture": "vane_{vane:7}"
+   },
+   "else": {
+    "texture": "vane_bare"
+   }
+  },
+  {
+   "target": "rope_w",
+   "when": "facade=l2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "box:mbox",
+   "when": "bdoor_open",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "box:mbox",
+   "when": "mbox_open",
+   "then": {
+    "tappable": false
+   }
+  },
+  {
+   "target": "hinge:mbox.top",
+   "when": "mbox_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.0
+  }
+ ],
+ "interactions": [
+  {
+   "on": "tap",
+   "ids": [
+    "fac_home_n",
+    "fac_home_e",
+    "fac_home_s",
+    "fac_home_w"
+   ],
+   "do": [
+    {
+     "set": "left14"
+    },
+    {
+     "complete_room": [
+      107,
+      "THE SEVENTH SEAL",
+      "You turn left, and left, and left, and the street lets you go. You are standing in Garrison Street with snow on your coat and the tune in your mouth."
+     ]
+    }
+   ],
+   "when": "stone7_taken"
+  },
+  {
+   "on": "use",
+   "item": "vane_cock",
+   "ids": [
+    "vane_n",
+    "vane_e",
+    "vane_s",
+    "vane_w",
+    "fac_l2_n",
+    "fac_l2_e",
+    "fac_l2_s",
+    "fac_l2_w"
+   ],
+   "do": [
+    {
+     "take": "vane_cock"
+    },
+    {
+     "set": "cock_on"
+    },
+    {
+     "set": "vane",
+     "value": 3
+    },
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "You fit the weathercock back on its spindle. It swings and settles, though there is no wind. When you turn your head, it turns too.",
+     "secs": 5
+    }
+   ],
+   "when": "facade=l2"
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "vane_n",
+    "vane_e",
+    "vane_s",
+    "vane_w"
+   ],
+   "do": [
+    {
+     "say": "A bare iron spindle on the spire, with N, E, S and O cut round it. The cock is gone."
+    }
+   ],
+   "when": "!cock_on"
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "vane_n",
+    "vane_e",
+    "vane_s",
+    "vane_w"
+   ],
+   "do": [
+    {
+     "say": "The weathercock. It turns whenever the street does: one way when you go left, the other when you go right."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "rope_n",
+    "rope_e",
+    "rope_s",
+    "rope_w"
+   ],
+   "do": [
+    {
+     "set": "bell_rung"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "wait": 1.0
+    },
+    {
+     "set": "bdoor_open"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "The bell. As it rings, somewhere off to your right a door unlatches.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "cock_on",
+    "vane=2",
+    "!bell_rung"
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "rope_n",
+    "rope_e",
+    "rope_s",
+    "rope_w"
+   ],
+   "do": [
+    {
+     "sfx": "horn"
+    },
+    {
+     "say": "The bell rings. Nothing answers. The cock is not facing the wind."
+    }
+   ],
+   "when": [
+    "cock_on",
+    "!bell_rung"
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "rope_n",
+    "rope_e",
+    "rope_s",
+    "rope_w"
+   ],
+   "do": [
+    {
+     "say": "The bell rope. The poster said something about the cock and the wind."
+    }
+   ],
+   "when": "!cock_on"
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "rope_n",
+    "rope_e",
+    "rope_s",
+    "rope_w"
+   ],
+   "do": [
+    {
+     "say": "The bell has rung."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "fac_home_n",
+    "fac_home_e",
+    "fac_home_s",
+    "fac_home_w"
+   ],
+   "do": [
+    {
+     "say": "Number 7. The violist's house. The door you came out of is a blank wall now."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "fac_r1_n",
+    "fac_r1_e",
+    "fac_r1_s",
+    "fac_r1_w"
+   ],
+   "do": [
+    {
+     "say": "A patisserie, shuttered. There is bread in the window that has been there a hundred years."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "fac_r2_n",
+    "fac_r2_e",
+    "fac_r2_s",
+    "fac_r2_w"
+   ],
+   "do": [
+    {
+     "set": "poster_read"
+    },
+    {
+     "journal": [
+      "poster",
+      "The poster",
+      "A recital bill pasted on a wall: THE MUTE VIOLIST PLAYS IT BACKWARD, WHEN THE COCK FACES THE WIND."
+     ]
+    },
+    {
+     "say": "A recital poster. It's in your journal."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "fac_r3_n",
+    "fac_r3_e",
+    "fac_r3_s",
+    "fac_r3_w"
+   ],
+   "do": [
+    {
+     "say": "A house with a blue door. Locked."
+    }
+   ],
+   "when": "!bdoor_open"
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "fac_r3_n",
+    "fac_r3_e",
+    "fac_r3_s",
+    "fac_r3_w"
+   ],
+   "do": [
+    {
+     "say": "The blue door stands open on nothing. Something has rolled out of it onto the cobbles at your feet."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "fac_r4_n",
+    "fac_r4_e",
+    "fac_r4_s",
+    "fac_r4_w"
+   ],
+   "do": [
+    {
+     "say": "A chimney with smoke blowing off it, and a compass cut into the wall below: N, E, S, O. The smoke drifts toward the O."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "fac_l1_n",
+    "fac_l1_e",
+    "fac_l1_s",
+    "fac_l1_w"
+   ],
+   "do": [
+    {
+     "say": "Steps down to the river, gated. The river is making the wrong sound."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "fac_l2_n",
+    "fac_l2_e",
+    "fac_l2_s",
+    "fac_l2_w"
+   ],
+   "do": [
+    {
+     "say": "A church, very narrow. A weathervane on the spire and a bell rope hanging by the door."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "crank",
+   "do": [
+    {
+     "set": "mbox_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "You turn the crank. The tune comes out backwards, and it is the right way round. The lid lifts on a violet stone.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "mb=agead",
+    "!mbox_open"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "crank",
+   "do": [
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "The crank turns and the box plays something wrong. The lid stays down."
+    }
+   ],
+   "when": "!mbox_open"
+  },
+  {
+   "on": "tap",
+   "id": "crank",
+   "do": [
+    {
+     "say": "The box has played."
+    }
+   ]
+  }
+ ],
+ "steps": [
+  {
+   "id": "poster",
+   "done": "poster_read",
+   "hints": [
+    "The street turns more times one way than the other. Walk it.",
+    "Turn right twice to find a poster on a wall, and read it."
+   ],
+   "solve": [
+    {
+     "set": "poster_read"
+    }
+   ],
+   "said": "The poster is in your journal."
+  },
+  {
+   "id": "mount",
+   "done": "cock_on",
+   "hints": [
+    "The church has a weathervane with no cock. You have one.",
+    "Turn left twice to the church and use the weathercock on the spindle at the top of the spire."
+   ],
+   "solve": [
+    {
+     "take": "vane_cock"
+    },
+    {
+     "set": "cock_on"
+    },
+    {
+     "set": "vane",
+     "value": 3
+    }
+   ],
+   "said": "The cock is on."
+  },
+  {
+   "id": "wind",
+   "done": "bell_rung",
+   "hints": [
+    "The cock should face the wind. Smoke shows where the wind goes; the cock points to where it comes from. The cock turns with the street.",
+    "The smoke drifts to O (west), so the wind comes from E. Each left turn moves the cock one point clockwise, each right turn one point back. Get it to E while at the church, then pull the bell rope."
+   ],
+   "solve": [
+    {
+     "set": "vane",
+     "value": 2
+    },
+    {
+     "set": "bell_rung"
+    },
+    {
+     "set": "bdoor_open"
+    }
+   ],
+   "said": "The bell rings."
+  },
+  {
+   "id": "box",
+   "done": "mbox_open",
+   "hints": [
+    "A music box rolled out of the blue door. The violist's tune goes in it, the way the poster says.",
+    "Arrange the keys A G E A D (the notebook's D A E G A, backwards), then turn the crank."
+   ],
+   "solve": [
+    {
+     "set": "mb",
+     "value": "agead"
+    },
+    {
+     "set": "mbox_open"
+    }
+   ],
+   "said": "The box opens."
+  },
+  {
+   "id": "stone",
+   "done": "stone7_taken",
+   "hints": [
+    "The music box held the seal.",
+    "Take the stone."
+   ],
+   "solve": [
+    {
+     "give": "seal_stone7"
+    },
+    {
+     "set": "stone7_taken"
+    }
+   ],
+   "said": "The seventh seal."
+  },
+  {
+   "id": "home",
+   "done": "left14",
+   "hints": [
+    "Go back to the violist's house.",
+    "Walk the street until you see number 7 again, and touch it."
+   ],
+   "solve": [
+    {
+     "set": "left14"
+    },
+    {
+     "complete_room": [
+      107,
+      "THE SEVENTH SEAL",
+      "You go home."
+     ]
+    }
+   ],
+   "said": "Home."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "expect",
+   "!facade=r1"
+  ],
+  [
+   "swipe",
+   -200
+  ],
+  [
+   "expect",
+   "facade=r1"
+  ],
+  [
+   "swipe",
+   -200
+  ],
+  [
+   "expect",
+   "facade=r2"
+  ],
+  [
+   "tapv",
+   "fac_r2_s"
+  ],
+  [
+   "shot",
+   "poster"
+  ],
+  [
+   "swipe",
+   -200
+  ],
+  [
+   "swipe",
+   -200
+  ],
+  [
+   "expect",
+   "facade=r4"
+  ],
+  [
+   "tapv",
+   "fac_r4_n"
+  ],
+  [
+   "shot",
+   "smoke"
+  ],
+  [
+   "swipe",
+   -200
+  ],
+  [
+   "expect",
+   "facade=home"
+  ],
+  [
+   "swipe",
+   200
+  ],
+  [
+   "swipe",
+   200
+  ],
+  [
+   "expect",
+   "facade=l2"
+  ],
+  [
+   "shot",
+   "church"
+  ],
+  [
+   "usev",
+   "vane_cock",
+   "vane_w"
+  ],
+  [
+   "expect",
+   "cock_on"
+  ],
+  [
+   "swipe",
+   -200
+  ],
+  [
+   "swipe",
+   -200
+  ],
+  [
+   "swipe",
+   -200
+  ],
+  [
+   "swipe",
+   200
+  ],
+  [
+   "swipe",
+   200
+  ],
+  [
+   "expect",
+   "facade=l2"
+  ],
+  [
+   "expect",
+   "vane=2"
+  ],
+  [
+   "shot",
+   "vane"
+  ],
+  [
+   "tapv",
+   "rope_n"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "expect",
+   "bdoor_open"
+  ],
+  [
+   "tap",
+   "mbox"
+  ],
+  [
+   "shot",
+   "mbox"
+  ],
+  [
+   "tap",
+   "slot0"
+  ],
+  [
+   "tap",
+   "slot2"
+  ],
+  [
+   "tap",
+   "slot1"
+  ],
+  [
+   "tap",
+   "slot3"
+  ],
+  [
+   "tap",
+   "slot2"
+  ],
+  [
+   "tap",
+   "slot3"
+  ],
+  [
+   "tap",
+   "slot3"
+  ],
+  [
+   "tap",
+   "slot4"
+  ],
+  [
+   "tap",
+   "crank"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "expect",
+   "mbox_open"
+  ],
+  [
+   "tap",
+   "stone_part"
+  ],
+  [
+   "expect",
+   "stone7_taken"
+  ],
+  [
+   "back"
+  ],
+  [
+   "expect",
+   "facade=l2"
+  ],
+  [
+   "swipev",
+   200
+  ],
+  [
+   "shot",
+   "after_box"
+  ],
+  [
+   "swipe",
+   200
+  ],
+  [
+   "shot",
+   "going_home"
+  ],
+  [
+   "expect",
+   "facade=home"
+  ],
+  [
+   "tapv",
+   "fac_home_w"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

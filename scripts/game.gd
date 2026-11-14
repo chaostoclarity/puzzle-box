@@ -17,6 +17,7 @@ const SEAL_STARTS := [
 	["Seal IV: The Gardner farm", 7, "The Gardner farm, after the third seal."],
 	["Seal V: The ice", 9, "Hut 4, on the plateau, after the fourth seal."],
 	["Seal VI: The city under the sand", 11, "The city under the sand, after the fifth seal."],
+	["Seal VII: The street in Paris", 13, "The violist's garret, after the sixth seal."],
 ]
 const HUD_TOP := 56.0
 const HUD_BOTTOM := 76.0
@@ -112,6 +113,8 @@ func _ready() -> void:
 		if start >= 9:
 			for i in 8:
 				State.add_journal("old%d" % i, "Older notes, %d" % (i + 1), "Notes from earlier seals.")
+		if start == 14:
+			State.inventory.append("vane_cock")
 		if start == 10:
 			State.inventory.append("bone_flute")
 			State.flags["burned"] = 3
@@ -1274,9 +1277,19 @@ func _autotest() -> void:
 					await test_tap(a[2])
 					selected = ""
 					_refresh_hud()
+				"usev":
+					## use an item on a target from the current view (the street turns if you turn)
+					if not State.has_item(a[1]):
+						test_fails.append("not holding %s for %s" % [a[1], a[2]])
+					selected = a[1]
+					_refresh_hud()
+					await _tap(camera.unproject_position(room.ids[a[2]].global_position))
+					await _wait(0.35)
+					selected = ""
+					_refresh_hud()
 				"tapat": await test_tap(a[1], a[2])
 				"expect":
-					if not State.has(a[1]):
+					if not (room.cond(a[1]) if room.has_method("cond") else State.has(a[1])):
 						test_fails.append("expected flag " + a[1])
 				"shot": await _shot("%d_%s" % [n, a[1]])
 				"lens":

@@ -198,6 +198,29 @@ func cond(c) -> bool:
 	return State.has(s)
 
 
+## The impossible street ("street": {"right": 5, "left": 3}): turning right walks a circuit of
+## right-1 other facades before home; turning left, left-1. Flag "facade": "home", "r2", "l1"...
+func _walk_street() -> void:
+	var lv := int(State.flag_value("last_view", 0))
+	var d := posmod(game.view - lv, 4)
+	State.flags["last_view"] = game.view
+	var st: Dictionary = data["street"]
+	for i in (d if d != 3 else 1):
+		if st.has("vane") and cond(st.get("vane_while")):
+			## the weathercock turns with the street: one point on for a left turn, one back for a right
+			State.flags[st["vane"]] = posmod(int(State.flag_value(st["vane"], 0)) + (1 if d == 3 else -1), 8)
+		if d == 3:
+			State.flags["sl"] = (int(State.flag_value("sl", 0)) + 1) % int(st["left"])
+			State.flags["sr"] = 0
+		else:
+			State.flags["sr"] = (int(State.flag_value("sr", 0)) + 1) % int(st["right"])
+			State.flags["sl"] = 0
+	var sr := int(State.flag_value("sr", 0))
+	var sl := int(State.flag_value("sl", 0))
+	State.flags["facade"] = "r%d" % sr if sr > 0 else ("l%d" % sl if sl > 0 else "home")
+	State.save_game()
+
+
 ## Tap one panel, then another: they change places.
 func _swap(p: Dictionary, id: String) -> void:
 	var sel_key: String = p["flag"] + "_sel"
@@ -629,8 +652,8 @@ func _commit(p: Dictionary, node: Node3D) -> void:
 
 func _pull(p: Dictionary, k: String) -> void:
 	var pulled: String = State.flag_value(p["flag"], "")
-	if (p.has("lock") and cond(p["lock"])) or k in pulled:
-		return
+	if (p.has("lock") and cond(p["lock"])) or (k in pulled and not p.get("repeat", false)):
+		return   ## "repeat": true for notes, which can be played twice; levers can't be pulled twice
 	pulled += k
 	State.set_flag(p["flag"], pulled)
 	game.play(p.get("sfx", "slide"), -4.0)
@@ -864,6 +887,8 @@ func _toggle(p: Dictionary, i: int, node: Node3D) -> void:
 
 func on_turned() -> void:
 	State.flags["facing"] = "nesw"[game.view]   ## "facing=e": which wall you're looking at
+	if data.has("street"):
+		_walk_street()
 	await refresh(false)
 	set_lens(game.lens_on)
 

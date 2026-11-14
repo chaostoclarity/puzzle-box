@@ -1,0 +1,1237 @@
+{
+ "title": "The Garret",
+ "walls": "r13_wall_",
+ "floor": "r13_floor",
+ "ceiling": "r13_ceiling",
+ "intro": "Someone has just stopped playing.",
+ "on_enter": [
+  {
+   "journal": [
+    "garret",
+    "The garret",
+    "At the top of a street I could not find until I stopped looking for it: a garret under the roof, a viol on its stand, a bed, a window with no curtain. The violist is gone. His bow is not on the stand."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "gwin",
+   "center": [
+    0,
+    11
+   ],
+   "size": [
+    5,
+    6
+   ],
+   "tex": "gwin_street"
+  },
+  {
+   "type": "furniture",
+   "wall": "n",
+   "id": "gdesk",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    6,
+    4,
+    2
+   ],
+   "faces": {
+    "front": "gdesk_front",
+    "top": "roof_top_96x32",
+    "default": "roof_side_32x64"
+   },
+   "zoom": false
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "fork",
+   "center": [
+    2,
+    5.5
+   ],
+   "size": [
+    1,
+    3
+   ],
+   "tex": "fork",
+   "depth": 1.3
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "fork_lens",
+   "center": [
+    2,
+    5.5
+   ],
+   "size": [
+    1,
+    3
+   ],
+   "tex": "fork_lens",
+   "depth": 1.35,
+   "lens": 2
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "viol",
+   "center": [
+    0,
+    4.5
+   ],
+   "size": [
+    4,
+    9
+   ],
+   "tex": "viol",
+   "depth": 0.3
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "vs0",
+   "center": [
+    -0.5,
+    6.6
+   ],
+   "size": [
+    0.25,
+    6
+   ],
+   "tex": "vstring_0",
+   "depth": 0.35
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "vs1",
+   "center": [
+    -0.125,
+    6.6
+   ],
+   "size": [
+    0.25,
+    6
+   ],
+   "tex": "vstring_1",
+   "depth": 0.35
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "vs2",
+   "center": [
+    0.125,
+    6.6
+   ],
+   "size": [
+    0.25,
+    6
+   ],
+   "tex": "vstring_2",
+   "depth": 0.35
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "vs3",
+   "center": [
+    0.5,
+    6.6
+   ],
+   "size": [
+    0.25,
+    6
+   ],
+   "tex": "vstring_3",
+   "depth": 0.35
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "gdoor",
+   "center": [
+    4,
+    4.5
+   ],
+   "size": [
+    4,
+    9
+   ],
+   "tex": "gdoor"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "hatch",
+   "center": [
+    -3,
+    5
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "dumb_hatch"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "gbed",
+   "center": [
+    0,
+    1.5
+   ],
+   "size": [
+    7,
+    3
+   ],
+   "tex": "gbed"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "notebook",
+   "center": [
+    -2.25,
+    3.3
+   ],
+   "size": [
+    2.5,
+    1.75
+   ],
+   "tex": "notebook",
+   "depth": 0.4
+  },
+  {
+   "type": "box",
+   "name": "vcase",
+   "wall": "w",
+   "pos": [
+    2.0,
+    3.6
+   ],
+   "depth": 0.9,
+   "scale": 0.4,
+   "view": "front",
+   "size": [
+    8,
+    3,
+    3
+   ],
+   "faces": {
+    "front": "vcase_front",
+    "back": "vcase_back",
+    "left": "vcase_side",
+    "right": "vcase_side",
+    "top": "vcase_top",
+    "bottom": "vcase_top"
+   },
+   "liner": "vcase_liner",
+   "liner_skip": [
+    "top"
+   ],
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "vcase",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      -2.5,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ],
+     "tex": "vpeg_0",
+     "id": "peg0",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      -1.0,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ],
+     "tex": "vpeg_0",
+     "id": "peg1",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.5,
+      0
+     ],
+     "size": [
+      1,
+      2
+     ],
+     "tex": "vpeg_0",
+     "id": "peg2",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      2.75,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "vcase_clasp",
+     "id": "vclasp",
+     "depth": 0.04
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "bow_part",
+     "tex": "bow_inside",
+     "size": [
+      1,
+      7
+     ],
+     "pos": [
+      0,
+      -1.2,
+      0
+     ],
+     "rot": [
+      -90,
+      90,
+      0
+     ],
+     "face": "top"
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "rosin_floor",
+   "center": [
+    4.5,
+    11
+   ],
+   "size": [
+    1.5,
+    1
+   ],
+   "tex": "rosin_floor"
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "cycler",
+   "part": "peg0",
+   "flag": "peg0",
+   "count": 7,
+   "start": 0,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "vpeg_0",
+    "vpeg_1",
+    "vpeg_2",
+    "vpeg_3",
+    "vpeg_4",
+    "vpeg_5",
+    "vpeg_6"
+   ],
+   "lock": "case_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "peg1",
+   "flag": "peg1",
+   "count": 7,
+   "start": 6,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "vpeg_0",
+    "vpeg_1",
+    "vpeg_2",
+    "vpeg_3",
+    "vpeg_4",
+    "vpeg_5",
+    "vpeg_6"
+   ],
+   "lock": "case_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "peg2",
+   "flag": "peg2",
+   "count": 7,
+   "start": 2,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "vpeg_0",
+    "vpeg_1",
+    "vpeg_2",
+    "vpeg_3",
+    "vpeg_4",
+    "vpeg_5",
+    "vpeg_6"
+   ],
+   "lock": "case_open"
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "peg0",
+    "peg1",
+    "peg2"
+   ],
+   "code": [
+    4,
+    2,
+    5
+   ],
+   "commit": "vclasp",
+   "lock": "case_open",
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The wires buzz against each other. The clasp stays shut."
+    }
+   ],
+   "do": [
+    {
+     "set": "case_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "The three wires ring true together, and the clasp lets go. Inside, on violet velvet: the bow."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "bow_part",
+   "item": "bow",
+   "flag": "bow_taken",
+   "show_if": "case_open",
+   "then": [
+    {
+     "say": "The bow. Its hair is dry as straw."
+    }
+   ]
+  },
+  {
+   "kind": "sequence",
+   "parts": {
+    "vs0": "0",
+    "vs1": "1",
+    "vs2": "2",
+    "vs3": "3"
+   },
+   "tex": {
+    "vs0": "vstring_0",
+    "vs1": "vstring_1",
+    "vs2": "vstring_2",
+    "vs3": "vstring_3"
+   },
+   "pulled_suffix": "_hum",
+   "order": "21031",
+   "flag": "tune",
+   "silent": true,
+   "repeat": true,
+   "lock": [
+    "any",
+    "!viol_ready",
+    "played"
+   ],
+   "do": [
+    {
+     "set": "played"
+    },
+    {
+     "sfx": "wind"
+    },
+    {
+     "shake": true
+    },
+    {
+     "set": "win",
+     "value": "void"
+    },
+    {
+     "say": "The fifth note and the window bursts open on its own. There is no street outside. There is nothing outside, only a dark full of moving lights, and it is listening. Shut it.",
+     "secs": 6
+    }
+   ],
+   "fail": [
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "Wrong. The notes go sour, and something outside the window shifts."
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "gwin",
+   "when": "win=void",
+   "then": {
+    "texture": "gwin_void"
+   }
+  },
+  {
+   "target": "gwin",
+   "when": "win=shut",
+   "then": {
+    "texture": "gwin_shut"
+   }
+  },
+  {
+   "target": "hatch",
+   "when": "hatch_open",
+   "then": {
+    "texture": "dumb_hatch_open"
+   },
+   "else": {
+    "texture": "dumb_hatch"
+   }
+  },
+  {
+   "target": "rosin_floor",
+   "when": "!rosin_taken",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "box:vcase",
+   "when": "case_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "hinge:vcase.top",
+   "when": "case_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.0
+  }
+ ],
+ "interactions": [
+  {
+   "on": "tap",
+   "id": "vs0",
+   "do": [
+    {
+     "sfx": "tone_2"
+    }
+   ],
+   "when": "viol_ready",
+   "handled": false
+  },
+  {
+   "on": "tap",
+   "id": "vs1",
+   "do": [
+    {
+     "sfx": "tone_4"
+    }
+   ],
+   "when": "viol_ready",
+   "handled": false
+  },
+  {
+   "on": "tap",
+   "id": "vs2",
+   "do": [
+    {
+     "sfx": "tone_0"
+    }
+   ],
+   "when": "viol_ready",
+   "handled": false
+  },
+  {
+   "on": "tap",
+   "id": "vs3",
+   "do": [
+    {
+     "sfx": "tone_6"
+    }
+   ],
+   "when": "viol_ready",
+   "handled": false
+  },
+  {
+   "on": "tap",
+   "id": "vs0",
+   "do": [
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "A dull pluck. It wants a bow."
+    }
+   ],
+   "when": "!viol_ready"
+  },
+  {
+   "on": "tap",
+   "id": "vs1",
+   "do": [
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "A dull pluck. It wants a bow."
+    }
+   ],
+   "when": "!viol_ready"
+  },
+  {
+   "on": "tap",
+   "id": "vs2",
+   "do": [
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "A dull pluck. It wants a bow."
+    }
+   ],
+   "when": "!viol_ready"
+  },
+  {
+   "on": "tap",
+   "id": "vs3",
+   "do": [
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "A dull pluck. It wants a bow."
+    }
+   ],
+   "when": "!viol_ready"
+  },
+  {
+   "on": "use",
+   "item": "rosined_bow",
+   "ids": [
+    "viol",
+    "vs0",
+    "vs1",
+    "vs2",
+    "vs3"
+   ],
+   "do": [
+    {
+     "take": "rosined_bow"
+    },
+    {
+     "set": "viol_ready"
+    },
+    {
+     "sfx": "tone_0"
+    },
+    {
+     "say": "You set the bow to the strings. The viol speaks, low and too loud for the room."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "bow",
+   "ids": [
+    "viol",
+    "vs0",
+    "vs1",
+    "vs2",
+    "vs3"
+   ],
+   "do": [
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "The bow slides over the strings and makes no sound at all. The hair is too dry."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "viol",
+   "do": [
+    {
+     "say": "A viol on a stand. Four strings. The violist strung it his own way."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "gwin",
+   "do": [
+    {
+     "say": "Rooftops. Somewhere down there is a street you couldn't find on any map, and you are above it."
+    }
+   ],
+   "when": "!win"
+  },
+  {
+   "on": "tap",
+   "id": "gwin",
+   "do": [
+    {
+     "set": "win",
+     "value": "shut"
+    },
+    {
+     "sfx": "thunk"
+    },
+    {
+     "wait": 0.8
+    },
+    {
+     "set": "hatch_open"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "You throw the shutters closed against it and hold them. The listening stops. Behind you, the little hatch in the south wall drops open.",
+     "secs": 5
+    }
+   ],
+   "when": "win=void"
+  },
+  {
+   "on": "tap",
+   "id": "gwin",
+   "do": [
+    {
+     "say": "Shuttered. You are not opening it again."
+    }
+   ],
+   "when": "win=shut"
+  },
+  {
+   "on": "tap",
+   "id": "gwin",
+   "do": [
+    {
+     "say": "Rooftops."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hatch",
+   "do": [
+    {
+     "say": "A dumbwaiter hatch, shut."
+    }
+   ],
+   "when": "!hatch_open"
+  },
+  {
+   "on": "tap",
+   "id": "hatch",
+   "do": [
+    {
+     "set": "cock_taken"
+    },
+    {
+     "give": "vane_cock"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "In the dumbwaiter, wrapped in a page of music: an iron weathercock, wrenched off its spindle."
+    }
+   ],
+   "when": [
+    "hatch_open",
+    "!cock_taken"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hatch",
+   "do": [
+    {
+     "say": "The dumbwaiter is empty."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "rosin_floor",
+   "do": [
+    {
+     "set": "rosin_taken"
+    },
+    {
+     "give": "rosin"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "A cake of rosin, dropped between the boards."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "notebook",
+   "do": [
+    {
+     "journal": [
+      "violist",
+      "The violist's notebook",
+      "The notebook on the bed, in a cramped French hand, the English underneath in pencil (Wren's):\n\n\"I play it every night so that the window stays shut. D, A, E, G, A. If I stop, it opens.\"\n\n\"The case: tune its wires to the fork, then the fork less two, then the fork and one more.\"\n\n\"I have strung her my own way. The case remembers how.\""
+     ]
+    },
+    {
+     "set": "nb_read"
+    },
+    {
+     "say": "The violist's notebook. It's in your journal."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "fork",
+   "do": [
+    {
+     "sfx": "tone_4"
+    },
+    {
+     "say": "A tuning fork. It rings one clean note that goes on longer than it should."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "fork_lens",
+   "do": [
+    {
+     "sfx": "tone_4"
+    },
+    {
+     "say": "Through the Lens, the fork's note hangs in the air as a wave: five humps."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "gbed",
+   "do": [
+    {
+     "say": "A narrow bed. The violist didn't sleep in it much."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "gdesk",
+   "do": [
+    {
+     "say": "A desk covered in candle wax and rosin dust."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "gdoor",
+   "do": [
+    {
+     "say": "The door down to the street. Locked, and the key is nowhere."
+    }
+   ],
+   "when": "!win=shut"
+  },
+  {
+   "on": "tap",
+   "id": "gdoor",
+   "do": [
+    {
+     "set": "left13"
+    },
+    {
+     "complete_room": [
+      14,
+      "THE STREET",
+      "The door opens on its own now. You go down a stair that is longer than the house, and out onto a street that turns the wrong number of times."
+     ]
+    }
+   ],
+   "when": "win=shut"
+  }
+ ],
+ "steps": [
+  {
+   "id": "nb",
+   "done": "nb_read",
+   "hints": [
+    "The violist left notes.",
+    "Read the notebook on the bed (west wall)."
+   ],
+   "solve": [
+    {
+     "journal": [
+      "violist",
+      "The violist's notebook",
+      "The notebook on the bed, in a cramped French hand, the English underneath in pencil (Wren's):\n\n\"I play it every night so that the window stays shut. D, A, E, G, A. If I stop, it opens.\"\n\n\"The case: tune its wires to the fork, then the fork less two, then the fork and one more.\"\n\n\"I have strung her my own way. The case remembers how.\""
+     ]
+    },
+    {
+     "set": "nb_read"
+    }
+   ],
+   "said": "The notebook is in your journal."
+  },
+  {
+   "id": "case",
+   "done": "case_open",
+   "hints": [
+    "The notebook says how to tune the case's wires. Something on the desk gives the note.",
+    "Look at the tuning fork with the Lens: five humps. The case's pegs show humps too. Set them to 5, 3 and 6 humps and press the clasp."
+   ],
+   "solve": [
+    {
+     "set": "case_open"
+    }
+   ],
+   "said": "The case opens."
+  },
+  {
+   "id": "bow",
+   "done": "bow_taken",
+   "hints": [
+    "The case held a bow.",
+    "Take the bow from the open case."
+   ],
+   "solve": [
+    {
+     "give": "bow"
+    },
+    {
+     "set": "bow_taken"
+    }
+   ],
+   "said": "The bow."
+  },
+  {
+   "id": "rosin",
+   "done": [
+    "any",
+    "item:rosined_bow",
+    "viol_ready"
+   ],
+   "hints": [
+    "The bow is too dry to sound. Something on the floor helps.",
+    "Pick up the rosin from the floor, then rub the bow on it in your tray."
+   ],
+   "solve": [
+    {
+     "take": "bow"
+    },
+    {
+     "give": "rosined_bow"
+    },
+    {
+     "set": "rosin_taken"
+    }
+   ],
+   "said": "The bow is rosined."
+  },
+  {
+   "id": "ready",
+   "done": "viol_ready",
+   "hints": [
+    "The viol needs a bow.",
+    "Use the rosined bow on the viol."
+   ],
+   "solve": [
+    {
+     "take": "rosined_bow"
+    },
+    {
+     "set": "viol_ready"
+    }
+   ],
+   "said": "The viol is ready."
+  },
+  {
+   "id": "play",
+   "done": "played",
+   "hints": [
+    "The notebook gives the tune in letters. The case's lid says how the strings are laid out.",
+    "The strings, left to right, are E A D G. Play D, A, E, G, A: third, second, first, fourth, second."
+   ],
+   "solve": [
+    {
+     "set": "played"
+    },
+    {
+     "set": "win",
+     "value": "void"
+    }
+   ],
+   "said": "The window opens."
+  },
+  {
+   "id": "shut",
+   "done": "win=shut",
+   "hints": [
+    "Something is listening at the window.",
+    "Touch the window to shut it."
+   ],
+   "solve": [
+    {
+     "set": "win",
+     "value": "shut"
+    },
+    {
+     "set": "hatch_open"
+    }
+   ],
+   "said": "Shut."
+  },
+  {
+   "id": "cock",
+   "done": "cock_taken",
+   "hints": [
+    "A hatch opened in the south wall.",
+    "Take what's in the dumbwaiter."
+   ],
+   "solve": [
+    {
+     "set": "cock_taken"
+    },
+    {
+     "give": "vane_cock"
+    }
+   ],
+   "said": "A weathercock."
+  },
+  {
+   "id": "go",
+   "done": "left13",
+   "hints": [
+    "The door will open now.",
+    "Go out of the door in the south wall."
+   ],
+   "solve": [
+    {
+     "set": "left13"
+    },
+    {
+     "complete_room": [
+      14,
+      "THE STREET",
+      "You go down."
+     ]
+    }
+   ],
+   "said": "Down to the street."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "notebook"
+  ],
+  [
+   "tap",
+   "gwin"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "tap",
+   "fork_lens"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "tap",
+   "vcase"
+  ],
+  [
+   "shot",
+   "case"
+  ],
+  [
+   "repeat",
+   4,
+   [
+    "tap",
+    "peg0"
+   ]
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "peg1"
+   ]
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "peg2"
+   ]
+  ],
+  [
+   "tap",
+   "vclasp"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "expect",
+   "case_open"
+  ],
+  [
+   "tap",
+   "bow_part"
+  ],
+  [
+   "back"
+  ],
+  [
+   "tap",
+   "rosin_floor"
+  ],
+  [
+   "combine",
+   "bow",
+   "rosin"
+  ],
+  [
+   "use",
+   "rosined_bow",
+   "viol"
+  ],
+  [
+   "expect",
+   "viol_ready"
+  ],
+  [
+   "tap",
+   "vs2"
+  ],
+  [
+   "tap",
+   "vs1"
+  ],
+  [
+   "tap",
+   "vs0"
+  ],
+  [
+   "tap",
+   "vs3"
+  ],
+  [
+   "tap",
+   "vs1"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "expect",
+   "played"
+  ],
+  [
+   "shot",
+   "void"
+  ],
+  [
+   "tap",
+   "gwin"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "tap",
+   "hatch"
+  ],
+  [
+   "expect",
+   "cock_taken"
+  ],
+  [
+   "tap",
+   "gdoor"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

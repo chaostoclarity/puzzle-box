@@ -254,5 +254,43 @@
  "slot_eye": [
   "An eye",
   "Where a tray slot was. It blinks when you aren't looking."
+ ],
+ "bow": [
+  "Bow",
+  "The violist's bow. The hair is dry and bald; it wouldn't make a sound.",
+  {
+   "combine": {
+    "rosin": {
+     "makes": "rosined_bow",
+     "say": "You draw the bow across the rosin until the hair is pale with it.",
+     "sfx": "slide"
+    }
+   }
+  }
+ ],
+ "rosin": [
+  "Rosin",
+  "A cake of amber rosin, worn into a groove.",
+  {
+   "combine": {
+    "bow": {
+     "makes": "rosined_bow",
+     "say": "You draw the bow across the rosin until the hair is pale with it.",
+     "sfx": "slide"
+    }
+   }
+  }
+ ],
+ "rosined_bow": [
+  "Rosined bow",
+  "The bow, chalky with rosin. Ready to play."
+ ],
+ "vane_cock": [
+  "Weathercock",
+  "The iron cock from a weathervane, wrenched off its spindle. It is pointing somewhere even in your hand."
+ ],
+ "seal_stone7": [
+  "The seventh seal",
+  "A violet stone. When you hold it to your ear you hear the street."
  ]
 }

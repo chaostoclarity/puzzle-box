@@ -10,7 +10,7 @@ def sockets():
 
 def hub(n):
     first = n == 1
-    stone = {1: "seal_stone", 2: "seal_stone2", 3: "seal_stone3", 4: "seal_stone4", 5: "seal_stone5", 6: "seal_stone6"}[n]
+    stone = {1: "seal_stone", 2: "seal_stone2", 3: "seal_stone3", 4: "seal_stone4", 5: "seal_stone5", 6: "seal_stone6", 7: "seal_stone7"}[n]
     pre = "h1_" if first else "h2_"
     objs = [
         {"type": "furniture", "wall": "n", "id": "cabinet", "pos": [0, 0], "size": [3.5, 6, 2],
@@ -59,6 +59,12 @@ def hub(n):
         place_j = journal("placed6", "The sixth socket", "Six. The socket was too low, and the stone slid in sideways, the way the keepers walked. Three left. I have stopped telling the landlady anything.")
         card = ("SEAL VI OF IX BROKEN", "Six seals broken. Three remain.\n\nThe drawer holds a concert bill for a street in Paris that is not on any map, and a violinist's name you somehow already know.\n\nWren's fragments found: {fragments} of 9.{bargains_line}")
         read_j = journal("paris", "A street in Paris", "In the drawer, a concert bill, much folded: a recital by a mute violist in a garret at the top of a street I cannot find on any map of Paris. Under it, in Wren's hand: \"The seventh is played, not found. Do not listen to the end.\"")
+        next_room = 13
+    elif n == 7:
+        enter = journal("home7", "Home, the seventh time", "I hum it. I don't mean to. The landlady stopped me on the stair and asked what the tune was, and then she asked me to stop, and then she ran.")
+        place_j = journal("placed7", "The seventh socket", "Seven. The cabinet played the street back to me when the stone went in, every note, backwards and forwards at once. Two left. I can't stop now and I don't want to.")
+        card = ("END OF ACT III: OBSESSION", "Seven seals broken. Two remain.\n\nAct IV: Madness. The drawer is empty. Then you look again and the drawer is your study, very small, with a very small man asleep at the desk.\n\nWren's fragments found: {fragments} of 9.{bargains_line}")
+        read_j = journal("dream", "The drawer", "Inside the drawer, my study, perfect and tiny, and me in it, asleep at the desk. The eighth is there. I have to go to sleep to get it.")
         next_room = 99
     else:
         enter = journal("home2", "Home again", "I have not opened the post in a week. I covered the mirror; I kept seeing the lamp room in it. The landlady asked about the salt by the door and I told her it was for the ice. There is no ice.")
@@ -94,5 +100,5 @@ def hub(n):
     room = {"title": "Thorne's Study", "walls": pre + "wall_", "floor": pre + "floor", "ceiling": pre + "ceiling",
             "on_enter": [enter], "objects": objs, "bindings": bindings, "interactions": interactions, "steps": steps, "walkthrough": walk}
     J(OUT + "hub%d_thorne.json" % n, room)
-hub(1); hub(2); hub(3); hub(4); hub(5); hub(6)
+hub(1); hub(2); hub(3); hub(4); hub(5); hub(6); hub(7)
 print("hubs ok")

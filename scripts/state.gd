@@ -25,7 +25,12 @@ func _ready() -> void:
 
 
 func has(f: String) -> bool:
-	return flags.get(f, false)
+	var v = flags.get(f, false)
+	if v is String:
+		return v != ""
+	if v == null:
+		return false
+	return bool(v)
 
 
 func flag_value(f: String, default = 0):
