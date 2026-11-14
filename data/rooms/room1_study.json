@@ -1532,6 +1532,12 @@
    "id": "door",
    "do": [
     {
+     "take": "watch"
+    },
+    {
+     "take": "photo"
+    },
+    {
      "take": "door_key"
     },
     {
@@ -1932,6 +1938,12 @@
     "Use the door key on the study door (south wall)."
    ],
    "solve": [
+    {
+     "take": "watch"
+    },
+    {
+     "take": "photo"
+    },
     {
      "take": "door_key"
     },

@@ -467,9 +467,9 @@
     },
     {
      "complete_room": [
-      99,
+      5,
       "END OF ACT I: REASON",
-      "Two seals broken. Seven remain.\n\nAct II, Doubt, begins at Arkham Sanitarium, and is still being built.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
+      "Two seals broken. Seven remain.\n\nAct II: Doubt. You take the form to Arkham Sanitarium. The night porter reads your name, goes pale, and lets you in without a word. He puts you in the cell the form names."
      ]
     }
    ],
@@ -575,9 +575,9 @@
     },
     {
      "complete_room": [
-      99,
+      5,
       "END OF ACT I: REASON",
-      "Two seals broken. Seven remain.\n\nAct II, Doubt, begins at Arkham Sanitarium, and is still being built.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
+      "Two seals broken. Seven remain.\n\nAct II: Doubt. You take the form to Arkham Sanitarium. The night porter reads your name, goes pale, and lets you in without a word. He puts you in the cell the form names."
      ]
     }
    ],

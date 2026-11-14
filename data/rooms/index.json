@@ -4,5 +4,8 @@
  "101": "hub1_thorne.json",
  "3": "room3_lighthouse.json",
  "4": "room4_wreck.json",
- "102": "hub2_thorne.json"
+ "102": "hub2_thorne.json",
+ "5": "room5_cell.json",
+ "6": "room6_records.json",
+ "103": "hub3_thorne.json"
 }

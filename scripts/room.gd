@@ -166,6 +166,10 @@ func on_tap(_id: String, _node: Node) -> bool:
 func on_use(_item: String, _id: String, _node: Node) -> bool:
 	return false
 
+## Called after the player turns to another wall (the "turns" flag has just gone up).
+func on_turned() -> void:
+	pass
+
 ## Called after the player turns the Lens on or off.
 func on_lens_changed() -> void:
 	pass

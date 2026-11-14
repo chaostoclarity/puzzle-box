@@ -66,5 +66,90 @@
  "watch": [
   "Wren's pocket watch",
   "Stopped at twenty past ten. Engraved on the back: OUR HOUR. H.W."
+ ],
+ "wire": [
+  "Bedspring wire",
+  "A length of spring steel worked loose from the cot. Ada's fingers wore it bright.",
+  {
+   "reshape": {
+    "label": "Bend it",
+    "to": "wire_hook",
+    "say": "You bend the end over into a hook."
+   }
+  }
+ ],
+ "wire_hook": [
+  "Wire hook",
+  "The bedspring wire, bent into a hook.",
+  {
+   "reshape": {
+    "label": "Bend it again",
+    "to": "wire_zigzag",
+    "say": "You straighten the hook and work the wire into a zigzag."
+   }
+  }
+ ],
+ "wire_zigzag": [
+  "Zigzag wire",
+  "The bedspring wire, bent back and forth like a lightning stroke.",
+  {
+   "reshape": {
+    "label": "Straighten it",
+    "to": "wire",
+    "say": "You straighten the wire out again."
+   }
+  }
+ ],
+ "key_bow": [
+  "Half a key: the bow",
+  "The round end of a small brass key, snapped off clean. The break has a tiny notch.",
+  {
+   "combine": {
+    "key_blade": {
+     "makes": "sew_key",
+     "say": "The two halves click together. The notch holds them like a hinge."
+    }
+   }
+  }
+ ],
+ "key_blade": [
+  "Half a key: the blade",
+  "The toothed end of a small brass key. The break has a tiny tongue."
+ ],
+ "sew_key": [
+  "Ada's key",
+  "A small brass key, two halves joined at the break."
+ ],
+ "locket": [
+  "Locket",
+  "A brass locket, heavier than it should be. It doesn't open like a locket.",
+  {
+   "reshape": {
+    "label": "Pull it apart",
+    "to": "tile",
+    "say": "The locket comes apart in your hands. The halves fold flat into a square tile with an eye on it.",
+    "journal": [
+     "locket",
+     "The locket",
+     "Inside Ada Merrow's locket, before it folded into a tile, there was a photograph. It was not of Ada. It was a man in his forties with my jaw and my bad eye, in a sanitarium gown.\n\nThe photograph was dated 1911."
+    ]
+   }
+  }
+ ],
+ "tile": [
+  "Eye tile",
+  "A square tile folded out of Ada's locket. An eye, inlaid in green enamel."
+ ],
+ "punch_card": [
+  "Punch card",
+  "A tabulator card from Ada's file, punched with six holes in no pattern you can see."
+ ],
+ "lockbox_key": [
+  "Effects key",
+  "A steel key with a paper tag: PATIENT EFFECTS."
+ ],
+ "seal_stone3": [
+  "The third seal",
+  "A stone like the others, chalky and dry, with two straight lines across it like the bars of a cell."
  ]
 }

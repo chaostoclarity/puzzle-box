@@ -53,6 +53,17 @@ Furniture can have hinged faces ("hinges", same as boxes), so a wall panel can s
 - roll: a pearl in a tilt maze. Tapping a button part rolls it until a wall cell or the edge stops it.
   `{"kind":"roll","box":"chest","face":"front","cols":6,"rows":4,"cell":0.5,"center":[-0.875,0.125],"token":"pearl","flag":"pearl","start":[0,0],"walls":[[1,0]],"goal":[5,2],"done":"pearl_home","buttons":{"tilt_n":"n","tilt_s":"s","tilt_e":"e","tilt_w":"w"},"do":[actions]}`
 
+- lights: a toggle grid. Pressing a cell flips it and its four neighbours. `{"kind":"lights","flag":"pins","cols":3,"rows":3,"parts":["pin0",...],"on":"pin_up","off":"pin_down","start":"000000000","goal":"001101001","done":"pins_done","lock":...,"do":[actions]}`
+- Several combos can share one "commit" part (an index lever that opens different drawers): the first whose code matches runs; if none, the first one's "fail" runs.
+
+## Room state that changes behind your back
+Every turn to another wall adds 1 to the "turns" flag (reset when a room loads). Use it in conditions with a modulo: `"turns%5=4"`. Rooms refresh after each turn, so anything bound to turns moves while its wall is out of view.
+Binding values can show a flag: `{"texture":"tally_{turns:30}"}` uses tally_ plus the turns count, capped at 30.
+
+## Items you work in the tray (data/items.json)
+`"wire": ["Name", "Examine text", {"reshape": {"label": "Bend it", "to": "wire_hook", "say": "..."}}]`: examining it shows a button that turns it into another item ("to" can be a list to pull it apart into several, plus an optional "journal").
+`"key_bow": [..., {"combine": {"key_blade": {"makes": "sew_key", "say": "..."}}}]`: select one, then touch the other in the tray.
+
 ## Conditions
 "flag", "!flag", "item:x", "lens", "flag=3", or a list (all must hold). A list starting with "any" holds if any of the rest holds: `["any","tide=0","tide=1"]`.
 
@@ -77,4 +88,5 @@ Steps are the main path in order. Optional puzzles stay out of steps.
 
 ## Walkthrough
 ["tap", id], ["use", item, id], ["tapat", id, [x,y]], ["repeat", n, action], ["back"], ["face", f], ["lens", true],
-["swipe", dx], ["hint"], ["examine", item], ["journal"], ["wait", s], ["shot", name], ["expect", flag].
+["swipe", dx], ["swipev", dy], ["tapv", id] (tap from the current view, no turning), ["hint"], ["examine", item], ["reshape", item], ["combine", a, b], ["journal"], ["wait", s], ["shot", name], ["expect", flag].
+The autotest can start at any room: `-- --autotest --start=5`.

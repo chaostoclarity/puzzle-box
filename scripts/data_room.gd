@@ -176,6 +176,11 @@ func cond(c) -> bool:
 		return game.lens_on
 	if s.begins_with("item:"):
 		return State.has_item(s.substr(5))
+	if "%" in s and "=" in s:
+		## "turns%4=2": the flag's value modulo 4 is 2
+		var name := s.split("%")[0]
+		var rest := s.split("%")[1].split("=")
+		return posmod(int(State.flag_value(name, 0)), int(rest[0])) == int(rest[1])
 	if "=" in s:
 		var kv := s.split("=")
 		return str(State.flag_value(kv[0], "")) == kv[1] or (str(kv[1]).is_valid_int() and int(State.flag_value(kv[0], -999)) == int(kv[1]))
@@ -211,6 +216,10 @@ func refresh(animate := true) -> void:
 				PixelBox.set_tappable(n, show)
 			"beam":
 				_draw_beam(p)
+			"lights":
+				var bits: String = State.flag_value(p["flag"], p["start"])
+				for i in p["parts"].size():
+					PixelBox.set_texture(_part(p["parts"][i]), tex(p["on"] if bits[i] == "1" else p["off"]))
 			"roll":
 				var at := _roll_at(p)
 				var tok := _part(p["token"])
@@ -245,7 +254,22 @@ func _cycler_visual(p: Dictionary, v: int, animate := false) -> void:
 
 
 ## Apply one property to one target. Returns how long its animation runs (0 if none).
+## Text values can show a flag: "tally_{turns:30}" is tally_ plus the turns flag, capped at 30.
+func _fmt(v):
+	if not (v is String) or not "{" in v:
+		return v
+	var re := RegEx.create_from_string("\\{(\\w+)(?::(\\d+))?\\}")
+	var out: String = v
+	for m in re.search_all(v):
+		var n := int(State.flag_value(m.get_string(1), 0))
+		if m.get_string(2) != "":
+			n = mini(n, int(m.get_string(2)))
+		out = out.replace(m.get_string(0), str(n))
+	return out
+
+
 func _apply_value(target: String, prop: String, value, animate: bool, anim: float, delay: float) -> float:
+	value = _fmt(value)
 	var key := target + "/" + prop
 	var changed: bool = not last.has(key) or last[key] != value
 	var had_value := last.has(key)
@@ -387,7 +411,11 @@ func on_tap(id: String, node: Node) -> bool:
 					return true
 			"combo":
 				if p.get("commit", "") == id:
-					await _commit(p, node)
+					await _commit_all(id, node)
+					return true
+			"lights":
+				if id in p["parts"]:
+					await _toggle(p, p["parts"].find(id), node)
 					return true
 			"roll":
 				if p["buttons"].has(id):
@@ -483,6 +511,26 @@ func _check_combos() -> void:
 			ok = ok and int(State.flag_value(p["flags"][i], -1)) == int(p["code"][i])
 		if ok:
 			await run(p["do"])
+
+
+## Several combinations can share one commit part (an index lever that opens different drawers).
+## The first whose code matches runs; if none does, the first one's "fail" runs.
+func _commit_all(id: String, node: Node3D) -> void:
+	var first := {}
+	for p in puzzles:
+		if p["kind"] != "combo" or p.get("commit", "") != id:
+			continue
+		if first.is_empty():
+			first = p
+		if p.has("lock") and cond(p["lock"]):
+			continue
+		var ok := true
+		for i in p["flags"].size():
+			ok = ok and int(State.flag_value(p["flags"][i], 0)) == int(p["code"][i])
+		if ok:
+			await run(p["do"], node)
+			return
+	await _commit(first, node)
 
 
 ## A combination with a commit part (a winding key, a catch, a lever) is only tried when the
@@ -705,3 +753,36 @@ func _roll(p: Dictionary, dir: String, node: Node3D) -> void:
 	if at == Vector2i(int(g[0]), int(g[1])) and not State.has(p["done"]):
 		State.set_flag(p["done"])
 		await run(p.get("do", []))
+
+
+# ---------------- toggle grid (lights out) ----------------
+# Pressing a cell flips it and its four neighbours. Reach the goal pattern to run "do" once.
+
+func _toggle(p: Dictionary, i: int, node: Node3D) -> void:
+	if p.has("lock") and cond(p["lock"]):
+		if p.has("locked_say"):
+			game.say(p["locked_say"])
+		return
+	var cols := int(p["cols"])
+	var rows := int(p["rows"])
+	var bits: PackedByteArray = str(State.flag_value(p["flag"], p["start"])).to_ascii_buffer()
+	var c := i % cols
+	var r := i / cols
+	for d in [Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+		var cc: int = c + d.x
+		var rr: int = r + d.y
+		if cc >= 0 and rr >= 0 and cc < cols and rr < rows:
+			var k := rr * cols + cc
+			bits[k] = 49 if bits[k] == 48 else 48
+	var s := bits.get_string_from_ascii()
+	State.set_flag(p["flag"], s)
+	game.play(p.get("sfx", "click"))
+	await refresh(false)
+	if s == p["goal"] and not State.has(p["done"]):
+		State.set_flag(p["done"])
+		await run(p.get("do", []), node)
+
+
+func on_turned() -> void:
+	await refresh(false)
+	set_lens(game.lens_on)

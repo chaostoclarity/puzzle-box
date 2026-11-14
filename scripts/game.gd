@@ -187,6 +187,7 @@ func load_room(n: int) -> void:
 	for c in stage.get_children():
 		c.queue_free()
 	State.room = n
+	State.flags["turns"] = 0
 	State.save_game()
 	room = DataRoom.new()
 	room.load_file(ROOMS[n])
@@ -314,8 +315,11 @@ func _finish_drag() -> void:
 	elif mode == Mode.ROOM:
 		tw.tween_method(func(a: float): _aim_room(start_rot - a, 0.0), drag_angle, target, 0.22)
 		await tw.finished
+		var before := view
 		view = posmod(int(roundf((start_rot - target) / SNAP)), 4)
 		_aim_room(view * SNAP, 0.0)
+		if view != before:
+			await _count_turns(1)
 	else:
 		var b := _active_box()
 		var axis := drag_axis
@@ -335,9 +339,18 @@ func _snap_basis(b: Basis) -> Basis:
 
 
 func set_view(v: int) -> void:
+	var d := absi(posmod(v, 4) - view)
 	view = posmod(v, 4)
 	pitch = 0
 	_aim_room(view * SNAP, 0.0)
+	if d > 0:
+		await _count_turns(mini(d, 4 - d))
+
+
+## Every turn to another wall is counted. Some rooms change while a wall is out of view.
+func _count_turns(n: int) -> void:
+	State.set_flag("turns", int(State.flag_value("turns", 0)) + n)
+	await room.on_turned()
 
 
 ## Look down at the floor (1), up at the ceiling (-1) or straight at a wall (0).
@@ -803,7 +816,53 @@ func _hud_tap(pos: Vector2, held_ms: int) -> bool:
 	return pos.y > view_size.y - HUD_BOTTOM or pos.y < 22
 
 
+func _item_extra(item: String) -> Dictionary:
+	var info: Array = State.ITEMS[item]
+	return info[2] if info.size() > 2 else {}
+
+
+## Put one item to another in the tray. Recipes live in data/items.json ("combine").
+func combine(a: String, b: String) -> bool:
+	var rec: Dictionary = _item_extra(a).get("combine", {}).get(b, _item_extra(b).get("combine", {}).get(a, {}))
+	if rec.is_empty():
+		return false
+	var at := State.inventory.find(a)
+	State.inventory.erase(a)
+	State.inventory.erase(b)
+	State.inventory.insert(mini(at, State.inventory.size()), rec["makes"])
+	State.save_game()
+	if rec.has("journal"):
+		State.add_journal(rec["journal"][0], rec["journal"][1], rec["journal"][2])
+	selected = ""
+	play(rec.get("sfx", "unlock"))
+	say(rec.get("say", "They fit together."), 5.0)
+	_refresh_hud()
+	return true
+
+
+## Work an item in your hands: bend it, unfold it, pull it apart. ("reshape" in data/items.json)
+func reshape(item: String) -> void:
+	var r: Dictionary = _item_extra(item).get("reshape", {})
+	if r.is_empty():
+		return
+	var to: Array = r["to"] if r["to"] is Array else [r["to"]]
+	var at := State.inventory.find(item)
+	State.inventory[at] = to[0]
+	for extra in to.slice(1):
+		State.inventory.append(extra)
+	State.save_game()
+	if r.has("journal"):
+		State.add_journal(r["journal"][0], r["journal"][1], r["journal"][2])
+	if selected == item:
+		selected = ""
+	play(r.get("sfx", "click"))
+	say(r.get("say", "It changes shape in your hands."), 5.0)
+	_refresh_hud()
+
+
 func select_item(item: String) -> void:
+	if item != "" and selected != "" and item != selected and combine(selected, item):
+		return
 	selected = item
 	play("click")
 	if item != "":
@@ -1007,6 +1066,14 @@ func examine(item: String) -> void:
 	root.add_child(desc)
 	var close := _button(root, "Put it away", Vector2((view_size.x - 140) / 2, 420), 140)
 	close.pressed.connect(func(): _close_overlay(root))
+	var r: Dictionary = _item_extra(item).get("reshape", {})
+	if not r.is_empty():
+		var work := _button(root, r.get("label", "Work it"), Vector2((view_size.x - 140) / 2, 384), 140)
+		work.pressed.connect(func():
+			_close_overlay(root)
+			reshape(item)
+			var made: String = r["to"] if r["to"] is String else r["to"][0]
+			examine(made))
 	if autotest:
 		await get_tree().create_timer(0.4).timeout
 		await _shot("examine_" + item)
@@ -1083,10 +1150,10 @@ func test_tap(id: String, offset := Vector2.ZERO) -> void:
 			_frame_camera(false)
 		var w: String = room.wall_of(node)
 		if w == room.FLOOR or w == room.CEILING:
-			set_view(0)
+			await set_view(view)
 			set_pitch(1 if w == room.FLOOR else -1)
 		elif w != "":
-			set_view(room.WALLS.find(w))
+			await set_view(room.WALLS.find(w))
 	if not box_part and selected == "":
 		var holder := _zoom_holder(node)
 		if holder and mode == Mode.ROOM:
@@ -1162,6 +1229,12 @@ func _autotest() -> void:
 					await ask_hint()
 					await _wait(0.2)
 				"examine": await examine(a[1])
+				"reshape": reshape(a[1])
+				"combine":
+					select_item(a[1])
+					if not combine(a[1], a[2]):
+						test_fails.append("no recipe %s + %s" % [a[1], a[2]])
+					await _wait(0.3)
 				"journal": await open_journal()
 				"wait": await _wait(a[1])
 		var waited := 0.0
