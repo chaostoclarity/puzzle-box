@@ -1,0 +1,1847 @@
+{
+ "title": "The Antechamber",
+ "walls": "r11_wall_",
+ "floor": "r11_floor",
+ "ceiling": "r11_ceiling",
+ "intro": "You have to stoop. They walked lower than men.",
+ "on_enter": [
+  {
+   "set": "gu",
+   "value": 0
+  },
+  {
+   "set": "sand",
+   "value": 0
+  },
+  {
+   "set": "wl",
+   "value": 7
+  },
+  {
+   "set": "wr",
+   "value": 0
+  },
+  {
+   "journal": [
+    "ante",
+    "The city under the sand",
+    "The map was right. Under the dunes, a city of low doors and long halls, cut for things that crawled. The antechamber's door rolled shut behind me. On the west wall a bronze scale, and an idol on one pan that no one has ever lifted."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "low_door",
+   "center": [
+    0,
+    2
+   ],
+   "size": [
+    5,
+    4
+   ],
+   "tex": "low_door"
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "lintel",
+   "center": [
+    0,
+    5
+   ],
+   "size": [
+    4,
+    2
+   ],
+   "tex": "lintel"
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "lintel_lens",
+   "center": [
+    0,
+    5
+   ],
+   "size": [
+    4,
+    2
+   ],
+   "tex": "lintel_lens",
+   "depth": 0.06,
+   "lens": 2
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "gpanel",
+   "center": [
+    4.75,
+    3
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "gpanel"
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "gtile_0",
+   "center": [
+    4.125,
+    3.825
+   ],
+   "size": [
+    1.25,
+    1.25
+   ],
+   "tex": "gtile_0_1",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "gtile_1",
+   "center": [
+    5.375,
+    3.825
+   ],
+   "size": [
+    1.25,
+    1.25
+   ],
+   "tex": "gtile_1_3",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "gtile_2",
+   "center": [
+    4.125,
+    2.575
+   ],
+   "size": [
+    1.25,
+    1.25
+   ],
+   "tex": "gtile_2_2",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "gtile_3",
+   "center": [
+    5.375,
+    2.575
+   ],
+   "size": [
+    1.25,
+    1.25
+   ],
+   "tex": "gtile_3_1",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "gpanel_key",
+   "center": [
+    4.75,
+    1.95
+   ],
+   "size": [
+    0.75,
+    0.75
+   ],
+   "tex": "gpanel_key",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "plinth",
+   "center": [
+    0,
+    1.5
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "plinth"
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "hglass",
+   "center": [
+    0,
+    5
+   ],
+   "size": [
+    2,
+    4
+   ],
+   "tex": "hglass_0_0",
+   "depth": 0.3
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "niche",
+   "center": [
+    0,
+    5
+   ],
+   "size": [
+    4,
+    4
+   ],
+   "tex": "niche"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "altar",
+   "center": [
+    0,
+    1.5
+   ],
+   "size": [
+    7,
+    3
+   ],
+   "tex": "altar_front"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "altar_glyph",
+   "center": [
+    0,
+    1.6
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "altar_glyph",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "beam",
+   "center": [
+    0,
+    6
+   ],
+   "size": [
+    8,
+    4
+   ],
+   "tex": "beam_l"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "pan_l",
+   "center": [
+    -3.5,
+    4.5
+   ],
+   "size": [
+    3,
+    1.5
+   ],
+   "tex": "pan",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "pan_r",
+   "center": [
+    3.5,
+    4.5
+   ],
+   "size": [
+    3,
+    1.5
+   ],
+   "tex": "pan",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "idol",
+   "center": [
+    -4.25,
+    5.6
+   ],
+   "size": [
+    1.5,
+    2
+   ],
+   "tex": "idol",
+   "depth": 0.08
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "wl_1",
+   "center": [
+    -3.0,
+    5.4
+   ],
+   "size": [
+    1.5,
+    1.5
+   ],
+   "tex": "wsprite_1",
+   "depth": 0.09
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "wr_1",
+   "center": [
+    2.6,
+    5.4
+   ],
+   "size": [
+    1.5,
+    1.5
+   ],
+   "tex": "wsprite_1",
+   "depth": 0.09
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "wl_3",
+   "center": [
+    -2.4,
+    5.4
+   ],
+   "size": [
+    1.5,
+    1.5
+   ],
+   "tex": "wsprite_3",
+   "depth": 0.09
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "wr_3",
+   "center": [
+    3.5,
+    5.4
+   ],
+   "size": [
+    1.5,
+    1.5
+   ],
+   "tex": "wsprite_3",
+   "depth": 0.09
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "wl_9",
+   "center": [
+    -3.6,
+    5.4
+   ],
+   "size": [
+    1.5,
+    1.5
+   ],
+   "tex": "wsprite_9",
+   "depth": 0.09
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "wr_9",
+   "center": [
+    4.4,
+    5.4
+   ],
+   "size": [
+    1.5,
+    1.5
+   ],
+   "tex": "wsprite_9",
+   "depth": 0.09
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "drift",
+   "center": [
+    0,
+    1.5
+   ],
+   "size": [
+    15,
+    2
+   ],
+   "tex": "sand_drift"
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "tick",
+   "flag": "sand",
+   "every": 1,
+   "step": -1,
+   "min": 0,
+   "while": "!facing=e"
+  },
+  {
+   "kind": "cycler",
+   "part": "gtile_0",
+   "flag": "gt0",
+   "count": 4,
+   "start": 1,
+   "spin": false,
+   "sfx": "stone",
+   "textures": [
+    "gtile_0_0",
+    "gtile_0_1",
+    "gtile_0_2",
+    "gtile_0_3"
+   ],
+   "lock": "tiles_done"
+  },
+  {
+   "kind": "cycler",
+   "part": "gtile_1",
+   "flag": "gt1",
+   "count": 4,
+   "start": 3,
+   "spin": false,
+   "sfx": "stone",
+   "textures": [
+    "gtile_1_0",
+    "gtile_1_1",
+    "gtile_1_2",
+    "gtile_1_3"
+   ],
+   "lock": "tiles_done"
+  },
+  {
+   "kind": "cycler",
+   "part": "gtile_2",
+   "flag": "gt2",
+   "count": 4,
+   "start": 2,
+   "spin": false,
+   "sfx": "stone",
+   "textures": [
+    "gtile_2_0",
+    "gtile_2_1",
+    "gtile_2_2",
+    "gtile_2_3"
+   ],
+   "lock": "tiles_done"
+  },
+  {
+   "kind": "cycler",
+   "part": "gtile_3",
+   "flag": "gt3",
+   "count": 4,
+   "start": 1,
+   "spin": false,
+   "sfx": "stone",
+   "textures": [
+    "gtile_3_0",
+    "gtile_3_1",
+    "gtile_3_2",
+    "gtile_3_3"
+   ],
+   "lock": "tiles_done"
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "gt0",
+    "gt1",
+    "gt2",
+    "gt3"
+   ],
+   "code": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "commit": "gpanel_key",
+   "lock": "tiles_done",
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The bronze stud won't press in."
+    }
+   ],
+   "do": [
+    {
+     "set": "tiles_done"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "give": "weight1"
+    },
+    {
+     "say": "The stud sinks. A drawer no wider than a finger slides out of the panel: a small bronze weight with one dot on it.",
+     "secs": 5
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "hglass",
+   "when": "hg_taken",
+   "then": {
+    "texture": "hglass_taken"
+   },
+   "else": {
+    "texture": "hglass_{gu:1}_{sand:5}"
+   }
+  },
+  {
+   "target": "niche",
+   "when": "niche_open",
+   "then": {
+    "texture": "niche_open"
+   },
+   "else": {
+    "texture": "niche"
+   }
+  },
+  {
+   "target": "low_door",
+   "when": "door_open",
+   "then": {
+    "texture": "low_door_open"
+   },
+   "else": {
+    "texture": "low_door"
+   }
+  },
+  {
+   "target": "beam",
+   "when": "wl>wr",
+   "then": {
+    "texture": "beam_l"
+   }
+  },
+  {
+   "target": "beam",
+   "when": "wl<wr",
+   "then": {
+    "texture": "beam_r"
+   }
+  },
+  {
+   "target": "beam",
+   "when": "wl==wr",
+   "then": {
+    "texture": "beam_level"
+   }
+  },
+  {
+   "target": "wl_1",
+   "when": "w1_at=l",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "wr_1",
+   "when": "w1_at=r",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "wl_3",
+   "when": "w3_at=l",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "wr_3",
+   "when": "w3_at=r",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "wl_9",
+   "when": "w9_at=l",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "wr_9",
+   "when": "w9_at=r",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "use",
+   "item": "weight1",
+   "ids": [
+    "pan_l",
+    "idol",
+    "wl_1",
+    "wl_3",
+    "wl_9"
+   ],
+   "do": [
+    {
+     "take": "weight1"
+    },
+    {
+     "set": "w1_at",
+     "value": "l"
+    },
+    {
+     "add": "wl",
+     "value": 1
+    },
+    {
+     "sfx": "thunk"
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "weight1",
+   "ids": [
+    "pan_r",
+    "wr_1",
+    "wr_3",
+    "wr_9"
+   ],
+   "do": [
+    {
+     "take": "weight1"
+    },
+    {
+     "set": "w1_at",
+     "value": "r"
+    },
+    {
+     "add": "wr",
+     "value": 1
+    },
+    {
+     "sfx": "thunk"
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "weight3",
+   "ids": [
+    "pan_l",
+    "idol",
+    "wl_1",
+    "wl_3",
+    "wl_9"
+   ],
+   "do": [
+    {
+     "take": "weight3"
+    },
+    {
+     "set": "w3_at",
+     "value": "l"
+    },
+    {
+     "add": "wl",
+     "value": 3
+    },
+    {
+     "sfx": "thunk"
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "weight3",
+   "ids": [
+    "pan_r",
+    "wr_1",
+    "wr_3",
+    "wr_9"
+   ],
+   "do": [
+    {
+     "take": "weight3"
+    },
+    {
+     "set": "w3_at",
+     "value": "r"
+    },
+    {
+     "add": "wr",
+     "value": 3
+    },
+    {
+     "sfx": "thunk"
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "weight9",
+   "ids": [
+    "pan_l",
+    "idol",
+    "wl_1",
+    "wl_3",
+    "wl_9"
+   ],
+   "do": [
+    {
+     "take": "weight9"
+    },
+    {
+     "set": "w9_at",
+     "value": "l"
+    },
+    {
+     "add": "wl",
+     "value": 9
+    },
+    {
+     "sfx": "thunk"
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "weight9",
+   "ids": [
+    "pan_r",
+    "wr_1",
+    "wr_3",
+    "wr_9"
+   ],
+   "do": [
+    {
+     "take": "weight9"
+    },
+    {
+     "set": "w9_at",
+     "value": "r"
+    },
+    {
+     "add": "wr",
+     "value": 9
+    },
+    {
+     "sfx": "thunk"
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "wl_1"
+   ],
+   "do": [
+    {
+     "give": "weight1"
+    },
+    {
+     "set": "w1_at",
+     "value": ""
+    },
+    {
+     "add": "wl",
+     "value": -1
+    },
+    {
+     "sfx": "click"
+    }
+   ],
+   "when": [
+    "w1_at=l",
+    "!door_open"
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "wr_1"
+   ],
+   "do": [
+    {
+     "give": "weight1"
+    },
+    {
+     "set": "w1_at",
+     "value": ""
+    },
+    {
+     "add": "wr",
+     "value": -1
+    },
+    {
+     "sfx": "click"
+    }
+   ],
+   "when": [
+    "w1_at=r",
+    "!door_open"
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "wl_3"
+   ],
+   "do": [
+    {
+     "give": "weight3"
+    },
+    {
+     "set": "w3_at",
+     "value": ""
+    },
+    {
+     "add": "wl",
+     "value": -3
+    },
+    {
+     "sfx": "click"
+    }
+   ],
+   "when": [
+    "w3_at=l",
+    "!door_open"
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "wr_3"
+   ],
+   "do": [
+    {
+     "give": "weight3"
+    },
+    {
+     "set": "w3_at",
+     "value": ""
+    },
+    {
+     "add": "wr",
+     "value": -3
+    },
+    {
+     "sfx": "click"
+    }
+   ],
+   "when": [
+    "w3_at=r",
+    "!door_open"
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "wl_9"
+   ],
+   "do": [
+    {
+     "give": "weight9"
+    },
+    {
+     "set": "w9_at",
+     "value": ""
+    },
+    {
+     "add": "wl",
+     "value": -9
+    },
+    {
+     "sfx": "click"
+    }
+   ],
+   "when": [
+    "w9_at=l",
+    "!door_open"
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "wr_9"
+   ],
+   "do": [
+    {
+     "give": "weight9"
+    },
+    {
+     "set": "w9_at",
+     "value": ""
+    },
+    {
+     "add": "wr",
+     "value": -9
+    },
+    {
+     "sfx": "click"
+    }
+   ],
+   "when": [
+    "w9_at=r",
+    "!door_open"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "say": "The glass is empty now. Only sand."
+    }
+   ],
+   "when": "hg_taken"
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "hg_taken"
+    },
+    {
+     "give": "weight3"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "The top bulb is empty but for the weight that couldn't pass the neck. You unscrew the cap and take it: one bar."
+    }
+   ],
+   "when": [
+    "gu=1",
+    "sand=0",
+    "!hg_taken"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 1
+    },
+    {
+     "set": "sand",
+     "value": 5
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=0",
+    "sand=0"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 1
+    },
+    {
+     "set": "sand",
+     "value": 4
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=0",
+    "sand=1"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 1
+    },
+    {
+     "set": "sand",
+     "value": 3
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=0",
+    "sand=2"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 1
+    },
+    {
+     "set": "sand",
+     "value": 2
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=0",
+    "sand=3"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 1
+    },
+    {
+     "set": "sand",
+     "value": 1
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=0",
+    "sand=4"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 1
+    },
+    {
+     "set": "sand",
+     "value": 0
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=0",
+    "sand=5"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 0
+    },
+    {
+     "set": "sand",
+     "value": 5
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=1",
+    "sand=0"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 0
+    },
+    {
+     "set": "sand",
+     "value": 4
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=1",
+    "sand=1"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 0
+    },
+    {
+     "set": "sand",
+     "value": 3
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=1",
+    "sand=2"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 0
+    },
+    {
+     "set": "sand",
+     "value": 2
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=1",
+    "sand=3"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 0
+    },
+    {
+     "set": "sand",
+     "value": 1
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=1",
+    "sand=4"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hglass",
+   "do": [
+    {
+     "set": "gu",
+     "value": 0
+    },
+    {
+     "set": "sand",
+     "value": 0
+    },
+    {
+     "set": "sand#",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You turn the glass over. The sand hangs in the neck and does not fall. Not while you watch it."
+    }
+   ],
+   "when": [
+    "gu=1",
+    "sand=5"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "niche",
+   "do": [
+    {
+     "ask": [
+      "The keepers",
+      "A voice that is not a voice, from the mouth in the wall: the keepers will hold something for you, if you give them a place to keep it.\n\nGive up one slot of your tray? It will not come back.",
+      [
+       "Give a slot",
+       "Not yet"
+      ]
+     ]
+    },
+    {
+     "add": "slots_given"
+    },
+    {
+     "set": "niche_open"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "Something cold settles in your tray where a slot was. The stone teeth draw back."
+    }
+   ],
+   "when": "!niche_open"
+  },
+  {
+   "on": "tap",
+   "id": "niche",
+   "do": [
+    {
+     "set": "w9_taken"
+    },
+    {
+     "give": "weight9"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "In the mouth: a heavy bronze weight with three bars on it."
+    }
+   ],
+   "when": [
+    "niche_open",
+    "!w9_taken"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "niche",
+   "do": [
+    {
+     "say": "An empty stone mouth."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "altar_glyph",
+   "do": [
+    {
+     "set": "door_open"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "wait": 1.0
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "shake": true
+    },
+    {
+     "say": "You press the red stone. The scale locks level, and behind you the low door rolls aside.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "wl==wr",
+    "!door_open"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "altar_glyph",
+   "do": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The red stone won't press while the scale hangs crooked."
+    }
+   ],
+   "when": "!door_open"
+  },
+  {
+   "on": "tap",
+   "id": "altar_glyph",
+   "do": [
+    {
+     "say": "Pressed in for good."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "idol",
+   "do": [
+    {
+     "say": "A keeper idol, fixed to the left pan. You can't lift it. It is heavier than it looks, and it looks heavy."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "pan_l",
+   "do": [
+    {
+     "say": "The left pan, with the idol fixed to it. Put weights on either pan."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "pan_r",
+   "do": [
+    {
+     "say": "The right pan. Put weights on either pan."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "beam",
+   "do": [
+    {
+     "say": "A bronze balance. The pointer shows which pan is heavier."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "altar",
+   "do": [
+    {
+     "say": "An altar under the scale, cut low, for things that walked on all fours."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "plinth",
+   "do": [
+    {
+     "say": "A plinth with a carving of an eye, closed."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "lintel",
+   "do": [
+    {
+     "say": "A carved glyph over the door, worn almost away by sand."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "lintel_lens",
+   "do": [
+    {
+     "say": "Through the Lens, the glyph as it was cut, whole."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "gpanel",
+   "do": [
+    {
+     "say": "A panel of four turning tiles, each with a piece of a glyph, and a bronze stud."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "drift",
+   "do": [
+    {
+     "say": "Sand that came in through no door you can see."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "low_door",
+   "do": [
+    {
+     "say": "A stone door cut for a crawling thing, rolled shut."
+    }
+   ],
+   "when": "!door_open"
+  },
+  {
+   "on": "tap",
+   "id": "low_door",
+   "do": [
+    {
+     "set": "left11"
+    },
+    {
+     "complete_room": [
+      12,
+      "THE HALL OF KEEPERS",
+      "You crawl through. The ceiling goes up, and up, and the walls are lined with the coffins of things that were never men."
+     ]
+    }
+   ],
+   "when": "door_open"
+  }
+ ],
+ "steps": [
+  {
+   "id": "glyph",
+   "done": "tiles_done",
+   "hints": [
+    "The glyph above the door is the picture the four tiles make.",
+    "Look at the glyph above the door with the Lens (Through), then turn each tile to match it and press the bronze stud."
+   ],
+   "solve": [
+    {
+     "set": "tiles_done"
+    },
+    {
+     "give": "weight1"
+    }
+   ],
+   "said": "A small weight drops out."
+  },
+  {
+   "id": "offer",
+   "done": "niche_open",
+   "hints": [
+    "The mouth in the south wall wants something.",
+    "Touch the stone mouth and give the keepers a tray slot."
+   ],
+   "solve": [
+    {
+     "add": "slots_given"
+    },
+    {
+     "set": "niche_open"
+    }
+   ],
+   "said": "The mouth opens."
+  },
+  {
+   "id": "w9",
+   "done": "w9_taken",
+   "hints": [
+    "The mouth held something.",
+    "Take the heavy weight from the stone mouth."
+   ],
+   "solve": [
+    {
+     "set": "w9_taken"
+    },
+    {
+     "give": "weight9"
+    }
+   ],
+   "said": "Three bars."
+  },
+  {
+   "id": "flip",
+   "done": "gu=1",
+   "hints": [
+    "Something is buried in the bottom of the hourglass.",
+    "Turn the hourglass over."
+   ],
+   "solve": [
+    {
+     "set": "gu",
+     "value": 1
+    },
+    {
+     "set": "sand",
+     "value": 5
+    }
+   ],
+   "said": "The glass turns."
+  },
+  {
+   "id": "sand",
+   "done": [
+    "any",
+    "hg_taken",
+    "sand=0"
+   ],
+   "hints": [
+    "The sand won't fall while you watch it.",
+    "Turn away from the hourglass and do five other things (touch anything), then come back."
+   ],
+   "solve": [
+    {
+     "set": "sand",
+     "value": 0
+    }
+   ],
+   "said": "The sand has run."
+  },
+  {
+   "id": "w3",
+   "done": "hg_taken",
+   "hints": [
+    "The weight is in the empty top bulb.",
+    "Touch the hourglass to take the weight."
+   ],
+   "solve": [
+    {
+     "set": "hg_taken"
+    },
+    {
+     "give": "weight3"
+    }
+   ],
+   "said": "One bar."
+  },
+  {
+   "id": "balance",
+   "done": "door_open",
+   "hints": [
+    "Weights can go on either pan. The idol is heavy: more than six of the small ones, less than nine.",
+    "Put the 3 on the idol's pan, the 9 and the 1 on the other pan, then press the red stone on the altar."
+   ],
+   "solve": [
+    {
+     "set": "door_open"
+    }
+   ],
+   "said": "The door rolls aside."
+  },
+  {
+   "id": "go",
+   "done": "left11",
+   "hints": [
+    "The low door is open.",
+    "Crawl through the low door in the north wall."
+   ],
+   "solve": [
+    {
+     "set": "left11"
+    },
+    {
+     "complete_room": [
+      12,
+      "THE HALL OF KEEPERS",
+      "You crawl through."
+     ]
+    }
+   ],
+   "said": "Through."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "tap",
+   "lintel_lens"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "shot",
+   "panel"
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "gtile_0"
+   ]
+  ],
+  [
+   "tap",
+   "gtile_1"
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tap",
+    "gtile_2"
+   ]
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "gtile_3"
+   ]
+  ],
+  [
+   "tap",
+   "gpanel_key"
+  ],
+  [
+   "expect",
+   "tiles_done"
+  ],
+  [
+   "tap",
+   "hglass"
+  ],
+  [
+   "shot",
+   "flipped"
+  ],
+  [
+   "tap",
+   "niche"
+  ],
+  [
+   "tap",
+   "niche"
+  ],
+  [
+   "expect",
+   "w9_taken"
+  ],
+  [
+   "tap",
+   "altar"
+  ],
+  [
+   "tap",
+   "idol"
+  ],
+  [
+   "tap",
+   "beam"
+  ],
+  [
+   "tap",
+   "drift"
+  ],
+  [
+   "tap",
+   "hglass"
+  ],
+  [
+   "shot",
+   "glass_empty"
+  ],
+  [
+   "expect",
+   "hg_taken"
+  ],
+  [
+   "use",
+   "weight9",
+   "pan_r"
+  ],
+  [
+   "shot",
+   "tilt_r"
+  ],
+  [
+   "use",
+   "weight1",
+   "pan_r"
+  ],
+  [
+   "use",
+   "weight3",
+   "pan_l"
+  ],
+  [
+   "shot",
+   "level"
+  ],
+  [
+   "tap",
+   "altar_glyph"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "expect",
+   "door_open"
+  ],
+  [
+   "tap",
+   "low_door"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

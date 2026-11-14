@@ -1,0 +1,1328 @@
+{
+ "title": "The Hall of Keepers",
+ "walls": "r12_wall_",
+ "floor": "r12_floor",
+ "ceiling": "r12_ceiling",
+ "intro": "Coffins, standing, all the way up.",
+ "on_enter": [
+  {
+   "journal": [
+    "hall",
+    "The hall of keepers",
+    "A hall of coffins standing on end, cut for bodies longer and lower than a man's. A painted strip above the north wall tells a story, out of order. One coffin on the east wall has a hand set into its lid, with seven fingers."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "mural_frame",
+   "center": [
+    0,
+    13
+   ],
+   "size": [
+    11,
+    4
+   ],
+   "tex": "mural_frame"
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "m0",
+   "center": [
+    -4,
+    13
+   ],
+   "size": [
+    2,
+    3
+   ],
+   "tex": "mural_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "m1",
+   "center": [
+    -2,
+    13
+   ],
+   "size": [
+    2,
+    3
+   ],
+   "tex": "mural_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "m2",
+   "center": [
+    0,
+    13
+   ],
+   "size": [
+    2,
+    3
+   ],
+   "tex": "mural_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "m3",
+   "center": [
+    2,
+    13
+   ],
+   "size": [
+    2,
+    3
+   ],
+   "tex": "mural_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "m4",
+   "center": [
+    4,
+    13
+   ],
+   "size": [
+    2,
+    3
+   ],
+   "tex": "mural_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "mural_stone",
+   "center": [
+    5,
+    10.4
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "mural_stone",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "mural_hand",
+   "center": [
+    0,
+    9
+   ],
+   "size": [
+    2,
+    3
+   ],
+   "tex": "mural_hand",
+   "depth": 0.06
+  },
+  {
+   "type": "furniture",
+   "wall": "e",
+   "id": "coffin",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    4,
+    8,
+    2
+   ],
+   "faces": {
+    "front": "coffin_front",
+    "top": "crypt_top_64x32",
+    "default": "crypt_side_32x128"
+   },
+   "zoom": {
+    "k": 3
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      -1.25,
+      0.75
+     ],
+     "size": [
+      0.6,
+      0.6
+     ],
+     "tex": "finger",
+     "id": "f1",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.8125,
+      0.75
+     ],
+     "size": [
+      0.6,
+      0.6
+     ],
+     "tex": "finger",
+     "id": "f2",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.375,
+      0.75
+     ],
+     "size": [
+      0.6,
+      0.6
+     ],
+     "tex": "finger",
+     "id": "f3",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.75
+     ],
+     "size": [
+      0.6,
+      0.6
+     ],
+     "tex": "finger",
+     "id": "f4",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.375,
+      0.75
+     ],
+     "size": [
+      0.6,
+      0.6
+     ],
+     "tex": "finger",
+     "id": "f5",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.8125,
+      0.75
+     ],
+     "size": [
+      0.6,
+      0.6
+     ],
+     "tex": "finger",
+     "id": "f6",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.25,
+      0.75
+     ],
+     "size": [
+      0.6,
+      0.6
+     ],
+     "tex": "finger",
+     "id": "f7",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -2.75
+     ],
+     "size": [
+      2,
+      0.75
+     ],
+     "tex": "clear",
+     "id": "plate",
+     "depth": 0.04
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "coffin_dark",
+   "center": [
+    0,
+    4
+   ],
+   "size": [
+    4,
+    8
+   ],
+   "tex": "coffin_inside",
+   "depth": 2.05
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "mummy",
+   "center": [
+    0,
+    4.5
+   ],
+   "size": [
+    3,
+    7
+   ],
+   "tex": "mummy",
+   "depth": 2.1
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "mummy_lens",
+   "center": [
+    0,
+    4.5
+   ],
+   "size": [
+    3,
+    7
+   ],
+   "tex": "mummy_lens",
+   "depth": 2.15,
+   "lens": 2
+  },
+  {
+   "type": "box",
+   "name": "reli",
+   "wall": "e",
+   "pos": [
+    0,
+    3.2
+   ],
+   "depth": 2.6,
+   "scale": 0.35,
+   "view": "front",
+   "size": 6,
+   "faces": {
+    "front": "reli_front",
+    "back": "reli_back",
+    "left": "reli_side",
+    "right": "reli_side",
+    "top": "reli_top",
+    "bottom": "reli_top"
+   },
+   "liner": "reli_liner",
+   "liner_skip": [
+    "top"
+   ],
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "reli",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.2
+     ],
+     "size": [
+      4.5,
+      4.5
+     ],
+     "tex": "rring_o",
+     "id": "rring_o",
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.2
+     ],
+     "size": [
+      3,
+      3
+     ],
+     "tex": "rring_i",
+     "id": "rring_i",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.2
+     ],
+     "size": [
+      4.5,
+      4.5
+     ],
+     "tex": "clear",
+     "id": "rrings",
+     "depth": 0.065
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      2.6
+     ],
+     "size": [
+      1,
+      0.5
+     ],
+     "tex": "reli_mark",
+     "id": "reli_mark",
+     "depth": 0.05
+    },
+    {
+     "face": "front",
+     "uv": [
+      2.3,
+      -2.3
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "reli_pin",
+     "id": "reli_pin",
+     "depth": 0.04
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "stone_part",
+     "tex": "item_seal_stone6",
+     "size": [
+      1.5,
+      1.5
+     ],
+     "pos": [
+      0,
+      -2.2,
+      0
+     ],
+     "rot": [
+      -90,
+      0,
+      0
+     ],
+     "face": "top"
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "stair",
+   "center": [
+    0,
+    5
+   ],
+   "size": [
+    5,
+    10
+   ],
+   "tex": "stair"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "stair_gate",
+   "center": [
+    0,
+    5
+   ],
+   "size": [
+    5,
+    10
+   ],
+   "tex": "stair_gate",
+   "depth": 0.08
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "idol_w",
+   "center": [
+    -4,
+    3
+   ],
+   "size": [
+    3,
+    4
+   ],
+   "tex": "idol"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "drift_w",
+   "center": [
+    0,
+    1
+   ],
+   "size": [
+    15,
+    2
+   ],
+   "tex": "sand_drift"
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "swap",
+   "parts": [
+    "m0",
+    "m1",
+    "m2",
+    "m3",
+    "m4"
+   ],
+   "flag": "mural",
+   "start": "31402",
+   "tex": "mural_%s",
+   "lock": "mural_done"
+  },
+  {
+   "kind": "sequence",
+   "parts": {
+    "f1": "1",
+    "f2": "2",
+    "f3": "3",
+    "f4": "4",
+    "f5": "5",
+    "f6": "6",
+    "f7": "7"
+   },
+   "tex": {
+    "f1": "finger",
+    "f2": "finger",
+    "f3": "finger",
+    "f4": "finger",
+    "f5": "finger",
+    "f6": "finger",
+    "f7": "finger"
+   },
+   "order": "52714",
+   "flag": "gesture",
+   "silent": true,
+   "lock": "coffin_open",
+   "do": [
+    {
+     "set": "coffin_open"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "wait": 0.6
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "say": "The palm takes the gesture. The lid of the coffin swings away on a keeper, standing, wrapped, holding a bronze box against its chest.",
+     "secs": 5
+    }
+   ],
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The fingers spring back up. That wasn't the gesture."
+    }
+   ]
+  },
+  {
+   "kind": "radial",
+   "part": "rrings",
+   "rotate": -45,
+   "count": 8,
+   "lock": "reli_open",
+   "rings": [
+    [
+     "rring_i",
+     1.5
+    ],
+    [
+     "rring_o",
+     2.25
+    ]
+   ]
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "rring_i",
+    "rring_o"
+   ],
+   "code": [
+    2,
+    6
+   ],
+   "commit": "reli_pin",
+   "lock": "reli_open",
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The red pin won't go in."
+    }
+   ],
+   "do": [
+    {
+     "set": "reli_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "The pin slides home and the lid lifts. Inside: a green-black stone, warm as skin."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "stone_part",
+   "item": "seal_stone6",
+   "flag": "stone6_taken",
+   "show_if": "reli_open",
+   "then": [
+    {
+     "say": "The sixth seal. It is warm. It should not be warm."
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "mural_hand",
+   "when": "mural_done",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "coffin_dark",
+   "when": "coffin_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "mummy",
+   "when": "coffin_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "mummy_lens",
+   "when": "coffin_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "box:reli",
+   "when": "coffin_open",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "box:reli",
+   "when": "reli_open",
+   "then": {
+    "tappable": false
+   }
+  },
+  {
+   "target": "hinge:reli.top",
+   "when": "reli_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.0
+  },
+  {
+   "target": "stair_gate",
+   "when": "!stone6_taken",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "f1",
+   "when": "!coffin_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "f2",
+   "when": "!coffin_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "f3",
+   "when": "!coffin_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "f4",
+   "when": "!coffin_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "f5",
+   "when": "!coffin_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "f6",
+   "when": "!coffin_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "f7",
+   "when": "!coffin_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "plate",
+   "when": "!coffin_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "tap",
+   "id": "mural_stone",
+   "do": [
+    {
+     "set": "mural_done"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "wait": 0.5
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "say": "The story runs true now: the city, and the sand coming, and the city gone. A slab under the strip slides down on another picture: a seven-fingered hand.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "mural=01234",
+    "!mural_done"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "mural_stone",
+   "do": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The stone doesn't move. The story is told out of order."
+    }
+   ],
+   "when": "!mural_done"
+  },
+  {
+   "on": "tap",
+   "id": "mural_stone",
+   "do": [
+    {
+     "say": "Pressed in."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "mural_hand",
+   "do": [
+    {
+     "say": "A seven-fingered hand. Five fingers have marks over them in the keepers' dots and bars."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "mural_frame",
+   "do": [
+    {
+     "say": "A painted strip of five panels. They lift out of their frame and change places if you touch two in turn."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "plate",
+   "do": [
+    {
+     "say": "A bronze plate in dots and bars: two numbers. Under the first, a small circle; under the second, a large one. The keeper's birth flood and its sealing flood.",
+     "secs": 6
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "mummy",
+   "do": [
+    {
+     "set": "frag6"
+    },
+    {
+     "fragment": true
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "frag6",
+      "Fragment VI",
+      "Through the Lens, on the keeper's wrappings, written over and over in my own hand: E.T. HERE. And under it, Wren's: \"I saw this too, in my dream of the hall, and the initials were mine. They write whoever comes. I think they are telling us where we will be kept.\""
+     ]
+    },
+    {
+     "say": "Through the Lens, on the wrappings, in your own handwriting: E.T. HERE.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "lens",
+    "!frag6"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "mummy_lens",
+   "do": [
+    {
+     "set": "frag6"
+    },
+    {
+     "fragment": true
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "frag6",
+      "Fragment VI",
+      "Through the Lens, on the keeper's wrappings, written over and over in my own hand: E.T. HERE. And under it, Wren's: \"I saw this too, in my dream of the hall, and the initials were mine. They write whoever comes. I think they are telling us where we will be kept.\""
+     ]
+    },
+    {
+     "say": "Through the Lens, on the wrappings, in your own handwriting: E.T. HERE.",
+     "secs": 5
+    }
+   ],
+   "when": "!frag6"
+  },
+  {
+   "on": "tap",
+   "id": "mummy",
+   "do": [
+    {
+     "say": "A keeper, wrapped, standing. Its face is a long, flat thing. Seven fingers on each hand, folded round the box."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "mummy_lens",
+   "do": [
+    {
+     "say": "E.T. HERE."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "coffin_dark",
+   "do": [
+    {
+     "say": "The open coffin. It smells of cinnamon and something under the cinnamon."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "reli_mark",
+   "do": [
+    {
+     "say": "A mark at the top of the rings: whatever stands here is the setting."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "stair_gate",
+   "do": [
+    {
+     "say": "A bronze gate across a stair going up. It is locked by nothing you can see."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "stair",
+   "do": [
+    {
+     "set": "left12"
+    },
+    {
+     "take": "weight1"
+    },
+    {
+     "take": "weight3"
+    },
+    {
+     "take": "weight9"
+    },
+    {
+     "complete_room": [
+      106,
+      "THE SIXTH SEAL",
+      "The gate opens as you come near it. The stair goes up a long way, through sand, into a night with the wrong stars."
+     ]
+    }
+   ],
+   "when": "stone6_taken"
+  },
+  {
+   "on": "tap",
+   "id": "idol_w",
+   "do": [
+    {
+     "say": "Another keeper idol, its face worn away by a thousand years of kissing."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "drift_w",
+   "do": [
+    {
+     "say": "Sand, heaped against the wall as if blown by a wind from inside."
+    }
+   ]
+  }
+ ],
+ "steps": [
+  {
+   "id": "mural",
+   "done": "mural_done",
+   "hints": [
+    "The mural tells a story, but its panels are out of order.",
+    "Order the panels by the sand: no sand on the left, buried on the right. Then press the round stone."
+   ],
+   "solve": [
+    {
+     "set": "mural",
+     "value": "01234"
+    },
+    {
+     "set": "mural_done"
+    }
+   ],
+   "said": "The mural opens."
+  },
+  {
+   "id": "gesture",
+   "done": "coffin_open",
+   "hints": [
+    "The hand in the mural marks five fingers in the keepers' numbers. The coffin has a hand lock with seven fingers.",
+    "Press the coffin's fingers in the order the mural numbers them: fifth, second, seventh, first, fourth (counting from the left)."
+   ],
+   "solve": [
+    {
+     "set": "coffin_open"
+    }
+   ],
+   "said": "The coffin opens."
+  },
+  {
+   "id": "frag",
+   "done": "frag6",
+   "hints": [
+    "The keeper's wrappings have writing you can't see.",
+    "Look at the keeper with the Lens on."
+   ],
+   "solve": [
+    {
+     "set": "frag6"
+    },
+    {
+     "fragment": true
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "frag6",
+      "Fragment VI",
+      "Through the Lens, on the keeper's wrappings, written over and over in my own hand: E.T. HERE. And under it, Wren's: \"I saw this too, in my dream of the hall, and the initials were mine. They write whoever comes. I think they are telling us where we will be kept.\""
+     ]
+    },
+    {
+     "say": "Through the Lens, on the wrappings, in your own handwriting: E.T. HERE.",
+     "secs": 5
+    }
+   ],
+   "said": "Fragment VI."
+  },
+  {
+   "id": "reli",
+   "done": "reli_open",
+   "hints": [
+    "The coffin plate gives two numbers in dots and bars. Remember the weights: a dot is one, a bar is three.",
+    "Turn the inner ring to 3 (one bar) and the outer to 7 (two bars and a dot) under the mark, then push the red pin."
+   ],
+   "solve": [
+    {
+     "set": "rring_i",
+     "value": 2
+    },
+    {
+     "set": "rring_o",
+     "value": 6
+    },
+    {
+     "set": "reli_open"
+    }
+   ],
+   "said": "The box opens."
+  },
+  {
+   "id": "stone",
+   "done": "stone6_taken",
+   "hints": [
+    "The bronze box held the seal.",
+    "Take the stone."
+   ],
+   "solve": [
+    {
+     "give": "seal_stone6"
+    },
+    {
+     "set": "stone6_taken"
+    }
+   ],
+   "said": "The sixth seal."
+  },
+  {
+   "id": "up",
+   "done": "left12",
+   "hints": [
+    "The gate on the stair is open.",
+    "Climb the stair in the south wall."
+   ],
+   "solve": [
+    {
+     "set": "left12"
+    },
+    {
+     "complete_room": [
+      106,
+      "THE SIXTH SEAL",
+      "You climb."
+     ]
+    }
+   ],
+   "said": "Up."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "mural_stone"
+  ],
+  [
+   "tap",
+   "m0"
+  ],
+  [
+   "tap",
+   "m3"
+  ],
+  [
+   "tap",
+   "m2"
+  ],
+  [
+   "tap",
+   "m4"
+  ],
+  [
+   "shot",
+   "mural"
+  ],
+  [
+   "tap",
+   "mural_stone"
+  ],
+  [
+   "expect",
+   "mural_done"
+  ],
+  [
+   "tap",
+   "coffin"
+  ],
+  [
+   "tap",
+   "plate"
+  ],
+  [
+   "tap",
+   "f5"
+  ],
+  [
+   "tap",
+   "f2"
+  ],
+  [
+   "tap",
+   "f7"
+  ],
+  [
+   "tap",
+   "f1"
+  ],
+  [
+   "tap",
+   "f4"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "expect",
+   "coffin_open"
+  ],
+  [
+   "back"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "tap",
+   "mummy_lens"
+  ],
+  [
+   "expect",
+   "frag6"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "tap",
+   "reli"
+  ],
+  [
+   "shot",
+   "reli"
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tapat",
+    "rrings",
+    [
+     0,
+     0.6
+    ]
+   ]
+  ],
+  [
+   "repeat",
+   6,
+   [
+    "tapat",
+    "rrings",
+    [
+     0,
+     1.9
+    ]
+   ]
+  ],
+  [
+   "shot",
+   "reli_set"
+  ],
+  [
+   "tap",
+   "reli_pin"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "expect",
+   "reli_open"
+  ],
+  [
+   "tap",
+   "stone_part"
+  ],
+  [
+   "expect",
+   "stone6_taken"
+  ],
+  [
+   "back"
+  ],
+  [
+   "tap",
+   "stair"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

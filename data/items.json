@@ -234,5 +234,25 @@
  "seal_stone5": [
   "The fifth seal",
   "A pale stone, cold to the core, with a five-pointed star cut into it."
+ ],
+ "weight1": [
+  "Small bronze weight",
+  "A little bronze weight stamped with one dot."
+ ],
+ "weight3": [
+  "Bronze weight",
+  "A bronze weight stamped with a single bar."
+ ],
+ "weight9": [
+  "Heavy bronze weight",
+  "A heavy bronze weight stamped with three bars. Three bars, nine of the small ones: you checked."
+ ],
+ "seal_stone6": [
+  "The sixth seal",
+  "A green-black stone, warm as skin, cut with two bars."
+ ],
+ "slot_eye": [
+  "An eye",
+  "Where a tray slot was. It blinks when you aren't looking."
  ]
 }

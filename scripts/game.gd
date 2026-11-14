@@ -16,6 +16,7 @@ const SEAL_STARTS := [
 	["Seal III: Arkham Sanitarium", 5, "Arkham Sanitarium, after the second seal."],
 	["Seal IV: The Gardner farm", 7, "The Gardner farm, after the third seal."],
 	["Seal V: The ice", 9, "Hut 4, on the plateau, after the fourth seal."],
+	["Seal VI: The city under the sand", 11, "The city under the sand, after the fifth seal."],
 ]
 const HUD_TOP := 56.0
 const HUD_BOTTOM := 76.0
@@ -813,7 +814,11 @@ func _refresh_hud() -> void:
 	for i in 8:
 		var frame: ColorRect = slots[i]["frame"]
 		var icon: TextureRect = slots[i]["icon"]
-		if i < State.inventory.size():
+		if i >= 8 - int(State.flag_value("slots_given", 0)):
+			## a slot given to the keepers: an eye looks out of it for the rest of the game
+			icon.texture = load("res://assets/rooms/item_slot_eye.png")
+			frame.color = Color(0.3, 0.05, 0.05)
+		elif i < State.inventory.size():
 			var item: String = State.inventory[i]
 			icon.texture = load("res://assets/rooms/item_%s.png" % item)
 			frame.color = BRASS if item == selected else Color(0.35, 0.24, 0.14)

@@ -467,7 +467,7 @@
     },
     {
      "complete_room": [
-      99,
+      11,
       "SEAL V OF IX BROKEN",
       "Five seals broken. Four remain.\n\nThe drawer gives you a key to a sealed wing of the Miskatonic library: the room where the city maps are kept. Maps of a city no one built.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
      ]
@@ -575,7 +575,7 @@
     },
     {
      "complete_room": [
-      99,
+      11,
       "SEAL V OF IX BROKEN",
       "Five seals broken. Four remain.\n\nThe drawer gives you a key to a sealed wing of the Miskatonic library: the room where the city maps are kept. Maps of a city no one built.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
      ]

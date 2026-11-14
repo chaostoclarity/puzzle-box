@@ -180,6 +180,13 @@ func cond(c) -> bool:
 		return game.lens_on
 	if s.begins_with("item:"):
 		return State.has_item(s.substr(5))
+	for op in ["==", "<", ">"]:
+		if op in s:
+			## "wl==wr", "wl<wr", "sand>2": compare two flags, or a flag with a number
+			var lr := s.split(op)
+			var x := _num(lr[0])
+			var y := _num(lr[1])
+			return x == y if op == "==" else (x < y if op == "<" else x > y)
 	if "%" in s and "=" in s:
 		## "turns%4=2": the flag's value modulo 4 is 2
 		var name := s.split("%")[0]
@@ -189,6 +196,32 @@ func cond(c) -> bool:
 		var kv := s.split("=")
 		return str(State.flag_value(kv[0], "")) == kv[1] or (str(kv[1]).is_valid_int() and int(State.flag_value(kv[0], -999)) == int(kv[1]))
 	return State.has(s)
+
+
+## Tap one panel, then another: they change places.
+func _swap(p: Dictionary, id: String) -> void:
+	var sel_key: String = p["flag"] + "_sel"
+	var sel: String = str(State.flag_value(sel_key, ""))
+	if sel == "" or sel == id:
+		State.set_flag(sel_key, "" if sel == id else id)
+		game.play("click")
+		if sel == "":
+			game.flash(_part(id))
+		return
+	var order: String = str(State.flag_value(p["flag"], p["start"]))
+	var a: int = p["parts"].find(sel)
+	var b: int = p["parts"].find(id)
+	var ca := order[a]
+	order[a] = order[b]
+	order[b] = ca
+	State.set_flag(sel_key, "")
+	State.set_flag(p["flag"], order)
+	game.play(p.get("sfx", "slide"))
+	await refresh(false)
+
+
+func _num(x: String) -> int:
+	return int(x) if x.is_valid_int() else int(State.flag_value(x, 0))
 
 
 # ---------------- state -> visuals ----------------
@@ -208,6 +241,11 @@ func refresh(animate := true) -> void:
 			"radial":
 				for r in p["rings"]:
 					_part(r[0]).rotation.z = deg_to_rad(float(p.get("rotate", -90))) * int(State.flag_value(r[0], 0))
+			"swap":
+				## {"kind":"swap","parts":[ids],"flag":"order","start":"31402","tex":"mural_%s"}: part i shows tex % order[i]
+				var order: String = str(State.flag_value(p["flag"], p["start"]))
+				for i in p["parts"].size():
+					PixelBox.set_texture(_part(p["parts"][i]), tex(p["tex"] % order[i]))
 			"sequence":
 				var pulled: String = State.flag_value(p["flag"], "")
 				for part_id in p["parts"]:
@@ -433,6 +471,12 @@ func on_tap(id: String, node: Node) -> bool:
 						if r < float(ring[1]):
 							await _turn_radial(p, ring[0])
 							break
+					return true
+			"swap":
+				if id in p["parts"]:
+					if p.has("lock") and cond(p["lock"]):
+						return false
+					await _swap(p, id)
 					return true
 			"sequence":
 				if p["parts"].has(id):
@@ -819,6 +863,7 @@ func _toggle(p: Dictionary, i: int, node: Node3D) -> void:
 
 
 func on_turned() -> void:
+	State.flags["facing"] = "nesw"[game.view]   ## "facing=e": which wall you're looking at
 	await refresh(false)
 	set_lens(game.lens_on)
 
@@ -850,6 +895,8 @@ func on_moved() -> void:
 					to_run.append(p)
 			"tick":
 				## {"kind":"tick","flag":"heat","every":6,"step":-1,"min":0}: the hut cools as you work
+				if not cond(p.get("while")):
+					continue   ## "while": the sand only runs while nobody is watching it
 				var k: String = p["flag"] + "#"
 				var cnt := int(State.flag_value(k, 0)) + 1
 				if cnt >= int(p["every"]):
