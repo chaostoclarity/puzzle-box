@@ -96,6 +96,10 @@ func _ready() -> void:
 		load_room(1)
 		_autotest()
 		return
+	if OS.has_feature("web") and "seal=2" in str(JavaScriptBridge.eval("location.search")):
+		drone.play()
+		_skip_to_seal2()
+		return
 	var has_save := State.load_game()
 	load_room(State.room if has_save else 1)
 	_title_screen(has_save)
@@ -889,18 +893,22 @@ func _title_screen(has_save: bool) -> void:
 	var choice: String = await _dialog("THE NINEFOLD SEAL", text, buttons)
 	drone.play()
 	if choice == SKIP_LABEL:
-		## Playtest shortcut: start seal II as if seal I were done.
-		State.reset()
-		State.inventory = ["lens", "seal_stone"]
-		State.fragments = 1
-		load_room(101)
-		say("Thorne's study, after the first seal.", 5.0)
+		_skip_to_seal2()
 		return
 	if choice == "Start over":
 		State.reset()
 		load_room(1)
 	if choice != "Continue":
 		say("Wren's study. The door is locked from the inside.", 5.0)
+
+
+## Playtest shortcut: start seal II as if seal I were done. Also reachable with ?seal=2 in the URL.
+func _skip_to_seal2() -> void:
+	State.reset()
+	State.inventory = ["lens", "seal_stone"]
+	State.fragments = 1
+	load_room(101)
+	say("Thorne's study, after the first seal.", 5.0)
 
 
 func open_journal() -> void:

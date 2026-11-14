@@ -1,0 +1,6 @@
+{
+  "headers": [
+    {"source": "/(index.html|index.pck|index.js|)", "headers": [{"key": "Cache-Control", "value": "no-cache, must-revalidate"}]},
+    {"source": "/", "headers": [{"key": "Cache-Control", "value": "no-cache, must-revalidate"}]}
+  ]
+}
