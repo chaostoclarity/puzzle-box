@@ -19,16 +19,18 @@ Escape rooms and nested puzzle boxes, The Room style, Lovecraftian. You play Eli
 ## Code map
 - scripts/game.gd: camera, modes (ROOM, ZOOM, BOX), input, HUD, hints and bargains, journal, audio, autotest.
 - scripts/state.gd: autoload `State`. Flags, inventory, journal, bargains. Saved after every change.
-- scripts/room.gd: base room. Walls, furniture, sprites, hero boxes, steps, walkthrough.
+- scripts/room.gd: base room. Walls, furniture, sprites, hero boxes, facing, Lens.
+- scripts/data_room.gd: builds and runs any room from its JSON file. Puzzle kinds, bindings, actions.
 - scripts/pixel_box.gd: any box from six pixel faces. Parts, hinges.
-- scripts/rooms/roomN_*.gd: one file per room. build(), apply_state(), on_tap(), on_use(), steps, walkthrough.
+- data/rooms/roomN_*.json: one file per room. No room has its own code. Format: docs/puzzle-format.md.
 
-## Adding a room
-1. Art in tools/make_room_art.py (16 texels per unit). Run it.
-2. Room script: build the walls and objects, write apply_state() so every visual follows flags.
-3. steps: each with done(), two hints, and a solve() used by the bargain.
-4. walkthrough: the real taps that solve the room. The autotest plays it.
-5. Register it in game.gd ROOMS.
+## Adding a room or a puzzle
+1. Art in tools/make_room_art.py (16 texels per unit). Run it, then `python3 tools/art_lint.py check` (must be 0 problems).
+2. Describe it in the room's JSON: objects, puzzles, bindings (every visual follows flags), interactions.
+3. Main-path puzzles get a step: done condition, two hints, and the solve actions the Whisper's bargain uses.
+4. walkthrough: the real taps that solve it. The autotest plays it.
+5. New rooms: register in game.gd ROOMS.
+Art brief (style, sizes, palette rules): https://claude.ai/artifact/7zvHBNiA8YfQN7kr6eGhwy
 
 ## Verify every change
 - `xvfb-run -a godot --path . --rendering-driver opengl3 -- --autotest` plays every room with real taps, saves screenshots to user://shots, prints AUTOTEST FAILS. It must be 0.

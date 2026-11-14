@@ -1,0 +1,1957 @@
+{
+ "title": "Wren's Study",
+ "walls": "r1_wall_",
+ "objects": [
+  {
+   "type": "furniture",
+   "wall": "n",
+   "id": "desk",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    7,
+    3.5,
+    3
+   ],
+   "faces": {
+    "front": "desk_front",
+    "top": "wood_top_112x48",
+    "default": "wood_side_48x56"
+   },
+   "zoom": {
+    "dy": 1.8,
+    "w": 7.6,
+    "h": 7.0
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.9
+     ],
+     "size": [
+      3,
+      1
+     ],
+     "tex": "drawer",
+     "id": "drawer",
+     "depth": 0.02
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.6,
+      1.2
+     ],
+     "size": [
+      0.75,
+      0.5
+     ],
+     "tex": "drawer_matches",
+     "id": "drawer_matches"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.6,
+      1.2
+     ],
+     "size": [
+      0.75,
+      0.5
+     ],
+     "tex": "drawer_photo",
+     "id": "drawer_photo"
+    }
+   ]
+  },
+  {
+   "type": "furniture",
+   "wall": "n",
+   "id": "clock",
+   "pos": [
+    -5.2,
+    7
+   ],
+   "size": [
+    2,
+    4,
+    1
+   ],
+   "faces": {
+    "front": "clock_front",
+    "default": "dark_side_32x96"
+   },
+   "zoom": {},
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.875
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "clock_hand",
+     "id": "clock_hand",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -1.375
+     ],
+     "size": [
+      0.75,
+      0.5
+     ],
+     "tex": "small_brass_key",
+     "id": "clock_key",
+     "depth": 0.025
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -1.375
+     ],
+     "size": [
+      1.25,
+      1
+     ],
+     "tex": "clock_door",
+     "id": "clock_door",
+     "depth": 0.035
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "lamp",
+   "center": [
+    2.6,
+    4.75
+   ],
+   "size": [
+    1.5,
+    2.5
+   ],
+   "tex": "lamp",
+   "depth": 1.6
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "glow",
+   "center": [
+    2.6,
+    5.3
+   ],
+   "size": [
+    4,
+    4
+   ],
+   "tex": "glow",
+   "depth": 1.5,
+   "tappable": false,
+   "additive": true
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "letter",
+   "center": [
+    1.0,
+    4.0
+   ],
+   "size": [
+    1.25,
+    1
+   ],
+   "tex": "letter",
+   "depth": 2.3
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "diploma",
+   "center": [
+    3.6,
+    10
+   ],
+   "size": [
+    4,
+    3
+   ],
+   "tex": "diploma"
+  },
+  {
+   "type": "furniture",
+   "wall": "e",
+   "id": "bookshelf",
+   "pos": [
+    -2,
+    0
+   ],
+   "size": [
+    8,
+    13,
+    1.5
+   ],
+   "faces": {
+    "front": "bookshelf",
+    "top": "wood_top_128x24",
+    "default": "wood_side_24x208"
+   },
+   "zoom": {
+    "k": 2,
+    "dx": 0.6,
+    "dy": -0.6,
+    "w": 8,
+    "h": 9
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      -0.875,
+      -0.094
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_blue",
+     "id": "book_blue"
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.125,
+      -0.094
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_red",
+     "id": "book_red"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.625,
+      -0.094
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_green",
+     "id": "book_green"
+    },
+    {
+     "face": "front",
+     "uv": [
+      2.5,
+      -0.3
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "small_ring",
+     "id": "ring_part",
+     "depth": 0.025
+    },
+    {
+     "face": "front",
+     "uv": [
+      2.5,
+      -0.28
+     ],
+     "size": [
+      1.5,
+      1.5
+     ],
+     "tex": "compartment",
+     "id": "compartment",
+     "depth": 0.035
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "globe",
+   "center": [
+    4.8,
+    1.5
+   ],
+   "size": [
+    2,
+    3
+   ],
+   "tex": "globe_0",
+   "depth": 0.8
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "door",
+   "center": [
+    -2.5,
+    4
+   ],
+   "size": [
+    4.5,
+    8
+   ],
+   "tex": "door",
+   "depth": 0.05
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "sampler",
+   "center": [
+    -2.5,
+    10.5
+   ],
+   "size": [
+    3,
+    2
+   ],
+   "tex": "sampler"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "coatrack",
+   "center": [
+    3.5,
+    3
+   ],
+   "size": [
+    1.5,
+    6
+   ],
+   "tex": "coatrack",
+   "depth": 0.5
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "window",
+   "center": [
+    -3.5,
+    9
+   ],
+   "size": [
+    4,
+    8
+   ],
+   "tex": "window"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "portrait",
+   "center": [
+    3.2,
+    10.6
+   ],
+   "size": [
+    4,
+    5
+   ],
+   "tex": "portrait"
+  },
+  {
+   "type": "furniture",
+   "wall": "w",
+   "id": "cabinet",
+   "pos": [
+    3.2,
+    0
+   ],
+   "size": [
+    3.5,
+    6,
+    2
+   ],
+   "faces": {
+    "front": "cabinet_front",
+    "top": "dark_top_56x32",
+    "default": "dark_side_32x96"
+   },
+   "zoom": {}
+  },
+  {
+   "type": "box",
+   "name": "walnut",
+   "wall": "n",
+   "pos": [
+    -1.9,
+    5.0
+   ],
+   "depth": 1.6,
+   "scale": 0.5,
+   "view": "front",
+   "faces": {
+    "front": "outer_front",
+    "back": "outer_back",
+    "left": "outer_left",
+    "right": "outer_right",
+    "top": "outer_top",
+    "bottom": "outer_bottom"
+   },
+   "liner": "liner",
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "walnut",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -1.2
+     ],
+     "size": [
+      1.5,
+      1.5
+     ],
+     "tex": "lock",
+     "id": "walnut_lock"
+    },
+    {
+     "face": "left",
+     "uv": [
+      -1.6,
+      0
+     ],
+     "size": [
+      1.25,
+      1.25
+     ],
+     "tex": "dial_sun",
+     "id": "dial0"
+    },
+    {
+     "face": "left",
+     "uv": [
+      0,
+      0
+     ],
+     "size": [
+      1.25,
+      1.25
+     ],
+     "tex": "dial_sun",
+     "id": "dial1"
+    },
+    {
+     "face": "left",
+     "uv": [
+      1.6,
+      0
+     ],
+     "size": [
+      1.25,
+      1.25
+     ],
+     "tex": "dial_sun",
+     "id": "dial2"
+    },
+    {
+     "face": "right",
+     "uv": [
+      0,
+      -0.5
+     ],
+     "size": [
+      1.5,
+      1.5
+     ],
+     "tex": "item_iron_key",
+     "id": "iron_key_part",
+     "depth": 0.015
+    },
+    {
+     "face": "right",
+     "uv": [
+      0,
+      -0.5
+     ],
+     "size": [
+      2,
+      2
+     ],
+     "tex": "panel",
+     "id": "panel",
+     "depth": 0.03
+    }
+   ],
+   "children": [
+    {
+     "name": "walnut_mini",
+     "faces": {
+      "front": "inner_front",
+      "back": "inner_back",
+      "left": "inner_left",
+      "right": "inner_right",
+      "top": "inner_top",
+      "bottom": "inner_bottom"
+     },
+     "liner": "liner",
+     "hinges": [
+      [
+       "top",
+       "top"
+      ]
+     ],
+     "blocker": "dive:walnut_inner",
+     "scale": 0.4,
+     "pos": [
+      0,
+      -1.74,
+      0
+     ],
+     "parts": [
+      {
+       "face": "top",
+       "uv": [
+        0,
+        0
+       ],
+       "size": [
+        1.5,
+        1.5
+       ],
+       "tex": "wax_seal",
+       "id": "mini_wax",
+       "tappable": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "stage_box",
+   "name": "walnut_inner",
+   "view": "top",
+   "faces": {
+    "front": "inner_front",
+    "back": "inner_back",
+    "left": "inner_left",
+    "right": "inner_right",
+    "top": "inner_top",
+    "bottom": "inner_bottom"
+   },
+   "liner": "liner",
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "walnut_inner",
+   "parts": [
+    {
+     "face": "top",
+     "uv": [
+      0,
+      0
+     ],
+     "size": [
+      1.5,
+      1.5
+     ],
+     "tex": "wax_seal",
+     "id": "wax"
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "door_key_part",
+     "tex": "item_door_key",
+     "size": [
+      1.5,
+      1.5
+     ],
+     "pos": [
+      0,
+      -2.85,
+      0
+     ],
+     "rot": [
+      -90,
+      0,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "cycler",
+   "part": "clock_hand",
+   "flag": "clock_hour",
+   "count": 12,
+   "start": 7,
+   "rotate": -30,
+   "sfx": "tick",
+   "lock": "clock_open",
+   "locked_say": "The clock has given up its secret.",
+   "on": {
+    "3": [
+     {
+      "wait": 0.15
+     },
+     {
+      "set": "clock_open"
+     },
+     {
+      "sfx": "unlock"
+     },
+     {
+      "say": "Three. A little door in the clock's case clicks open."
+     }
+    ]
+   }
+  },
+  {
+   "kind": "pickup",
+   "part": "clock_key",
+   "item": "brass_key",
+   "flag": "brass_taken",
+   "show_if": "clock_open",
+   "then": [
+    {
+     "say": "A small brass key."
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "dial0",
+   "flag": "dial0",
+   "count": 4,
+   "textures": [
+    "dial_sun",
+    "dial_moon",
+    "dial_star",
+    "dial_eye"
+   ],
+   "lock": "panel_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "dial1",
+   "flag": "dial1",
+   "count": 4,
+   "textures": [
+    "dial_sun",
+    "dial_moon",
+    "dial_star",
+    "dial_eye"
+   ],
+   "lock": "panel_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "dial2",
+   "flag": "dial2",
+   "count": 4,
+   "textures": [
+    "dial_sun",
+    "dial_moon",
+    "dial_star",
+    "dial_eye"
+   ],
+   "lock": "panel_open"
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "dial0",
+    "dial1",
+    "dial2"
+   ],
+   "code": [
+    1,
+    3,
+    2
+   ],
+   "lock": "panel_open",
+   "do": [
+    {
+     "set": "panel_open"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "refresh": true
+    },
+    {
+     "say": "Something clicks inside the box. A panel slides open."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "iron_key_part",
+   "item": "iron_key",
+   "flag": "iron_taken",
+   "show_if": "panel_open",
+   "then": [
+    {
+     "say": "An iron key. The bow is stamped with a drawer pull."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "drawer_matches",
+   "item": "matches",
+   "flag": "matches_taken",
+   "show_if": "drawer_open",
+   "then": [
+    {
+     "say": "A box of matches."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "drawer_photo",
+   "item": "photo",
+   "flag": "photo_taken",
+   "show_if": "drawer_open",
+   "sfx": "paper",
+   "then": [
+    {
+     "journal": [
+      "photo",
+      "A photograph",
+      "Wren at his own bookshelf, younger. Someone has inked numbers over three of the books: 1, 2, 3."
+     ]
+    },
+    {
+     "say": "A photograph. Hold it in your tray to look closer."
+    }
+   ]
+  },
+  {
+   "kind": "dark",
+   "wall": "e",
+   "until": "lamp_lit",
+   "dim": 0.25,
+   "anim": 1.2,
+   "say": "Too dark to make anything out over here."
+  },
+  {
+   "kind": "sequence",
+   "flag": "books",
+   "order": "gbr",
+   "lock": "comp_open",
+   "parts": {
+    "book_green": "g",
+    "book_blue": "b",
+    "book_red": "r"
+   },
+   "tex": {
+    "book_green": "book_green",
+    "book_blue": "book_blue",
+    "book_red": "book_red"
+   },
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The books slide back into place on their own."
+    }
+   ],
+   "do": [
+    {
+     "set": "comp_open"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "A panel in the shelf swings open."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "ring_part",
+   "item": "ring",
+   "flag": "ring_taken",
+   "show_if": "comp_open",
+   "then": [
+    {
+     "journal": [
+      "ring",
+      "Wren's ring",
+      "His signet ring, hidden in his own bookshelf. A W cut into the bezel. It fits my finger exactly."
+     ]
+    },
+    {
+     "say": "Wren's signet ring."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "door_key_part",
+   "item": "door_key",
+   "flag": "door_key_taken",
+   "show_if": "wax_broken",
+   "then": [
+    {
+     "say": "A black iron key. The study door's, surely."
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "globe",
+   "flag": "globe_turn",
+   "count": 4,
+   "start": 0,
+   "spin": false,
+   "sfx": "turn",
+   "textures": [
+    "globe_0",
+    "globe_1",
+    "globe_2",
+    "globe_3"
+   ],
+   "lock": "globe_open",
+   "locked_say": "The globe won't turn now. The drawer in its stand is open.",
+   "on": {
+    "2": [
+     {
+      "wait": 0.2
+     },
+     {
+      "set": "globe_open"
+     },
+     {
+      "sfx": "unlock"
+     },
+     {
+      "journal": [
+       "diary",
+       "A torn diary page",
+       "Folded in the globe's stand, in Wren's hand:\n\n\"The mark in the Pacific is not an island. It is where the cabinet was made, under the water, by hands that were not hands. I have been there in dreams. The door was open.\""
+      ]
+     },
+     {
+      "say": "The scratched mark faces you. A drawer in the stand clicks open.",
+      "secs": 5
+     }
+    ]
+   }
+  }
+ ],
+ "bindings": [
+  {
+   "target": "clock_door",
+   "when": "clock_open",
+   "then": {
+    "texture": "clock_door_open",
+    "tappable": false
+   },
+   "else": {
+    "texture": "clock_door",
+    "tappable": true
+   }
+  },
+  {
+   "target": "panel",
+   "when": "panel_open",
+   "then": {
+    "offset": [
+     0,
+     2
+    ],
+    "tappable": false
+   },
+   "else": {
+    "offset": [
+     0,
+     0
+    ],
+    "tappable": true
+   },
+   "anim": 0.6
+  },
+  {
+   "target": "drawer",
+   "when": "drawer_open",
+   "then": {
+    "texture": "drawer_open",
+    "tappable": false
+   },
+   "else": {
+    "texture": "drawer",
+    "tappable": true
+   }
+  },
+  {
+   "target": "lamp",
+   "when": "lamp_lit",
+   "then": {
+    "texture": "lamp_lit"
+   },
+   "else": {
+    "texture": "lamp"
+   }
+  },
+  {
+   "target": "glow",
+   "when": "lamp_lit",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "compartment",
+   "when": "comp_open",
+   "then": {
+    "texture": "compartment_open",
+    "tappable": false
+   },
+   "else": {
+    "texture": "compartment",
+    "tappable": true
+   }
+  },
+  {
+   "target": "walnut_lock",
+   "when": "box_unlocked",
+   "then": {
+    "texture": "lock_open"
+   },
+   "else": {
+    "texture": "lock"
+   }
+  },
+  {
+   "target": "hinge:walnut.top",
+   "when": "box_unlocked",
+   "then": {
+    "hinge": 115
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 0.9,
+   "delay": 0.4
+  },
+  {
+   "target": "box:walnut",
+   "when": "box_unlocked",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "wax",
+   "when": "wax_broken",
+   "then": {
+    "texture": "wax_broken"
+   },
+   "else": {
+    "texture": "wax_seal"
+   }
+  },
+  {
+   "target": "mini_wax",
+   "when": "wax_broken",
+   "then": {
+    "texture": "wax_broken"
+   },
+   "else": {
+    "texture": "wax_seal"
+   }
+  },
+  {
+   "target": "hinge:walnut_inner.top",
+   "when": "wax_broken",
+   "then": {
+    "hinge": 115
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 0.9
+  },
+  {
+   "target": "hinge:walnut_mini.top",
+   "when": "wax_broken",
+   "then": {
+    "hinge": 115
+   },
+   "else": {
+    "hinge": 0
+   }
+  },
+  {
+   "target": "box:walnut_inner",
+   "when": "wax_broken",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "door",
+   "when": "door_open",
+   "then": {
+    "texture": "door_open"
+   },
+   "else": {
+    "texture": "door"
+   }
+  },
+  {
+   "target": "globe",
+   "when": "globe_open",
+   "then": {
+    "texture": "globe_open"
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "tap",
+   "id": "letter",
+   "do": [
+    {
+     "set": "letter_read"
+    },
+    {
+     "sfx": "paper"
+    },
+    {
+     "journal": [
+      "letter",
+      "Wren's letter",
+      "\"Elias. Do not open it. I opened three.\n\nIf you must be the fool I was, begin at our hour. Three bells, as always. The box remembers what I forget.\n\nH.W.\""
+     ]
+    },
+    {
+     "say": "\"Do not open it. I opened three.\" The letter is in your journal.",
+     "secs": 5
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "clock_door",
+   "when": "!clock_open",
+   "do": [
+    {
+     "shake": true
+    },
+    {
+     "say": "A small door in the clock case. It won't open."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "panel",
+   "when": "!panel_open",
+   "do": [
+    {
+     "shake": true
+    },
+    {
+     "say": "A sliding panel. It's locked in place."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "walnut_lock",
+   "when": "!box_unlocked",
+   "do": [
+    {
+     "shake": true
+    },
+    {
+     "say": "A brass keyhole, very small."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "brass_key",
+   "id": "walnut_lock",
+   "do": [
+    {
+     "take": "brass_key"
+    },
+    {
+     "set": "box_unlocked"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "Click. The lid lifts."
+    },
+    {
+     "refresh": true
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "Inside, a smaller box, sealed with wax."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "drawer",
+   "when": "!drawer_open",
+   "do": [
+    {
+     "shake": true
+    },
+    {
+     "say": "The desk drawer is locked. Iron, by the look of the keyhole."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "iron_key",
+   "id": "drawer",
+   "do": [
+    {
+     "take": "iron_key"
+    },
+    {
+     "set": "drawer_open"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "The drawer slides open."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "lamp",
+   "when": "lamp_lit",
+   "do": [
+    {
+     "say": "The flame leans toward you."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "lamp",
+   "do": [
+    {
+     "say": "An oil lamp, cold. There's still oil in it."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "matches",
+   "id": "lamp",
+   "do": [
+    {
+     "take": "matches"
+    },
+    {
+     "set": "lamp_lit"
+    },
+    {
+     "sfx": "match"
+    },
+    {
+     "say": "The wick catches. Light reaches the far wall."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "compartment",
+   "when": "!comp_open",
+   "do": [
+    {
+     "say": "A square panel, flush with the shelf. No handle."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "wax",
+   "when": "!wax_broken",
+   "do": [
+    {
+     "say": "Red wax, stamped with a W."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "ring",
+   "id": "wax",
+   "do": [
+    {
+     "take": "ring"
+    },
+    {
+     "set": "wax_broken"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "The ring fits the seal. The wax splits like it was waiting."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "door",
+   "when": "!door_open",
+   "do": [
+    {
+     "shake": true
+    },
+    {
+     "say": "Locked from the inside. Wren never left this room by the door."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "door_key",
+   "id": "door",
+   "do": [
+    {
+     "take": "door_key"
+    },
+    {
+     "set": "door_open"
+    },
+    {
+     "sfx": "door"
+    },
+    {
+     "say": "The door opens. It does not open onto the corridor.",
+     "secs": 4
+    },
+    {
+     "wait": 1.2
+    },
+    {
+     "complete_room": [
+      2,
+      "The Restricted Stacks",
+      "Beyond Wren's door is not the hallway but the library's locked stacks, two floors below, where you have never been allowed.\n\nThe door closes behind you. There is no handle on this side."
+     ]
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "portrait",
+   "do": [
+    {
+     "journal": [
+      "portrait",
+      "Wren's portrait",
+      "Hollis Wren, painted the year he took the chair. The painter got the eyes wrong. They look past you, at the cabinet."
+     ]
+    },
+    {
+     "say": "Professor Wren. The eyes look past you, toward the cabinet."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "cabinet",
+   "handled": false,
+   "do": [
+    {
+     "journal": [
+      "cabinet",
+      "The cabinet",
+      "Black lacquer, nine wax seals. Three are cracked through. 'I opened three,' he wrote. The other six are whole, and warm to the touch."
+     ]
+    },
+    {
+     "say": "Nine seals. Three are cracked. The rest are warm."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "window",
+   "do": [
+    {
+     "say": "Snow on the quad. Nobody has walked across it in days."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "diploma",
+   "do": [
+    {
+     "say": "Hollis Wren, Doctor of Philology. Yours hangs in a smaller frame."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "sampler",
+   "do": [
+    {
+     "say": "Needlepoint, in a script you almost recognise."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "coatrack",
+   "do": [
+    {
+     "say": "Wren's coat. He went somewhere without it."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "globe",
+   "when": "globe_open",
+   "do": [
+    {
+     "say": "Wren's globe. The mark in the South Pacific stares back."
+    }
+   ]
+  }
+ ],
+ "steps": [
+  {
+   "id": "letter",
+   "done": "letter_read",
+   "hints": [
+    "Wren left something for you on his desk.",
+    "Read the letter propped by the lamp on the desk (north wall)."
+   ],
+   "solve": [
+    {
+     "set": "letter_read"
+    },
+    {
+     "journal": [
+      "letter",
+      "Wren's letter",
+      "\"Elias. Do not open it. I opened three.\n\nIf you must be the fool I was, begin at our hour. Three bells, as always. The box remembers what I forget.\n\nH.W.\""
+     ]
+    }
+   ],
+   "said": "The letter unfolds itself on the desk."
+  },
+  {
+   "id": "clock",
+   "done": "clock_open",
+   "hints": [
+    "Wren's letter names an hour.",
+    "Tap the wall clock's hand until it points to three."
+   ],
+   "solve": [
+    {
+     "set": "clock_hour",
+     "value": 3
+    },
+    {
+     "set": "clock_open"
+    }
+   ],
+   "said": "The clock's hand creeps round to three on its own."
+  },
+  {
+   "id": "brass",
+   "done": "brass_taken",
+   "hints": [
+    "The clock opened a little door.",
+    "Take the brass key from the base of the wall clock."
+   ],
+   "solve": [
+    {
+     "give": "brass_key"
+    },
+    {
+     "set": "brass_taken"
+    }
+   ],
+   "said": "The brass key is in your pocket. You don't remember taking it."
+  },
+  {
+   "id": "dials",
+   "done": "panel_open",
+   "hints": [
+    "The walnut box has a plaque on one face and dials on another.",
+    "Turn the box's dials to moon, eye, star (left to right), as the back plaque shows."
+   ],
+   "solve": [
+    {
+     "set": "dial0",
+     "value": 1
+    },
+    {
+     "set": "dial1",
+     "value": 3
+    },
+    {
+     "set": "dial2",
+     "value": 2
+    },
+    {
+     "set": "panel_open"
+    }
+   ],
+   "said": "The dials turn themselves. A panel slides open."
+  },
+  {
+   "id": "iron",
+   "done": "iron_taken",
+   "hints": [
+    "A panel on the walnut box slid open.",
+    "Take the iron key from behind the walnut box's sliding panel."
+   ],
+   "solve": [
+    {
+     "give": "iron_key"
+    },
+    {
+     "set": "iron_taken"
+    }
+   ],
+   "said": "The iron key is in your hand."
+  },
+  {
+   "id": "drawer",
+   "done": "drawer_open",
+   "hints": [
+    "Something on the desk is locked.",
+    "Use the iron key on the desk drawer."
+   ],
+   "solve": [
+    {
+     "take": "iron_key"
+    },
+    {
+     "set": "drawer_open"
+    }
+   ],
+   "said": "The desk drawer slides open."
+  },
+  {
+   "id": "drawer_items",
+   "done": [
+    "matches_taken",
+    "photo_taken"
+   ],
+   "hints": [
+    "The drawer has things in it.",
+    "Take the matches and the photograph from the desk drawer."
+   ],
+   "solve": [
+    {
+     "give": "matches"
+    },
+    {
+     "set": "matches_taken"
+    },
+    {
+     "give": "photo"
+    },
+    {
+     "set": "photo_taken"
+    }
+   ],
+   "said": "Matches and a photograph, in your pocket."
+  },
+  {
+   "id": "lamp",
+   "done": "lamp_lit",
+   "hints": [
+    "One wall of the study is too dark to see.",
+    "Use the matches on the oil lamp on the desk."
+   ],
+   "solve": [
+    {
+     "take": "matches"
+    },
+    {
+     "set": "lamp_lit"
+    }
+   ],
+   "said": "The lamp catches. The east wall comes out of the dark."
+  },
+  {
+   "id": "books",
+   "done": "comp_open",
+   "hints": [
+    "Hold the photograph to examine it. Someone numbered three books.",
+    "In the bookshelf, pull the green book, then the blue, then the red."
+   ],
+   "solve": [
+    {
+     "set": "books",
+     "value": "gbr"
+    },
+    {
+     "set": "comp_open"
+    }
+   ],
+   "said": "Three books slide out. A panel in the shelf opens."
+  },
+  {
+   "id": "ring",
+   "done": "ring_taken",
+   "hints": [
+    "A compartment in the bookshelf is open.",
+    "Take the ring from the bookshelf compartment."
+   ],
+   "solve": [
+    {
+     "give": "ring"
+    },
+    {
+     "set": "ring_taken"
+    }
+   ],
+   "said": "Wren's ring is on your finger. It fits too well."
+  },
+  {
+   "id": "box_lock",
+   "done": "box_unlocked",
+   "hints": [
+    "The walnut box has a keyhole on its front.",
+    "Use the small brass key on the walnut box's lock."
+   ],
+   "solve": [
+    {
+     "take": "brass_key"
+    },
+    {
+     "set": "box_unlocked"
+    }
+   ],
+   "said": "The walnut box unlocks and its lid rises."
+  },
+  {
+   "id": "wax",
+   "done": "wax_broken",
+   "hints": [
+    "Inside the walnut box is a smaller box, sealed with a W.",
+    "Look inside the walnut box, touch the small box, and press the signet ring into its wax."
+   ],
+   "solve": [
+    {
+     "take": "ring"
+    },
+    {
+     "set": "wax_broken"
+    }
+   ],
+   "said": "The wax splits. The small box opens."
+  },
+  {
+   "id": "door_key",
+   "done": "door_key_taken",
+   "hints": [
+    "The small box held something.",
+    "Take the key from inside the small box."
+   ],
+   "solve": [
+    {
+     "give": "door_key"
+    },
+    {
+     "set": "door_key_taken"
+    }
+   ],
+   "said": "The door key is cold in your hand."
+  },
+  {
+   "id": "door",
+   "done": "door_open",
+   "hints": [
+    "You have what you need to leave.",
+    "Use the door key on the study door (south wall)."
+   ],
+   "solve": [
+    {
+     "take": "door_key"
+    },
+    {
+     "set": "door_open"
+    },
+    {
+     "sfx": "door"
+    },
+    {
+     "say": "The door opens. It does not open onto the corridor.",
+     "secs": 4
+    },
+    {
+     "wait": 1.2
+    },
+    {
+     "complete_room": [
+      2,
+      "The Restricted Stacks",
+      "Beyond Wren's door is not the hallway but the library's locked stacks, two floors below, where you have never been allowed.\n\nThe door closes behind you. There is no handle on this side."
+     ]
+    }
+   ],
+   "said": "The door opens."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "letter"
+  ],
+  [
+   "shot",
+   "letter"
+  ],
+  [
+   "tap",
+   "clock"
+  ],
+  [
+   "shot",
+   "clock_zoom"
+  ],
+  [
+   "back"
+  ],
+  [
+   "repeat",
+   8,
+   [
+    "tap",
+    "clock_hand"
+   ]
+  ],
+  [
+   "shot",
+   "clock_open"
+  ],
+  [
+   "tap",
+   "clock_key"
+  ],
+  [
+   "expect",
+   "brass_taken"
+  ],
+  [
+   "tap",
+   "desk"
+  ],
+  [
+   "shot",
+   "desk_zoom"
+  ],
+  [
+   "back"
+  ],
+  [
+   "tap",
+   "walnut"
+  ],
+  [
+   "shot",
+   "box_front"
+  ],
+  [
+   "face",
+   "back"
+  ],
+  [
+   "shot",
+   "box_back"
+  ],
+  [
+   "tap",
+   "dial0"
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "dial1"
+   ]
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tap",
+    "dial2"
+   ]
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "shot",
+   "box_panel_open"
+  ],
+  [
+   "expect",
+   "panel_open"
+  ],
+  [
+   "tap",
+   "iron_key_part"
+  ],
+  [
+   "back"
+  ],
+  [
+   "tap",
+   "bookshelf"
+  ],
+  [
+   "shot",
+   "east_dark"
+  ],
+  [
+   "back"
+  ],
+  [
+   "use",
+   "iron_key",
+   "drawer"
+  ],
+  [
+   "tap",
+   "drawer_matches"
+  ],
+  [
+   "tap",
+   "drawer_photo"
+  ],
+  [
+   "examine",
+   "photo"
+  ],
+  [
+   "use",
+   "matches",
+   "lamp"
+  ],
+  [
+   "shot",
+   "lamp_lit"
+  ],
+  [
+   "tap",
+   "book_green"
+  ],
+  [
+   "tap",
+   "book_red"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "tap",
+   "book_green"
+  ],
+  [
+   "tap",
+   "book_blue"
+  ],
+  [
+   "tap",
+   "book_red"
+  ],
+  [
+   "wait",
+   0.8
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tap",
+    "globe"
+   ]
+  ],
+  [
+   "wait",
+   0.6
+  ],
+  [
+   "expect",
+   "globe_open"
+  ],
+  [
+   "shot",
+   "globe_open"
+  ],
+  [
+   "shot",
+   "shelf_open"
+  ],
+  [
+   "tap",
+   "ring_part"
+  ],
+  [
+   "expect",
+   "ring_taken"
+  ],
+  [
+   "tap",
+   "cabinet"
+  ],
+  [
+   "shot",
+   "west"
+  ],
+  [
+   "back"
+  ],
+  [
+   "tap",
+   "portrait"
+  ],
+  [
+   "use",
+   "brass_key",
+   "walnut_lock"
+  ],
+  [
+   "wait",
+   2.5
+  ],
+  [
+   "shot",
+   "box_open"
+  ],
+  [
+   "tap",
+   "dive:walnut_inner"
+  ],
+  [
+   "shot",
+   "inner_box"
+  ],
+  [
+   "use",
+   "ring",
+   "wax"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "shot",
+   "inner_open"
+  ],
+  [
+   "tap",
+   "door_key_part"
+  ],
+  [
+   "expect",
+   "door_key_taken"
+  ],
+  [
+   "back"
+  ],
+  [
+   "back"
+  ],
+  [
+   "journal"
+  ],
+  [
+   "swipe",
+   80.0
+  ],
+  [
+   "swipe",
+   80.0
+  ],
+  [
+   "shot",
+   "south_by_swipe"
+  ],
+  [
+   "hint"
+  ],
+  [
+   "shot",
+   "hint1"
+  ],
+  [
+   "hint"
+  ],
+  [
+   "hint"
+  ]
+ ]
+}

@@ -1,0 +1,63 @@
+# Room file format (data/rooms/*.json)
+
+Every room is one JSON file. scripts/data_room.gd reads it. No room has its own code.
+Units: world units, 16 texels each. Walls are 15 wide (x from -7.5 to 7.5) and 22 tall (y from 0).
+Wall keys: n, e, s, w. Textures are file names in assets/rooms/ (or assets/) without .png.
+
+## Top level
+| Key | What it is |
+| --- | --- |
+| title | Shown in the top bar. |
+| walls | Texture prefix: "r1_wall_" uses r1_wall_n, r1_wall_e, ... |
+| on_enter | Actions run once when the room is built (journal entries). |
+| objects | Everything in the room (below). |
+| puzzles | Built-in puzzle kinds (below). |
+| bindings | How each visual follows the state (below). |
+| interactions | What happens when you tap something, or use an item on it. |
+| steps | The main path, in order: hints and the bargain's solution. |
+| walkthrough | The taps the autotest plays to solve the room. |
+
+## Objects
+- furniture: `{"type":"furniture","wall":"n","id":"desk","pos":[x, y_base],"size":[w,h,d],"faces":{"front":tex,"top":tex,"default":tex},"zoom":{},"parts":[...]}`
+  zoom (optional): k (2 to 4 pixel zoom), dx/dy (aim offset), w/h (area to fit). Tapping furniture zooms in.
+- sprite: `{"type":"sprite","wall":"n","id":"lamp","center":[x,y],"size":[w,h],"tex":"lamp","depth":1.6}`
+  Options: tappable (default true), additive (glows), lens (only visible through the Lens).
+- box (a hero box you can lift): `{"type":"box","name":"walnut","wall":"n","pos":[x,y],"depth":1.6,"scale":0.5,"view":"front","size":6,"faces":{...},"liner":tex,"liner_skip":["top"],"hinges":[["top","top"]],"blocker":"walnut","parts":[...],"children":[...],"inner_sprites":[...]}`
+  children: smaller boxes inside it (give them `"blocker":"dive:<stage box name>"` to dive into them).
+  inner_sprites: flat things inside a box: `{"id","tex","size","pos":[x,y,z],"rot":[x,y,z]}`.
+- stage_box: the full-size twin you reach by diving: `{"type":"stage_box","name":"walnut_inner","view":"top",...}`.
+- parts (on any furniture or box face): `{"face":"front","uv":[x,y],"size":[w,h],"tex":"drawer","id":"drawer","depth":0.03}`
+  Options: tappable, lens. Higher depth sits in front.
+
+## Puzzle kinds
+- cycler: a part that steps through states each tap. `{"kind":"cycler","part":"clock_hand","flag":"clock_hour","count":12,"start":7,"rotate":-30}` or `"textures":[...]`. Options: lock (condition that freezes it), locked_say, sfx, spin (false = just swap pictures), on: `{"3":[actions]}` runs when it reaches that state.
+- combo: several flags matching a code. `{"kind":"combo","flags":["dial0","dial1","dial2"],"code":[1,3,2],"lock":"panel_open","do":[actions]}`
+- sequence: parts pulled in an order; a wrong pull resets. `{"kind":"sequence","flag":"books","parts":{"book_green":"g",...},"order":"gbr","tex":{...},"fail":[actions],"do":[actions]}`
+- radial: concentric rings on one touch area; the ring is chosen by distance from the centre. `{"kind":"radial","part":"rings","rings":[["ring_core",0.7],["ring_mid",1.32],["ring_outer",2.05]],"rotate":-90}`
+- pickup: take an item. `{"kind":"pickup","part":"clock_key","item":"brass_key","flag":"brass_taken","show_if":"clock_open","then":[actions]}`
+- dark: a wall too dark to use until a flag. `{"kind":"dark","wall":"e","until":"lamp_lit","say":"Too dark..."}`
+
+## Conditions
+"flag", "!flag", "item:x", "lens", "flag=3", or a list (all must hold).
+
+## Bindings
+`{"target":"drawer","when":"drawer_open","then":{"texture":"drawer_open","tappable":false},"else":{"texture":"drawer"},"anim":0.6,"delay":0.4}`
+Targets: a part or sprite id, "box:<name>" (the box's own touch area), "hinge:<box>.<face>", "wall:<key>".
+Properties: texture, visible, tappable, offset [dx,dy], hinge (degrees), gone (hides a Lens-only part for good).
+Changes animate when the state changes during play; on load everything snaps.
+
+## Actions
+set (+ value), unset, give, take, sfx, say (+ secs), journal [key, title, text], fragment, shake, wait, refresh, face (turn the box in your hands), complete_room [next room, card title, card text].
+Text can use {fragments} and {bargains_line}.
+
+## Interactions
+`{"on":"tap","id":"door","when":"!door_open","do":[actions]}` and `{"on":"use","item":"door_key","id":"door","do":[actions]}`.
+The first match wins. "handled": false lets furniture still zoom after the actions. Lifting a box asks for tap "lift:<name>" first, so a room can refuse it.
+
+## Steps
+`{"id":"drawer","done":"drawer_open","hints":["nudge","what to do"],"solve":[actions],"said":"what the Whisper did"}`
+Steps are the main path in order. Optional puzzles stay out of steps.
+
+## Walkthrough
+["tap", id], ["use", item, id], ["tapat", id, [x,y]], ["repeat", n, action], ["back"], ["face", f], ["lens", true],
+["swipe", dx], ["hint"], ["examine", item], ["journal"], ["wait", s], ["shot", name], ["expect", flag].

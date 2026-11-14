@@ -201,7 +201,7 @@ def lamp(lit):
     img = new(24, 40); d = ImageDraw.Draw(img)
     d.polygon([(6, 38), (17, 38), (15, 33), (8, 33)], fill=BRASS[1]); d.rectangle([10, 26, 13, 33], fill=BRASS[2])
     d.ellipse([5, 18, 18, 30], fill=BRASS[2]); d.arc([5, 18, 18, 30], 200, 300, fill=BRASS[4])
-    d.ellipse([7, 4, 16, 20], fill=(255, 220, 120, 200) if lit else (70, 80, 70, 170), outline=(200, 210, 200, 220))
+    d.ellipse([7, 4, 16, 20], fill=(255, 220, 120) if lit else (70, 80, 70), outline=(200, 210, 200))
     if lit:
         d.polygon([(11, 15), (12, 8), (13, 15)], fill=(255, 250, 200)); d.point((12, 7), fill=(255, 255, 255))
     d.rectangle([9, 1, 14, 3], fill=BRASS[0])
@@ -408,17 +408,17 @@ def ring(size, inner, notch_col, seed):
         r = (size / 2 + inner / 2) / 2
         d.point((round(c - 0.5 + r * math.cos(a) * 0.98), round(c - 0.5 + r * math.sin(a) * 0.98)), fill=BRASS[0])
     return img
-save(ring(64, 11, INK, 1), "ring_outer"); save(ring(42, 10, INK, 2), "ring_mid")
-core = new(22, 22); d = ImageDraw.Draw(core); d.ellipse([0, 0, 21, 21], fill=BRASS[3]); d.ellipse([2, 2, 19, 19], fill=BRASS[2])
-d.rectangle([10, 1, 11, 9], fill=INK); save(core, "ring_core")
+save(ring(64, 11, INK, 1), "ring_outer"); save(ring(44, 11, INK, 2), "ring_mid")
+core = new(24, 24); d = ImageDraw.Draw(core); d.ellipse([0, 0, 23, 23], fill=BRASS[3]); d.ellipse([2, 2, 21, 21], fill=BRASS[2])
+d.rectangle([11, 1, 12, 10], fill=INK); save(core, "ring_core")
 ghost = new(72, 72); d = ImageDraw.Draw(ghost); gc = (120, 255, 220)
 # target notches: outer -> right, middle -> down, core -> left
 d.rectangle([68, 35, 71, 36], fill=gc); d.rectangle([35, 58, 36, 61], fill=gc); d.rectangle([26, 35, 29, 36], fill=gc)
 d.arc([2, 2, 69, 69], 0, 360, fill=(60, 140, 120))
 save(ghost, "ring_ghost")
-clasp = new(10, 24); d = ImageDraw.Draw(clasp); d.rectangle([0, 0, 9, 23], fill=BRASS[1]); d.rectangle([2, 2, 7, 21], fill=BRASS[2]); d.rectangle([3, 10, 6, 13], fill=INK)
+clasp = new(12, 24); d = ImageDraw.Draw(clasp); d.rectangle([0, 0, 11, 23], fill=BRASS[1]); d.rectangle([2, 2, 9, 21], fill=BRASS[2]); d.rectangle([4, 10, 7, 13], fill=INK)
 save(clasp, "clasp")
-co = new(10, 24); d = ImageDraw.Draw(co); d.rectangle([0, 0, 9, 5], fill=BRASS[1]); d.rectangle([0, 18, 9, 23], fill=BRASS[1]); save(co, "clasp_open")
+co = new(12, 24); d = ImageDraw.Draw(co); d.rectangle([0, 0, 11, 5], fill=BRASS[1]); d.rectangle([0, 18, 11, 23], fill=BRASS[1]); save(co, "clasp_open")
 
 # ---------------- reliquary (nested in the book) ----------------
 def bone_face(seed, plate=False):
@@ -532,3 +532,26 @@ save(sr, "small_ring")
 print("small sprites done")
 
 save(new(16, 16), "clear")
+
+# ---------------- the globe, four quarter-turns (milestone 2 gate puzzle) ----------------
+def globe_view(turn, open_drawer=False):
+    img = new(32, 48); d = ImageDraw.Draw(img)
+    d.ellipse([3, 2, 28, 27], fill=(40, 70, 90))
+    rnd = random.Random(turn)
+    lands = [[(9, 8), (15, 6), (17, 13), (11, 17)], [(18, 16), (23, 17), (21, 23)], [(6, 18), (10, 16), (12, 22)]]
+    for poly in lands:
+        pts = [(4 + ((x - 4 + turn * 6) % 24), y) for x, y in poly]
+        if max(p[0] for p in pts) - min(p[0] for p in pts) < 12:
+            d.polygon(pts, fill=(110, 100, 60))
+    if turn == 2:
+        d.line([14, 18, 18, 22], fill=(200, 40, 40)); d.line([18, 18, 14, 22], fill=(200, 40, 40))
+    d.arc([3, 2, 28, 27], 120, 250, fill=(90, 130, 140))
+    d.arc([0, 0, 31, 30], 30, 330, fill=BRASS[2]); d.rectangle([14, 29, 17, 37], fill=WOOD[2])
+    d.rectangle([6, 37, 25, 46], fill=WOOD[1]); d.rectangle([12, 40, 19, 43], outline=WOOD[0]); d.point((15, 41), fill=BRASS[3])
+    if open_drawer:
+        d.rectangle([11, 39, 20, 44], fill=INK); d.rectangle([12, 40, 19, 42], fill=IVORY[2])
+    return img
+for t in range(4):
+    save(globe_view(t), "globe_%d" % t)
+save(globe_view(2, True), "globe_open")
+print("globe views done")

@@ -7,7 +7,8 @@
 extends Node3D
 
 const PixelBox = preload("res://scripts/pixel_box.gd")
-const ROOMS := {1: "res://scripts/rooms/room1_study.gd", 2: "res://scripts/rooms/room2_stacks.gd"}
+const ROOMS := {1: "res://data/rooms/room1_study.json", 2: "res://data/rooms/room2_stacks.json"}
+const DataRoom = preload("res://scripts/data_room.gd")
 const STAGE := Vector3(500, 0, 0)
 const HUD_TOP := 56.0
 const HUD_BOTTOM := 76.0
@@ -163,7 +164,8 @@ func load_room(n: int) -> void:
 		c.queue_free()
 	State.room = n
 	State.save_game()
-	room = load(ROOMS[n]).new()
+	room = DataRoom.new()
+	room.load_file(ROOMS[n])
 	room.game = self
 	add_child(room)
 	room.build()

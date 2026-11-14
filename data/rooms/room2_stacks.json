@@ -1,0 +1,1407 @@
+{
+ "title": "The Restricted Stacks",
+ "walls": "r2_wall_",
+ "on_enter": [
+  {
+   "journal": [
+    "stacks",
+    "The stacks",
+    "Wren's door let me out two floors below the library, among the restricted shelves. The air smells of old paper and the sea. The door is gone from this side. Only wall."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "furniture",
+   "wall": "n",
+   "id": "lectern",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    3,
+    5,
+    2
+   ],
+   "faces": {
+    "front": "lectern_front",
+    "default": "dark_side_32x96"
+   },
+   "zoom": {
+    "dy": 1.6,
+    "w": 4,
+    "h": 8
+   }
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chain",
+   "center": [
+    0,
+    6.4
+   ],
+   "size": [
+    2,
+    3
+   ],
+   "tex": "chain",
+   "depth": 1.8
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "arch_window",
+   "center": [
+    0,
+    14
+   ],
+   "size": [
+    4,
+    7
+   ],
+   "tex": "arch_window"
+  },
+  {
+   "type": "furniture",
+   "wall": "e",
+   "id": "stack_a",
+   "pos": [
+    -3.6,
+    0
+   ],
+   "size": [
+    6.5,
+    16,
+    1.5
+   ],
+   "faces": {
+    "front": "stack_a",
+    "default": "wood_side_24x256"
+   },
+   "zoom": {
+    "k": 2,
+    "dy": -1.2,
+    "w": 6.5,
+    "h": 9
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      -1.125,
+      -1.0625
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_ochre",
+     "id": "book_ochre"
+    },
+    {
+     "face": "front",
+     "uv": [
+      -1.125,
+      -0.7
+     ],
+     "size": [
+      0.75,
+      1
+     ],
+     "tex": "lensmark_2",
+     "id": "mark_o",
+     "depth": 0.045,
+     "tappable": false,
+     "lens": true
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.375,
+      -1.0625
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_plum",
+     "id": "book_plum"
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.375,
+      -0.7
+     ],
+     "size": [
+      0.75,
+      1
+     ],
+     "tex": "lensmark_3",
+     "id": "mark_p",
+     "depth": 0.045,
+     "tappable": false,
+     "lens": true
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.375,
+      -1.0625
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_slate",
+     "id": "book_slate"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.375,
+      -0.7
+     ],
+     "size": [
+      0.75,
+      1
+     ],
+     "tex": "lensmark_1",
+     "id": "mark_s",
+     "depth": 0.045,
+     "tappable": false,
+     "lens": true
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.75,
+      -1.28
+     ],
+     "size": [
+      1.5,
+      1.5
+     ],
+     "tex": "item_chain_key",
+     "id": "chain_key_part",
+     "depth": 0.025
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.75,
+      -1.28
+     ],
+     "size": [
+      1.5,
+      1.5
+     ],
+     "tex": "niche",
+     "id": "niche",
+     "depth": 0.035
+    }
+   ]
+  },
+  {
+   "type": "furniture",
+   "wall": "e",
+   "id": "stack_b",
+   "pos": [
+    3.6,
+    0
+   ],
+   "size": [
+    6.5,
+    16,
+    1.5
+   ],
+   "faces": {
+    "front": "stack_b",
+    "default": "wood_side_24x256"
+   },
+   "zoom": {
+    "k": 2,
+    "dy": 3.0,
+    "w": 6.5,
+    "h": 9
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0.5,
+      3.906
+     ],
+     "size": [
+      0.5,
+      2
+     ],
+     "tex": "book_wren",
+     "id": "wren_book"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.5,
+      4.3
+     ],
+     "size": [
+      0.75,
+      1
+     ],
+     "tex": "lensmark_w",
+     "id": "mark_w",
+     "depth": 0.045,
+     "tappable": false,
+     "lens": true
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "stacks_door",
+   "center": [
+    3,
+    4
+   ],
+   "size": [
+    4.5,
+    8
+   ],
+   "tex": "stacks_door",
+   "depth": 0.05
+  },
+  {
+   "type": "furniture",
+   "wall": "s",
+   "id": "ldesk",
+   "pos": [
+    -3.5,
+    0
+   ],
+   "size": [
+    6,
+    3,
+    2.5
+   ],
+   "faces": {
+    "front": "ldesk_front",
+    "top": "wood_top_96x40",
+    "default": "wood_side_40x48"
+   },
+   "zoom": {
+    "dy": 1.0,
+    "w": 6.5,
+    "h": 5
+   }
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "lens_case",
+   "center": [
+    -3.5,
+    3.375
+   ],
+   "size": [
+    1.5,
+    0.75
+   ],
+   "tex": "lens_case",
+   "depth": 1.3
+  },
+  {
+   "type": "furniture",
+   "wall": "w",
+   "id": "catalog",
+   "pos": [
+    -3,
+    0
+   ],
+   "size": [
+    5,
+    6,
+    2
+   ],
+   "faces": {
+    "front": "catalog_front",
+    "default": "wood_side_32x96"
+   },
+   "zoom": {}
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "arch2",
+   "center": [
+    3.5,
+    10
+   ],
+   "size": [
+    4,
+    7
+   ],
+   "tex": "arch_window"
+  },
+  {
+   "type": "box",
+   "name": "bookbox",
+   "wall": "n",
+   "pos": [
+    0,
+    6.4
+   ],
+   "depth": 1.0,
+   "scale": 0.4,
+   "view": "front",
+   "size": [
+    6,
+    7,
+    3
+   ],
+   "faces": {
+    "front": "bookbox_front",
+    "back": "bookbox_back",
+    "left": "bookbox_left",
+    "right": "bookbox_right",
+    "top": "bookbox_top",
+    "bottom": "bookbox_top"
+   },
+   "liner": "bookbox_liner",
+   "liner_skip": [
+    "front"
+   ],
+   "hinges": [
+    [
+     "front",
+     "left"
+    ]
+   ],
+   "blocker": "bookbox",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.4
+     ],
+     "size": [
+      4,
+      4
+     ],
+     "tex": "ring_outer",
+     "id": "ring_outer",
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.4
+     ],
+     "size": [
+      2.75,
+      2.75
+     ],
+     "tex": "ring_mid",
+     "id": "ring_mid",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.4
+     ],
+     "size": [
+      1.5,
+      1.5
+     ],
+     "tex": "ring_core",
+     "id": "ring_core",
+     "depth": 0.05,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.4
+     ],
+     "size": [
+      4,
+      4
+     ],
+     "tex": "clear",
+     "id": "rings",
+     "depth": 0.065
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.4
+     ],
+     "size": [
+      4.5,
+      4.5
+     ],
+     "tex": "ring_ghost",
+     "id": "ring_ghost",
+     "depth": 0.06,
+     "tappable": false,
+     "lens": true
+    },
+    {
+     "face": "right",
+     "uv": [
+      0,
+      0
+     ],
+     "size": [
+      0.75,
+      1.5
+     ],
+     "tex": "clasp",
+     "id": "clasp"
+    }
+   ],
+   "children": [
+    {
+     "name": "reliq_mini",
+     "faces": {
+      "front": "reliq_front",
+      "back": "reliq_back",
+      "left": "reliq_left",
+      "right": "reliq_right",
+      "top": "reliq_top",
+      "bottom": "reliq_bottom"
+     },
+     "liner": "reliq_liner",
+     "liner_skip": [
+      "front"
+     ],
+     "hinges": [
+      [
+       "front",
+       "bottom"
+      ]
+     ],
+     "blocker": "dive:reliquary",
+     "scale": 0.3,
+     "pos": [
+      0,
+      -0.6,
+      -0.4
+     ]
+    }
+   ]
+  },
+  {
+   "type": "stage_box",
+   "name": "reliquary",
+   "view": "front",
+   "faces": {
+    "front": "reliq_front",
+    "back": "reliq_back",
+    "left": "reliq_left",
+    "right": "reliq_right",
+    "top": "reliq_top",
+    "bottom": "reliq_bottom"
+   },
+   "liner": "reliq_liner",
+   "liner_skip": [
+    "front"
+   ],
+   "hinges": [
+    [
+     "front",
+     "bottom"
+    ]
+   ],
+   "blocker": "reliquary",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.8
+     ],
+     "size": [
+      4,
+      1.25
+     ],
+     "tex": "reliq_plate",
+     "id": "plate"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.8
+     ],
+     "size": [
+      4,
+      1.25
+     ],
+     "tex": "reliq_name",
+     "id": "plate_name",
+     "depth": 0.045,
+     "tappable": false,
+     "lens": true
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -1.2
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "phantom_button",
+     "id": "phantom",
+     "depth": 0.05,
+     "lens": true
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "seal_part",
+     "tex": "item_seal_stone",
+     "size": [
+      1.5,
+      1.5
+     ],
+     "pos": [
+      0,
+      -1.2,
+      -0.8
+     ]
+    }
+   ]
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "sequence",
+   "flag": "books2",
+   "order": "sop",
+   "lock": "niche_open",
+   "parts": {
+    "book_slate": "s",
+    "book_ochre": "o",
+    "book_plum": "p"
+   },
+   "tex": {
+    "book_slate": "book_slate",
+    "book_ochre": "book_ochre",
+    "book_plum": "book_plum"
+   },
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The books slide back into place on their own."
+    }
+   ],
+   "do": [
+    {
+     "set": "niche_open"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "A niche opens between the shelves."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "chain_key_part",
+   "item": "chain_key",
+   "flag": "chain_key_taken",
+   "show_if": "niche_open",
+   "then": [
+    {
+     "say": "A tiny key on a ribbon, stamped with the library's seal."
+    }
+   ]
+  },
+  {
+   "kind": "radial",
+   "part": "rings",
+   "rotate": -90,
+   "count": 4,
+   "lock": "cover_open",
+   "rings": [
+    [
+     "ring_core",
+     0.78
+    ],
+    [
+     "ring_mid",
+     1.4
+    ],
+    [
+     "ring_outer",
+     2.05
+    ]
+   ]
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "ring_outer",
+    "ring_mid",
+    "ring_core"
+   ],
+   "code": [
+    1,
+    2,
+    3
+   ],
+   "lock": "cover_open",
+   "do": [
+    {
+     "set": "cover_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "refresh": true
+    },
+    {
+     "say": "The cover swings open. The pages are hollowed out. Something sits inside."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "seal_part",
+   "item": "seal_stone",
+   "flag": "seal_taken",
+   "show_if": "reliq_open",
+   "sfx": "reveal",
+   "then": [
+    {
+     "journal": [
+      "seal1",
+      "The first seal",
+      "A five-sided stone, warm, humming at the edge of hearing. It belongs in Wren's cabinet. I know that the way I know my own name. Eight seals remain. Wren stopped at three. I will not need to stop."
+     ]
+    },
+    {
+     "wait": 1.5
+    },
+    {
+     "complete_room": [
+      99,
+      "SEAL I OF IX BROKEN",
+      "The stone hums in your hand all the way back to Wren's study, where the cabinet is waiting. One seal fits. Eight remain.\n\nThis is the end of the first seal.\nWren's fragments found: {fragments} of 9.{bargains_line}"
+     ]
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "lens_case",
+   "when": "lens_taken",
+   "then": {
+    "texture": "lens_case_open"
+   },
+   "else": {
+    "texture": "lens_case"
+   }
+  },
+  {
+   "target": "niche",
+   "when": "niche_open",
+   "then": {
+    "texture": "niche_open",
+    "tappable": false
+   },
+   "else": {
+    "texture": "niche",
+    "tappable": true
+   }
+  },
+  {
+   "target": "wren_book",
+   "when": "fragment1",
+   "then": {
+    "texture": "book_wren_pulled"
+   },
+   "else": {
+    "texture": "book_wren"
+   }
+  },
+  {
+   "target": "chain",
+   "when": "chain_off",
+   "then": {
+    "visible": false,
+    "tappable": false
+   },
+   "else": {
+    "visible": true,
+    "tappable": true
+   }
+  },
+  {
+   "target": "hinge:bookbox.front",
+   "when": "cover_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.0
+  },
+  {
+   "target": "box:bookbox",
+   "when": "cover_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "clasp",
+   "when": "cover_open",
+   "then": {
+    "texture": "clasp_open"
+   },
+   "else": {
+    "texture": "clasp"
+   }
+  },
+  {
+   "target": "hinge:reliquary.front",
+   "when": "reliq_open",
+   "then": {
+    "hinge": 100
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 0.9
+  },
+  {
+   "target": "hinge:reliq_mini.front",
+   "when": "reliq_open",
+   "then": {
+    "hinge": 100
+   },
+   "else": {
+    "hinge": 0
+   }
+  },
+  {
+   "target": "box:reliquary",
+   "when": "reliq_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "phantom",
+   "when": "reliq_open",
+   "then": {
+    "gone": true
+   },
+   "else": {
+    "gone": false
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "tap",
+   "id": "lens_case",
+   "when": "!lens_taken",
+   "do": [
+    {
+     "give": "lens"
+    },
+    {
+     "set": "lens_taken"
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "lens",
+      "Wren's Lens",
+      "A lens of green glass in a velvet case, labelled in Wren's hand: FOR E.T. He knew I would come down here. Through it the stacks look different. Truer, or less true."
+     ]
+    },
+    {
+     "say": "Wren's Lens. Touch the Lens button to look through it.",
+     "secs": 5
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "lens_case",
+   "do": []
+  },
+  {
+   "on": "tap",
+   "id": "niche",
+   "when": "!niche_open",
+   "do": [
+    {
+     "say": "A wooden panel between the books. No handle, no keyhole."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "wren_book",
+   "when": [
+    "lens",
+    "!fragment1"
+   ],
+   "do": [
+    {
+     "set": "fragment1"
+    },
+    {
+     "fragment": true
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "fragment1",
+      "Wren's fragment, I",
+      "Tucked in a book with a W only the Lens can see, in Wren's hand:\n\n\"The first seal tests the eye. The second tests the nerve. By the third it is testing something else, and I no longer know what I am being measured for. If you find these, Elias, stop at one.\""
+     ]
+    },
+    {
+     "say": "A note from Wren, hidden in the book. It's in your journal.",
+     "secs": 5
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "wren_book",
+   "do": [
+    {
+     "say": "A thin volume, no title on the spine."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "lift:bookbox",
+   "when": "!chain_off",
+   "do": [
+    {
+     "shake": true
+    },
+    {
+     "say": "The book is chained to the lectern."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "chain",
+   "do": [
+    {
+     "say": "A chain and a little padlock, holding the book down."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "chain_key",
+   "id": "chain",
+   "do": [
+    {
+     "take": "chain_key"
+    },
+    {
+     "set": "chain_off"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "The padlock springs. The chain slithers off the book."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "clasp",
+   "when": "!cover_open",
+   "do": [
+    {
+     "say": "A brass clasp. The rings must be holding it shut."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "plate",
+   "do": [
+    {
+     "say": "A blank silver plate. Nothing engraved. Nothing your eyes can see."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "phantom",
+   "when": "!reliq_open",
+   "do": [
+    {
+     "set": "reliq_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "journal": [
+      "name",
+      "The plate",
+      "The plate on the little box is blank. Through the Lens it is not. It is engraved, in a careful hand that is not Wren's and not mine:\n\nELIAS THORNE\n\nIt was made for me before I was born."
+     ]
+    },
+    {
+     "say": "Through the Lens the plate reads ELIAS THORNE. The box opens for you.",
+     "secs": 6
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "catalog",
+   "handled": false,
+   "do": [
+    {
+     "journal": [
+      "catalog",
+      "The card catalog",
+      "One card is filed out of place: \"Restricted volumes are marked in a light only the trained eye perceives. Fetch them in the order of their numbering.\""
+     ]
+    },
+    {
+     "say": "A card filed out of place. It's in your journal."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "stacks_door",
+   "do": [
+    {
+     "say": "Not the door you came in by. It won't move."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "arch_window",
+   "do": [
+    {
+     "say": "Painted glass. There is no outside down here."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "arch2",
+   "do": [
+    {
+     "say": "Painted glass. There is no outside down here."
+    }
+   ]
+  }
+ ],
+ "steps": [
+  {
+   "id": "lens",
+   "done": "lens_taken",
+   "hints": [
+    "Something on the librarian's desk catches the light.",
+    "Open the velvet case on the librarian's desk (south wall) and take what's inside."
+   ],
+   "solve": [
+    {
+     "give": "lens"
+    },
+    {
+     "set": "lens_taken"
+    }
+   ],
+   "said": "Wren's Lens is in your hand."
+  },
+  {
+   "id": "books",
+   "done": "niche_open",
+   "hints": [
+    "The Lens shows what ink cannot. Look at the shelves through it.",
+    "With the Lens on, pull the marked books in the left stack in order: I, then II, then III."
+   ],
+   "solve": [
+    {
+     "set": "books2",
+     "value": "sop"
+    },
+    {
+     "set": "niche_open"
+    }
+   ],
+   "said": "Three books slide out by themselves. A niche opens."
+  },
+  {
+   "id": "chain_key",
+   "done": "chain_key_taken",
+   "hints": [
+    "A niche opened in the left stack.",
+    "Take the little key from the niche in the left stack."
+   ],
+   "solve": [
+    {
+     "give": "chain_key"
+    },
+    {
+     "set": "chain_key_taken"
+    }
+   ],
+   "said": "The padlock key is in your hand."
+  },
+  {
+   "id": "chain",
+   "done": "chain_off",
+   "hints": [
+    "The book on the lectern is chained down.",
+    "Use the padlock key on the chain over the book."
+   ],
+   "solve": [
+    {
+     "take": "chain_key"
+    },
+    {
+     "set": "chain_off"
+    }
+   ],
+   "said": "The chain falls away from the book."
+  },
+  {
+   "id": "rings",
+   "done": "cover_open",
+   "hints": [
+    "The book's cover has three rings that turn.",
+    "Lift the book. With the Lens on, turn each ring until its notch meets a glowing mark."
+   ],
+   "solve": [
+    {
+     "set": "ring_outer",
+     "value": 1
+    },
+    {
+     "set": "ring_mid",
+     "value": 2
+    },
+    {
+     "set": "ring_core",
+     "value": 3
+    },
+    {
+     "set": "cover_open"
+    }
+   ],
+   "said": "The rings align. The cover swings open."
+  },
+  {
+   "id": "phantom",
+   "done": "reliq_open",
+   "hints": [
+    "The small box inside the book has a blank plate. Not blank to every eye.",
+    "Look at the small box with the Lens on and press what appears below its plate."
+   ],
+   "solve": [
+    {
+     "set": "reliq_open"
+    }
+   ],
+   "said": "The small box opens."
+  },
+  {
+   "id": "seal",
+   "done": "seal_taken",
+   "hints": [
+    "Something waits inside the small box.",
+    "Take the stone from inside the small box."
+   ],
+   "solve": [
+    {
+     "give": "seal_stone"
+    },
+    {
+     "set": "seal_taken"
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "seal1",
+      "The first seal",
+      "A five-sided stone, warm, humming at the edge of hearing. It belongs in Wren's cabinet. I know that the way I know my own name. Eight seals remain. Wren stopped at three. I will not need to stop."
+     ]
+    },
+    {
+     "wait": 1.5
+    },
+    {
+     "complete_room": [
+      99,
+      "SEAL I OF IX BROKEN",
+      "The stone hums in your hand all the way back to Wren's study, where the cabinet is waiting. One seal fits. Eight remain.\n\nThis is the end of the first seal.\nWren's fragments found: {fragments} of 9.{bargains_line}"
+     ]
+    }
+   ],
+   "said": "The first seal is yours."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "lens_case"
+  ],
+  [
+   "shot",
+   "lens_taken"
+  ],
+  [
+   "examine",
+   "lens"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "tap",
+   "stack_a"
+  ],
+  [
+   "shot",
+   "stacks_lens"
+  ],
+  [
+   "back"
+  ],
+  [
+   "tap",
+   "book_plum"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "tap",
+   "book_slate"
+  ],
+  [
+   "tap",
+   "book_ochre"
+  ],
+  [
+   "tap",
+   "book_plum"
+  ],
+  [
+   "wait",
+   0.8
+  ],
+  [
+   "shot",
+   "niche_open"
+  ],
+  [
+   "tap",
+   "chain_key_part"
+  ],
+  [
+   "tap",
+   "wren_book"
+  ],
+  [
+   "expect",
+   "fragment1"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "tap",
+   "bookbox"
+  ],
+  [
+   "shot",
+   "chained"
+  ],
+  [
+   "use",
+   "chain_key",
+   "chain"
+  ],
+  [
+   "shot",
+   "chain_off"
+  ],
+  [
+   "tap",
+   "bookbox"
+  ],
+  [
+   "shot",
+   "book_front"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "shot",
+   "book_lens"
+  ],
+  [
+   "tapat",
+   "rings",
+   [
+    0,
+    1.65
+   ]
+  ],
+  [
+   "tapat",
+   "rings",
+   [
+    1.0,
+    0
+   ]
+  ],
+  [
+   "tapat",
+   "rings",
+   [
+    0,
+    -1.0
+   ]
+  ],
+  [
+   "tapat",
+   "rings",
+   [
+    0.2,
+    0.2
+   ]
+  ],
+  [
+   "tapat",
+   "rings",
+   [
+    -0.2,
+    0.2
+   ]
+  ],
+  [
+   "tapat",
+   "rings",
+   [
+    0,
+    0
+   ]
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "shot",
+   "book_open"
+  ],
+  [
+   "expect",
+   "cover_open"
+  ],
+  [
+   "tap",
+   "dive:reliquary"
+  ],
+  [
+   "shot",
+   "reliquary_lens"
+  ],
+  [
+   "tap",
+   "phantom"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "shot",
+   "reliquary_open"
+  ],
+  [
+   "expect",
+   "reliq_open"
+  ],
+  [
+   "tap",
+   "seal_part"
+  ],
+  [
+   "wait",
+   3.0
+  ],
+  [
+   "expect",
+   "seal_taken"
+  ]
+ ]
+}
