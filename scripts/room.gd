@@ -9,10 +9,12 @@ const PixelBox = preload("res://scripts/pixel_box.gd")
 const HALF := 7.5
 const WALL_H := 22.0
 const WALLS := ["n", "e", "s", "w"]
+const FLOOR := "d"           ## the floor: look down. Local x across, y from the near edge (0) to the far wall (15)
+const CEILING := "u"         ## the ceiling: look up. Local y from the wall you face (0) to the one behind you (15)
 
 var game                     ## the Game node, set before build()
 var title := ""
-var pivot: Node3D
+var pivot: Node3D            ## turns the whole room around its centre (yaw between walls, pitch to floor/ceiling)
 var groups := {}             ## wall key -> Node3D
 var ids := {}                ## tappable id -> node
 var boxes := {}              ## hero box name -> {"box", "home_parent", "home_xform", "view"}
@@ -32,18 +34,34 @@ func tex(name: String) -> Texture2D:
 
 # ---------------- building ----------------
 
-func build_walls(prefix: String) -> void:
+## The room is a six-sided box: four walls, plus an optional floor and ceiling texture.
+func build_walls(prefix: String, floor_tex := "", ceiling_tex := "") -> void:
 	pivot = Node3D.new()
+	pivot.position = Vector3(0, WALL_H / 2, 0)
 	add_child(pivot)
+	var root := Node3D.new()
+	root.position = Vector3(0, -WALL_H / 2, 0)
+	pivot.add_child(root)
 	var turns := [0.0, -PI / 2, PI, PI / 2]
 	for i in 4:
 		var g := Node3D.new()
 		g.rotation.y = turns[i]
-		pivot.add_child(g)
+		root.add_child(g)
 		groups[WALLS[i]] = g
 		var w := PixelBox.quad(Vector2(HALF * 2, WALL_H), tex(prefix + WALLS[i]))
 		w.position = Vector3(0, WALL_H / 2, -HALF)
 		g.add_child(w)
+	for spec in [[FLOOR, floor_tex, Basis(Vector3.RIGHT, -PI / 2), Vector3(0, HALF, HALF)],
+			[CEILING, ceiling_tex, Basis(Vector3.RIGHT, PI / 2), Vector3(0, WALL_H - HALF, -HALF)]]:
+		if spec[1] == "":
+			continue
+		var g := Node3D.new()
+		g.transform = Transform3D(spec[2], spec[3])
+		root.add_child(g)
+		groups[spec[0]] = g
+		var q := PixelBox.quad(Vector2(HALF * 2, HALF * 2), tex(spec[1]))
+		q.position = Vector3(0, HALF, -HALF)
+		g.add_child(q)
 
 
 ## Furniture: a box standing against a wall. pos = (x along wall, y of its base).
@@ -147,6 +165,10 @@ func on_tap(_id: String, _node: Node) -> bool:
 ## Use an inventory item on something. Return true if it worked.
 func on_use(_item: String, _id: String, _node: Node) -> bool:
 	return false
+
+## Called after the player turns the Lens on or off.
+func on_lens_changed() -> void:
+	pass
 
 ## Called when a box is lifted or dropped, so rooms can react.
 func on_box_mode(_name: String, _entered: bool) -> void:

@@ -27,10 +27,13 @@ func load_file(path: String) -> void:
 
 func build() -> void:
 	title = data.get("title", "")
-	build_walls(data["walls"])
+	build_walls(data["walls"], data.get("floor", ""), data.get("ceiling", ""))
 	for o in data.get("objects", []):
 		_build_object(o)
 	puzzles = data.get("puzzles", [])
+	for p in puzzles:
+		if p["kind"] == "beam":
+			_build_beam(p)
 	for s in data.get("steps", []):
 		var spec: Dictionary = s
 		steps.append({"id": spec["id"], "hints": spec["hints"], "said": spec.get("said", "It is done."),
@@ -38,6 +41,8 @@ func build() -> void:
 			"solve": func(): await run(spec["solve"])})
 	walkthrough = _walkthrough(data.get("walkthrough", []))
 	for a in data.get("on_enter", []):
+		if a.has("set") and not State.flags.has(a["set"]):
+			State.flags[a["set"]] = a.get("value", true)
 		if a.has("journal"):
 			State.add_journal(a["journal"][0], a["journal"][1], a["journal"][2])
 
@@ -62,17 +67,16 @@ func _build_object(o: Dictionary) -> void:
 		"furniture":
 			var b := add_furniture(o["wall"], o["id"], _v2(o["pos"]), _v3(o["size"]), _faces(o["faces"]), o.get("zoom", {}))
 			nodes[o["id"]] = b
+			box_nodes[o["id"]] = b
+			for h in o.get("hinges", []):
+				b.hinge_face(h[0], h[1])
+			if not o.get("tappable", true):
+				PixelBox.set_tappable(b.blocker, false)
 			_parts(b, o.get("parts", []))
 		"sprite":
 			var q := add_sprite(o["wall"], o["id"], _v2(o["center"]), _v2(o["size"]), o["tex"], o.get("depth", 0.03), o.get("tappable", true))
 			if o.get("additive", false):
-				var m := StandardMaterial3D.new()
-				m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-				m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-				m.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
-				m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-				m.albedo_texture = tex(o["tex"])
-				q.material_override = m
+				q.material_override = _additive(tex(o["tex"]))
 			if o.get("lens", false):
 				q.add_to_group("lens_only")
 			nodes[o["id"]] = q
@@ -85,6 +89,16 @@ func _build_object(o: Dictionary) -> void:
 		"stage_box":
 			var b := _make_box(o)
 			add_stage_box(o["name"], b, o.get("view", "front"))
+
+
+func _additive(t: Texture2D) -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	m.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
+	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	m.albedo_texture = t
+	return m
 
 
 func _make_box(o: Dictionary) -> PixelBox:
@@ -101,6 +115,8 @@ func _make_box(o: Dictionary) -> PixelBox:
 		var rot: Array = s.get("rot", [0, 0, 0])
 		q.transform = Transform3D(Basis.from_euler(Vector3(rot[0], rot[1], rot[2]) * (PI / 180.0)), _v3(s["pos"]))
 		PixelBox.add_body(q, _v2(s["size"]), s["id"])
+		if s.has("face"):
+			q.set_meta("face", s["face"])   ## which face to turn toward you to see it
 		b.add_child(q)
 		nodes[s["id"]] = q
 	for c in o.get("children", []):
@@ -125,7 +141,7 @@ func _walkthrough(w: Array) -> Array:
 	for a in w:
 		if a[0] == "repeat":
 			for i in int(a[1]):
-				out.append(a[2])
+				out.append_array(_walkthrough([a[2]]))
 		elif a[0] == "tapat":
 			out.append(["tapat", a[1], Vector2(a[2][0], a[2][1])])
 		else:
@@ -136,9 +152,15 @@ func _walkthrough(w: Array) -> Array:
 # ---------------- conditions ----------------
 
 ## "flag", "!flag", "item:x", "!item:x", "lens", "!lens", "flag=3", or an array of these (all must hold).
+## An array that starts with "any" holds if any one of the rest holds.
 func cond(c) -> bool:
 	if c == null:
 		return true
+	if c is Array and c.size() > 0 and str(c[0]) == "any":
+		for x in c.slice(1):
+			if cond(x):
+				return true
+		return false
 	if c is Array:
 		for x in c:
 			if not cond(x):
@@ -184,6 +206,13 @@ func refresh(animate := true) -> void:
 				var n := _part(p["part"])
 				n.visible = show
 				PixelBox.set_tappable(n, show)
+			"beam":
+				_draw_beam(p)
+			"roll":
+				var at := _roll_at(p)
+				var tok := _part(p["token"])
+				var uv := _cell_uv(p, at.x, at.y)
+				tok.position = Vector3(uv.x, uv.y, tok.position.z)
 			"dark":
 				var lit := State.has(p["until"])
 				longest = maxf(longest, _apply_value("wall:" + p["wall"], "dim", 1.0 if lit else float(p.get("dim", 0.25)), animate, float(p.get("anim", 1.2)), 0.0))
@@ -195,8 +224,17 @@ func refresh(animate := true) -> void:
 		await get_tree().create_timer(longest).timeout
 
 
-func _cycler_visual(p: Dictionary, v: int) -> void:
+func _cycler_visual(p: Dictionary, v: int, animate := false) -> void:
 	var n := _part(p["part"])
+	if p.has("offsets"):
+		if not base_pos.has(p["part"]):
+			base_pos[p["part"]] = n.position
+		var o: Array = p["offsets"][v]
+		var to: Vector3 = base_pos[p["part"]] + Vector3(o[0], o[1], 0)
+		if animate:
+			create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).tween_property(n, "position", to, 0.2)
+		else:
+			n.position = to
 	if p.has("rotate"):
 		n.rotation.z = deg_to_rad(float(p["rotate"])) * v
 	if p.has("textures"):
@@ -310,6 +348,7 @@ func run(actions: Array, node: Node = null) -> void:
 	await refresh(true)
 	set_lens(game.lens_on)
 	game.busy = false
+	await _check_beams()
 
 
 func _fill(s: String) -> String:
@@ -343,6 +382,10 @@ func on_tap(id: String, node: Node) -> bool:
 				if p["parts"].has(id):
 					await _pull(p, p["parts"][id])
 					return true
+			"roll":
+				if p["buttons"].has(id):
+					await _roll(p, p["buttons"][id], node)
+					return true
 			"pickup":
 				if p["part"] == id:
 					State.set_flag(p["flag"])
@@ -350,15 +393,19 @@ func on_tap(id: String, node: Node) -> bool:
 					await run([{"sfx": p.get("sfx", "pickup")}] + p.get("then", []), node)
 					return true
 	for it in data.get("interactions", []):
-		if it["on"] == "tap" and it["id"] == id and cond(it.get("when")):
+		if it["on"] == "tap" and _matches(it, id) and cond(it.get("when")):
 			await run(it["do"], node)
 			return it.get("handled", true)
 	return false
 
 
+func _matches(it: Dictionary, id: String) -> bool:
+	return it.get("id", "") == id or id in it.get("ids", [])
+
+
 func on_use(item: String, id: String, node: Node) -> bool:
 	for it in data.get("interactions", []):
-		if it["on"] == "use" and it["item"] == item and it["id"] == id and cond(it.get("when")):
+		if it["on"] == "use" and it["item"] == item and _matches(it, id) and cond(it.get("when")):
 			await run(it["do"], node)
 			return true
 	return false
@@ -375,12 +422,13 @@ func _turn_cycler(p: Dictionary, node: Node3D) -> void:
 	State.set_flag(p["flag"], v)
 	game.play(p.get("sfx", "click"))
 	if not p.get("spin", true):
-		_cycler_visual(p, v)
+		_cycler_visual(p, v, true)
 		game.busy = false
 		var on0: Dictionary = p.get("on", {})
 		if on0.has(str(v)):
 			await run(on0[str(v)], node)
 		await _check_combos()
+		await _check_beams()
 		return
 	var tw := create_tween()
 	if p.has("rotate"):
@@ -398,6 +446,7 @@ func _turn_cycler(p: Dictionary, node: Node3D) -> void:
 	if on.has(str(v)):
 		await run(on[str(v)], node)
 	await _check_combos()
+	await _check_beams()
 
 
 func _turn_radial(p: Dictionary, ring: String) -> void:
@@ -446,3 +495,176 @@ func _pull(p: Dictionary, k: String) -> void:
 		await run(p.get("fail", [{"sfx": "thunk"}, {"say": "They slide back into place."}]))
 	elif pulled == order:
 		await run(p["do"])
+
+
+# ---------------- light beams ----------------
+# A beam crosses a grid of cells drawn on one face of a box or furniture. It starts at a
+# source cell, is turned by mirrors (cyclers with 4 states: / - \ |), stopped by blocks,
+# and lights a target when it reaches it. Mirrors marked "lens" exist only through the Lens.
+
+const DIRS := {"e": Vector2i(1, 0), "w": Vector2i(-1, 0), "n": Vector2i(0, -1), "s": Vector2i(0, 1)}
+const OPP := {"e": "w", "w": "e", "n": "s", "s": "n"}
+const TURN := [{"e": "n", "n": "e", "w": "s", "s": "w"}, {"e": "e", "w": "w"},
+	{"e": "s", "s": "e", "w": "n", "n": "w"}, {"n": "n", "s": "s"}]
+var beam_quads := {}     ## beam id -> {Vector3i(col, row, side) -> quad}
+var _beam_running := false
+
+
+func _holder(name: String) -> PixelBox:
+	if box_nodes.has(name):
+		return box_nodes[name]
+	return nodes[name]
+
+
+func _cell_uv(p: Dictionary, c: int, r: int) -> Vector2:
+	var cell := float(p.get("cell", 0.75))
+	var ctr := _v2(p.get("center", [0, 0]))
+	return ctr + Vector2((c - (int(p["cols"]) - 1) / 2.0) * cell, ((int(p["rows"]) - 1) / 2.0 - r) * cell)
+
+
+func _build_beam(p: Dictionary) -> void:
+	var b := _holder(p["box"])
+	var face: MeshInstance3D = b.faces[p.get("face", "front")]
+	var cell := float(p.get("cell", 0.75))
+	var th := 2.0 / 16.0
+	var th_h := _additive(tex(p.get("tex_h", "glow_beam_h")))
+	var th_v := _additive(tex(p.get("tex_v", "glow_beam_v")))
+	var q := {}
+	for c in int(p["cols"]):
+		for r in int(p["rows"]):
+			var uv := _cell_uv(p, c, r)
+			for side in ["n", "e", "s", "w"]:
+				var horiz: bool = side in ["e", "w"]
+				var quad := PixelBox.quad(Vector2(cell / 2, th) if horiz else Vector2(th, cell / 2), null)
+				quad.material_override = th_h if horiz else th_v
+				var d: Vector2i = DIRS[side]
+				quad.position = Vector3(uv.x + d.x * cell / 4, uv.y - d.y * cell / 4, float(p.get("depth", 0.05)))
+				quad.visible = false
+				face.add_child(quad)
+				q[Vector3i(c, r, ["n", "e", "s", "w"].find(side))] = quad
+	beam_quads[p["id"]] = q
+
+
+func _mirror_at(p: Dictionary, cell: Vector2i) -> int:
+	for m in p.get("mirrors", []):
+		if int(m[2]) == cell.x and int(m[3]) == cell.y:
+			return int(State.flag_value(m[1], m[4] if m.size() > 4 else 0))
+	for m in p.get("fixed", []):
+		if int(m[0]) == cell.x and int(m[1]) == cell.y and (m.size() < 4 or game.lens_on):
+			return int(m[2])
+	return -1
+
+
+## Follow the beam. Returns {"halves": [[col, row, side]], "hit": target index or -1}.
+func _trace(p: Dictionary) -> Dictionary:
+	var out := {"halves": [], "hit": -1}
+	if not cond(p.get("when")):
+		return out
+	var src: Array = p["source"]
+	var at := Vector2i(int(src[0]), int(src[1]))
+	var d: String = src[2]
+	out["halves"].append([at.x, at.y, d])
+	var blocks := {}
+	for bl in p.get("blocks", []):
+		blocks[Vector2i(int(bl[0]), int(bl[1]))] = true
+	for i in 200:
+		at += DIRS[d]
+		if at.x < 0 or at.y < 0 or at.x >= int(p["cols"]) or at.y >= int(p["rows"]):
+			break
+		out["halves"].append([at.x, at.y, OPP[d]])
+		if blocks.has(at):
+			break
+		var hit := -1
+		for t in p.get("targets", []).size():
+			var tc: Array = p["targets"][t]["cell"]
+			if int(tc[0]) == at.x and int(tc[1]) == at.y:
+				hit = t
+		if hit >= 0:
+			out["hit"] = hit
+			break
+		var m := _mirror_at(p, at)
+		if m >= 0:
+			if not TURN[m].has(d):
+				break
+			d = TURN[m][d]
+		out["halves"].append([at.x, at.y, d])
+	return out
+
+
+func _draw_beam(p: Dictionary) -> void:
+	var q: Dictionary = beam_quads[p["id"]]
+	for k in q:
+		q[k].visible = false
+	for h in _trace(p)["halves"]:
+		q[Vector3i(h[0], h[1], ["n", "e", "s", "w"].find(h[2]))].visible = true
+
+
+func _check_beams() -> void:
+	if _beam_running:
+		return
+	_beam_running = true
+	for p in puzzles:
+		if p["kind"] != "beam":
+			continue
+		_draw_beam(p)
+		var hit: int = _trace(p)["hit"]
+		if hit >= 0:
+			var t: Dictionary = p["targets"][hit]
+			if not State.has(t["flag"]):
+				State.set_flag(t["flag"])
+				await run(t.get("do", []))
+	_beam_running = false
+
+
+func on_lens_changed() -> void:
+	for p in puzzles:
+		if p["kind"] == "beam":
+			_draw_beam(p)
+	await _check_beams()
+
+
+# ---------------- rolling token (tilt maze) ----------------
+# A pearl in a grid of cells. Tilting (tapping a button part) rolls it in that direction
+# until a wall cell or the edge stops it. Reaching the goal runs "do" once.
+
+func _roll_at(p: Dictionary) -> Vector2i:
+	var s = State.flag_value(p["flag"], "")
+	if s is String and "," in s:
+		var a: PackedStringArray = s.split(",")
+		return Vector2i(int(a[0]), int(a[1]))
+	return Vector2i(int(p["start"][0]), int(p["start"][1]))
+
+
+func _roll(p: Dictionary, dir: String, node: Node3D) -> void:
+	if p.has("lock") and cond(p["lock"]):
+		if p.has("locked_say"):
+			game.say(p["locked_say"])
+		return
+	var walls := {}
+	for w in p.get("walls", []):
+		walls[Vector2i(int(w[0]), int(w[1]))] = true
+	var at := _roll_at(p)
+	var start := at
+	while true:
+		var nxt: Vector2i = at + DIRS[dir]
+		if nxt.x < 0 or nxt.y < 0 or nxt.x >= int(p["cols"]) or nxt.y >= int(p["rows"]) or walls.has(nxt):
+			break
+		at = nxt
+	if at == start:
+		game.play("tick")
+		game.shake(node)
+		return
+	game.busy = true
+	State.set_flag(p["flag"], "%d,%d" % [at.x, at.y])
+	game.play(p.get("sfx", "slide"), -2.0)
+	var tok := _part(p["token"])
+	var uv := _cell_uv(p, at.x, at.y)
+	var tw := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tw.tween_property(tok, "position", Vector3(uv.x, uv.y, tok.position.z), 0.08 * (absi(at.x - start.x) + absi(at.y - start.y)) + 0.05)
+	await tw.finished
+	game.play("tick", -6.0)
+	game.busy = false
+	var g: Array = p["goal"]
+	if at == Vector2i(int(g[0]), int(g[1])) and not State.has(p["done"]):
+		State.set_flag(p["done"])
+		await run(p.get("do", []))

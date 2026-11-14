@@ -713,9 +713,9 @@
     },
     {
      "complete_room": [
-      99,
+      101,
       "SEAL I OF IX BROKEN",
-      "The stone hums in your hand all the way back to Wren's study, where the cabinet is waiting. One seal fits. Eight remain.\n\nThis is the end of the first seal.\nWren's fragments found: {fragments} of 9.{bargains_line}"
+      "The stone hums in your hand all the way home to Garrison Street, where Wren's cabinet is waiting.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
      ]
     }
    ]
@@ -1189,9 +1189,9 @@
     },
     {
      "complete_room": [
-      99,
+      101,
       "SEAL I OF IX BROKEN",
-      "The stone hums in your hand all the way back to Wren's study, where the cabinet is waiting. One seal fits. Eight remain.\n\nThis is the end of the first seal.\nWren's fragments found: {fragments} of 9.{bargains_line}"
+      "The stone hums in your hand all the way home to Garrison Street, where Wren's cabinet is waiting.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
      ]
     }
    ],

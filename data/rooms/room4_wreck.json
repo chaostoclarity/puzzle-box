@@ -1,0 +1,2395 @@
+{
+ "title": "The Constance",
+ "walls": "r4_wall_",
+ "floor": "r4_floor",
+ "ceiling": "r4_ceiling",
+ "on_enter": [
+  {
+   "set": "tide",
+   "value": 1
+  },
+  {
+   "journal": [
+    "wreck",
+    "The wreck",
+    "The captain's cabin of the Constance, lying on her side on the reef. Sea water to my waist, and the tide still coming and going through the holes in her. Pike's beam found her. I think she has been here longer than Pike has."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "water_n_0",
+   "center": [
+    0,
+    4.5
+   ],
+   "size": [
+    15,
+    9
+   ],
+   "tex": "water_9",
+   "depth": 3.6
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "water_n_1",
+   "center": [
+    0,
+    2.5
+   ],
+   "size": [
+    15,
+    5
+   ],
+   "tex": "water_5",
+   "depth": 3.6
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "water_n_2",
+   "center": [
+    0,
+    0.75
+   ],
+   "size": [
+    15,
+    1.5
+   ],
+   "tex": "water_1",
+   "depth": 3.6,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "water_e_0",
+   "center": [
+    0,
+    4.5
+   ],
+   "size": [
+    15,
+    9
+   ],
+   "tex": "water_9",
+   "depth": 3.6
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "water_e_1",
+   "center": [
+    0,
+    2.5
+   ],
+   "size": [
+    15,
+    5
+   ],
+   "tex": "water_5",
+   "depth": 3.6
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "water_e_2",
+   "center": [
+    0,
+    0.75
+   ],
+   "size": [
+    15,
+    1.5
+   ],
+   "tex": "water_1",
+   "depth": 3.6,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "water_s_0",
+   "center": [
+    0,
+    4.5
+   ],
+   "size": [
+    15,
+    9
+   ],
+   "tex": "water_9",
+   "depth": 3.6
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "water_s_1",
+   "center": [
+    0,
+    2.5
+   ],
+   "size": [
+    15,
+    5
+   ],
+   "tex": "water_5",
+   "depth": 3.6
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "water_s_2",
+   "center": [
+    0,
+    0.75
+   ],
+   "size": [
+    15,
+    1.5
+   ],
+   "tex": "water_1",
+   "depth": 3.6,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "water_w_0",
+   "center": [
+    0,
+    4.5
+   ],
+   "size": [
+    15,
+    9
+   ],
+   "tex": "water_9",
+   "depth": 3.6
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "water_w_1",
+   "center": [
+    0,
+    2.5
+   ],
+   "size": [
+    15,
+    5
+   ],
+   "tex": "water_5",
+   "depth": 3.6
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "water_w_2",
+   "center": [
+    0,
+    0.75
+   ],
+   "size": [
+    15,
+    1.5
+   ],
+   "tex": "water_1",
+   "depth": 3.6,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "carving",
+   "center": [
+    0,
+    9
+   ],
+   "size": [
+    8,
+    3
+   ],
+   "tex": "carving",
+   "depth": 0.03
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "water_floor",
+   "center": [
+    0,
+    7.5
+   ],
+   "size": [
+    15,
+    15
+   ],
+   "tex": "water_floor",
+   "depth": 0.2
+  },
+  {
+   "type": "sprite",
+   "wall": "u",
+   "id": "skylight",
+   "center": [
+    0,
+    7.5
+   ],
+   "size": [
+    4,
+    4
+   ],
+   "tex": "skylight"
+  },
+  {
+   "type": "box",
+   "name": "chest",
+   "wall": "n",
+   "pos": [
+    -3,
+    1
+   ],
+   "depth": 1.0,
+   "scale": 0.5,
+   "view": "front",
+   "size": [
+    8,
+    4,
+    4
+   ],
+   "faces": {
+    "front": "chest_front",
+    "back": "chest_back",
+    "left": "chest_side",
+    "right": "chest_side",
+    "top": "chest_top",
+    "bottom": "chest_top"
+   },
+   "liner": "chest_liner",
+   "liner_skip": [
+    "top"
+   ],
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "chest",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      -2.125,
+      0.875
+     ],
+     "size": [
+      0.5,
+      0.5
+     ],
+     "tex": "pearl",
+     "id": "pearl",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.875,
+      1.6
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "tilt_n",
+     "id": "tilt_n"
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.875,
+      -1.6
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "tilt_s",
+     "id": "tilt_s"
+    },
+    {
+     "face": "front",
+     "uv": [
+      -3.0,
+      0.125
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "tilt_w",
+     "id": "tilt_w"
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.25,
+      0.125
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "tilt_e",
+     "id": "tilt_e"
+    },
+    {
+     "face": "front",
+     "uv": [
+      2.59,
+      0.03
+     ],
+     "size": [
+      1,
+      1.25
+     ],
+     "tex": "keyhole",
+     "id": "keyhole",
+     "depth": 0.03
+    },
+    {
+     "face": "front",
+     "uv": [
+      2.59,
+      0.03
+     ],
+     "size": [
+      1,
+      1.25
+     ],
+     "tex": "keyhole_cover",
+     "id": "keyhole_cover",
+     "depth": 0.045
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "fbottom",
+     "tex": "fbottom",
+     "size": [
+      5,
+      3
+     ],
+     "pos": [
+      0,
+      -0.2,
+      0
+     ],
+     "rot": [
+      -90,
+      0,
+      0
+     ],
+     "face": "top"
+    },
+    {
+     "id": "keyhole2",
+     "tex": "keyhole2",
+     "size": [
+      0.75,
+      1
+     ],
+     "pos": [
+      2.0,
+      -0.15,
+      0.4
+     ],
+     "rot": [
+      -90,
+      0,
+      0
+     ],
+     "face": "top"
+    }
+   ],
+   "children": [
+    {
+     "name": "binnacle_mini",
+     "faces": {
+      "front": "binn_front",
+      "back": "binn_back",
+      "left": "binn_left",
+      "right": "binn_right",
+      "top": "binn_top",
+      "bottom": "binn_bottom"
+     },
+     "liner": "binn_liner",
+     "hinges": [
+      [
+       "top",
+       "top"
+      ]
+     ],
+     "blocker": "dive:binnacle",
+     "scale": 0.25,
+     "pos": [
+      0,
+      -1.2,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "type": "stage_box",
+   "name": "binnacle",
+   "view": "top",
+   "faces": {
+    "front": "binn_front",
+    "back": "binn_back",
+    "left": "binn_left",
+    "right": "binn_right",
+    "top": "binn_top",
+    "bottom": "binn_bottom"
+   },
+   "liner": "binn_liner",
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "binnacle",
+   "parts": [
+    {
+     "face": "top",
+     "uv": [
+      -1.5,
+      -1.5
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "lsocket",
+     "id": "lsocket"
+    },
+    {
+     "face": "top",
+     "uv": [
+      0.0,
+      -1.5
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "mirror_1",
+     "id": "bm1"
+    },
+    {
+     "face": "top",
+     "uv": [
+      0.0,
+      0.75
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "mirror_3",
+     "id": "bm2"
+    },
+    {
+     "face": "top",
+     "uv": [
+      1.5,
+      0.75
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "ghost_mirror",
+     "id": "ghost",
+     "depth": 0.035,
+     "tappable": false,
+     "lens": true
+    },
+    {
+     "face": "top",
+     "uv": [
+      1.5,
+      1.5
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "fisheye",
+     "id": "fisheye",
+     "tappable": false
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "seal2_part",
+     "tex": "item_seal_stone2",
+     "size": [
+      1.5,
+      1.5
+     ],
+     "pos": [
+      0,
+      -1.5,
+      0
+     ],
+     "rot": [
+      -90,
+      0,
+      0
+     ],
+     "face": "top"
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "port_n",
+   "center": [
+    3.5,
+    13
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "porthole"
+  },
+  {
+   "type": "furniture",
+   "wall": "e",
+   "id": "ctable",
+   "pos": [
+    -2,
+    0
+   ],
+   "size": [
+    7,
+    9.5,
+    2.5
+   ],
+   "faces": {
+    "front": "ctable_front",
+    "top": "wood_top_112x40",
+    "default": "wood_side_40x152"
+   },
+   "zoom": {
+    "k": 2,
+    "dy": 3,
+    "w": 7.5,
+    "h": 8
+   }
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "clog",
+   "center": [
+    -3.5,
+    10.25
+   ],
+   "size": [
+    2.5,
+    1.5
+   ],
+   "tex": "clog",
+   "depth": 1.3
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "chart",
+   "center": [
+    -2,
+    15
+   ],
+   "size": [
+    5,
+    4
+   ],
+   "tex": "chart"
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "port_e",
+   "center": [
+    4.5,
+    13
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "porthole"
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "captain",
+   "center": [
+    4.5,
+    18
+   ],
+   "size": [
+    3,
+    4
+   ],
+   "tex": "portrait_captain"
+  },
+  {
+   "type": "furniture",
+   "wall": "s",
+   "id": "pump",
+   "pos": [
+    3.5,
+    0
+   ],
+   "size": [
+    2,
+    11,
+    1.5
+   ],
+   "faces": {
+    "front": "pump_front",
+    "default": "iron_side_24x176"
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      4.2
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "pump_socket",
+     "id": "pump_socket",
+     "depth": 0.04
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "gauge",
+   "center": [
+    0.5,
+    5.5
+   ],
+   "size": [
+    1.5,
+    10
+   ],
+   "tex": "gauge",
+   "depth": 0.04
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "cdoor",
+   "center": [
+    -4.5,
+    5
+   ],
+   "size": [
+    4,
+    10
+   ],
+   "tex": "cdoor"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "seacock",
+   "center": [
+    3.5,
+    6.5
+   ],
+   "size": [
+    2,
+    2
+   ],
+   "tex": "seacock_rust",
+   "depth": 0.2
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "shelf",
+   "center": [
+    -3,
+    10.5
+   ],
+   "size": [
+    5,
+    1
+   ],
+   "tex": "shelf",
+   "depth": 0.3
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "chest_key_part",
+   "center": [
+    -3,
+    11.375
+   ],
+   "size": [
+    1.5,
+    0.75
+   ],
+   "tex": "small_chest_key",
+   "depth": 0.35
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "roll",
+   "id": "maze",
+   "box": "chest",
+   "face": "front",
+   "cols": 6,
+   "rows": 4,
+   "cell": 0.5,
+   "center": [
+    -0.875,
+    0.125
+   ],
+   "token": "pearl",
+   "flag": "pearl",
+   "start": [
+    0,
+    0
+   ],
+   "walls": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     4,
+     1
+    ]
+   ],
+   "goal": [
+    5,
+    2
+   ],
+   "done": "pearl_home",
+   "lock": "pearl_home",
+   "locked_say": "The pearl is home.",
+   "buttons": {
+    "tilt_n": "n",
+    "tilt_s": "s",
+    "tilt_e": "e",
+    "tilt_w": "w"
+   },
+   "do": [
+    {
+     "wait": 0.2
+    },
+    {
+     "sfx": "thunk"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "The pearl drops into a channel. The brass cover jumps off the keyhole."
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "bm1",
+   "flag": "bm1",
+   "count": 4,
+   "start": 1,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "mirror_0",
+    "mirror_1",
+    "mirror_2",
+    "mirror_3"
+   ],
+   "lock": "fish_lit"
+  },
+  {
+   "kind": "cycler",
+   "part": "bm2",
+   "flag": "bm2",
+   "count": 4,
+   "start": 3,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "mirror_0",
+    "mirror_1",
+    "mirror_2",
+    "mirror_3"
+   ],
+   "lock": "fish_lit"
+  },
+  {
+   "kind": "beam",
+   "id": "binn_beam",
+   "box": "binnacle",
+   "face": "top",
+   "cols": 5,
+   "rows": 5,
+   "cell": 0.75,
+   "source": [
+    0,
+    4,
+    "e"
+   ],
+   "when": "binnacle_lit",
+   "mirrors": [
+    [
+     "bm1",
+     "bm1",
+     2,
+     4,
+     1
+    ],
+    [
+     "bm2",
+     "bm2",
+     2,
+     1,
+     3
+    ]
+   ],
+   "fixed": [
+    [
+     4,
+     1,
+     0,
+     "lens"
+    ]
+   ],
+   "targets": [
+    {
+     "cell": [
+      4,
+      0
+     ],
+     "flag": "fish_lit",
+     "do": [
+      {
+       "sfx": "hum"
+      },
+      {
+       "wait": 0.8
+      },
+      {
+       "sfx": "unlock"
+      },
+      {
+       "set": "binnacle_open"
+      },
+      {
+       "say": "The beam bends where no mirror is and strikes the fish's eye. The binnacle opens.",
+       "secs": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "seal2_part",
+   "item": "seal_stone2",
+   "flag": "seal2_taken",
+   "show_if": "binnacle_open",
+   "sfx": "reveal",
+   "then": [
+    {
+     "journal": [
+      "seal2",
+      "The second seal",
+      "A second stone, cold and wet, inside the binnacle where the compass should be. The moment I lifted it the sea remembered the wreck and came back for it.\n\nSeven remain. Wren stopped at three. I am beginning to understand why, and I am beginning not to care."
+     ]
+    },
+    {
+     "wait": 0.8
+    },
+    {
+     "set": "tide",
+     "value": 0
+    },
+    {
+     "sfx": "water"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "say": "The hull groans. The sea comes back all at once. Swim up!",
+     "secs": 5
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "water_n_0",
+   "when": "tide=0",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "water_n_1",
+   "when": "tide=1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "water_n_2",
+   "when": "tide=2",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "water_e_0",
+   "when": "tide=0",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "water_e_1",
+   "when": "tide=1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "water_e_2",
+   "when": "tide=2",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "water_s_0",
+   "when": "tide=0",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "water_s_1",
+   "when": "tide=1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "water_s_2",
+   "when": "tide=2",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "water_w_0",
+   "when": "tide=0",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "water_w_1",
+   "when": "tide=1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "water_w_2",
+   "when": "tide=2",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "water_floor",
+   "when": [
+    "any",
+    "tide=0",
+    "tide=1",
+    "tide=2"
+   ],
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "water_floor",
+   "when": [
+    "any",
+    "tide=0",
+    "tide=1"
+   ],
+   "then": {
+    "tappable": true
+   },
+   "else": {
+    "tappable": false
+   }
+  },
+  {
+   "target": "port_n",
+   "when": "tide=3",
+   "then": {
+    "texture": "porthole_abyss"
+   },
+   "else": {
+    "texture": "porthole"
+   }
+  },
+  {
+   "target": "port_e",
+   "when": "tide=3",
+   "then": {
+    "texture": "porthole_abyss"
+   },
+   "else": {
+    "texture": "porthole"
+   }
+  },
+  {
+   "target": "pump_socket",
+   "when": "pump_fitted",
+   "then": {
+    "texture": "pump_socket_crank"
+   },
+   "else": {
+    "texture": "pump_socket"
+   }
+  },
+  {
+   "target": "seacock",
+   "when": "cock_free",
+   "then": {
+    "texture": "seacock"
+   },
+   "else": {
+    "texture": "seacock_rust"
+   }
+  },
+  {
+   "target": "chest_key_part",
+   "when": "!key_taken",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "keyhole_cover",
+   "when": "!pearl_home",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "hinge:chest.top",
+   "when": "chest_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.0
+  },
+  {
+   "target": "box:chest",
+   "when": "chest_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "fbottom",
+   "when": "!fb_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "keyhole2",
+   "when": [
+    "tide=3",
+    "!fb_open"
+   ],
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "lsocket",
+   "when": "binnacle_lit",
+   "then": {
+    "texture": "lsocket_lit"
+   },
+   "else": {
+    "texture": "lsocket"
+   }
+  },
+  {
+   "target": "fisheye",
+   "when": "fish_lit",
+   "then": {
+    "texture": "fisheye_lit"
+   },
+   "else": {
+    "texture": "fisheye"
+   }
+  },
+  {
+   "target": "hinge:binnacle.top",
+   "when": "binnacle_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.0
+  },
+  {
+   "target": "hinge:binnacle_mini.top",
+   "when": "binnacle_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   }
+  },
+  {
+   "target": "box:binnacle",
+   "when": "binnacle_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "skylight",
+   "when": "seal2_taken",
+   "then": {
+    "texture": "skylight_open"
+   },
+   "else": {
+    "texture": "skylight"
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "tap",
+   "ids": [
+    "water_n_0",
+    "water_n_1",
+    "water_e_0",
+    "water_e_1",
+    "water_s_0",
+    "water_s_1",
+    "water_w_0",
+    "water_w_1",
+    "water_floor"
+   ],
+   "do": [
+    {
+     "say": "Under the water. Cold enough to stop your heart."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "clog",
+   "do": [
+    {
+     "sfx": "paper"
+    },
+    {
+     "journal": [
+      "penhallow_log",
+      "Captain's log",
+      "The log of the Constance, Josiah Penhallow master. Water-stained, the last pages in pencil:\n\n\"Struck the reef following Pike's light, which turned on us. Hull holed. She floods at the flood and drains at the ebb, and the pump and the sea-cock between them will hold her at any mark you please.\"\n\n\"Left the chest key on the high shelf, where only the flood can carry a man.\"\n\n\"The chest won't show its lock till the pearl is home.\"\n\n\"NEVER drain her past the third mark.\"\n\n\"The binnacle's light will not reach the fish's eye. Brass cannot make that turn. The glass can.\""
+     ]
+    },
+    {
+     "say": "The captain's log. It's in your journal."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "chart",
+   "do": [
+    {
+     "say": "A chart of Kingsport. A pencil line runs from the light to the reef."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "captain",
+   "do": [
+    {
+     "say": "Captain Penhallow. The paint has run where the sea got at it."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "cdoor",
+   "do": [
+    {
+     "say": "The cabin door. Jammed by the tilt of the hull."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "gauge",
+   "do": [
+    {
+     "say": "A tide gauge painted on the bulkhead. Marks 1, 2 and 3. The 3 is in red."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "port_n",
+   "do": [
+    {
+     "say": "Green water and drifting sand."
+    }
+   ],
+   "when": "!tide=3"
+  },
+  {
+   "on": "tap",
+   "id": "port_e",
+   "do": [
+    {
+     "say": "Green water and drifting sand."
+    }
+   ],
+   "when": "!tide=3"
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "port_n",
+    "port_e"
+   ],
+   "do": [
+    {
+     "say": "Dry mud to the horizon. The eye is closer."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "crank",
+   "ids": [
+    "pump",
+    "pump_socket"
+   ],
+   "do": [
+    {
+     "take": "crank"
+    },
+    {
+     "set": "pump_fitted"
+    },
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The lighthouse crank fits the pump's socket exactly."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "pump",
+    "pump_socket"
+   ],
+   "do": [
+    {
+     "say": "A bilge pump with no handle. There's a square socket where it should go."
+    }
+   ],
+   "when": "!pump_fitted"
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "pump",
+    "pump_socket"
+   ],
+   "do": [
+    {
+     "set": "tide",
+     "value": 1
+    },
+    {
+     "sfx": "water"
+    },
+    {
+     "say": "You work the crank. The water drops to the second mark."
+    }
+   ],
+   "when": "tide=0"
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "pump",
+    "pump_socket"
+   ],
+   "do": [
+    {
+     "set": "tide",
+     "value": 2
+    },
+    {
+     "set": "drained"
+    },
+    {
+     "sfx": "water"
+    },
+    {
+     "say": "The water drops to the third mark. The chest on the north wall is clear."
+    }
+   ],
+   "when": "tide=1"
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "pump",
+    "pump_socket"
+   ],
+   "do": [
+    {
+     "set": "tide",
+     "value": 3
+    },
+    {
+     "sfx": "water"
+    },
+    {
+     "wait": 0.6
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "shake": true
+    },
+    {
+     "journal": [
+      "abyss",
+      "Past the third mark",
+      "I pumped past the third mark. The water did not drop. It left. It went out through the portholes and the sea went with it, and through the glass I could see the reef standing up out of dry mud for miles, and on the mud, something lying with one eye open, the size of a church.\n\nIt was the thing the beam found. It came closer while I wasn't looking."
+     ]
+    },
+    {
+     "say": "Past the third mark the water doesn't drop. It leaves. Through the portholes, the sea is gone.",
+     "secs": 6
+    }
+   ],
+   "when": "tide=2"
+  },
+  {
+   "on": "tap",
+   "ids": [
+    "pump",
+    "pump_socket"
+   ],
+   "do": [
+    {
+     "say": "Nothing left to pump. Nothing left anywhere."
+    }
+   ],
+   "when": "tide=3"
+  },
+  {
+   "on": "tap",
+   "id": "seacock",
+   "do": [
+    {
+     "say": "The sea-cock. Rusted solid."
+    }
+   ],
+   "when": "!cock_free"
+  },
+  {
+   "on": "tap",
+   "id": "seacock",
+   "do": [
+    {
+     "set": "tide",
+     "value": 2
+    },
+    {
+     "sfx": "water"
+    },
+    {
+     "say": "The sea comes back in through the cock, to the third mark."
+    }
+   ],
+   "when": "tide=3"
+  },
+  {
+   "on": "tap",
+   "id": "seacock",
+   "do": [
+    {
+     "set": "tide",
+     "value": 1
+    },
+    {
+     "sfx": "water"
+    },
+    {
+     "say": "Water rushes in, up to the second mark."
+    }
+   ],
+   "when": "tide=2"
+  },
+  {
+   "on": "tap",
+   "id": "seacock",
+   "do": [
+    {
+     "set": "tide",
+     "value": 0
+    },
+    {
+     "sfx": "water"
+    },
+    {
+     "say": "The sea pours in to the first mark. You float, chest-deep."
+    }
+   ],
+   "when": "tide=1"
+  },
+  {
+   "on": "tap",
+   "id": "seacock",
+   "do": [
+    {
+     "say": "Open as far as it goes."
+    }
+   ],
+   "when": "tide=0"
+  },
+  {
+   "on": "use",
+   "item": "oil_can",
+   "id": "seacock",
+   "do": [
+    {
+     "take": "oil_can"
+    },
+    {
+     "set": "cock_free"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "You empty the oil can over the wheel. It groans, and gives."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "chest_key_part",
+   "do": [
+    {
+     "give": "chest_key"
+    },
+    {
+     "set": "key_taken"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "Floating at the high-water mark, you reach the shelf. A key shaped like a crab."
+    }
+   ],
+   "when": [
+    "tide=0",
+    "!key_taken"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "chest_key_part",
+   "do": [
+    {
+     "say": "Out of reach. If the water were higher you could float up to it."
+    }
+   ],
+   "when": "!key_taken"
+  },
+  {
+   "on": "tap",
+   "id": "lift:chest",
+   "do": [
+    {
+     "shake": true
+    },
+    {
+     "say": "It's under the water, and bolted down besides."
+    }
+   ],
+   "when": [
+    "any",
+    "tide=0",
+    "tide=1"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "keyhole_cover",
+   "do": [
+    {
+     "say": "A brass cover over the keyhole. Something behind the maze holds it."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "chest_key",
+   "id": "keyhole_cover",
+   "do": [
+    {
+     "say": "The keyhole is covered."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "chest_key",
+   "id": "keyhole",
+   "do": [
+    {
+     "set": "chest_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "The lid comes up. Inside, a false bottom with words carved into it."
+    }
+   ],
+   "when": "!chest_open"
+  },
+  {
+   "on": "tap",
+   "id": "fbottom",
+   "do": [
+    {
+     "say": "Carved in the boards: NEVER DRAIN HER PAST THE THIRD MARK."
+    }
+   ],
+   "when": "!tide=3"
+  },
+  {
+   "on": "tap",
+   "id": "fbottom",
+   "do": [
+    {
+     "say": "A second keyhole has opened in the boards. It wasn't there before."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "chest_key",
+   "id": "keyhole2",
+   "do": [
+    {
+     "take": "chest_key"
+    },
+    {
+     "set": "fb_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "The key turns. The false bottom lifts away. Beneath it, a ship's binnacle."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "chest_key",
+   "id": "fbottom",
+   "do": [
+    {
+     "say": "No keyhole. Not yet."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "lantern",
+   "id": "lsocket",
+   "do": [
+    {
+     "take": "lantern"
+    },
+    {
+     "set": "binnacle_lit"
+    },
+    {
+     "sfx": "flame"
+    },
+    {
+     "say": "The lantern fits the binnacle's socket. Its light runs out across the brass."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "lsocket",
+   "do": [
+    {
+     "say": "An empty lamp socket."
+    }
+   ],
+   "when": "!binnacle_lit"
+  },
+  {
+   "on": "tap",
+   "id": "fisheye",
+   "do": [
+    {
+     "say": "A brass fish. Its eye is glass."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "carving",
+   "do": [
+    {
+     "journal": [
+      "carving",
+      "Carved in the deck",
+      "Cut deep into the deck where the water used to be: THE GLASS TURNS WHAT BRASS CANNOT."
+     ]
+    },
+    {
+     "say": "Words cut into the deck. They're in your journal."
+    }
+   ],
+   "when": "tide=3"
+  },
+  {
+   "on": "tap",
+   "id": "skylight",
+   "do": [
+    {
+     "set": "escaped"
+    },
+    {
+     "sfx": "water"
+    },
+    {
+     "complete_room": [
+      102,
+      "SEAL II OF IX BROKEN",
+      "You come up through the skylight into black water and swim for the light. When you look back, the wreck is gone, and so is the reef.\n\nYou carry the stone home to Wren's cabinet."
+     ]
+    }
+   ],
+   "when": [
+    "seal2_taken",
+    "tide=0"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "skylight",
+   "do": [
+    {
+     "say": "The skylight, far overhead. Too high to reach unless the water carried you."
+    }
+   ]
+  }
+ ],
+ "steps": [
+  {
+   "id": "pump",
+   "done": "pump_fitted",
+   "hints": [
+    "The bilge pump on the south wall is missing its handle. You carried one down from the light.",
+    "Fit the lamp crank into the pump's square socket."
+   ],
+   "solve": [
+    {
+     "take": "crank"
+    },
+    {
+     "set": "pump_fitted"
+    }
+   ],
+   "said": "The crank is in the pump."
+  },
+  {
+   "id": "cock",
+   "done": "cock_free",
+   "hints": [
+    "The sea-cock on the west wall is rusted shut.",
+    "Use the oil can on the sea-cock."
+   ],
+   "solve": [
+    {
+     "take": "oil_can"
+    },
+    {
+     "set": "cock_free"
+    }
+   ],
+   "said": "The sea-cock turns freely."
+  },
+  {
+   "id": "flood",
+   "done": [
+    "any",
+    "key_taken",
+    "tide=0"
+   ],
+   "hints": [
+    "The shelf on the west wall is out of reach. Water lifts whatever floats, you included.",
+    "Open the sea-cock until the water reaches the first mark."
+   ],
+   "solve": [
+    {
+     "set": "tide",
+     "value": 0
+    }
+   ],
+   "said": "The sea pours in."
+  },
+  {
+   "id": "key",
+   "done": "key_taken",
+   "hints": [
+    "Something glints on the high shelf.",
+    "At high water, take the key from the shelf on the west wall."
+   ],
+   "solve": [
+    {
+     "give": "chest_key"
+    },
+    {
+     "set": "key_taken"
+    }
+   ],
+   "said": "The crab key is yours."
+  },
+  {
+   "id": "drain",
+   "done": [
+    "any",
+    "drained",
+    "chest_open"
+   ],
+   "hints": [
+    "The chest on the north wall is under the water.",
+    "Work the pump until the water is down to the third mark."
+   ],
+   "solve": [
+    {
+     "set": "tide",
+     "value": 2
+    },
+    {
+     "set": "drained"
+    }
+   ],
+   "said": "The water drains to the third mark."
+  },
+  {
+   "id": "maze",
+   "done": "pearl_home",
+   "hints": [
+    "The chest's keyhole is covered. The pearl maze beside it is the latch.",
+    "Lift the chest. Each arrow tilts it and the pearl rolls until it hits something. Roll it into the hole on the right of the maze."
+   ],
+   "solve": [
+    {
+     "set": "pearl",
+     "value": "5,2"
+    },
+    {
+     "set": "pearl_home"
+    }
+   ],
+   "said": "The pearl rolls home."
+  },
+  {
+   "id": "chest",
+   "done": "chest_open",
+   "hints": [
+    "The keyhole is clear now.",
+    "Use the crab key on the chest's keyhole."
+   ],
+   "solve": [
+    {
+     "set": "chest_open"
+    }
+   ],
+   "said": "The chest lid lifts."
+  },
+  {
+   "id": "abyss",
+   "done": [
+    "any",
+    "tide=3",
+    "fb_open"
+   ],
+   "hints": [
+    "The false bottom warns you about the third mark. Warnings are also instructions.",
+    "Pump past the third mark."
+   ],
+   "solve": [
+    {
+     "set": "tide",
+     "value": 3
+    },
+    {
+     "journal": [
+      "abyss",
+      "Past the third mark",
+      "I pumped past the third mark. The water did not drop. It left. It went out through the portholes and the sea went with it, and through the glass I could see the reef standing up out of dry mud for miles, and on the mud, something lying with one eye open, the size of a church.\n\nIt was the thing the beam found. It came closer while I wasn't looking."
+     ]
+    }
+   ],
+   "said": "The sea goes away."
+  },
+  {
+   "id": "bottom",
+   "done": "fb_open",
+   "hints": [
+    "Something has changed in the chest's false bottom.",
+    "Use the crab key on the new keyhole in the chest's false bottom."
+   ],
+   "solve": [
+    {
+     "take": "chest_key"
+    },
+    {
+     "set": "fb_open"
+    }
+   ],
+   "said": "The false bottom lifts."
+  },
+  {
+   "id": "lantern",
+   "done": "binnacle_lit",
+   "hints": [
+    "The binnacle has an empty lamp socket. You carried a light down from the tower.",
+    "Dive into the binnacle and put the storm lantern in its socket."
+   ],
+   "solve": [
+    {
+     "take": "lantern"
+    },
+    {
+     "set": "binnacle_lit"
+    }
+   ],
+   "said": "The binnacle is lit."
+  },
+  {
+   "id": "beam",
+   "done": "fish_lit",
+   "hints": [
+    "The beam has to reach the brass fish's eye, and no mirror can turn it there. The captain's log and the carving both say the glass can.",
+    "Turn both mirrors to lean like /, then look through the Lens. A mirror appears that brass can't make."
+   ],
+   "solve": [
+    {
+     "set": "bm1",
+     "value": 0
+    },
+    {
+     "set": "bm2",
+     "value": 0
+    },
+    {
+     "set": "fish_lit"
+    },
+    {
+     "set": "binnacle_open"
+    }
+   ],
+   "said": "The light bends. The binnacle opens."
+  },
+  {
+   "id": "seal",
+   "done": "seal2_taken",
+   "hints": [
+    "Something waits inside the binnacle.",
+    "Take the stone from inside the binnacle."
+   ],
+   "solve": [
+    {
+     "give": "seal_stone2"
+    },
+    {
+     "set": "seal2_taken"
+    },
+    {
+     "journal": [
+      "seal2",
+      "The second seal",
+      "A second stone, cold and wet, inside the binnacle where the compass should be. The moment I lifted it the sea remembered the wreck and came back for it.\n\nSeven remain. Wren stopped at three. I am beginning to understand why, and I am beginning not to care."
+     ]
+    },
+    {
+     "set": "tide",
+     "value": 0
+    }
+   ],
+   "said": "The second seal is yours, and the sea is coming."
+  },
+  {
+   "id": "escape",
+   "done": "escaped",
+   "hints": [
+    "The sea is back, all the way up. Look up.",
+    "Swipe down to look up, and swim out through the skylight."
+   ],
+   "solve": [
+    {
+     "set": "escaped"
+    },
+    {
+     "complete_room": [
+      102,
+      "SEAL II OF IX BROKEN",
+      "You come up through the skylight into black water and swim for the light. When you look back, the wreck is gone, and so is the reef.\n\nYou carry the stone home to Wren's cabinet."
+     ]
+    }
+   ],
+   "said": "Up you go."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "clog"
+  ],
+  [
+   "tapat",
+   "pump",
+   [
+    0,
+    4.5
+   ]
+  ],
+  [
+   "use",
+   "crank",
+   "pump_socket"
+  ],
+  [
+   "tap",
+   "seacock"
+  ],
+  [
+   "use",
+   "oil_can",
+   "seacock"
+  ],
+  [
+   "tap",
+   "chest_key_part"
+  ],
+  [
+   "tap",
+   "seacock"
+  ],
+  [
+   "shot",
+   "high_tide"
+  ],
+  [
+   "tap",
+   "chest_key_part"
+  ],
+  [
+   "expect",
+   "key_taken"
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tapat",
+    "pump",
+    [
+     0,
+     4.5
+    ]
+   ]
+  ],
+  [
+   "shot",
+   "low_tide"
+  ],
+  [
+   "expect",
+   "drained"
+  ],
+  [
+   "tap",
+   "chest"
+  ],
+  [
+   "shot",
+   "chest"
+  ],
+  [
+   "tap",
+   "tilt_s"
+  ],
+  [
+   "tap",
+   "tilt_e"
+  ],
+  [
+   "tap",
+   "tilt_n"
+  ],
+  [
+   "tap",
+   "tilt_e"
+  ],
+  [
+   "tap",
+   "tilt_n"
+  ],
+  [
+   "tap",
+   "tilt_e"
+  ],
+  [
+   "tap",
+   "tilt_s"
+  ],
+  [
+   "tap",
+   "tilt_w"
+  ],
+  [
+   "tap",
+   "tilt_n"
+  ],
+  [
+   "tap",
+   "tilt_e"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "expect",
+   "pearl_home"
+  ],
+  [
+   "shot",
+   "pearl_home"
+  ],
+  [
+   "use",
+   "chest_key",
+   "keyhole"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "shot",
+   "chest_open"
+  ],
+  [
+   "tap",
+   "fbottom"
+  ],
+  [
+   "tapat",
+   "pump",
+   [
+    0,
+    4.5
+   ]
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "shot",
+   "abyss"
+  ],
+  [
+   "tap",
+   "port_n"
+  ],
+  [
+   "tap",
+   "carving"
+  ],
+  [
+   "shot",
+   "floor_dry"
+  ],
+  [
+   "use",
+   "chest_key",
+   "keyhole2"
+  ],
+  [
+   "wait",
+   0.5
+  ],
+  [
+   "shot",
+   "binnacle_found"
+  ],
+  [
+   "tap",
+   "dive:binnacle"
+  ],
+  [
+   "use",
+   "lantern",
+   "lsocket"
+  ],
+  [
+   "shot",
+   "binnacle_lit"
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "bm1"
+   ]
+  ],
+  [
+   "tap",
+   "bm2"
+  ],
+  [
+   "shot",
+   "no_lens"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "wait",
+   2.0
+  ],
+  [
+   "shot",
+   "lens_beam"
+  ],
+  [
+   "expect",
+   "fish_lit"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "tap",
+   "seal2_part"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "shot",
+   "flooded"
+  ],
+  [
+   "tap",
+   "skylight"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

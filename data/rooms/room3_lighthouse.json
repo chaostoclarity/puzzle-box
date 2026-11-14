@@ -1,0 +1,2800 @@
+{
+ "title": "The Lamp Room",
+ "intro": "Drag down to look up at the ceiling. Drag up to look down at the floor.",
+ "walls": "r3_wall_",
+ "floor": "r3_floor",
+ "ceiling": "r3_ceiling",
+ "on_enter": [
+  {
+   "set": "barT",
+   "value": 1
+  },
+  {
+   "set": "barM",
+   "value": 1
+  },
+  {
+   "set": "barB",
+   "value": 0
+  },
+  {
+   "journal": [
+    "kingsport",
+    "Kingsport Light",
+    "The lamp room at the top of the Kingsport light. Rain on the glass on every side. The keeper, Asa Pike, has not been seen for a month; the stair hatch was padlocked from the inside, and I came up the outside ladder. The lamp is cold and wrapped like a corpse."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "furniture",
+   "wall": "n",
+   "id": "pedestal",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    6,
+    6,
+    3
+   ],
+   "faces": {
+    "front": "pedestal_front",
+    "top": "iron_top_96x48",
+    "default": "iron_side_48x96"
+   },
+   "zoom": {
+    "k": 2,
+    "dy": 2,
+    "h": 10
+   }
+  },
+  {
+   "type": "box",
+   "name": "carriage",
+   "wall": "n",
+   "pos": [
+    0,
+    7.5
+   ],
+   "depth": 1.5,
+   "scale": 0.5,
+   "view": "front",
+   "size": 6,
+   "faces": {
+    "front": "carriage_front",
+    "back": "carriage_back",
+    "left": "carriage_left",
+    "right": "carriage_right",
+    "top": "carriage_top",
+    "bottom": "carriage_bottom"
+   },
+   "liner": "carriage_liner",
+   "liner_skip": [
+    "top"
+   ],
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "carriage",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -1.72
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "clear",
+     "id": "socket",
+     "depth": 0.035
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -1.72
+     ],
+     "size": [
+      1.5,
+      1.5
+     ],
+     "tex": "crank_fitted",
+     "id": "crank_part",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "top",
+     "uv": [
+      -0.375,
+      -0.375
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "mirror_0",
+     "id": "mir1",
+     "depth": 0.03
+    },
+    {
+     "face": "top",
+     "uv": [
+      -0.375,
+      -1.875
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "mirror_1",
+     "id": "mir2",
+     "depth": 0.03
+    },
+    {
+     "face": "top",
+     "uv": [
+      1.125,
+      -1.875
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "mirror_1",
+     "id": "mir3",
+     "depth": 0.03
+    },
+    {
+     "face": "top",
+     "uv": [
+      1.125,
+      -0.375
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "mirror_2",
+     "id": "mir4",
+     "depth": 0.03
+    },
+    {
+     "face": "top",
+     "uv": [
+      -1.875,
+      -0.375
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "lamp_port",
+     "id": "lamp_port",
+     "tappable": false
+    },
+    {
+     "face": "top",
+     "uv": [
+      0.375,
+      -0.375
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "pillar",
+     "id": "pillar",
+     "tappable": false
+    },
+    {
+     "face": "top",
+     "uv": [
+      1.125,
+      1.875
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "port_sea",
+     "id": "port_sea",
+     "tappable": false
+    },
+    {
+     "face": "top",
+     "uv": [
+      1.875,
+      -0.375
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "port_land",
+     "id": "port_land",
+     "tappable": false
+    }
+   ],
+   "children": [
+    {
+     "name": "prism_mini",
+     "faces": {
+      "front": "prism_front",
+      "back": "prism_back",
+      "left": "prism_left",
+      "right": "prism_right",
+      "top": "prism_top",
+      "bottom": "prism_bottom"
+     },
+     "liner": "prism_liner",
+     "liner_skip": [
+      "front"
+     ],
+     "hinges": [
+      [
+       "front",
+       "bottom"
+      ]
+     ],
+     "blocker": "dive:prism",
+     "scale": 0.35,
+     "pos": [
+      0,
+      -1.9,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "type": "stage_box",
+   "name": "prism",
+   "view": "front",
+   "faces": {
+    "front": "prism_front",
+    "back": "prism_back",
+    "left": "prism_left",
+    "right": "prism_right",
+    "top": "prism_top",
+    "bottom": "prism_bottom"
+   },
+   "liner": "prism_liner",
+   "liner_skip": [
+    "front"
+   ],
+   "hinges": [
+    [
+     "front",
+     "bottom"
+    ]
+   ],
+   "blocker": "prism",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      -1.8,
+      1.6
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "star",
+     "id": "star_a",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.4,
+      2.0
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "star",
+     "id": "star_b",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.9,
+      0.6
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "star",
+     "id": "star_c",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.6,
+      -0.2
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "star",
+     "id": "star_d",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.0,
+      -1.8
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "star",
+     "id": "star_e",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0
+     ],
+     "size": [
+      6,
+      6
+     ],
+     "tex": "prism_lines",
+     "id": "prism_lines",
+     "depth": 0.03,
+     "tappable": false,
+     "lens": true
+    }
+   ],
+   "children": [
+    {
+     "name": "tin_mini",
+     "faces": {
+      "front": "tin_front",
+      "back": "tin_back",
+      "left": "tin_left",
+      "right": "tin_right",
+      "top": "tin_top",
+      "bottom": "tin_bottom"
+     },
+     "liner": "tin_liner",
+     "liner_skip": [
+      "front"
+     ],
+     "hinges": [
+      [
+       "front",
+       "bottom"
+      ]
+     ],
+     "blocker": "dive:tin",
+     "scale": 0.4,
+     "pos": [
+      0,
+      -1.6,
+      -0.6
+     ]
+    }
+   ]
+  },
+  {
+   "type": "stage_box",
+   "name": "tin",
+   "view": "front",
+   "faces": {
+    "front": "tin_front",
+    "back": "tin_back",
+    "left": "tin_left",
+    "right": "tin_right",
+    "top": "tin_top",
+    "bottom": "tin_bottom"
+   },
+   "liner": "tin_liner",
+   "liner_skip": [
+    "front"
+   ],
+   "hinges": [
+    [
+     "front",
+     "bottom"
+    ]
+   ],
+   "blocker": "tin",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      -1.5,
+      0.03
+     ],
+     "size": [
+      0.75,
+      1
+     ],
+     "tex": "digit_0",
+     "id": "dig0",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.0,
+      0.03
+     ],
+     "size": [
+      0.75,
+      1
+     ],
+     "tex": "digit_0",
+     "id": "dig1",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.5,
+      0.03
+     ],
+     "size": [
+      0.75,
+      1
+     ],
+     "tex": "digit_0",
+     "id": "dig2",
+     "depth": 0.04
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "keeper_key_part",
+     "tex": "item_keeper_key",
+     "size": [
+      1.5,
+      1.5
+     ],
+     "pos": [
+      0,
+      -1.5,
+      -1.0
+     ]
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "fresnel",
+   "center": [
+    0,
+    12.5
+   ],
+   "size": [
+    4,
+    6
+   ],
+   "tex": "fresnel",
+   "depth": 1.5
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "lampglow",
+   "center": [
+    0,
+    12.5
+   ],
+   "size": [
+    10,
+    10
+   ],
+   "tex": "glow_lamp",
+   "depth": 1.6,
+   "tappable": false,
+   "additive": true
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "cloth",
+   "center": [
+    0,
+    10
+   ],
+   "size": [
+    7,
+    10
+   ],
+   "tex": "cloth",
+   "depth": 3.2
+  },
+  {
+   "type": "sprite",
+   "wall": "u",
+   "id": "cleat",
+   "center": [
+    3,
+    4
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "cleat"
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "hatch",
+   "center": [
+    0,
+    3.5
+   ],
+   "size": [
+    5,
+    5
+   ],
+   "tex": "hatch"
+  },
+  {
+   "type": "furniture",
+   "wall": "e",
+   "id": "kdesk",
+   "pos": [
+    -2.5,
+    0
+   ],
+   "size": [
+    7,
+    4,
+    2.5
+   ],
+   "faces": {
+    "front": "kdesk_front",
+    "top": "wood_top_112x40",
+    "default": "wood_side_40x64"
+   },
+   "zoom": {
+    "dy": 1.0,
+    "w": 7.5,
+    "h": 6
+   }
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "logbook",
+   "center": [
+    -3.5,
+    4.75
+   ],
+   "size": [
+    2,
+    1.5
+   ],
+   "tex": "logbook",
+   "depth": 1.3
+  },
+  {
+   "type": "furniture",
+   "wall": "e",
+   "id": "barometer",
+   "pos": [
+    4,
+    7
+   ],
+   "size": [
+    2.5,
+    5,
+    0.5
+   ],
+   "faces": {
+    "front": "baro_front",
+    "default": "iron_side_8x80"
+   },
+   "zoom": {
+    "k": 3
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.75
+     ],
+     "size": [
+      2,
+      2
+     ],
+     "tex": "baro_0",
+     "id": "baro_dial"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -1.4
+     ],
+     "size": [
+      0.75,
+      0.5
+     ],
+     "tex": "small_locker_key",
+     "id": "locker_key_part",
+     "depth": 0.03
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -1.4
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "baro_door",
+     "id": "baro_door",
+     "depth": 0.035
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "plaque",
+   "center": [
+    -2.5,
+    13
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "plaque"
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "plaque_w",
+   "center": [
+    -2.5,
+    13
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "plaque_w",
+   "depth": 0.05,
+   "tappable": false,
+   "lens": true
+  },
+  {
+   "type": "furniture",
+   "wall": "s",
+   "id": "locker",
+   "pos": [
+    -3.5,
+    0
+   ],
+   "size": [
+    4,
+    6,
+    2
+   ],
+   "faces": {
+    "front": "locker_front",
+    "top": "iron_top_96x48",
+    "default": "wood_side_32x96"
+   },
+   "zoom": {
+    "k": 3
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -0.5
+     ],
+     "size": [
+      3,
+      4.5
+     ],
+     "tex": "locker_door",
+     "id": "locker_door",
+     "depth": 0.03
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.6875
+     ],
+     "size": [
+      3,
+      0.5
+     ],
+     "tex": "lbar_t",
+     "id": "barT",
+     "depth": 0.045
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -0.5625
+     ],
+     "size": [
+      3,
+      0.5
+     ],
+     "tex": "lbar_m",
+     "id": "barM",
+     "depth": 0.045
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -1.8125
+     ],
+     "size": [
+      3,
+      0.5
+     ],
+     "tex": "lbar_b",
+     "id": "barB",
+     "depth": 0.045
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.25,
+      -0.5
+     ],
+     "size": [
+      0.75,
+      1
+     ],
+     "tex": "padlock",
+     "id": "padlock",
+     "depth": 0.055
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "notice",
+   "center": [
+    -3.5,
+    12
+   ],
+   "size": [
+    3,
+    4
+   ],
+   "tex": "notice"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "harpoon",
+   "center": [
+    3.5,
+    9
+   ],
+   "size": [
+    4,
+    2
+   ],
+   "tex": "harpoon"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "seawin",
+   "center": [
+    0,
+    12.5
+   ],
+   "size": [
+    12,
+    11
+   ],
+   "tex": "sea_window"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "sea_eye",
+   "center": [
+    3.4,
+    11.75
+   ],
+   "size": [
+    2,
+    1
+   ],
+   "tex": "sea_eye",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "lantern",
+   "center": [
+    -5.75,
+    6
+   ],
+   "size": [
+    1.5,
+    2.5
+   ],
+   "tex": "lantern",
+   "depth": 0.4
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "lantern_glow",
+   "center": [
+    -5.75,
+    5.6
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "glow_lantern",
+   "depth": 0.45,
+   "tappable": false,
+   "additive": true
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "cycler",
+   "part": "baro_dial",
+   "flag": "baro",
+   "count": 4,
+   "start": 0,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "baro_0",
+    "baro_1",
+    "baro_2",
+    "baro_3"
+   ],
+   "lock": "baro_open",
+   "on": {
+    "3": [
+     {
+      "set": "baro_open"
+     },
+     {
+      "wait": 0.3
+     },
+     {
+      "sfx": "unlock"
+     },
+     {
+      "say": "FAIR. Click. A little door opens in the barometer's case."
+     }
+    ]
+   }
+  },
+  {
+   "kind": "pickup",
+   "part": "locker_key_part",
+   "item": "locker_key",
+   "flag": "lkey_taken",
+   "show_if": "baro_open",
+   "then": [
+    {
+     "say": "A stubby key on tarred line."
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "barT",
+   "flag": "barT",
+   "count": 3,
+   "start": 1,
+   "spin": false,
+   "sfx": "slide",
+   "offsets": [
+    [
+     -0.5,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.5,
+     0
+    ]
+   ],
+   "lock": [
+    "any",
+    "locker_open",
+    "!pad_off",
+    "!barM=0"
+   ],
+   "locked_say": "The top bar won't move. A pin from the middle bar holds it."
+  },
+  {
+   "kind": "cycler",
+   "part": "barM",
+   "flag": "barM",
+   "count": 3,
+   "start": 1,
+   "spin": false,
+   "sfx": "slide",
+   "offsets": [
+    [
+     -0.5,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.5,
+     0
+    ]
+   ],
+   "lock": [
+    "any",
+    "locker_open",
+    "!pad_off",
+    "!barB=1"
+   ],
+   "locked_say": "The middle bar won't move. A pin from the bottom bar holds it."
+  },
+  {
+   "kind": "cycler",
+   "part": "barB",
+   "flag": "barB",
+   "count": 3,
+   "start": 0,
+   "spin": false,
+   "sfx": "slide",
+   "offsets": [
+    [
+     -0.5,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0.5,
+     0
+    ]
+   ],
+   "lock": [
+    "any",
+    "locker_open",
+    "!pad_off"
+   ],
+   "locked_say": "The padlock holds the bars in place."
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "barT",
+    "barM",
+    "barB"
+   ],
+   "code": [
+    2,
+    2,
+    0
+   ],
+   "lock": "locker_open",
+   "do": [
+    {
+     "set": "locker_open"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "sfx": "door"
+    },
+    {
+     "say": "The last bar slides clear. The locker door swings open."
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "mir1",
+   "flag": "mir1",
+   "count": 4,
+   "start": 0,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "mirror_0",
+    "mirror_1",
+    "mirror_2",
+    "mirror_3"
+   ],
+   "lock": [
+    "any",
+    "beam_sea",
+    "!crank_fitted"
+   ],
+   "locked_say": "The mirrors are seized. Their gears run down to the empty socket on the front."
+  },
+  {
+   "kind": "cycler",
+   "part": "mir2",
+   "flag": "mir2",
+   "count": 4,
+   "start": 1,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "mirror_0",
+    "mirror_1",
+    "mirror_2",
+    "mirror_3"
+   ],
+   "lock": [
+    "any",
+    "beam_sea",
+    "!crank_fitted"
+   ],
+   "locked_say": "The mirrors are seized. Their gears run down to the empty socket on the front."
+  },
+  {
+   "kind": "cycler",
+   "part": "mir3",
+   "flag": "mir3",
+   "count": 4,
+   "start": 1,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "mirror_0",
+    "mirror_1",
+    "mirror_2",
+    "mirror_3"
+   ],
+   "lock": [
+    "any",
+    "beam_sea",
+    "!crank_fitted"
+   ],
+   "locked_say": "The mirrors are seized. Their gears run down to the empty socket on the front."
+  },
+  {
+   "kind": "cycler",
+   "part": "mir4",
+   "flag": "mir4",
+   "count": 4,
+   "start": 2,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "mirror_0",
+    "mirror_1",
+    "mirror_2",
+    "mirror_3"
+   ],
+   "lock": [
+    "any",
+    "beam_sea",
+    "!crank_fitted"
+   ],
+   "locked_say": "The mirrors are seized. Their gears run down to the empty socket on the front."
+  },
+  {
+   "kind": "beam",
+   "id": "lamp_beam",
+   "box": "carriage",
+   "face": "top",
+   "cols": 6,
+   "rows": 6,
+   "cell": 0.75,
+   "source": [
+    0,
+    3,
+    "e"
+   ],
+   "when": "lamp_lit",
+   "mirrors": [
+    [
+     "mir1",
+     "mir1",
+     2,
+     3,
+     0
+    ],
+    [
+     "mir2",
+     "mir2",
+     2,
+     5,
+     1
+    ],
+    [
+     "mir3",
+     "mir3",
+     4,
+     5,
+     1
+    ],
+    [
+     "mir4",
+     "mir4",
+     4,
+     3,
+     2
+    ]
+   ],
+   "blocks": [
+    [
+     3,
+     3
+    ]
+   ],
+   "targets": [
+    {
+     "cell": [
+      4,
+      0
+     ],
+     "flag": "beam_sea",
+     "do": [
+      {
+       "sfx": "horn"
+      },
+      {
+       "wait": 1.6
+      },
+      {
+       "sfx": "unlock"
+      },
+      {
+       "set": "carriage_open"
+      },
+      {
+       "give": "crank"
+      },
+      {
+       "journal": [
+        "the_eye",
+        "The beam",
+        "I turned the last mirror and the beam went out over the reef, nine miles, the way the notice promises. Out past the breakers something lifted out of the water and turned toward the light, slowly, the way a man turns when he hears his name.\n\nIt is still there. It is still looking. The carriage opened by itself."
+       ]
+      },
+      {
+       "say": "The beam goes out to sea. Far off, something turns toward it. The carriage lid lifts and the crank drops free.",
+       "secs": 6
+      }
+     ]
+    },
+    {
+     "cell": [
+      5,
+      3
+     ],
+     "flag": "beam_land",
+     "do": [
+      {
+       "sfx": "hum"
+      },
+      {
+       "say": "The beam turns inland, through the wall to the east. Something there catches it.",
+       "secs": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "sequence",
+   "flag": "stars",
+   "order": "dbaec",
+   "lock": "prism_open",
+   "pulled_suffix": "_lit",
+   "parts": {
+    "star_a": "a",
+    "star_b": "b",
+    "star_c": "c",
+    "star_d": "d",
+    "star_e": "e"
+   },
+   "tex": {
+    "star_a": "star",
+    "star_b": "star",
+    "star_c": "star",
+    "star_d": "star",
+    "star_e": "star"
+   },
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The stars go dark again."
+    }
+   ],
+   "do": [
+    {
+     "set": "prism_open"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "The case's face drops open. Inside, a keeper's tin with three number wheels."
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "dig0",
+   "flag": "dig0",
+   "count": 10,
+   "start": 0,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "digit_0",
+    "digit_1",
+    "digit_2",
+    "digit_3",
+    "digit_4",
+    "digit_5",
+    "digit_6",
+    "digit_7",
+    "digit_8",
+    "digit_9"
+   ],
+   "lock": "tin_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "dig1",
+   "flag": "dig1",
+   "count": 10,
+   "start": 0,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "digit_0",
+    "digit_1",
+    "digit_2",
+    "digit_3",
+    "digit_4",
+    "digit_5",
+    "digit_6",
+    "digit_7",
+    "digit_8",
+    "digit_9"
+   ],
+   "lock": "tin_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "dig2",
+   "flag": "dig2",
+   "count": 10,
+   "start": 0,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "digit_0",
+    "digit_1",
+    "digit_2",
+    "digit_3",
+    "digit_4",
+    "digit_5",
+    "digit_6",
+    "digit_7",
+    "digit_8",
+    "digit_9"
+   ],
+   "lock": "tin_open"
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "dig0",
+    "dig1",
+    "dig2"
+   ],
+   "code": [
+    3,
+    7,
+    9
+   ],
+   "lock": "tin_open",
+   "do": [
+    {
+     "set": "tin_open"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "The tin springs open."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "keeper_key_part",
+   "item": "keeper_key",
+   "flag": "kkey_taken",
+   "show_if": "tin_open",
+   "then": [
+    {
+     "say": "A heavy key on a tag: HATCH."
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "cloth",
+   "when": "!cloth_off",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "cleat",
+   "when": "cloth_off",
+   "then": {
+    "texture": "cleat_free"
+   },
+   "else": {
+    "texture": "cleat"
+   }
+  },
+  {
+   "target": "baro_door",
+   "when": "baro_open",
+   "then": {
+    "texture": "baro_door_open",
+    "tappable": false
+   },
+   "else": {
+    "texture": "baro_door",
+    "tappable": true
+   }
+  },
+  {
+   "target": "padlock",
+   "when": "!pad_off",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "barT",
+   "when": "!locker_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "barM",
+   "when": "!locker_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "barB",
+   "when": "!locker_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "locker_door",
+   "when": "locker_open",
+   "then": {
+    "texture": "locker_door_open"
+   },
+   "else": {
+    "texture": "locker_door"
+   }
+  },
+  {
+   "target": "locker_door",
+   "when": "locker_taken",
+   "then": {
+    "texture": "locker_door_empty"
+   }
+  },
+  {
+   "target": "lantern",
+   "when": "lantern_taken",
+   "then": {
+    "texture": "lantern_hook"
+   },
+   "else": {
+    "texture": "lantern"
+   }
+  },
+  {
+   "target": "lantern_glow",
+   "when": "!lantern_taken",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "fresnel",
+   "when": "lamp_lit",
+   "then": {
+    "texture": "fresnel_lit"
+   },
+   "else": {
+    "texture": "fresnel"
+   }
+  },
+  {
+   "target": "lampglow",
+   "when": "lamp_lit",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "crank_part",
+   "when": "crank_fitted",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "socket",
+   "when": "crank_fitted",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "port_sea",
+   "when": "beam_sea",
+   "then": {
+    "texture": "port_sea_lit"
+   },
+   "else": {
+    "texture": "port_sea"
+   }
+  },
+  {
+   "target": "port_land",
+   "when": "beam_land",
+   "then": {
+    "texture": "port_land_lit"
+   },
+   "else": {
+    "texture": "port_land"
+   }
+  },
+  {
+   "target": "hinge:carriage.top",
+   "when": "carriage_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.2
+  },
+  {
+   "target": "box:carriage",
+   "when": "carriage_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "seawin",
+   "when": "beam_sea",
+   "then": {
+    "texture": "sea_window_beam"
+   },
+   "else": {
+    "texture": "sea_window"
+   }
+  },
+  {
+   "target": "sea_eye",
+   "when": "beam_sea",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "plaque",
+   "when": "beam_land",
+   "then": {
+    "texture": "plaque_lit"
+   },
+   "else": {
+    "texture": "plaque"
+   }
+  },
+  {
+   "target": "plaque_w",
+   "when": "beam_land",
+   "then": {
+    "gone": false
+   },
+   "else": {
+    "gone": true
+   }
+  },
+  {
+   "target": "hinge:prism.front",
+   "when": "prism_open",
+   "then": {
+    "hinge": 100
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 0.9
+  },
+  {
+   "target": "hinge:prism_mini.front",
+   "when": "prism_open",
+   "then": {
+    "hinge": 100
+   },
+   "else": {
+    "hinge": 0
+   }
+  },
+  {
+   "target": "box:prism",
+   "when": "prism_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "hinge:tin.front",
+   "when": "tin_open",
+   "then": {
+    "hinge": 100
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 0.9
+  },
+  {
+   "target": "hinge:tin_mini.front",
+   "when": "tin_open",
+   "then": {
+    "hinge": 100
+   },
+   "else": {
+    "hinge": 0
+   }
+  },
+  {
+   "target": "box:tin",
+   "when": "tin_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "hatch",
+   "when": "hatch_open",
+   "then": {
+    "texture": "hatch_open"
+   },
+   "else": {
+    "texture": "hatch"
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "tap",
+   "id": "logbook",
+   "do": [
+    {
+     "sfx": "paper"
+    },
+    {
+     "journal": [
+      "pike_log",
+      "Keeper's log",
+      "Asa Pike's log. The last entries, the hand getting worse:\n\n\"Oil locker key kept where the weather lives. It comes out in FAIR weather only, same as me.\"\n\n\"Locker bars are Pa's design. Each one pinned by the one beneath it.\"\n\n\"The tin with the hatch key opens to the Light's own character. Any keeper knows it by heart.\"\n\n\"Lit her at three bells. The beam went to sea and something out there TURNED. I covered her and tied the cloth off to the roof. I have locked the stair. I am not going down there again.\""
+     ]
+    },
+    {
+     "say": "The keeper's log. It's in your journal."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "cloth",
+   "do": [
+    {
+     "say": "Sailcloth, lashed tight over the lamp. The rope runs up out of sight, to the ceiling."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "cleat",
+   "do": [
+    {
+     "set": "cloth_off"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You free the rope. Across the room the sailcloth slides off the lamp.",
+     "secs": 5
+    }
+   ],
+   "when": "!cloth_off"
+  },
+  {
+   "on": "tap",
+   "id": "cleat",
+   "do": [
+    {
+     "say": "An iron cleat. The rope hangs loose now."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "baro_door",
+   "do": [
+    {
+     "say": "A tiny brass door in the barometer's case. No keyhole."
+    }
+   ],
+   "when": "!baro_open"
+  },
+  {
+   "on": "use",
+   "item": "locker_key",
+   "ids": [
+    "padlock",
+    "locker_door",
+    "locker"
+   ],
+   "do": [
+    {
+     "take": "locker_key"
+    },
+    {
+     "set": "pad_off"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "The padlock drops. Three iron bars still cross the door."
+    }
+   ],
+   "when": "!pad_off"
+  },
+  {
+   "on": "tap",
+   "id": "padlock",
+   "do": [
+    {
+     "say": "A padlock through the hasp."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "locker_door",
+   "do": [
+    {
+     "give": "crank"
+    },
+    {
+     "give": "oil_can"
+    },
+    {
+     "set": "locker_taken"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "A lamp crank and a can of oil."
+    }
+   ],
+   "when": [
+    "locker_open",
+    "!locker_taken"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "locker_door",
+   "do": [
+    {
+     "say": "Barred three times over."
+    }
+   ],
+   "when": "!locker_open"
+  },
+  {
+   "on": "tap",
+   "id": "locker_door",
+   "do": [
+    {
+     "say": "Empty."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "lantern",
+   "do": [
+    {
+     "give": "lantern"
+    },
+    {
+     "set": "lantern_taken"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "The keeper's storm lantern. The flame doesn't gutter."
+    }
+   ],
+   "when": "!lantern_taken"
+  },
+  {
+   "on": "tap",
+   "id": "lantern",
+   "do": [
+    {
+     "say": "An empty hook."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "oil_can",
+   "id": "fresnel",
+   "do": [
+    {
+     "set": "lamp_oiled"
+    },
+    {
+     "sfx": "water"
+    },
+    {
+     "say": "The reservoir drinks. The wick is ready. The can still sloshes."
+    }
+   ],
+   "when": "!lamp_oiled"
+  },
+  {
+   "on": "use",
+   "item": "lantern",
+   "id": "fresnel",
+   "do": [
+    {
+     "say": "The wick is dry. It needs oil first."
+    }
+   ],
+   "when": "!lamp_oiled"
+  },
+  {
+   "on": "use",
+   "item": "lantern",
+   "id": "fresnel",
+   "do": [
+    {
+     "set": "lamp_lit"
+    },
+    {
+     "sfx": "flame"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "sfx": "hum"
+    },
+    {
+     "say": "The great lamp catches. Light floods the gallery."
+    }
+   ],
+   "when": "!lamp_lit"
+  },
+  {
+   "on": "tap",
+   "id": "fresnel",
+   "do": [
+    {
+     "say": "The great lens. Cold."
+    }
+   ],
+   "when": "!lamp_lit"
+  },
+  {
+   "on": "tap",
+   "id": "fresnel",
+   "do": [
+    {
+     "say": "Too bright to look at."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "crank",
+   "ids": [
+    "socket",
+    "carriage"
+   ],
+   "do": [
+    {
+     "take": "crank"
+    },
+    {
+     "set": "crank_fitted"
+    },
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The crank seats with a clunk. Somewhere inside, gears engage."
+    }
+   ],
+   "when": "!crank_fitted"
+  },
+  {
+   "on": "tap",
+   "id": "lift:carriage",
+   "do": [
+    {
+     "say": "Covered by the sailcloth."
+    }
+   ],
+   "when": "!cloth_off"
+  },
+  {
+   "on": "tap",
+   "id": "pillar",
+   "do": [
+    {
+     "say": "A brass post."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "plaque",
+   "do": [
+    {
+     "set": "fragment2"
+    },
+    {
+     "fragment": true
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "fragment2",
+      "Wren's fragment, II",
+      "Carved into the stone roundel, under the Lens, in letters Wren must have cut himself:\n\n\"Pike sent the beam inland the night I came, and it found this stone, and he let me go. Sent out to sea, it finds something that does not let anyone go. I sent it out to sea. Elias, it remembers the face of whoever holds the crank.\""
+     ]
+    },
+    {
+     "say": "Words cut into the stone, only visible through the Lens. They're in your journal.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "beam_land",
+    "lens",
+    "!fragment2"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "plaque",
+   "do": [
+    {
+     "say": "Warm from the beam. Something is carved there that your eyes slide off."
+    }
+   ],
+   "when": [
+    "beam_land",
+    "!fragment2"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "plaque",
+   "do": [
+    {
+     "say": "A worn stone roundel set in the brick."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "notice",
+   "do": [
+    {
+     "journal": [
+      "notice",
+      "Notice to Mariners",
+      "Pinned on the south wall: KINGSPORT LIGHT. FL 3, EVERY 7 S, SEEN 9 M. Three flashes every seven seconds, seen nine miles out."
+     ]
+    },
+    {
+     "say": "A notice to mariners. It's in your journal."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "harpoon",
+   "do": [
+    {
+     "say": "A harpoon gun. Pike was expecting something bigger than seals."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "seawin",
+   "do": [
+    {
+     "say": "Black water, the reef, the wreck on it. Rain on the glass."
+    }
+   ],
+   "when": "!beam_sea"
+  },
+  {
+   "on": "tap",
+   "id": "seawin",
+   "do": [
+    {
+     "say": "The beam lies across the sea like a road."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "sea_eye",
+   "do": [
+    {
+     "say": "It is still looking."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "keeper_key",
+   "id": "hatch",
+   "do": [
+    {
+     "take": "keeper_key"
+    },
+    {
+     "set": "hatch_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "sfx": "door"
+    },
+    {
+     "say": "The hatch swings up. Stairs go down into the dark."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hatch",
+   "do": [
+    {
+     "say": "The stair hatch. Padlocked from this side. Pike locked himself up here."
+    }
+   ],
+   "when": "!hatch_open"
+  },
+  {
+   "on": "tap",
+   "id": "hatch",
+   "do": [
+    {
+     "set": "descended"
+    },
+    {
+     "sfx": "door"
+    },
+    {
+     "journal": [
+      "descent",
+      "Down",
+      "The stairs go down past the keeper's rooms, past the oil store, past the rock the tower stands on, and keep going. They come out on the reef, at low water, beside the wreck."
+     ]
+    },
+    {
+     "complete_room": [
+      4,
+      "THE WRECK OF THE CONSTANCE",
+      "The stairs end on the reef. The tide is out and the wreck lies on its side, black and running with water. Its cabin door hangs open.\n\nYou climb in."
+     ]
+    }
+   ],
+   "when": "hatch_open"
+  }
+ ],
+ "steps": [
+  {
+   "id": "cloth",
+   "done": "cloth_off",
+   "hints": [
+    "The lamp is wrapped in sailcloth. Where does the rope go?",
+    "Swipe down to look up at the ceiling, then free the rope from the cleat."
+   ],
+   "solve": [
+    {
+     "set": "cloth_off"
+    }
+   ],
+   "said": "The rope comes free and the cloth falls."
+  },
+  {
+   "id": "baro",
+   "done": "baro_open",
+   "hints": [
+    "Pike's log says where he kept the locker key.",
+    "Set the barometer on the east wall to FAIR."
+   ],
+   "solve": [
+    {
+     "set": "baro",
+     "value": 3
+    },
+    {
+     "set": "baro_open"
+    }
+   ],
+   "said": "The barometer gives up its key."
+  },
+  {
+   "id": "lkey",
+   "done": "lkey_taken",
+   "hints": [
+    "Something sits behind the barometer's little door.",
+    "Take the key from the barometer."
+   ],
+   "solve": [
+    {
+     "give": "locker_key"
+    },
+    {
+     "set": "lkey_taken"
+    }
+   ],
+   "said": "The locker key is in your hand."
+  },
+  {
+   "id": "padlock",
+   "done": "pad_off",
+   "hints": [
+    "The oil locker on the south wall is padlocked.",
+    "Use the locker key on the padlock."
+   ],
+   "solve": [
+    {
+     "take": "locker_key"
+    },
+    {
+     "set": "pad_off"
+    }
+   ],
+   "said": "The padlock drops."
+  },
+  {
+   "id": "bars",
+   "done": "locker_open",
+   "hints": [
+    "Each bar is pinned by the one below it. A bar only moves when the bar beneath it sits just so.",
+    "Bottom bar to the middle. Middle bar to the left. Top bar to the right. Middle bar to the right. Bottom bar to the left."
+   ],
+   "solve": [
+    {
+     "set": "barT",
+     "value": 2
+    },
+    {
+     "set": "barM",
+     "value": 2
+    },
+    {
+     "set": "barB",
+     "value": 0
+    },
+    {
+     "set": "locker_open"
+    }
+   ],
+   "said": "The bars slide clear."
+  },
+  {
+   "id": "locker",
+   "done": "locker_taken",
+   "hints": [
+    "The locker is open.",
+    "Take what's in the oil locker."
+   ],
+   "solve": [
+    {
+     "give": "crank"
+    },
+    {
+     "give": "oil_can"
+    },
+    {
+     "set": "locker_taken"
+    }
+   ],
+   "said": "The crank and the oil are yours."
+  },
+  {
+   "id": "lantern",
+   "done": "lantern_taken",
+   "hints": [
+    "You'll need a flame.",
+    "Take the storm lantern from its hook by the west window."
+   ],
+   "solve": [
+    {
+     "give": "lantern"
+    },
+    {
+     "set": "lantern_taken"
+    }
+   ],
+   "said": "The lantern is yours."
+  },
+  {
+   "id": "oil",
+   "done": "lamp_oiled",
+   "hints": [
+    "The great lamp is dry.",
+    "Use the oil can on the lamp."
+   ],
+   "solve": [
+    {
+     "set": "lamp_oiled"
+    }
+   ],
+   "said": "The lamp is filled."
+  },
+  {
+   "id": "light",
+   "done": "lamp_lit",
+   "hints": [
+    "The lamp is filled but cold.",
+    "Use the storm lantern on the lamp."
+   ],
+   "solve": [
+    {
+     "set": "lamp_lit"
+    }
+   ],
+   "said": "The lamp is lit."
+  },
+  {
+   "id": "crank",
+   "done": "crank_fitted",
+   "hints": [
+    "The brass carriage under the lamp has an empty square socket.",
+    "Lift the carriage and fit the crank into the socket on its front."
+   ],
+   "solve": [
+    {
+     "take": "crank"
+    },
+    {
+     "set": "crank_fitted"
+    }
+   ],
+   "said": "The crank is fitted."
+  },
+  {
+   "id": "beam",
+   "done": "beam_sea",
+   "hints": [
+    "The light must go out to sea. Turn the carriage to its top and turn the mirrors.",
+    "Send the beam down, along the bottom row, then straight up the fourth column, past the last mirror, to the wave."
+   ],
+   "solve": [
+    {
+     "set": "mir1",
+     "value": 2
+    },
+    {
+     "set": "mir2",
+     "value": 2
+    },
+    {
+     "set": "mir3",
+     "value": 0
+    },
+    {
+     "set": "mir4",
+     "value": 3
+    },
+    {
+     "set": "beam_sea"
+    },
+    {
+     "set": "carriage_open"
+    },
+    {
+     "give": "crank"
+    },
+    {
+     "journal": [
+      "the_eye",
+      "The beam",
+      "I turned the last mirror and the beam went out over the reef, nine miles, the way the notice promises. Out past the breakers something lifted out of the water and turned toward the light, slowly, the way a man turns when he hears his name.\n\nIt is still there. It is still looking. The carriage opened by itself."
+     ]
+    }
+   ],
+   "said": "The beam goes out to sea, and something answers it."
+  },
+  {
+   "id": "prism",
+   "done": "prism_open",
+   "hints": [
+    "The star case has a pattern only the Lens shows.",
+    "With the Lens on, touch the stars along the lines, starting at the ringed one."
+   ],
+   "solve": [
+    {
+     "set": "stars",
+     "value": "dbaec"
+    },
+    {
+     "set": "prism_open"
+    }
+   ],
+   "said": "The star case opens."
+  },
+  {
+   "id": "tin",
+   "done": "tin_open",
+   "hints": [
+    "Three wheels marked FL, S and M. The notice on the south wall uses the same marks.",
+    "The notice says FL 3, every 7 S, seen 9 M. Set the wheels to 3, 7, 9."
+   ],
+   "solve": [
+    {
+     "set": "dig0",
+     "value": 3
+    },
+    {
+     "set": "dig1",
+     "value": 7
+    },
+    {
+     "set": "dig2",
+     "value": 9
+    },
+    {
+     "set": "tin_open"
+    }
+   ],
+   "said": "The tin opens."
+  },
+  {
+   "id": "kkey",
+   "done": "kkey_taken",
+   "hints": [
+    "Something waits in the tin.",
+    "Take the key from the tin."
+   ],
+   "solve": [
+    {
+     "give": "keeper_key"
+    },
+    {
+     "set": "kkey_taken"
+    }
+   ],
+   "said": "The hatch key is yours."
+  },
+  {
+   "id": "hatch",
+   "done": "hatch_open",
+   "hints": [
+    "The way down is under your feet.",
+    "Swipe up to look at the floor, and use the keeper's key on the stair hatch."
+   ],
+   "solve": [
+    {
+     "take": "keeper_key"
+    },
+    {
+     "set": "hatch_open"
+    }
+   ],
+   "said": "The hatch opens."
+  },
+  {
+   "id": "descend",
+   "done": "descended",
+   "hints": [
+    "The stairs are open.",
+    "Go down through the hatch in the floor."
+   ],
+   "solve": [
+    {
+     "set": "descended"
+    },
+    {
+     "complete_room": [
+      4,
+      "THE WRECK OF THE CONSTANCE",
+      "The stairs end on the reef, beside the wreck. You climb in."
+     ]
+    }
+   ],
+   "said": "Down you go."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "logbook"
+  ],
+  [
+   "tap",
+   "notice"
+  ],
+  [
+   "tap",
+   "cloth"
+  ],
+  [
+   "tap",
+   "cleat"
+  ],
+  [
+   "shot",
+   "ceiling"
+  ],
+  [
+   "wait",
+   0.5
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "baro_dial"
+   ]
+  ],
+  [
+   "shot",
+   "baro"
+  ],
+  [
+   "tap",
+   "locker_key_part"
+  ],
+  [
+   "tap",
+   "barB"
+  ],
+  [
+   "shot",
+   "bars_locked"
+  ],
+  [
+   "use",
+   "locker_key",
+   "padlock"
+  ],
+  [
+   "tap",
+   "barB"
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tap",
+    "barM"
+   ]
+  ],
+  [
+   "tap",
+   "barT"
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tap",
+    "barM"
+   ]
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tap",
+    "barB"
+   ]
+  ],
+  [
+   "wait",
+   0.5
+  ],
+  [
+   "expect",
+   "locker_open"
+  ],
+  [
+   "shot",
+   "locker_open"
+  ],
+  [
+   "tap",
+   "locker_door"
+  ],
+  [
+   "tap",
+   "lantern"
+  ],
+  [
+   "use",
+   "oil_can",
+   "fresnel"
+  ],
+  [
+   "use",
+   "lantern",
+   "fresnel"
+  ],
+  [
+   "expect",
+   "lamp_lit"
+  ],
+  [
+   "shot",
+   "lamp_lit"
+  ],
+  [
+   "tap",
+   "carriage"
+  ],
+  [
+   "tap",
+   "mir1"
+  ],
+  [
+   "use",
+   "crank",
+   "socket"
+  ],
+  [
+   "shot",
+   "crank"
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tap",
+    "mir4"
+   ]
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tap",
+    "mir1"
+   ]
+  ],
+  [
+   "tap",
+   "mir2"
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "mir3"
+   ]
+  ],
+  [
+   "wait",
+   0.5
+  ],
+  [
+   "shot",
+   "beam_land"
+  ],
+  [
+   "expect",
+   "beam_land"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "tap",
+   "plaque"
+  ],
+  [
+   "expect",
+   "fragment2"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "mir4"
+   ]
+  ],
+  [
+   "wait",
+   2.5
+  ],
+  [
+   "shot",
+   "beam_sea"
+  ],
+  [
+   "expect",
+   "beam_sea"
+  ],
+  [
+   "tap",
+   "dive:prism"
+  ],
+  [
+   "shot",
+   "prism"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "shot",
+   "prism_lens"
+  ],
+  [
+   "tap",
+   "star_d"
+  ],
+  [
+   "tap",
+   "star_b"
+  ],
+  [
+   "tap",
+   "star_a"
+  ],
+  [
+   "tap",
+   "star_e"
+  ],
+  [
+   "tap",
+   "star_c"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "expect",
+   "prism_open"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "tap",
+   "dive:tin"
+  ],
+  [
+   "shot",
+   "tin"
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "dig0"
+   ]
+  ],
+  [
+   "repeat",
+   7,
+   [
+    "tap",
+    "dig1"
+   ]
+  ],
+  [
+   "repeat",
+   9,
+   [
+    "tap",
+    "dig2"
+   ]
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "expect",
+   "tin_open"
+  ],
+  [
+   "tap",
+   "keeper_key_part"
+  ],
+  [
+   "tap",
+   "seawin"
+  ],
+  [
+   "shot",
+   "window_eye"
+  ],
+  [
+   "use",
+   "keeper_key",
+   "hatch"
+  ],
+  [
+   "shot",
+   "floor"
+  ],
+  [
+   "tap",
+   "hatch"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

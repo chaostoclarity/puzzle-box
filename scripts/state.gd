@@ -7,18 +7,8 @@ signal changed
 const SAVE_PATH := "user://save.json"
 const VERSION := 1
 
-## Item catalog: name and examine text. Icons live at res://assets/rooms/item_<id>.png
-const ITEMS := {
-	"brass_key": ["Small brass key", "Warm from the clock's works. Too small for any door."],
-	"iron_key": ["Iron key", "Plain and heavy. The bow is stamped with a drawer pull."],
-	"matches": ["Matches", "Lucifers, half the box gone. Wren never smoked."],
-	"photo": ["Photograph", "Wren at his bookshelf. Someone has inked numbers above three of the books."],
-	"ring": ["Signet ring", "Wren's ring. The bezel is cut with a W, worn smooth by a thumb."],
-	"door_key": ["Study door key", "Black iron. Cold in a way metal shouldn't be."],
-	"lens": ["Wren's Lens", "A ground lens of green glass in a brass collar. Things look truer through it. Or less true."],
-	"chain_key": ["Padlock key", "A tiny key on a ribbon, marked with the library's seal."],
-	"seal_stone": ["The first seal", "A five-sided stone, warm, faintly humming. It fits the cabinet. You know this the way you know your own name."],
-}
+## Item catalog (name, examine text) lives in data/items.json. Icons: res://assets/rooms/item_<id>.png
+var ITEMS := {}
 
 var room := 1
 var flags := {}
@@ -27,6 +17,11 @@ var journal: Array = []
 var bargains := 0
 var fragments := 0
 var saving := true
+
+
+func _ready() -> void:
+	var f := FileAccess.open("res://data/items.json", FileAccess.READ)
+	ITEMS = JSON.parse_string(f.get_as_text())
 
 
 func has(f: String) -> bool:

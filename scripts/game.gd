@@ -7,9 +7,9 @@
 extends Node3D
 
 const PixelBox = preload("res://scripts/pixel_box.gd")
-const ROOMS := {1: "res://data/rooms/room1_study.json", 2: "res://data/rooms/room2_stacks.json"}
 const DataRoom = preload("res://scripts/data_room.gd")
 const STAGE := Vector3(500, 0, 0)
+const SKIP_LABEL := "Skip to Seal II"
 const HUD_TOP := 56.0
 const HUD_BOTTOM := 76.0
 const SNAP := PI / 2
@@ -24,12 +24,14 @@ enum Mode { ROOM, ZOOM, BOX }
 signal dialog_done(choice: String)
 
 var camera: Camera3D
+var ROOMS := {}            ## room number -> JSON path, from data/rooms/index.json
 var stage: Node3D
 var room
 var mode := Mode.ROOM
 var return_mode := Mode.ROOM
 var view_size := Vector2(270, 480)
 var view := 0
+var pitch := 0             ## 0 = a wall, 1 = looking down at the floor, -1 = up at the ceiling
 var busy := false
 var modal := false
 var lens_on := false
@@ -73,6 +75,9 @@ var drone: AudioStreamPlayer
 
 func _ready() -> void:
 	autotest = "--autotest" in OS.get_cmdline_user_args()
+	var idx = JSON.parse_string(FileAccess.open("res://data/rooms/index.json", FileAccess.READ).get_as_text())
+	for k in idx:
+		ROOMS[int(k)] = "res://data/rooms/" + idx[k]
 	camera = Camera3D.new()
 	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
 	camera.keep_aspect = Camera3D.KEEP_WIDTH
@@ -175,7 +180,8 @@ func load_room(n: int) -> void:
 	box_stack.clear()
 	zoom_target = null
 	view = 0
-	room.pivot.rotation.y = 0.0
+	pitch = 0
+	_aim_room(0.0, 0.0)
 	lens_on = false
 	room.set_lens(false)
 	lens_tint.visible = false
@@ -184,6 +190,8 @@ func load_room(n: int) -> void:
 	title_lbl.text = room.title
 	_refresh_hud()
 	_frame_camera(false)
+	if room.data.has("intro") and not autotest:
+		say(room.data["intro"], 6.0)
 
 
 func complete_room(next: int, card_title: String, card_text: String) -> void:
@@ -236,7 +244,7 @@ func _input(event: InputEvent) -> void:
 			drag_angle = 0.0
 			if mode == Mode.BOX:
 				start_basis = _active_box().transform.basis
-			start_rot = room.pivot.rotation.y
+			start_rot = view * SNAP
 		elif touch_down:
 			touch_down = false
 			idle = 0.0
@@ -249,14 +257,21 @@ func _input(event: InputEvent) -> void:
 		var in_play := touch_start.y > HUD_TOP and touch_start.y < view_size.y - HUD_BOTTOM
 		if drag_axis == Vector3.ZERO and d.length() > 8.0 and in_play and mode != Mode.ZOOM:
 			if mode == Mode.ROOM:
-				drag_axis = Vector3.UP
+				var vertical := absf(d.y) > absf(d.x)
+				if pitch != 0 and not vertical:
+					touch_down = false
+					return
+				drag_axis = Vector3.RIGHT if vertical else Vector3.UP
 			else:
 				drag_axis = Vector3.UP if absf(d.x) > absf(d.y) else Vector3.RIGHT
 		if drag_axis != Vector3.ZERO:
 			var px := d.x if drag_axis == Vector3.UP else d.y
 			drag_angle = clampf(px / DRAG_PX_PER_TURN * SNAP, -SNAP, SNAP)
 			if mode == Mode.ROOM:
-				room.pivot.rotation.y = start_rot - drag_angle
+				if drag_axis == Vector3.UP:
+					_aim_room(start_rot - drag_angle, 0.0)
+				else:
+					_aim_room(start_rot, _pitch_limit(pitch * SNAP - drag_angle))
 			else:
 				_active_box().transform.basis = Basis(drag_axis, drag_angle) * start_basis
 
@@ -269,11 +284,19 @@ func _finish_drag() -> void:
 		play("turn")
 	busy = true
 	var tw := create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	if mode == Mode.ROOM:
-		tw.tween_method(func(a: float): room.pivot.rotation.y = start_rot - a, drag_angle, target, 0.22)
+	if mode == Mode.ROOM and drag_axis == Vector3.RIGHT:
+		var p0 := pitch * SNAP
+		target = _pitch_limit(p0 - target) 
+		var from := _pitch_limit(p0 - drag_angle)
+		tw.tween_method(func(a: float): _aim_room(start_rot, a), from, target, 0.22)
 		await tw.finished
-		view = posmod(int(roundf(room.pivot.rotation.y / SNAP)), 4)
-		room.pivot.rotation.y = view * SNAP
+		pitch = int(roundf(target / SNAP))
+		_aim_room(view * SNAP, pitch * SNAP)
+	elif mode == Mode.ROOM:
+		tw.tween_method(func(a: float): _aim_room(start_rot - a, 0.0), drag_angle, target, 0.22)
+		await tw.finished
+		view = posmod(int(roundf((start_rot - target) / SNAP)), 4)
+		_aim_room(view * SNAP, 0.0)
 	else:
 		var b := _active_box()
 		var axis := drag_axis
@@ -294,7 +317,26 @@ func _snap_basis(b: Basis) -> Basis:
 
 func set_view(v: int) -> void:
 	view = posmod(v, 4)
-	room.pivot.rotation.y = view * SNAP
+	pitch = 0
+	_aim_room(view * SNAP, 0.0)
+
+
+## Look down at the floor (1), up at the ceiling (-1) or straight at a wall (0).
+func set_pitch(p: int) -> void:
+	pitch = p
+	_aim_room(view * SNAP, pitch * SNAP)
+
+
+## Turn the room: yaw picks the wall, pitch tips it to show the floor or ceiling.
+func _aim_room(yaw: float, pitch_angle: float) -> void:
+	room.pivot.transform.basis = Basis(Vector3.RIGHT, pitch_angle) * Basis(Vector3.UP, yaw)
+
+
+## Clamp a pitch angle to the faces this room has.
+func _pitch_limit(a: float) -> float:
+	var lo := -SNAP if room.groups.has(room.CEILING) else 0.0
+	var hi := SNAP if room.groups.has(room.FLOOR) else 0.0
+	return clampf(a, lo, hi)
 
 
 func _tap(pos: Vector2, held_ms := 0) -> void:
@@ -476,6 +518,7 @@ func dive(mini: Node3D, name: String) -> void:
 	box_stack.append(name)
 	_frame_camera(false)
 	_refresh_hud()
+	await show_face(room.boxes[name]["view"])
 	busy = false
 
 
@@ -525,12 +568,14 @@ func toggle_lens() -> void:
 	lens_tint.visible = lens_on
 	play("lens")
 	_refresh_hud()
+	room.on_lens_changed()
 
 
 # ---------------- audio ----------------
 
 func _load_audio() -> void:
-	for n in ["click", "tick", "unlock", "slide", "thunk", "paper", "match", "pickup", "turn", "door", "nope", "whisper", "lens", "reveal"]:
+	for n in ["click", "tick", "unlock", "slide", "thunk", "paper", "match", "pickup", "turn", "door", "nope", "whisper", "lens", "reveal",
+			"water", "hum", "horn", "flame", "creak"]:
 		sfx[n] = load("res://assets/sfx/%s.wav" % n)
 	for i in 6:
 		var p := AudioStreamPlayer.new()
@@ -838,9 +883,19 @@ func _dialog(title: String, text: String, buttons: Array) -> String:
 
 
 func _title_screen(has_save: bool) -> void:
-	var text := "Arkham, Massachusetts. Winter, 1927.\n\nProfessor Hollis Wren has vanished from his locked study. He left you a black cabinet with nine seals, and a letter.\n\nTurn the walls by dragging. Touch things to examine them."
-	var choice: String = await _dialog("THE NINEFOLD SEAL", text, ["Continue", "Start over"] if has_save else ["Begin"])
+	var text := "Arkham, Massachusetts. Winter, 1927.\n\nProfessor Hollis Wren has vanished from his locked study. He left you a black cabinet with nine seals, and a letter.\n\nDrag sideways to turn to the next wall, up or down to look at the floor and ceiling. Touch things to examine them."
+	var buttons := ["Continue", "Start over"] if has_save else ["Begin"]
+	buttons.append(SKIP_LABEL)
+	var choice: String = await _dialog("THE NINEFOLD SEAL", text, buttons)
 	drone.play()
+	if choice == SKIP_LABEL:
+		## Playtest shortcut: start seal II as if seal I were done.
+		State.reset()
+		State.inventory = ["lens", "seal_stone"]
+		State.fragments = 1
+		load_room(101)
+		say("Thorne's study, after the first seal.", 5.0)
+		return
 	if choice == "Start over":
 		State.reset()
 		load_room(1)
@@ -977,6 +1032,8 @@ func test_tap(id: String, offset := Vector2.ZERO) -> void:
 					await exit_box()
 				await enter_box(bname)
 		var f := _face_of(node, room.boxes[bname]["box"])
+		if f == "" and node.has_meta("face"):
+			f = node.get_meta("face")
 		if f != "" and not id.begins_with("dive:"):
 			await show_face(f)
 	else:
@@ -987,7 +1044,10 @@ func test_tap(id: String, offset := Vector2.ZERO) -> void:
 			zoom_target = null
 			_frame_camera(false)
 		var w: String = room.wall_of(node)
-		if w != "":
+		if w == room.FLOOR or w == room.CEILING:
+			set_view(0)
+			set_pitch(1 if w == room.FLOOR else -1)
+		elif w != "":
 			set_view(room.WALLS.find(w))
 	await _wait(0.1)
 	var pos := camera.unproject_position(node.global_transform * Vector3(offset.x, offset.y, 0))
@@ -1034,6 +1094,8 @@ func _autotest() -> void:
 					selected = a[1]
 					_refresh_hud()
 					await test_tap(a[2])
+					selected = ""
+					_refresh_hud()
 				"tapat": await test_tap(a[1], a[2])
 				"expect":
 					if not State.has(a[1]):
