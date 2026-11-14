@@ -56,6 +56,15 @@ Furniture can have hinged faces ("hinges", same as boxes), so a wall panel can s
 - lights: a toggle grid. Pressing a cell flips it and its four neighbours. `{"kind":"lights","flag":"pins","cols":3,"rows":3,"parts":["pin0",...],"on":"pin_up","off":"pin_down","start":"000000000","goal":"001101001","done":"pins_done","lock":...,"do":[actions]}`
 - Several combos can share one "commit" part (an index lever that opens different drawers): the first whose code matches runs; if none, the first one's "fail" runs.
 
+- rot: a solved part decays a number of moves after it was solved, unless "until" holds. Every action the room responds to is a move ("moves" flag).
+  `{"kind":"rot","watch":"l1","after":8,"until":"safe_open","decay":[{"unset":"l1"}, ...]}`. The flag "rot_age" is the age of the oldest decaying part (for a wilting flower: "flower_{rot_age:8}").
+- grow: `{"kind":"grow","flag":"bean","while":"planted","max":5}` raises the flag by one each move while the condition holds.
+- Flag-only combos (no "commit") are checked after every action, e.g. all three latches open at once.
+
+## Lens levels
+"lens": true (or 1) shows a part or sprite through the Lens. "lens": 2 needs the doubled Lens (Through: see inside solid things). Lens-only parts stay tappable unless "tappable": false.
+`box:<name>` bindings can set "visible" to show or hide a whole hero box.
+
 ## Room state that changes behind your back
 Every turn to another wall adds 1 to the "turns" flag (reset when a room loads). Use it in conditions with a modulo: `"turns%5=4"`. Rooms refresh after each turn, so anything bound to turns moves while its wall is out of view.
 Binding values can show a flag: `{"texture":"tally_{turns:30}"}` uses tally_ plus the turns count, capped at 30.

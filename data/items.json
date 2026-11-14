@@ -25,7 +25,16 @@
  ],
  "lens": [
   "Wren's Lens",
-  "A ground lens of green glass in a brass collar. Things look truer through it. Or less true."
+  "A ground lens of green glass in a brass collar. Things look truer through it. Or less true.",
+  {
+   "combine": {
+    "lens_element": {
+     "makes": "lens2",
+     "say": "The disc seats behind Wren's Lens with a click. Through the two together, solid things go thin.",
+     "sfx": "lens"
+    }
+   }
+  }
  ],
  "chain_key": [
   "Padlock key",
@@ -151,5 +160,79 @@
  "seal_stone3": [
   "The third seal",
   "A stone like the others, chalky and dry, with two straight lines across it like the bars of a cell."
+ ],
+ "shears": [
+  "Pruning shears",
+  "Nahum Gardner's shears. The blades are furred grey where they've cut the roots."
+ ],
+ "seeds": [
+  "Bean seeds",
+  "A twist of paper with three grey beans in it. Abby Gardner's hand: FOR THE TIN."
+ ],
+ "pod_key": [
+  "Bean pod",
+  "A green bean pod, curved and hard as horn. It is exactly the shape of a keyhole you've seen."
+ ],
+ "handle": [
+  "Windlass handle",
+  "An iron crank handle with a wooden grip, for the well."
+ ],
+ "back_key": [
+  "Back door key",
+  "A grey iron key, cold and faintly greasy."
+ ],
+ "lens_element": [
+  "Ground lens",
+  "A disc of ground green glass, cut to fit behind another lens. Wren's mark is scratched on the rim.",
+  {
+   "combine": {
+    "lens": {
+     "makes": "lens2",
+     "say": "The disc seats behind Wren's Lens with a click. Through the two together, solid things go thin.",
+     "sfx": "lens",
+     "journal": [
+      "lens2",
+      "The Lens, doubled",
+      "Wren's ground disc fits behind his Lens. Through both together I can see into wood and stone, the way you see into shallow water."
+     ]
+    }
+   }
+  }
+ ],
+ "lens2": [
+  "Wren's Lens, doubled",
+  "Two green lenses, one behind the other. Through them, solid things go thin."
+ ],
+ "seal_stone4": [
+  "The fourth seal",
+  "A grey stone with a speck of colour at its heart that has no name."
+ ],
+ "frozen_tin": [
+  "Frozen tin",
+  "A specimen tin frozen into a block of ice. Something rattles inside when you shake it."
+ ],
+ "thawed_tin": [
+  "Thawed tin",
+  "The specimen tin, wet and thawed. The lid is rusted down.",
+  {
+   "reshape": {
+    "label": "Pry it open",
+    "to": "bone_flute",
+    "say": "The lid gives. Inside: a flute carved from a long bone, and a scrap of music.",
+    "journal": [
+     "score",
+     "The score",
+     "A scrap of manuscript wrapped round the bone flute, in pencil, for the chimes in the shaft: 3, 1, 5, 2, and then the paper is torn. Under it, in another hand: \"Don't trust the paper. Trust what answers.\""
+    ]
+   }
+  }
+ ],
+ "bone_flute": [
+  "Bone flute",
+  "A flute carved from a long, light bone. Not a bird's. It is cold in a way that doesn't warm up."
+ ],
+ "seal_stone5": [
+  "The fifth seal",
+  "A pale stone, cold to the core, with a five-pointed star cut into it."
  ]
 }

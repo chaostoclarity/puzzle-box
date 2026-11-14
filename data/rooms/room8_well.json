@@ -1,0 +1,1131 @@
+{
+ "title": "The Well House",
+ "walls": "r8_wall_",
+ "floor": "r8_floor",
+ "ceiling": "r8_ceiling",
+ "on_enter": [
+  {
+   "set": "depth",
+   "value": 5
+  },
+  {
+   "journal": [
+    "well",
+    "The well house",
+    "A plank shed over the Gardner well. The windlass is overhead, the chain runs down into the dark, and the drum has no handle. Somewhere down there, Nahum wrote, the stone that fell from the sky is still glowing."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "sprite",
+   "wall": "u",
+   "id": "drum",
+   "center": [
+    0,
+    7.5
+   ],
+   "size": [
+    10,
+    3
+   ],
+   "tex": "drum_5"
+  },
+  {
+   "type": "sprite",
+   "wall": "u",
+   "id": "handle_on",
+   "center": [
+    5.4,
+    7.5
+   ],
+   "size": [
+    1.5,
+    1.5
+   ],
+   "tex": "handle_fitted",
+   "depth": 0.05,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "shaft",
+   "center": [
+    0,
+    7.5
+   ],
+   "size": [
+    7,
+    7
+   ],
+   "tex": "shaft_5",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "carving",
+   "center": [
+    0,
+    7.5
+   ],
+   "size": [
+    7,
+    7
+   ],
+   "tex": "carv_5",
+   "depth": 0.04,
+   "tappable": false,
+   "lens": 2
+  },
+  {
+   "type": "box",
+   "name": "bucket",
+   "wall": "d",
+   "pos": [
+    0,
+    7.5
+   ],
+   "depth": 1.2,
+   "scale": 0.4,
+   "view": "front",
+   "size": 6,
+   "faces": {
+    "front": "bucket_front",
+    "back": "bucket_back",
+    "left": "bucket_side",
+    "right": "bucket_side",
+    "top": "bucket_top",
+    "bottom": "bucket_top"
+   },
+   "liner": "bucket_liner",
+   "liner_skip": [
+    "top"
+   ],
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "bucket",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      -1.75,
+      0.5
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "wdial_0",
+     "id": "dialA"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.5
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "pdial_0",
+     "id": "dialB",
+     "depth": 0.045,
+     "lens": 2
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.75,
+      0.5
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "wdial_0",
+     "id": "dialC"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -1.5
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "bucket_pin",
+     "id": "bucket_pin",
+     "depth": 0.04
+    }
+   ],
+   "children": [
+    {
+     "name": "jar_mini",
+     "faces": {
+      "front": "jar_front",
+      "back": "jar_back",
+      "left": "jar_side",
+      "right": "jar_side",
+      "top": "jar_top",
+      "bottom": "jar_top"
+     },
+     "liner": "jar_liner",
+     "liner_skip": [
+      "front"
+     ],
+     "hinges": [
+      [
+       "front",
+       "bottom"
+      ]
+     ],
+     "blocker": "dive:jar",
+     "scale": 0.3,
+     "pos": [
+      0,
+      -1.2,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "type": "stage_box",
+   "name": "jar",
+   "view": "front",
+   "faces": {
+    "front": "jar_front",
+    "back": "jar_back",
+    "left": "jar_side",
+    "right": "jar_side",
+    "top": "jar_top",
+    "bottom": "jar_top"
+   },
+   "liner": "jar_liner",
+   "liner_skip": [
+    "front"
+   ],
+   "hinges": [
+    [
+     "front",
+     "bottom"
+    ]
+   ],
+   "blocker": "jar",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0
+     ],
+     "size": [
+      4,
+      4
+     ],
+     "tex": "jar_roots",
+     "id": "jar_roots",
+     "depth": 0.04
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "seal4_part",
+     "tex": "item_seal_stone4",
+     "size": [
+      1.5,
+      1.5
+     ],
+     "pos": [
+      0,
+      -1.5,
+      -1.0
+     ]
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "tool_rack",
+   "center": [
+    -3,
+    9
+   ],
+   "size": [
+    4,
+    3
+   ],
+   "tex": "tool_rack"
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "post",
+   "center": [
+    4,
+    8
+   ],
+   "size": [
+    1.5,
+    12
+   ],
+   "tex": "clear",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "post_note",
+   "center": [
+    4,
+    9
+   ],
+   "size": [
+    3,
+    4
+   ],
+   "tex": "post_note",
+   "depth": 0.05,
+   "lens": 2
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "shed_door",
+   "center": [
+    0,
+    4.5
+   ],
+   "size": [
+    4.5,
+    9
+   ],
+   "tex": "shed_door"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "knothole",
+   "center": [
+    -2,
+    6
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "knothole"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "scorch",
+   "center": [
+    0,
+    8
+   ],
+   "size": [
+    6,
+    6
+   ],
+   "tex": "clear",
+   "depth": 0.02
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "cycler",
+   "part": "drum",
+   "flag": "depth",
+   "count": 6,
+   "start": 5,
+   "spin": false,
+   "sfx": "creak",
+   "textures": [
+    "drum_0",
+    "drum_1",
+    "drum_2",
+    "drum_3",
+    "drum_4",
+    "drum_5"
+   ],
+   "lock": "!handle_fitted",
+   "locked_say": "The drum has no handle. There's a square socket at its end.",
+   "on": {
+    "0": [
+     {
+      "set": "raised"
+     },
+     {
+      "say": "You crank the chain all the way up. The bucket swings out of the dark onto the well's lip.",
+      "secs": 5
+     }
+    ],
+    "1": [
+     {
+      "say": "You let the chain down a turn."
+     }
+    ],
+    "2": [
+     {
+      "say": "Another turn down."
+     }
+    ],
+    "3": [
+     {
+      "say": "Further down."
+     }
+    ],
+    "4": [
+     {
+      "say": "Deeper."
+     }
+    ],
+    "5": [
+     {
+      "say": "The chain hits bottom."
+     }
+    ]
+   }
+  },
+  {
+   "kind": "pickup",
+   "part": "knothole",
+   "item": "lens_element",
+   "flag": "element_taken",
+   "then": [
+    {
+     "say": "Wedged in a knothole: a disc of ground green glass with Wren's mark on the rim. Put it with the Lens in your tray.",
+     "secs": 6
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "dialA",
+   "flag": "dialA",
+   "count": 10,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "wdial_0",
+    "wdial_1",
+    "wdial_2",
+    "wdial_3",
+    "wdial_4",
+    "wdial_5",
+    "wdial_6",
+    "wdial_7",
+    "wdial_8",
+    "wdial_9"
+   ],
+   "lock": "bucket_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "dialB",
+   "flag": "dialB",
+   "count": 10,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "pdial_0",
+    "pdial_1",
+    "pdial_2",
+    "pdial_3",
+    "pdial_4",
+    "pdial_5",
+    "pdial_6",
+    "pdial_7",
+    "pdial_8",
+    "pdial_9"
+   ],
+   "lock": "bucket_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "dialC",
+   "flag": "dialC",
+   "count": 10,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "wdial_0",
+    "wdial_1",
+    "wdial_2",
+    "wdial_3",
+    "wdial_4",
+    "wdial_5",
+    "wdial_6",
+    "wdial_7",
+    "wdial_8",
+    "wdial_9"
+   ],
+   "lock": "bucket_open"
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "dialA",
+    "dialB",
+    "dialC"
+   ],
+   "code": [
+    7,
+    2,
+    4
+   ],
+   "commit": "bucket_pin",
+   "lock": "bucket_open",
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "You press the pin. The bucket's lid stays down."
+    }
+   ],
+   "do": [
+    {
+     "set": "bucket_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "The lid of the bucket lifts. Inside, a stone jar choked with grey roots."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "seal4_part",
+   "item": "seal_stone4",
+   "flag": "seal4_taken",
+   "show_if": "jar_open",
+   "sfx": "reveal",
+   "then": [
+    {
+     "take": "shears"
+    },
+    {
+     "take": "handle"
+    },
+    {
+     "journal": [
+      "seal4",
+      "The fourth seal",
+      "The fourth stone was in the jar the Gardners lowered down their own well. It has a speck of colour at its heart that has no name. I looked at it too long. When I looked away, the shed was a different grey."
+     ]
+    },
+    {
+     "wait": 1.2
+    },
+    {
+     "complete_room": [
+      104,
+      "SEAL IV OF IX BROKEN",
+      "You walk back to Arkham along the road, and for a mile behind you the verges go grey.\n\nYou carry the stone home."
+     ]
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "shaft",
+   "when": null,
+   "then": {
+    "texture": "shaft_{depth}"
+   }
+  },
+  {
+   "target": "carving",
+   "when": null,
+   "then": {
+    "texture": "carv_{depth}"
+   }
+  },
+  {
+   "target": "handle_on",
+   "when": "handle_fitted",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "box:bucket",
+   "when": "depth=0",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "box:bucket",
+   "when": [
+    "depth=0",
+    "!bucket_open"
+   ],
+   "then": {
+    "tappable": true
+   },
+   "else": {
+    "tappable": false
+   }
+  },
+  {
+   "target": "hinge:bucket.top",
+   "when": "bucket_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.0
+  },
+  {
+   "target": "hinge:jar.front",
+   "when": "jar_open",
+   "then": {
+    "hinge": 100
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 0.9
+  },
+  {
+   "target": "hinge:jar_mini.front",
+   "when": "jar_open",
+   "then": {
+    "hinge": 100
+   },
+   "else": {
+    "hinge": 0
+   }
+  },
+  {
+   "target": "box:jar",
+   "when": "jar_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "jar_roots",
+   "when": "!jar_open",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "use",
+   "item": "handle",
+   "id": "drum",
+   "do": [
+    {
+     "take": "handle"
+    },
+    {
+     "set": "handle_fitted"
+    },
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The handle from Abby's box fits the drum."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "shaft",
+   "do": [
+    {
+     "say": "The well. The chain goes down into a dark that smells of struck matches."
+    }
+   ],
+   "when": "!lens"
+  },
+  {
+   "on": "tap",
+   "id": "shaft",
+   "do": [
+    {
+     "say": "Through both lenses the well's stones go thin as paper. Something is carved behind them, at the depth the chain reaches."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "dialB",
+   "do": [],
+   "when": "lens"
+  },
+  {
+   "on": "tap",
+   "id": "tool_rack",
+   "do": [
+    {
+     "say": "Nahum's tools, furred grey."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "post",
+   "do": [
+    {
+     "say": "A heavy post holding up the roof. There's a plug of wax in a hole near the top."
+    }
+   ],
+   "when": "!lens"
+  },
+  {
+   "on": "tap",
+   "id": "post",
+   "do": [
+    {
+     "say": "Through the Lens the post is hollow, and something is folded inside."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "post_note",
+   "do": [
+    {
+     "set": "fragment4"
+    },
+    {
+     "fragment": true
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "fragment4",
+      "Wren's fragment, IV",
+      "Inside the well-house post, visible only through both lenses, a folded paper pushed into a hole and plugged with wax:\n\n\"I never went down the well. I sent the lens element down on the chain and looked through it from above, and I saw what the Gardners saw. That is the fourth seal: you do not have to go to the thing. You only have to look. Elias, you will look. I know you.\""
+     ]
+    },
+    {
+     "say": "A note from Wren inside the post. It's in your journal.",
+     "secs": 5
+    }
+   ],
+   "when": "!fragment4"
+  },
+  {
+   "on": "tap",
+   "id": "shed_door",
+   "do": [
+    {
+     "say": "The yard. Nothing out there but grey ash to the fence."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "scorch",
+   "do": [
+    {
+     "say": "Scorched boards, in the shape of a man reaching for the well."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "jar_roots",
+   "do": [
+    {
+     "say": "Grey roots knotted over the jar's mouth."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "shears",
+   "id": "jar_roots",
+   "do": [
+    {
+     "set": "jar_open"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You cut the roots away. They don't grow back. Whatever fed them is inside the jar."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "lift:bucket",
+   "do": [
+    {
+     "say": "The bucket is down the well."
+    }
+   ],
+   "when": "!depth=0"
+  }
+ ],
+ "steps": [
+  {
+   "id": "element",
+   "done": "element_taken",
+   "hints": [
+    "The shed's walls aren't all solid. Something catches the light in the south wall.",
+    "Take what's wedged in the knothole in the south wall."
+   ],
+   "solve": [
+    {
+     "give": "lens_element"
+    },
+    {
+     "set": "element_taken"
+    }
+   ],
+   "said": "A disc of ground glass."
+  },
+  {
+   "id": "lens2",
+   "done": "item:lens2",
+   "hints": [
+    "The glass disc belongs with something you carry.",
+    "In your tray, select the glass disc, then touch Wren's Lens."
+   ],
+   "solve": [
+    {
+     "take": "lens_element"
+    },
+    {
+     "take": "lens"
+    },
+    {
+     "give": "lens2"
+    }
+   ],
+   "said": "The Lens is doubled."
+  },
+  {
+   "id": "handle",
+   "done": "handle_fitted",
+   "hints": [
+    "The windlass drum overhead has no handle.",
+    "Look up and use the crank handle on the drum."
+   ],
+   "solve": [
+    {
+     "take": "handle"
+    },
+    {
+     "set": "handle_fitted"
+    }
+   ],
+   "said": "The handle is fitted."
+  },
+  {
+   "id": "raise",
+   "done": "raised",
+   "hints": [
+    "The bucket is at the bottom of the well.",
+    "Turn the drum until the chain comes all the way up."
+   ],
+   "solve": [
+    {
+     "set": "depth",
+     "value": 0
+    },
+    {
+     "set": "raised"
+    }
+   ],
+   "said": "The bucket comes up."
+  },
+  {
+   "id": "dials",
+   "done": "bucket_open",
+   "hints": [
+    "The bucket has two dials and the shadow of a third. Through both lenses the well's stones show carvings, one at each of three depths.",
+    "Let the chain down one turn at a time and look into the well through the Lens: I 7, II 2, III 4. Raise the bucket, set the dials (the middle one only through the Lens) and press the pin."
+   ],
+   "solve": [
+    {
+     "set": "dialA",
+     "value": 7
+    },
+    {
+     "set": "dialB",
+     "value": 2
+    },
+    {
+     "set": "dialC",
+     "value": 4
+    },
+    {
+     "set": "bucket_open"
+    }
+   ],
+   "said": "The bucket opens."
+  },
+  {
+   "id": "jar",
+   "done": "jar_open",
+   "hints": [
+    "The jar in the bucket is choked with roots.",
+    "Dive into the jar and cut the roots with Nahum's shears."
+   ],
+   "solve": [
+    {
+     "set": "jar_open"
+    }
+   ],
+   "said": "The jar opens."
+  },
+  {
+   "id": "seal",
+   "done": "seal4_taken",
+   "hints": [
+    "The jar holds the fourth seal.",
+    "Take the stone from the jar."
+   ],
+   "solve": [
+    {
+     "give": "seal_stone4"
+    },
+    {
+     "set": "seal4_taken"
+    },
+    {
+     "complete_room": [
+      104,
+      "SEAL IV OF IX BROKEN",
+      "You carry the stone home."
+     ]
+    }
+   ],
+   "said": "The fourth seal is yours."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "knothole"
+  ],
+  [
+   "combine",
+   "lens_element",
+   "lens"
+  ],
+  [
+   "expect",
+   "element_taken"
+  ],
+  [
+   "tap",
+   "drum"
+  ],
+  [
+   "use",
+   "handle",
+   "drum"
+  ],
+  [
+   "tap",
+   "drum"
+  ],
+  [
+   "expect",
+   "raised"
+  ],
+  [
+   "shot",
+   "raised"
+  ],
+  [
+   "tap",
+   "shaft"
+  ],
+  [
+   "tap",
+   "drum"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "tap",
+   "shaft"
+  ],
+  [
+   "shot",
+   "carving1"
+  ],
+  [
+   "tap",
+   "drum"
+  ],
+  [
+   "tap",
+   "drum"
+  ],
+  [
+   "tap",
+   "shaft"
+  ],
+  [
+   "shot",
+   "carving3"
+  ],
+  [
+   "tap",
+   "drum"
+  ],
+  [
+   "tap",
+   "drum"
+  ],
+  [
+   "tap",
+   "shaft"
+  ],
+  [
+   "shot",
+   "carving5"
+  ],
+  [
+   "tap",
+   "post_note"
+  ],
+  [
+   "expect",
+   "fragment4"
+  ],
+  [
+   "tap",
+   "drum"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "tap",
+   "bucket"
+  ],
+  [
+   "shot",
+   "bucket"
+  ],
+  [
+   "repeat",
+   7,
+   [
+    "tap",
+    "dialA"
+   ]
+  ],
+  [
+   "repeat",
+   4,
+   [
+    "tap",
+    "dialC"
+   ]
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "shot",
+   "bucket_lens"
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tap",
+    "dialB"
+   ]
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "tap",
+   "bucket_pin"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "expect",
+   "bucket_open"
+  ],
+  [
+   "shot",
+   "bucket_open"
+  ],
+  [
+   "tap",
+   "dive:jar"
+  ],
+  [
+   "use",
+   "shears",
+   "jar_roots"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "tap",
+   "seal4_part"
+  ],
+  [
+   "wait",
+   3.0
+  ]
+ ]
+}

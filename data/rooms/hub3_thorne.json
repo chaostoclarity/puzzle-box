@@ -467,9 +467,9 @@
     },
     {
      "complete_room": [
-      99,
+      7,
       "SEAL III OF IX BROKEN",
-      "Three seals. Wren's three. From here on, no one has gone further.\n\nSeal IV, the blighted farm west of Arkham, is still being built.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
+      "Three seals. Wren's three. From here on, no one has gone further.\n\nThe drawer gives you a deed to a farm west of Arkham. You take the road out at first light."
      ]
     }
    ],
@@ -575,9 +575,9 @@
     },
     {
      "complete_room": [
-      99,
+      7,
       "SEAL III OF IX BROKEN",
-      "Three seals. Wren's three. From here on, no one has gone further.\n\nSeal IV, the blighted farm west of Arkham, is still being built.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
+      "Three seals. Wren's three. From here on, no one has gone further.\n\nThe drawer gives you a deed to a farm west of Arkham. You take the road out at first light."
      ]
     }
    ],

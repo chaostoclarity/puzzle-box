@@ -97,8 +97,13 @@ func _ready() -> void:
 		for arg in OS.get_cmdline_user_args():
 			if arg.begins_with("--start="):
 				start = int(arg.substr(8))
-		if start == 3:
-			State.inventory = ["lens"]
+		if start >= 3:
+			State.inventory = ["lens2"] if start >= 9 else ["lens"]
+		if start == 8:
+			State.inventory += ["shears", "handle"]
+		if start >= 9:
+			for i in 8:
+				State.add_journal("old%d" % i, "Older notes, %d" % (i + 1), "Notes from earlier seals.")
 		load_room(start)
 		_autotest()
 		return
@@ -112,7 +117,7 @@ func _ready() -> void:
 		drone.play()
 		var n := int(query.split("room=")[1].split("&")[0])
 		State.reset()
-		State.inventory = ["lens"] + (["crank", "oil_can", "lantern"] if n == 4 else [])
+		State.inventory = (["lens2"] if n >= 9 else ["lens"]) + (["crank", "oil_can", "lantern"] if n == 4 else []) + (["shears", "handle"] if n == 8 else [])
 		load_room(n if n in ROOMS else 1)
 		return
 	var has_save := State.load_game()
@@ -188,6 +193,7 @@ func load_room(n: int) -> void:
 		c.queue_free()
 	State.room = n
 	State.flags["turns"] = 0
+	State.flags["moves"] = 0
 	State.save_game()
 	room = DataRoom.new()
 	room.load_file(ROOMS[n])
@@ -347,6 +353,12 @@ func set_view(v: int) -> void:
 		await _count_turns(mini(d, 4 - d))
 
 
+## Every action the room responds to is a move. Some rooms rot or grow with moves.
+func _count_move() -> void:
+	State.set_flag("moves", int(State.flag_value("moves", 0)) + 1)
+	await room.on_moved()
+
+
 ## Every turn to another wall is counted. Some rooms change while a wall is out of view.
 func _count_turns(n: int) -> void:
 	State.set_flag("turns", int(State.flag_value("turns", 0)) + n)
@@ -407,6 +419,7 @@ func _tap(pos: Vector2, held_ms := 0) -> void:
 	if selected != "":
 		var item := selected
 		if await room.on_use(item, id, node):
+			await _count_move()
 			flash(node)
 			if not State.has_item(item):
 				selected = ""
@@ -416,6 +429,7 @@ func _tap(pos: Vector2, held_ms := 0) -> void:
 			say("That doesn't work there.")
 		return
 	if await room.on_tap(id, node):
+		await _count_move()
 		return
 	if node.has_meta("zoom") and (mode != Mode.ZOOM or zoom_target != node):
 		await zoom_to(node)
@@ -609,6 +623,15 @@ func say(text: String, secs := 3.5) -> void:
 	msg_tween.tween_property(msg_lbl, "modulate:a", 0.0, 0.6)
 
 
+## Lens level: 1 = Reveal, 2 = Through (sees inside solid things), 3 = Dream sight.
+func lens_level() -> int:
+	if State.has_item("lens3"):
+		return 3
+	if State.has_item("lens2"):
+		return 2
+	return 1 if State.has_item("lens") else 0
+
+
 func toggle_lens() -> void:
 	lens_on = not lens_on
 	room.set_lens(lens_on)
@@ -622,7 +645,8 @@ func toggle_lens() -> void:
 
 func _load_audio() -> void:
 	for n in ["click", "tick", "unlock", "slide", "thunk", "paper", "match", "pickup", "turn", "door", "nope", "whisper", "lens", "reveal",
-			"water", "hum", "horn", "flame", "creak"]:
+			"water", "hum", "horn", "flame", "creak", "wind", "crack",
+			"tone_0", "tone_1", "tone_2", "tone_3", "tone_4", "tone_5", "tone_6"]:
 		sfx[n] = load("res://assets/sfx/%s.wav" % n)
 	for i in 6:
 		var p := AudioStreamPlayer.new()
@@ -768,7 +792,7 @@ func _refresh_hud() -> void:
 		return
 	back_btn.visible = mode != Mode.ROOM
 	title_lbl.visible = mode == Mode.ROOM
-	lens_btn.visible = State.has_item("lens")
+	lens_btn.visible = lens_level() > 0
 	lens_btn.text = "[ Lens: on ]" if lens_on else "[ Lens ]"
 	for i in 8:
 		var frame: ColorRect = slots[i]["frame"]

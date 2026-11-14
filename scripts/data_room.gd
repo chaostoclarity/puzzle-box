@@ -82,6 +82,8 @@ func _build_object(o: Dictionary) -> void:
 				q.material_override = _additive(tex(o["tex"]))
 			if o.get("lens", false):
 				q.add_to_group("lens_only")
+				q.set_meta("lens_level", int(o["lens"]) if not (o["lens"] is bool) else 1)
+				q.set_meta("lens_tappable", o.get("tappable", true))
 			nodes[o["id"]] = q
 		"box":
 			var b := _make_box(o)
@@ -136,6 +138,8 @@ func _parts(b: PixelBox, parts: Array) -> void:
 			p.get("depth", 0.03), p.get("tappable", true))
 		if p.get("lens", false):
 			part.add_to_group("lens_only")
+			part.set_meta("lens_level", int(p["lens"]) if not (p["lens"] is bool) else 1)
+			part.set_meta("lens_tappable", p.get("tappable", true))
 		nodes[p["id"]] = part
 
 
@@ -297,6 +301,9 @@ func _apply_value(target: String, prop: String, value, animate: bool, anim: floa
 		b.set_hinge(bf[1], float(value))
 		return 0.0
 	var n: Node3D
+	if target.begins_with("box:") and prop == "visible":
+		box_nodes[target.substr(4)].visible = value   ## the whole box, not just its touch area
+		return 0.0
 	if target.begins_with("box:"):
 		n = box_nodes[target.substr(4)].blocker
 	else:
@@ -341,6 +348,24 @@ func run(actions: Array, node: Node = null) -> void:
 	for a in actions:
 		if a.has("if") and not cond(a["if"]):
 			continue
+		if a.has("ask"):
+			## ["title", "text", ["Yes", "No"]]: the rest of the actions run only on the first answer
+			game.busy = false
+			var choice: String = await game._dialog(_fill(a["ask"][0]), _fill(a["ask"][1]), a["ask"][2])
+			game.busy = true
+			if choice != a["ask"][2][0]:
+				break
+		if a.has("burn"):
+			## feed the newest page you still have to the fire ("burn": "<key>" burns that page first)
+			var title := State.tear_key(a["burn"]) if a["burn"] is String else State.tear_page()
+			if title == "":
+				game.say("There is nothing left in your journal to burn.", 4.0)
+				break
+			State.flags["burned"] = int(State.flag_value("burned", 0)) + 1
+			State.save_game()
+			game.say("The fire takes a page from your journal: %s." % title, 4.0)
+		if a.has("add"):
+			State.set_flag(a["add"], int(State.flag_value(a["add"], 0)) + int(a.get("value", 1)))
 		if a.has("set"):
 			State.set_flag(a["set"], a.get("value", true))
 		if a.has("unset"):
@@ -376,6 +401,10 @@ func run(actions: Array, node: Node = null) -> void:
 	set_lens(game.lens_on)
 	game.busy = false
 	await _check_beams()
+	if not _combos_running:
+		_combos_running = true
+		await _check_combos()   ## combos made only of flags (all three latches open at once)
+		_combos_running = false
 
 
 func _fill(s: String) -> String:
@@ -416,6 +445,10 @@ func on_tap(id: String, node: Node) -> bool:
 			"lights":
 				if id in p["parts"]:
 					await _toggle(p, p["parts"].find(id), node)
+					return true
+			"melody":
+				if p["parts"].has(id):
+					await _note(p, p["parts"][id])
 					return true
 			"roll":
 				if p["buttons"].has(id):
@@ -593,6 +626,7 @@ const TURN := [{"e": "n", "n": "e", "w": "s", "s": "w"}, {"e": "e", "w": "w"},
 	{"e": "s", "s": "e", "w": "n", "n": "w"}, {"n": "n", "s": "s"}]
 var beam_quads := {}     ## beam id -> {Vector3i(col, row, side) -> quad}
 var _beam_running := false
+var _combos_running := false
 
 
 func _holder(name: String) -> PixelBox:
@@ -611,9 +645,10 @@ func _build_beam(p: Dictionary) -> void:
 	var b := _holder(p["box"])
 	var face: MeshInstance3D = b.faces[p.get("face", "front")]
 	var cell := float(p.get("cell", 0.75))
-	var th := 2.0 / 16.0
-	var th_h := _additive(tex(p.get("tex_h", "glow_beam_h")))
-	var th_v := _additive(tex(p.get("tex_v", "glow_beam_v")))
+	var th := float(p.get("thick", 2.0)) / 16.0
+	var glow: bool = p.get("additive", true)
+	var th_h: Material = _additive(tex(p.get("tex_h", "glow_beam_h"))) if glow else PixelBox.make_material(tex(p.get("tex_h", "")))
+	var th_v: Material = _additive(tex(p.get("tex_v", "glow_beam_v"))) if glow else PixelBox.make_material(tex(p.get("tex_v", "")))
 	var q := {}
 	for c in int(p["cols"]):
 		for r in int(p["rows"]):
@@ -786,3 +821,90 @@ func _toggle(p: Dictionary, i: int, node: Node3D) -> void:
 func on_turned() -> void:
 	await refresh(false)
 	set_lens(game.lens_on)
+
+
+# ---------------- moves: rot and growth ----------------
+# rot: once "watch" is set, it decays "after" moves later unless "until" holds; its "decay" actions run.
+#   {"kind":"rot","watch":"root_cut","after":8,"until":"safe_open","decay":[actions]}
+# grow: while "while" holds, "flag" goes up by one each move, up to "max".
+#   {"kind":"grow","flag":"bean","while":"planted","max":5}
+# The flag "rot_age" is the age of the oldest decaying part, for a wilting flower: "flower_{rot_age:4}".
+
+func on_moved() -> void:
+	var moves := int(State.flag_value("moves", 0))
+	var oldest := 0
+	var to_run: Array = []
+	for p in puzzles:
+		match p["kind"]:
+			"rot":
+				var key: String = p["watch"] + "@"
+				if not State.has(p["watch"]) or (p.has("until") and cond(p["until"])):
+					State.flags.erase(key)
+					continue
+				if not State.flags.has(key):
+					State.flags[key] = moves
+				var age := moves - int(State.flags[key])
+				oldest = maxi(oldest, age)
+				if age >= int(p["after"]):
+					State.flags.erase(key)
+					to_run.append(p)
+			"tick":
+				## {"kind":"tick","flag":"heat","every":6,"step":-1,"min":0}: the hut cools as you work
+				var k: String = p["flag"] + "#"
+				var cnt := int(State.flag_value(k, 0)) + 1
+				if cnt >= int(p["every"]):
+					cnt = 0
+					var v := clampi(int(State.flag_value(p["flag"], 0)) + int(p.get("step", -1)), int(p.get("min", 0)), int(p.get("max", 99)))
+					if v != int(State.flag_value(p["flag"], 0)):
+						State.flags[p["flag"]] = v
+						if p.has("say"):
+							game.say(_fill(p["say"]), 3.0)
+				State.flags[k] = cnt
+			"grow":
+				if cond(p.get("while")):
+					State.flags[p["flag"]] = mini(int(State.flag_value(p["flag"], 0)) + 1, int(p.get("max", 99)))
+	State.flags["rot_age"] = oldest
+	State.save_game()
+	for p in to_run:
+		await run(p.get("decay", []))
+	await refresh(false)
+	set_lens(game.lens_on)
+
+
+# ---------------- melody (the answering echo) ----------------
+# Parts are notes ("parts": {"chime_0": "0", ...}, played as sfx tone_<note>). Play "order".
+# A right note is answered, after a moment, by a faint echo of the NEXT right note.
+# A wrong note resets quietly. "echo": false turns the echo off.
+
+func _note(p: Dictionary, k: String) -> void:
+	if p.has("lock") and cond(p["lock"]):
+		game.play("tone_" + k)
+		return
+	var played: String = str(State.flag_value(p["flag"], "")) + k
+	game.play("tone_" + k)
+	var order: String = p["order"]
+	if not order.begins_with(played):
+		State.set_flag(p["flag"], "")
+		if p.has("wrong"):
+			await run(p["wrong"])
+		if p.get("lead", false) and played.length() == 1:
+			## the stone hums the first note before you find it
+			await get_tree().create_timer(0.55).timeout
+			_echo(p, order[0])
+		return
+	State.set_flag(p["flag"], played)
+	if played == order:
+		await get_tree().create_timer(0.5).timeout
+		await run(p.get("do", []))
+		return
+	if p.get("echo", true):
+		await get_tree().create_timer(0.55).timeout
+		_echo(p, order[played.length()])
+
+
+## The echo: a faint note, and the part that makes it shivers, so it can be seen as well as heard.
+func _echo(p: Dictionary, note: String) -> void:
+	game.play("tone_" + note, -14.0)
+	for id in p["parts"]:
+		if p["parts"][id] == note:
+			game.flash(_part(id))

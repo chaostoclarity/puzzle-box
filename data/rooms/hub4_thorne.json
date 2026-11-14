@@ -1,0 +1,618 @@
+{
+ "title": "Thorne's Study",
+ "walls": "h2_wall_",
+ "floor": "h2_floor",
+ "ceiling": "h2_ceiling",
+ "on_enter": [
+  {
+   "journal": [
+    "home4",
+    "Home, the fourth time",
+    "The window boxes on Garrison Street have gone grey. Only mine. The landlady has stopped knocking. The cabinet hums a note I can feel in my teeth."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "furniture",
+   "wall": "n",
+   "id": "cabinet",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    3.5,
+    6,
+    2
+   ],
+   "faces": {
+    "front": "cabinet_front",
+    "top": "dark_top_56x32",
+    "default": "dark_side_32x96"
+   },
+   "zoom": {
+    "k": 3
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      -1.0,
+      1.625
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "socket_lit",
+     "id": "socket_1",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.0,
+      1.625
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "socket_lit",
+     "id": "socket_2",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.0,
+      1.625
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "socket_lit",
+     "id": "socket_3",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      -1.0,
+      0.375
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "socket_lit",
+     "id": "socket_4",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.0,
+      0.375
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "socket_lit",
+     "id": "socket_5",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.0,
+      0.375
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "socket_lit",
+     "id": "socket_6",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      -1.0,
+      -0.875
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "socket_lit",
+     "id": "socket_7",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.0,
+      -0.875
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "socket_lit",
+     "id": "socket_8",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.0,
+      -0.875
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "socket_lit",
+     "id": "socket_9",
+     "depth": 0.04,
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -2.4375
+     ],
+     "size": [
+      3,
+      0.5
+     ],
+     "tex": "cab_drawer",
+     "id": "cab_drawer",
+     "depth": 0.035
+    }
+   ]
+  },
+  {
+   "type": "furniture",
+   "wall": "e",
+   "id": "tdesk",
+   "pos": [
+    -2,
+    0
+   ],
+   "size": [
+    7,
+    4,
+    2.5
+   ],
+   "faces": {
+    "front": "tdesk_front",
+    "top": "wood_top_112x40",
+    "default": "wood_side_40x64"
+   },
+   "zoom": {
+    "dy": 1.0,
+    "w": 7.5,
+    "h": 6
+   }
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "mail",
+   "center": [
+    -3.5,
+    5.0
+   ],
+   "size": [
+    3,
+    2
+   ],
+   "tex": "mail_pile",
+   "depth": 1.3
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "snow_window",
+   "center": [
+    0,
+    12
+   ],
+   "size": [
+    4,
+    6
+   ],
+   "tex": "window_snow"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "mirror",
+   "center": [
+    -3,
+    10
+   ],
+   "size": [
+    3,
+    5
+   ],
+   "tex": "mirror_covered"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "hdoor",
+   "center": [
+    3.5,
+    4
+   ],
+   "size": [
+    4.5,
+    8
+   ],
+   "tex": "door",
+   "depth": 0.05
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "salt",
+   "center": [
+    3.5,
+    0.25
+   ],
+   "size": [
+    6,
+    0.5
+   ],
+   "tex": "salt_line",
+   "depth": 0.3,
+   "tappable": false
+  }
+ ],
+ "bindings": [
+  {
+   "target": "socket_1",
+   "when": "seal1_placed",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "socket_2",
+   "when": "seal2_placed",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "socket_3",
+   "when": "seal3_placed",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "socket_4",
+   "when": "seal4_placed",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "socket_5",
+   "when": "seal5_placed",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "socket_6",
+   "when": "seal6_placed",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "socket_7",
+   "when": "seal7_placed",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "socket_8",
+   "when": "seal8_placed",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "socket_9",
+   "when": "seal9_placed",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "cab_drawer",
+   "when": "drawer4_open",
+   "then": {
+    "texture": "cab_drawer_open"
+   },
+   "else": {
+    "texture": "cab_drawer"
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "use",
+   "item": "seal_stone4",
+   "ids": [
+    "cabinet",
+    "socket_1",
+    "socket_2",
+    "socket_3",
+    "socket_4",
+    "socket_5",
+    "socket_6",
+    "socket_7",
+    "socket_8",
+    "socket_9",
+    "cab_drawer"
+   ],
+   "do": [
+    {
+     "take": "seal_stone4"
+    },
+    {
+     "set": "seal4_placed"
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "wait": 1.0
+    },
+    {
+     "set": "drawer4_open"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "journal": [
+      "placed4",
+      "The fourth socket",
+      "Four. Past Wren now. The fourth socket did not wait for me to push the stone in; it pulled."
+     ]
+    },
+    {
+     "say": "The stone fits its socket. A drawer slides open beneath."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "cab_drawer",
+   "do": [
+    {
+     "say": "A drawer with no handle. It doesn't open from outside."
+    }
+   ],
+   "when": "!drawer4_open"
+  },
+  {
+   "on": "tap",
+   "id": "cab_drawer",
+   "do": [
+    {
+     "sfx": "paper"
+    },
+    {
+     "journal": [
+      "ticket",
+      "A ticket south",
+      "In the drawer: a steamer ticket to the Antarctic, first class, in my name, paid for. A note pinned to it in Wren's hand: \"The Miskatonic expedition left a hut on the plateau. The fifth is in the ice under it. I never bought a ticket. Somebody has bought you one.\""
+     ]
+    },
+    {
+     "set": "hub4_done"
+    },
+    {
+     "wait": 1.0
+    },
+    {
+     "complete_room": [
+      99,
+      "END OF ACT II: DOUBT",
+      "Four seals broken. Five remain.\n\nAct III: Obsession. The drawer holds a ticket for a steamer south, to the ice.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
+     ]
+    }
+   ],
+   "when": "drawer4_open"
+  },
+  {
+   "on": "tap",
+   "id": "mail",
+   "do": [
+    {
+     "journal": [
+      "mail4",
+      "More post",
+      "The Dean again, and then the Dean's secretary. Something about my classes being covered. My sister, twice. I will answer them later."
+     ]
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "snow_window",
+   "do": [
+    {
+     "say": "Snow on Garrison Street. A normal street."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "mirror",
+   "do": [
+    {
+     "say": "You covered it. You remember why."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hdoor",
+   "do": [
+    {
+     "say": "Not yet. The cabinet isn't finished with you."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "cabinet",
+   "do": [
+    {
+     "say": "Wren's cabinet. Nine sockets."
+    }
+   ],
+   "when": "!seal4_placed",
+   "handled": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "place",
+   "done": "seal4_placed",
+   "hints": [
+    "The stone you carried home belongs somewhere in this room.",
+    "Use the stone on Wren's cabinet."
+   ],
+   "solve": [
+    {
+     "take": "seal_stone4"
+    },
+    {
+     "set": "seal4_placed"
+    },
+    {
+     "set": "drawer4_open"
+    },
+    {
+     "journal": [
+      "placed4",
+      "The fourth socket",
+      "Four. Past Wren now. The fourth socket did not wait for me to push the stone in; it pulled."
+     ]
+    }
+   ],
+   "said": "The stone settles into its socket."
+  },
+  {
+   "id": "drawer",
+   "done": "hub4_done",
+   "hints": [
+    "The cabinet has offered you something.",
+    "Open the drawer at the bottom of the cabinet."
+   ],
+   "solve": [
+    {
+     "set": "hub4_done"
+    },
+    {
+     "journal": [
+      "ticket",
+      "A ticket south",
+      "In the drawer: a steamer ticket to the Antarctic, first class, in my name, paid for. A note pinned to it in Wren's hand: \"The Miskatonic expedition left a hut on the plateau. The fifth is in the ice under it. I never bought a ticket. Somebody has bought you one.\""
+     ]
+    },
+    {
+     "complete_room": [
+      99,
+      "END OF ACT II: DOUBT",
+      "Four seals broken. Five remain.\n\nAct III: Obsession. The drawer holds a ticket for a steamer south, to the ice.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
+     ]
+    }
+   ],
+   "said": "The drawer gives up its paper."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "use",
+   "seal_stone4",
+   "cabinet"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "shot",
+   "placed"
+  ],
+  [
+   "tap",
+   "mail"
+  ],
+  [
+   "tap",
+   "cab_drawer"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

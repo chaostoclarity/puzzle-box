@@ -1,0 +1,2044 @@
+{
+ "title": "The Gardner Kitchen",
+ "walls": "r7_wall_",
+ "floor": "r7_floor",
+ "ceiling": "r7_ceiling",
+ "intro": "Everything here grows back.",
+ "on_enter": [
+  {
+   "set": "jar0",
+   "value": 0
+  },
+  {
+   "set": "jar1",
+   "value": 0
+  },
+  {
+   "set": "jar2",
+   "value": 0
+  },
+  {
+   "journal": [
+    "kitchen",
+    "The Gardner farm",
+    "The Gardner farm, west of Arkham, where the land went grey after a stone fell in the well. The kitchen is furred with roots. A pie safe stands against the wall, strangled shut. Everything I cut grows back."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "furniture",
+   "wall": "n",
+   "id": "piesafe",
+   "pos": [
+    -1,
+    0
+   ],
+   "size": [
+    6,
+    10,
+    2.5
+   ],
+   "hinges": [
+    [
+     "front",
+     "left"
+    ]
+   ],
+   "faces": {
+    "front": "piesafe_front",
+    "top": "grey_top_96x40",
+    "default": "grey_side_40x160"
+   },
+   "zoom": {
+    "k": 2
+   },
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      4.0
+     ],
+     "size": [
+      1,
+      0.75
+     ],
+     "tex": "latch_shut",
+     "id": "latch_top"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      4.0
+     ],
+     "size": [
+      2,
+      1.5
+     ],
+     "tex": "root_knot",
+     "id": "root_top",
+     "depth": 0.045
+    },
+    {
+     "face": "front",
+     "uv": [
+      -1.5,
+      1.25
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "root_stub",
+     "id": "root_stub",
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.0,
+      1.25
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "rivet_block",
+     "id": "rivet_block",
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.5,
+      1.25
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "mlatch_shut",
+     "id": "latch_mid",
+     "tappable": false
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.75,
+      1.25
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "rtile_1",
+     "id": "m1"
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.75,
+      2.0
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "rtile_3",
+     "id": "m2"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.75,
+      2.0
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "rtile_0",
+     "id": "m3"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.75,
+      1.25
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "rtile_1",
+     "id": "m4"
+    },
+    {
+     "face": "front",
+     "uv": [
+      -0.75,
+      0.5
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "rtile_0",
+     "id": "m5"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.75,
+      0.5
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "rtile_2",
+     "id": "m6"
+    },
+    {
+     "face": "front",
+     "uv": [
+      -1.5,
+      -2.375
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "crop_3",
+     "id": "jar0"
+    },
+    {
+     "face": "front",
+     "uv": [
+      0.0,
+      -2.375
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "crop_3",
+     "id": "jar1"
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.5,
+      -2.375
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "crop_3",
+     "id": "jar2"
+    },
+    {
+     "face": "front",
+     "uv": [
+      2.4,
+      -3.3
+     ],
+     "size": [
+      1,
+      0.5
+     ],
+     "tex": "jar_latch",
+     "id": "jar_latch",
+     "depth": 0.04
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "seed_packet",
+   "center": [
+    -2.5,
+    7
+   ],
+   "size": [
+    0.75,
+    1
+   ],
+   "tex": "seed_packet",
+   "depth": 1.0
+  },
+  {
+   "type": "box",
+   "name": "breadtin",
+   "wall": "n",
+   "pos": [
+    -0.5,
+    3.5
+   ],
+   "depth": 1.2,
+   "scale": 0.4,
+   "view": "front",
+   "size": [
+    6,
+    4,
+    4
+   ],
+   "faces": {
+    "front": "tin_front2",
+    "back": "btin_back",
+    "left": "btin_side",
+    "right": "btin_side",
+    "top": "btin_top",
+    "bottom": "btin_top"
+   },
+   "liner": "btin_liner",
+   "liner_skip": [
+    "top"
+   ],
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "breadtin",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -0.1
+     ],
+     "size": [
+      1,
+      1.25
+     ],
+     "tex": "clear",
+     "id": "pod_lock",
+     "depth": 0.04
+    }
+   ],
+   "children": [
+    {
+     "name": "abby_mini",
+     "faces": {
+      "front": "abby_front",
+      "back": "abby_back",
+      "left": "abby_side",
+      "right": "abby_side",
+      "top": "abby_top",
+      "bottom": "abby_bottom"
+     },
+     "liner": "abby_liner",
+     "liner_skip": [
+      "front"
+     ],
+     "hinges": [
+      [
+       "front",
+       "bottom"
+      ]
+     ],
+     "blocker": "dive:abby",
+     "scale": 0.3,
+     "pos": [
+      0,
+      -1.0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "type": "stage_box",
+   "name": "abby",
+   "view": "front",
+   "faces": {
+    "front": "abby_front",
+    "back": "abby_back",
+    "left": "abby_side",
+    "right": "abby_side",
+    "top": "abby_top",
+    "bottom": "abby_bottom"
+   },
+   "liner": "abby_liner",
+   "liner_skip": [
+    "front"
+   ],
+   "hinges": [
+    [
+     "front",
+     "bottom"
+    ]
+   ],
+   "blocker": "abby",
+   "parts": [
+    {
+     "face": "bottom",
+     "uv": [
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "abby_button",
+     "id": "abby_button",
+     "depth": 0.04
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "handle_part",
+     "tex": "item_handle",
+     "size": [
+      1.5,
+      1.5
+     ],
+     "pos": [
+      -0.8,
+      -1.5,
+      -1.0
+     ]
+    },
+    {
+     "id": "bkey_part",
+     "tex": "item_back_key",
+     "size": [
+      1.5,
+      1.5
+     ],
+     "pos": [
+      0.8,
+      -1.5,
+      -1.0
+     ]
+    }
+   ]
+  },
+  {
+   "type": "furniture",
+   "wall": "e",
+   "id": "stove",
+   "pos": [
+    -4,
+    0
+   ],
+   "size": [
+    4,
+    4,
+    2
+   ],
+   "faces": {
+    "front": "stove_front",
+    "default": "iron_side_32x64"
+   },
+   "zoom": false
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "farm_window",
+   "center": [
+    2.5,
+    11
+   ],
+   "size": [
+    4,
+    4
+   ],
+   "tex": "farm_window"
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "pot",
+   "center": [
+    2.5,
+    7.5
+   ],
+   "size": [
+    1.5,
+    2
+   ],
+   "tex": "pot_empty",
+   "depth": 0.5
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "back_door",
+   "center": [
+    3,
+    4.5
+   ],
+   "size": [
+    4.5,
+    9
+   ],
+   "tex": "back_door"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "door_roots",
+   "center": [
+    3,
+    4.5
+   ],
+   "size": [
+    5,
+    6
+   ],
+   "tex": "door_roots",
+   "depth": 0.1
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "almanac",
+   "center": [
+    -3.5,
+    11
+   ],
+   "size": [
+    4,
+    5
+   ],
+   "tex": "almanac"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "almanac_lens",
+   "center": [
+    -3.5,
+    11
+   ],
+   "size": [
+    4,
+    5
+   ],
+   "tex": "almanac_lens",
+   "depth": 0.05,
+   "lens": true
+  },
+  {
+   "type": "furniture",
+   "wall": "w",
+   "id": "table",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    7,
+    3.5,
+    3
+   ],
+   "faces": {
+    "front": "table_front",
+    "top": "grey_top_112x48",
+    "default": "grey_side_48x56"
+   },
+   "zoom": false
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "flower",
+   "center": [
+    2,
+    4.5
+   ],
+   "size": [
+    1,
+    2
+   ],
+   "tex": "flower_0",
+   "depth": 1.5
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "nahum_notes",
+   "center": [
+    -1.5,
+    4.25
+   ],
+   "size": [
+    2,
+    1.5
+   ],
+   "tex": "nahum_notes",
+   "depth": 1.5
+  },
+  {
+   "type": "sprite",
+   "wall": "u",
+   "id": "shears_part",
+   "center": [
+    2,
+    9
+   ],
+   "size": [
+    2,
+    1.5
+   ],
+   "tex": "shears_part"
+  },
+  {
+   "type": "sprite",
+   "wall": "u",
+   "id": "ceiling_roots",
+   "center": [
+    0,
+    7.5
+   ],
+   "size": [
+    12,
+    12
+   ],
+   "tex": "clear",
+   "depth": 0.01
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "ash_ring",
+   "center": [
+    0,
+    7.5
+   ],
+   "size": [
+    8,
+    8
+   ],
+   "tex": "clear",
+   "depth": 0.01
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "pickup",
+   "part": "shears_part",
+   "item": "shears",
+   "flag": "shears_taken",
+   "then": [
+    {
+     "say": "You pull Nahum's shears out of the roots in the ceiling."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "seed_packet",
+   "item": "seeds",
+   "flag": "seeds_taken",
+   "show_if": "safe_open",
+   "then": [
+    {
+     "say": "A twist of paper: three grey beans. FOR THE TIN."
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "m1",
+   "flag": "m1",
+   "count": 4,
+   "start": 1,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "rtile_0",
+    "rtile_1",
+    "rtile_2",
+    "rtile_3"
+   ],
+   "lock": "safe_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "m2",
+   "flag": "m2",
+   "count": 4,
+   "start": 3,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "rtile_0",
+    "rtile_1",
+    "rtile_2",
+    "rtile_3"
+   ],
+   "lock": "safe_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "m3",
+   "flag": "m3",
+   "count": 4,
+   "start": 0,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "rtile_0",
+    "rtile_1",
+    "rtile_2",
+    "rtile_3"
+   ],
+   "lock": "safe_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "m4",
+   "flag": "m4",
+   "count": 4,
+   "start": 1,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "rtile_0",
+    "rtile_1",
+    "rtile_2",
+    "rtile_3"
+   ],
+   "lock": "safe_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "m5",
+   "flag": "m5",
+   "count": 4,
+   "start": 0,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "rtile_0",
+    "rtile_1",
+    "rtile_2",
+    "rtile_3"
+   ],
+   "lock": "safe_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "m6",
+   "flag": "m6",
+   "count": 4,
+   "start": 2,
+   "spin": false,
+   "sfx": "click",
+   "textures": [
+    "rtile_0",
+    "rtile_1",
+    "rtile_2",
+    "rtile_3"
+   ],
+   "lock": "safe_open"
+  },
+  {
+   "kind": "beam",
+   "id": "root_beam",
+   "box": "piesafe",
+   "face": "front",
+   "cols": 5,
+   "rows": 3,
+   "cell": 0.75,
+   "center": [
+    0,
+    1.25
+   ],
+   "source": [
+    0,
+    1,
+    "e"
+   ],
+   "additive": false,
+   "tex_h": "seg_root_h",
+   "tex_v": "seg_root_v",
+   "thick": 4,
+   "mirrors": [
+    [
+     "m1",
+     "m1",
+     1,
+     1,
+     1
+    ],
+    [
+     "m2",
+     "m2",
+     1,
+     0,
+     3
+    ],
+    [
+     "m3",
+     "m3",
+     3,
+     0,
+     0
+    ],
+    [
+     "m4",
+     "m4",
+     3,
+     1,
+     1
+    ],
+    [
+     "m5",
+     "m5",
+     1,
+     2,
+     0
+    ],
+    [
+     "m6",
+     "m6",
+     3,
+     2,
+     2
+    ]
+   ],
+   "blocks": [
+    [
+     2,
+     1
+    ]
+   ],
+   "targets": [
+    {
+     "cell": [
+      4,
+      1
+     ],
+     "flag": "l2",
+     "do": [
+      {
+       "sfx": "creak"
+      },
+      {
+       "say": "The root grows through the tin and shoves the middle latch open."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "jar0",
+   "flag": "jar0",
+   "count": 6,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "crop_3",
+    "crop_0",
+    "crop_5",
+    "crop_2",
+    "crop_4",
+    "crop_1"
+   ],
+   "lock": "safe_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "jar1",
+   "flag": "jar1",
+   "count": 6,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "crop_3",
+    "crop_0",
+    "crop_5",
+    "crop_2",
+    "crop_4",
+    "crop_1"
+   ],
+   "lock": "safe_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "jar2",
+   "flag": "jar2",
+   "count": 6,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "crop_3",
+    "crop_0",
+    "crop_5",
+    "crop_2",
+    "crop_4",
+    "crop_1"
+   ],
+   "lock": "safe_open"
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "jar0",
+    "jar1",
+    "jar2"
+   ],
+   "code": [
+    1,
+    5,
+    3
+   ],
+   "commit": "jar_latch",
+   "lock": [
+    "any",
+    "safe_open",
+    "l3"
+   ],
+   "locked_say": "The bottom latch is already open.",
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The bottom latch doesn't move."
+    }
+   ],
+   "do": [
+    {
+     "set": "l3"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "Peas, corn, squash. The bottom latch drops."
+    }
+   ]
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "l1",
+    "l2",
+    "l3"
+   ],
+   "code": [
+    1,
+    1,
+    1
+   ],
+   "lock": "safe_open",
+   "do": [
+    {
+     "set": "safe_open"
+    },
+    {
+     "wait": 0.3
+    },
+    {
+     "sfx": "door"
+    },
+    {
+     "say": "All three latches at once. The pie safe swings open, and the grey stops.",
+     "secs": 5
+    }
+   ]
+  },
+  {
+   "kind": "rot",
+   "watch": "l1",
+   "after": 8,
+   "until": "safe_open",
+   "decay": [
+    {
+     "unset": "l1"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "The grey root has grown back over the top latch."
+    }
+   ]
+  },
+  {
+   "kind": "rot",
+   "watch": "l2",
+   "after": 8,
+   "until": "safe_open",
+   "decay": [
+    {
+     "unset": "l2"
+    },
+    {
+     "set": "m4",
+     "value": 1
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "The root in the tin withers, and a tile twists out of line."
+    }
+   ]
+  },
+  {
+   "kind": "rot",
+   "watch": "l3",
+   "after": 8,
+   "until": "safe_open",
+   "decay": [
+    {
+     "unset": "l3"
+    },
+    {
+     "set": "jar1",
+     "value": 0
+    },
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "A seed jar slips round, and the bottom latch climbs shut."
+    }
+   ]
+  },
+  {
+   "kind": "rot",
+   "watch": "droot_cut",
+   "after": 4,
+   "until": "left7",
+   "decay": [
+    {
+     "unset": "droot_cut"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "The root across the back door has grown back."
+    }
+   ]
+  },
+  {
+   "kind": "grow",
+   "flag": "bean",
+   "while": "planted",
+   "max": 5
+  },
+  {
+   "kind": "pickup",
+   "part": "handle_part",
+   "item": "handle",
+   "flag": "handle_taken",
+   "show_if": "abby_open",
+   "then": [
+    {
+     "say": "An iron crank handle. For the well."
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "bkey_part",
+   "item": "back_key",
+   "flag": "bkey_taken",
+   "show_if": "abby_open",
+   "then": [
+    {
+     "say": "A grey iron key."
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "latch_top",
+   "when": "l1",
+   "then": {
+    "texture": "latch_open"
+   },
+   "else": {
+    "texture": "latch_shut"
+   }
+  },
+  {
+   "target": "root_top",
+   "when": "!l1",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "latch_mid",
+   "when": "l2",
+   "then": {
+    "texture": "mlatch_open"
+   },
+   "else": {
+    "texture": "mlatch_shut"
+   }
+  },
+  {
+   "target": "jar_latch",
+   "when": "l3",
+   "then": {
+    "texture": "latch_open"
+   },
+   "else": {
+    "texture": "jar_latch"
+   }
+  },
+  {
+   "target": "flower",
+   "when": null,
+   "then": {
+    "texture": "flower_{rot_age:8}"
+   }
+  },
+  {
+   "target": "hinge:piesafe.front",
+   "when": "safe_open",
+   "then": {
+    "hinge": 100
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.2
+  },
+  {
+   "target": "box:piesafe",
+   "when": "safe_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "hinge:breadtin.top",
+   "when": "btin_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.0
+  },
+  {
+   "target": "box:breadtin",
+   "when": "btin_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "hinge:abby.front",
+   "when": "abby_open",
+   "then": {
+    "hinge": 100
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 0.9
+  },
+  {
+   "target": "hinge:abby_mini.front",
+   "when": "abby_open",
+   "then": {
+    "hinge": 100
+   },
+   "else": {
+    "hinge": 0
+   }
+  },
+  {
+   "target": "box:abby",
+   "when": "abby_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "pot",
+   "when": "planted",
+   "then": {
+    "texture": "pot_{bean:5}"
+   },
+   "else": {
+    "texture": "pot_empty"
+   }
+  },
+  {
+   "target": "pot",
+   "when": "pod_taken",
+   "then": {
+    "texture": "pot_2"
+   }
+  },
+  {
+   "target": "door_roots",
+   "when": "!droot_cut",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "back_door",
+   "when": "left7",
+   "then": {
+    "texture": "back_door_open"
+   },
+   "else": {
+    "texture": "back_door"
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "tap",
+   "id": "nahum_notes",
+   "do": [
+    {
+     "set": "notes_read"
+    },
+    {
+     "sfx": "paper"
+    },
+    {
+     "journal": [
+      "nahum",
+      "Nahum Gardner's notes",
+      "Pencil on a feed-store calendar page, the writing going grey like everything else:\n\n\"Whatever I cut grows back by the time I've done eight things. The flower on the table goes the same way. I watch it to know how long I have.\"\n\n\"Abby locked the safe three ways: the grey on the top latch, the root in the tin, and the seed jars in her planting order. All three at once or none.\"\n\n\"Her beans give one pod in three breaths. Pick it green and it's the key to her bread tin. Leave it longer and the grey takes it.\"\n\n\"The almanac's gone grey too. Only the colour can read it now.\""
+     ]
+    },
+    {
+     "say": "Nahum Gardner's notes. They're in your journal."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "flower",
+   "do": [
+    {
+     "say": "A cut flower in a jar. It wilts as you watch, and recovers when you stop."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "almanac",
+   "do": [
+    {
+     "set": "almanac_read"
+    },
+    {
+     "journal": [
+      "almanac",
+      "The almanac",
+      "Through the Lens the greyed-out almanac reads: MARCH PEAS. APRIL WHEAT. MAY CORN. JUNE SQUASH."
+     ]
+    },
+    {
+     "say": "Through the Lens: MARCH PEAS. APRIL WHEAT. MAY CORN. JUNE SQUASH.",
+     "secs": 6
+    }
+   ],
+   "when": "lens"
+  },
+  {
+   "on": "tap",
+   "id": "almanac",
+   "do": [
+    {
+     "say": "A planting almanac, gone grey. The months are there; the crops have faded out."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "root_top",
+   "do": [
+    {
+     "say": "A grey root, tight round the top latch."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "shears",
+   "id": "root_top",
+   "do": [
+    {
+     "set": "l1"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "Snip. The top latch springs open. Somewhere a clock starts."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "shears",
+   "id": "door_roots",
+   "do": [
+    {
+     "set": "droot_cut"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You cut the root across the door. It's already twitching."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "door_roots",
+   "do": [
+    {
+     "say": "Grey roots across the back door, thick as a wrist."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "back_door",
+   "do": [
+    {
+     "say": "Locked."
+    }
+   ],
+   "when": "!door_unlocked"
+  },
+  {
+   "on": "use",
+   "item": "back_key",
+   "ids": [
+    "back_door",
+    "door_roots"
+   ],
+   "do": [
+    {
+     "take": "back_key"
+    },
+    {
+     "set": "door_unlocked"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "say": "The back door unlocks."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "back_door",
+   "do": [
+    {
+     "set": "left7"
+    },
+    {
+     "take": "seeds"
+    },
+    {
+     "sfx": "door"
+    },
+    {
+     "complete_room": [
+      8,
+      "THE WELL",
+      "The yard behind the farmhouse is grey ash to the fence. In the middle of it, a well house, and from the well a smell like struck matches.\n\nThe chain is down."
+     ]
+    }
+   ],
+   "when": [
+    "door_unlocked",
+    "droot_cut"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "pot",
+   "do": [
+    {
+     "say": "A pot of grey soil on the sill."
+    }
+   ],
+   "when": [
+    "!planted"
+   ]
+  },
+  {
+   "on": "use",
+   "item": "seeds",
+   "id": "pot",
+   "do": [
+    {
+     "take": "seeds"
+    },
+    {
+     "set": "planted"
+    },
+    {
+     "set": "bean",
+     "value": 0
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You press a bean into the soil. It stirs at once."
+    }
+   ],
+   "when": "!planted"
+  },
+  {
+   "on": "tap",
+   "id": "pot",
+   "do": [
+    {
+     "give": "pod_key"
+    },
+    {
+     "unset": "planted"
+    },
+    {
+     "set": "pod_taken"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "One green pod, curved like a key. You pick it."
+    }
+   ],
+   "when": [
+    "planted",
+    "bean=3"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "pot",
+   "do": [
+    {
+     "unset": "planted"
+    },
+    {
+     "set": "bean",
+     "value": 0
+    },
+    {
+     "give": "seeds"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "Too late. The pod has gone grey and crumbles. You still have beans."
+    }
+   ],
+   "when": [
+    "planted",
+    [
+     "any",
+     "bean=4",
+     "bean=5"
+    ]
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "pot",
+   "do": [
+    {
+     "say": "Not ready. Green, and growing as you watch."
+    }
+   ],
+   "when": "planted"
+  },
+  {
+   "on": "tap",
+   "id": "pod_lock",
+   "do": [
+    {
+     "say": "A curved keyhole, like a crescent. Or a bean pod."
+    }
+   ],
+   "when": "!btin_open"
+  },
+  {
+   "on": "use",
+   "item": "pod_key",
+   "id": "pod_lock",
+   "do": [
+    {
+     "take": "pod_key"
+    },
+    {
+     "set": "btin_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "The pod turns in the lock like a key. In the bread tin: a small velvet box."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "abby_button",
+   "do": [
+    {
+     "set": "abby_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "front"
+    },
+    {
+     "say": "Click. Abby's box opens."
+    }
+   ],
+   "when": "!abby_open"
+  },
+  {
+   "on": "tap",
+   "id": "stove",
+   "do": [
+    {
+     "say": "A cold iron stove. The ash inside is the wrong grey."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "farm_window",
+   "do": [
+    {
+     "say": "Grey light, and specks in it of a colour you can't name."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "table",
+   "do": [
+    {
+     "say": "The kitchen table. Nobody has eaten here in a long time."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "ceiling_roots",
+   "do": [
+    {
+     "say": "Roots have come through the ceiling boards, grey and dry."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "ash_ring",
+   "do": [
+    {
+     "say": "A ring of grey ash on the floor, as if something stood here and burned without fire."
+    }
+   ]
+  }
+ ],
+ "steps": [
+  {
+   "id": "notes",
+   "done": "notes_read",
+   "hints": [
+    "Someone left notes on the kitchen table.",
+    "Read Nahum Gardner's notes on the table (west wall)."
+   ],
+   "solve": [
+    {
+     "set": "notes_read"
+    },
+    {
+     "journal": [
+      "nahum",
+      "Nahum Gardner's notes",
+      "Pencil on a feed-store calendar page, the writing going grey like everything else:\n\n\"Whatever I cut grows back by the time I've done eight things. The flower on the table goes the same way. I watch it to know how long I have.\"\n\n\"Abby locked the safe three ways: the grey on the top latch, the root in the tin, and the seed jars in her planting order. All three at once or none.\"\n\n\"Her beans give one pod in three breaths. Pick it green and it's the key to her bread tin. Leave it longer and the grey takes it.\"\n\n\"The almanac's gone grey too. Only the colour can read it now.\""
+     ]
+    }
+   ],
+   "said": "The notes are in your journal."
+  },
+  {
+   "id": "shears",
+   "done": "shears_taken",
+   "hints": [
+    "Something is caught in the roots overhead.",
+    "Drag down to look up. Take the shears from the ceiling roots."
+   ],
+   "solve": [
+    {
+     "give": "shears"
+    },
+    {
+     "set": "shears_taken"
+    }
+   ],
+   "said": "The shears are yours."
+  },
+  {
+   "id": "almanac",
+   "done": "almanac_read",
+   "hints": [
+    "The seed jars want Abby's planting order. The almanac on the south wall has gone grey.",
+    "Read the almanac with the Lens on."
+   ],
+   "solve": [
+    {
+     "set": "almanac_read"
+    },
+    {
+     "journal": [
+      "almanac",
+      "The almanac",
+      "Through the Lens the greyed-out almanac reads: MARCH PEAS. APRIL WHEAT. MAY CORN. JUNE SQUASH."
+     ]
+    }
+   ],
+   "said": "The almanac reads through the Lens."
+  },
+  {
+   "id": "safe",
+   "done": "safe_open",
+   "hints": [
+    "All three latches have to be open at once, and each one goes back after eight moves. Watch the flower. Do the slow one first, the quick ones last.",
+    "Set the jars to peas, corn, squash first but don't press their latch. Turn the tiles so the root reaches the right-hand latch. Then press the jar latch, then cut the top root with the shears."
+   ],
+   "solve": [
+    {
+     "set": "l1"
+    },
+    {
+     "set": "l2"
+    },
+    {
+     "set": "l3"
+    },
+    {
+     "set": "safe_open"
+    }
+   ],
+   "said": "The pie safe opens."
+  },
+  {
+   "id": "seeds",
+   "done": "seeds_taken",
+   "hints": [
+    "The pie safe held something for the garden.",
+    "Take the seed packet from inside the pie safe."
+   ],
+   "solve": [
+    {
+     "give": "seeds"
+    },
+    {
+     "set": "seeds_taken"
+    }
+   ],
+   "said": "The seeds are yours."
+  },
+  {
+   "id": "pod",
+   "done": [
+    "any",
+    "item:pod_key",
+    "btin_open"
+   ],
+   "hints": [
+    "Abby's beans give a pod in three breaths. The pot is on the east windowsill.",
+    "Plant a bean in the pot, do two other things, then pick the pod when it's green and curved. Too long and it rots."
+   ],
+   "solve": [
+    {
+     "take": "seeds"
+    },
+    {
+     "give": "pod_key"
+    },
+    {
+     "set": "pod_taken"
+    }
+   ],
+   "said": "A green pod, shaped like a key."
+  },
+  {
+   "id": "tin",
+   "done": "btin_open",
+   "hints": [
+    "The bread tin in the pie safe has a curved keyhole.",
+    "Lift the bread tin and use the bean pod in its keyhole."
+   ],
+   "solve": [
+    {
+     "take": "pod_key"
+    },
+    {
+     "set": "btin_open"
+    }
+   ],
+   "said": "The bread tin opens."
+  },
+  {
+   "id": "abby",
+   "done": "abby_open",
+   "hints": [
+    "Abby's velvet box has no lock on its front. Turn it over.",
+    "Dive into the velvet box, turn it to its bottom and press the button there."
+   ],
+   "solve": [
+    {
+     "set": "abby_open"
+    }
+   ],
+   "said": "Abby's box opens."
+  },
+  {
+   "id": "items",
+   "done": [
+    "handle_taken",
+    "bkey_taken"
+   ],
+   "hints": [
+    "Abby's box held two things.",
+    "Take the crank handle and the key from Abby's box."
+   ],
+   "solve": [
+    {
+     "give": "handle"
+    },
+    {
+     "give": "back_key"
+    },
+    {
+     "set": "handle_taken"
+    },
+    {
+     "set": "bkey_taken"
+    }
+   ],
+   "said": "Handle and key."
+  },
+  {
+   "id": "door",
+   "done": "door_unlocked",
+   "hints": [
+    "The back door is locked.",
+    "Use the grey key on the back door (south wall)."
+   ],
+   "solve": [
+    {
+     "take": "back_key"
+    },
+    {
+     "set": "door_unlocked"
+    }
+   ],
+   "said": "The door unlocks."
+  },
+  {
+   "id": "leave",
+   "done": "left7",
+   "hints": [
+    "The roots across the door grow back in four moves.",
+    "Cut the roots across the back door with the shears, then go straight through the door."
+   ],
+   "solve": [
+    {
+     "set": "left7"
+    },
+    {
+     "complete_room": [
+      8,
+      "THE WELL",
+      "Out in the grey yard, the well house waits."
+     ]
+    }
+   ],
+   "said": "Out you go."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "nahum_notes"
+  ],
+  [
+   "tap",
+   "flower"
+  ],
+  [
+   "tap",
+   "shears_part"
+  ],
+  [
+   "shot",
+   "ceiling"
+  ],
+  [
+   "tap",
+   "almanac"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "tap",
+   "almanac"
+  ],
+  [
+   "shot",
+   "almanac_lens"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "tap",
+   "piesafe"
+  ],
+  [
+   "shot",
+   "safe"
+  ],
+  [
+   "use",
+   "shears",
+   "root_top"
+  ],
+  [
+   "expect",
+   "l1"
+  ],
+  [
+   "tap",
+   "jar0"
+  ],
+  [
+   "repeat",
+   5,
+   [
+    "tap",
+    "jar1"
+   ]
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "jar2"
+   ]
+  ],
+  [
+   "shot",
+   "rotted"
+  ],
+  [
+   "tap",
+   "m1"
+  ],
+  [
+   "tap",
+   "m1"
+  ],
+  [
+   "tap",
+   "m1"
+  ],
+  [
+   "tap",
+   "m2"
+  ],
+  [
+   "tap",
+   "m3"
+  ],
+  [
+   "tap",
+   "m3"
+  ],
+  [
+   "tap",
+   "m4"
+  ],
+  [
+   "expect",
+   "l2"
+  ],
+  [
+   "shot",
+   "root_grown"
+  ],
+  [
+   "tap",
+   "jar_latch"
+  ],
+  [
+   "expect",
+   "l3"
+  ],
+  [
+   "use",
+   "shears",
+   "root_top"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "expect",
+   "safe_open"
+  ],
+  [
+   "shot",
+   "safe_open"
+  ],
+  [
+   "tap",
+   "seed_packet"
+  ],
+  [
+   "use",
+   "seeds",
+   "pot"
+  ],
+  [
+   "tap",
+   "pot"
+  ],
+  [
+   "tap",
+   "farm_window"
+  ],
+  [
+   "tap",
+   "pot"
+  ],
+  [
+   "shot",
+   "pod"
+  ],
+  [
+   "expect",
+   "pod_taken"
+  ],
+  [
+   "tap",
+   "breadtin"
+  ],
+  [
+   "use",
+   "pod_key",
+   "pod_lock"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "tap",
+   "dive:abby"
+  ],
+  [
+   "tap",
+   "abby_button"
+  ],
+  [
+   "wait",
+   1.2
+  ],
+  [
+   "expect",
+   "abby_open"
+  ],
+  [
+   "tap",
+   "handle_part"
+  ],
+  [
+   "tap",
+   "bkey_part"
+  ],
+  [
+   "use",
+   "shears",
+   "door_roots"
+  ],
+  [
+   "use",
+   "back_key",
+   "back_door"
+  ],
+  [
+   "tap",
+   "back_door"
+  ],
+  [
+   "expect",
+   "left7"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

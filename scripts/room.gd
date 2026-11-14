@@ -136,10 +136,13 @@ func set_wall_dim(key: String, v: float) -> void:
 
 ## Show or hide everything that only exists through the Lens.
 func set_lens(on: bool) -> void:
+	var level: int = game.lens_level()
 	for n in get_tree().get_nodes_in_group("lens_only"):
 		var gone: bool = n.get_meta("gone", false)
-		n.visible = on and not gone
-		PixelBox.set_tappable(n, on and not gone)
+		var need: int = n.get_meta("lens_level", 1)
+		var show: bool = on and not gone and level >= need
+		n.visible = show
+		PixelBox.set_tappable(n, show and n.get_meta("lens_tappable", true))
 
 
 func current_step() -> Dictionary:
@@ -165,6 +168,10 @@ func on_tap(_id: String, _node: Node) -> bool:
 ## Use an inventory item on something. Return true if it worked.
 func on_use(_item: String, _id: String, _node: Node) -> bool:
 	return false
+
+## Called after every move (an action the room responded to).
+func on_moved() -> void:
+	pass
 
 ## Called after the player turns to another wall (the "turns" flag has just gone up).
 func on_turned() -> void:

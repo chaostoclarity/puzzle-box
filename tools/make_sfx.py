@@ -68,4 +68,13 @@ save("horn", lp(hn, 0.08) * np.minimum(1, x / 0.4) * np.minimum(1, (2.6 - x) / 0
 n = int(SR * 0.9); save("flame", lp(rng.normal(0, 1, n), 0.15) * env(n, 0.04, 0.35) + rng.normal(0, 1, n) * env(n, 0.001, 0.03) * 0.5, 0.45)
 n = int(SR * 1.1); x = t(1.1)
 save("creak", np.sin(2 * np.pi * (90 + 40 * x) * x) * (rng.random(n) > 0.5) * np.sin(np.pi * np.arange(n) / n), 0.4)
+# seal 5: polar wind, cracking ice, and seven glassy tones (an ice-chime scale)
+n = int(SR * 2.5); x = t(2.5)
+save("wind", lp(rng.normal(0, 1, n), 0.03) * (0.5 + 0.5 * np.sin(2 * np.pi * 0.7 * x)) * np.minimum(1, x / 0.5) * np.minimum(1, (2.5 - x) / 0.6), 0.45)
+n = int(SR * 0.6); save("crack", rng.normal(0, 1, n) * env(n, 0.0005, 0.04) + 0.5 * lp(rng.normal(0, 1, n), 0.1) * env(n, 0.01, 0.2), 0.55)
+SCALE = [392.0, 440.0, 493.9, 523.3, 587.3, 659.3, 698.5]
+for i, f in enumerate(SCALE):
+    n = int(SR * 1.2); x = t(1.2)
+    tone = (np.sin(2 * np.pi * f * x) + 0.35 * np.sin(2 * np.pi * f * 2.76 * x) * np.exp(-x * 6) + 0.15 * np.sin(2 * np.pi * f * 5.4 * x) * np.exp(-x * 10))
+    save("tone_%d" % i, tone * env(n, 0.002, 0.45), 0.45)
 print("sfx written to", os.path.abspath(OUT))

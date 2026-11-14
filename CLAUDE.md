@@ -27,7 +27,7 @@ Escape rooms and nested puzzle boxes, The Room style, Lovecraftian. You play Eli
 - Rooms are boxes too: four walls plus optional floor and ceiling (drag up and down to see them).
 
 ## Adding a room or a puzzle
-1. Art in tools/make_room_art.py (seal I), tools/make_seal2_art.py (seal II), tools/make_seal3_art.py (seal III); shared helpers in tools/artkit.py. 16 texels per unit. New color ramps: `python3 tools/art_lint.py palette` rebuilds the palette. Run it, then `python3 tools/art_lint.py check` (must be 0 problems).
+1. Art in tools/make_room_art.py (seal I), tools/make_seal2_art.py (seal II), tools/make_seal3_art.py (seal III), tools/make_sealN_art.py for later seals; shared helpers in tools/artkit.py. 16 texels per unit. New color ramps: `python3 tools/art_lint.py palette` rebuilds the palette. Run it, then `python3 tools/art_lint.py check` (must be 0 problems).
 2. Describe it in the room's JSON: objects, puzzles, bindings (every visual follows flags), interactions.
 3. Main-path puzzles get a step: done condition, two hints, and the solve actions the Whisper's bargain uses.
 4. walkthrough: the real taps that solve it. The autotest plays it.
@@ -41,6 +41,7 @@ Escape rooms and nested puzzle boxes, The Room style, Lovecraftian. You play Eli
 - A clue-solved puzzle needs enough possibilities (about 100 or more) that guessing is worse than thinking.
 - No puzzle type twice in one seal. A type that comes back in a later seal needs a twist.
 - Everything the player can see responds to touch, even if only with a line of text. Dead taps read as bugs.
+- Floor and ceiling are seen from whichever wall you were facing, so their art can appear turned round: no text or digits there that change meaning upside down (6 and 9).
 - The first touch on a part of a piece of furniture zooms in; parts are worked up close. Furniture worked from the room view sets "zoom": false.
 Art brief (style, sizes, palette rules): https://claude.ai/artifact/7zvHBNiA8YfQN7kr6eGhwy
 

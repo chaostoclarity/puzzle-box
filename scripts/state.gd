@@ -64,6 +64,17 @@ func add_journal(key: String, title: String, text: String) -> bool:
 	return true
 
 
+## Tear out one page by its key (the stove asks for the blank page first).
+func tear_key(key: String) -> String:
+	for e in journal:
+		if e["key"] == key and not e["torn"]:
+			e["torn"] = true
+			save_game()
+			changed.emit()
+			return e["title"]
+	return tear_page()
+
+
 ## The price of a bargain: the newest page you still have is torn out.
 func tear_page() -> String:
 	for i in range(journal.size() - 1, -1, -1):

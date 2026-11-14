@@ -15,7 +15,7 @@ from PIL import Image
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 PALETTE = os.path.join(ROOT, "assets", "palette.png")
 REFERENCE = [os.path.join(ROOT, "assets", "rooms", "*.png"), os.path.join(ROOT, "assets", "*.png")]
-EXEMPT = ("glow", "palette", "examine_", "icon")
+EXEMPT = ("glow", "palette", "examine_", "icon", "seg_")   # seg_: beam segments sized to half a cell
 
 
 def load_palette():
