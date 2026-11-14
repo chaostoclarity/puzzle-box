@@ -27,11 +27,11 @@ Escape rooms and nested puzzle boxes, The Room style, Lovecraftian. You play Eli
 - Rooms are boxes too: four walls plus optional floor and ceiling (drag up and down to see them).
 
 ## Adding a room or a puzzle
-1. Art in tools/make_room_art.py (seal I), tools/make_seal2_art.py (seal II), tools/make_seal3_art.py (seal III), tools/make_sealN_art.py for later seals; shared helpers in tools/artkit.py. 16 texels per unit. New color ramps: `python3 tools/art_lint.py palette` rebuilds the palette. Run it, then `python3 tools/art_lint.py check` (must be 0 problems).
+1. Art in tools/make_room_art.py (seal I), tools/make_seal2_art.py (seal II), tools/make_seal3_art.py (seal III), tools/make_seal4_art.py, tools/make_seal5_art.py, tools/make_sealN_art.py for later seals; shared helpers in tools/artkit.py. 16 texels per unit. New color ramps: `python3 tools/art_lint.py palette` rebuilds the palette. Run it, then `python3 tools/art_lint.py check` (must be 0 problems).
 2. Describe it in the room's JSON: objects, puzzles, bindings (every visual follows flags), interactions.
 3. Main-path puzzles get a step: done condition, two hints, and the solve actions the Whisper's bargain uses.
 4. walkthrough: the real taps that solve it. The autotest plays it.
-5. New rooms: add to data/rooms/index.json. New items: data/items.json plus an item_<id>.png icon.
+5. New rooms: add to data/rooms/index.json. Every new seal also gets a main-menu shortcut: one line in SEAL_STARTS in game.gd (Eric, Nov 2026). New items: data/items.json plus an item_<id>.png icon.
 6. Depth bar (Eric, Nov 2026: seal I was too simple): 12 to 16 steps per room, 3 nested layers, at least 5 puzzle types, clues that must be combined, and use the room itself (floor, ceiling, room state).
 
 ## Puzzle rules (from Eric's playtests, Nov 2026)

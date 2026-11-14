@@ -148,7 +148,7 @@ func _walkthrough(w: Array) -> Array:
 	for a in w:
 		if a[0] == "repeat":
 			for i in int(a[1]):
-				out.append_array(_walkthrough([a[2]]))
+				out.append_array(_walkthrough(a.slice(2)))
 		elif a[0] == "tapat":
 			out.append(["tapat", a[1], Vector2(a[2][0], a[2][1])])
 		else:
@@ -897,7 +897,8 @@ func _note(p: Dictionary, k: String) -> void:
 		await get_tree().create_timer(0.5).timeout
 		await run(p.get("do", []))
 		return
-	if p.get("echo", true):
+	## "echo_from": n: the ice only answers once the first n notes are right (the part the score can't give you)
+	if p.get("echo", true) and played.length() >= int(p.get("echo_from", 0)):
 		await get_tree().create_timer(0.55).timeout
 		_echo(p, order[played.length()])
 

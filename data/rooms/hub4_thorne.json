@@ -456,7 +456,7 @@
      "journal": [
       "ticket",
       "A ticket south",
-      "In the drawer: a steamer ticket to the Antarctic, first class, in my name, paid for. A note pinned to it in Wren's hand: \"The Miskatonic expedition left a hut on the plateau. The fifth is in the ice under it. I never bought a ticket. Somebody has bought you one.\""
+      "In the drawer: a steamer ticket to the Antarctic, first class, in my name, paid for. A note pinned to it in Wren's hand: \"The Kingsport Antarctic Survey left a hut on the plateau. The fifth is in the ice under it. I never bought a ticket. Somebody has bought you one.\""
      ]
     },
     {
@@ -467,7 +467,7 @@
     },
     {
      "complete_room": [
-      99,
+      9,
       "END OF ACT II: DOUBT",
       "Four seals broken. Five remain.\n\nAct III: Obsession. The drawer holds a ticket for a steamer south, to the ice.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
      ]
@@ -570,12 +570,12 @@
      "journal": [
       "ticket",
       "A ticket south",
-      "In the drawer: a steamer ticket to the Antarctic, first class, in my name, paid for. A note pinned to it in Wren's hand: \"The Miskatonic expedition left a hut on the plateau. The fifth is in the ice under it. I never bought a ticket. Somebody has bought you one.\""
+      "In the drawer: a steamer ticket to the Antarctic, first class, in my name, paid for. A note pinned to it in Wren's hand: \"The Kingsport Antarctic Survey left a hut on the plateau. The fifth is in the ice under it. I never bought a ticket. Somebody has bought you one.\""
      ]
     },
     {
      "complete_room": [
-      99,
+      9,
       "END OF ACT II: DOUBT",
       "Four seals broken. Five remain.\n\nAct III: Obsession. The drawer holds a ticket for a steamer south, to the ice.\n\nWren's fragments found: {fragments} of 9.{bargains_line}"
      ]

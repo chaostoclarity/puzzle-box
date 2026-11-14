@@ -26,23 +26,19 @@
  ],
  "objects": [
   {
-   "type": "furniture",
+   "type": "sprite",
    "wall": "n",
    "id": "stove",
-   "pos": [
+   "center": [
     -3,
-    0
+    3
    ],
    "size": [
     4,
-    6,
-    2
+    6
    ],
-   "faces": {
-    "front": "hstove_0",
-    "default": "iron_side_32x96"
-   },
-   "zoom": false
+   "tex": "hstove_0",
+   "depth": 1.0
   },
   {
    "type": "sprite",

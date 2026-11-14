@@ -1,0 +1,1112 @@
+{
+ "title": "The Shaft",
+ "walls": "r10_wall_",
+ "floor": "r10_floor",
+ "ceiling": "r10_ceiling",
+ "intro": "The ice hums.",
+ "on_enter": [
+  {
+   "journal": [
+    "shaft",
+    "The shaft",
+    "Under the hut, a shaft cut into blue ice, and at the bottom a chamber where seven ice chimes hang from the ceiling. The cold here has a sound to it."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_0",
+   "center": [
+    -4.5,
+    13.5
+   ],
+   "size": [
+    1,
+    7
+   ],
+   "tex": "chime_0",
+   "depth": 0.1
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_1",
+   "center": [
+    -3.0,
+    13.5
+   ],
+   "size": [
+    1,
+    7
+   ],
+   "tex": "chime_1",
+   "depth": 0.1
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_2",
+   "center": [
+    -1.5,
+    13.5
+   ],
+   "size": [
+    1,
+    7
+   ],
+   "tex": "chime_2",
+   "depth": 0.1
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_3",
+   "center": [
+    0.0,
+    13.5
+   ],
+   "size": [
+    1,
+    7
+   ],
+   "tex": "chime_3",
+   "depth": 0.1
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_4",
+   "center": [
+    1.5,
+    13.5
+   ],
+   "size": [
+    1,
+    7
+   ],
+   "tex": "chime_4",
+   "depth": 0.1
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_5",
+   "center": [
+    3.0,
+    13.5
+   ],
+   "size": [
+    1,
+    7
+   ],
+   "tex": "chime_5",
+   "depth": 0.1
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_6",
+   "center": [
+    4.5,
+    13.5
+   ],
+   "size": [
+    1,
+    7
+   ],
+   "tex": "chime_6",
+   "depth": 0.1
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "frozen_man",
+   "center": [
+    -3,
+    3
+   ],
+   "size": [
+    3,
+    6
+   ],
+   "tex": "frozen_man"
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "frozen_note",
+   "center": [
+    -3,
+    3
+   ],
+   "size": [
+    3,
+    6
+   ],
+   "tex": "frozen_note",
+   "depth": 0.12,
+   "lens": 2
+  },
+  {
+   "type": "box",
+   "name": "cham",
+   "wall": "e",
+   "pos": [
+    3.5,
+    4.0
+   ],
+   "depth": 1.0,
+   "scale": 0.45,
+   "view": "front",
+   "size": 6,
+   "faces": {
+    "front": "cham_front",
+    "back": "cham_back",
+    "left": "cham_side",
+    "right": "cham_side",
+    "top": "cham_top",
+    "bottom": "cham_top"
+   },
+   "liner": "cham_liner",
+   "liner_skip": [
+    "top"
+   ],
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "cham",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      -1.5,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "tone_hole",
+     "id": "hole_a",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "tone_hole",
+     "id": "hole_b",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      1.5,
+      0
+     ],
+     "size": [
+      1,
+      1
+     ],
+     "tex": "tone_hole",
+     "id": "hole_c",
+     "depth": 0.04
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "frag_part",
+     "tex": "score",
+     "size": [
+      2,
+      1.5
+     ],
+     "pos": [
+      0,
+      -2.2,
+      0
+     ],
+     "rot": [
+      -90,
+      0,
+      0
+     ],
+     "face": "top"
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "rope_ladder",
+   "center": [
+    0,
+    5
+   ],
+   "size": [
+    3,
+    10
+   ],
+   "tex": "rope_ladder"
+  },
+  {
+   "type": "box",
+   "name": "plug",
+   "wall": "w",
+   "pos": [
+    0,
+    4.0
+   ],
+   "depth": 1.0,
+   "scale": 0.45,
+   "view": "front",
+   "size": 6,
+   "faces": {
+    "front": "plug_front",
+    "back": "plug_back",
+    "left": "plug_side",
+    "right": "plug_side",
+    "top": "plug_top",
+    "bottom": "plug_top"
+   },
+   "liner": "plug_liner",
+   "liner_skip": [
+    "top"
+   ],
+   "hinges": [
+    [
+     "top",
+     "top"
+    ]
+   ],
+   "blocker": "plug",
+   "parts": [
+    {
+     "face": "front",
+     "uv": [
+      0,
+      0.5
+     ],
+     "size": [
+      4,
+      4
+     ],
+     "tex": "star5_0",
+     "id": "star",
+     "depth": 0.04
+    },
+    {
+     "face": "front",
+     "uv": [
+      0,
+      -2.6
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "flute_hole",
+     "id": "flute_hole",
+     "depth": 0.04
+    }
+   ],
+   "inner_sprites": [
+    {
+     "id": "stone_part",
+     "tex": "item_seal_stone5",
+     "size": [
+      1.5,
+      1.5
+     ],
+     "pos": [
+      0,
+      -2.2,
+      0
+     ],
+     "rot": [
+      -90,
+      0,
+      0
+     ],
+     "face": "top"
+    }
+   ]
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "melody",
+   "parts": {
+    "chime_0": "0",
+    "chime_1": "1",
+    "chime_2": "2",
+    "chime_3": "3",
+    "chime_4": "4",
+    "chime_5": "5",
+    "chime_6": "6"
+   },
+   "order": "2041635",
+   "flag": "played",
+   "echo_from": 4,
+   "lock": "chimes_done",
+   "wrong": [
+    {
+     "sfx": "crack"
+    },
+    {
+     "say": "The chimes jangle out of tune. The ice goes quiet again."
+    }
+   ],
+   "do": [
+    {
+     "set": "chimes_done"
+    },
+    {
+     "sfx": "crack"
+    },
+    {
+     "shake": true
+    },
+    {
+     "say": "The last note hangs in the air, and the ice on the east wall splits open around a chamber of blue glass.",
+     "secs": 5
+    }
+   ]
+  },
+  {
+   "kind": "sequence",
+   "parts": {
+    "hole_a": "a",
+    "hole_b": "b",
+    "hole_c": "c"
+   },
+   "tex": {
+    "hole_a": "tone_hole",
+    "hole_b": "tone_hole",
+    "hole_c": "tone_hole"
+   },
+   "pulled_suffix": "_lit",
+   "order": "cab",
+   "flag": "holes",
+   "silent": true,
+   "lock": "cham_open",
+   "do": [
+    {
+     "set": "cham_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "The chamber hums the three notes back and its lid lifts. Inside: the torn end of the score."
+    }
+   ],
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The chamber gives back a sour note."
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "star",
+   "flag": "star",
+   "count": 5,
+   "sfx": "stone",
+   "textures": [
+    "star5_0",
+    "star5_1",
+    "star5_2",
+    "star5_3",
+    "star5_4"
+   ],
+   "lock": "plug_open"
+  },
+  {
+   "kind": "pickup",
+   "part": "stone_part",
+   "item": "seal_stone5",
+   "flag": "stone5_taken",
+   "show_if": "plug_open",
+   "then": [
+    {
+     "say": "The fifth seal. Cold to the core."
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "frag_part",
+   "when": [
+    "cham_open",
+    "!frag5"
+   ],
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "box:cham",
+   "when": "chimes_done",
+   "then": {
+    "visible": true
+   },
+   "else": {
+    "visible": false
+   }
+  },
+  {
+   "target": "hinge:cham.top",
+   "when": "cham_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.0
+  },
+  {
+   "target": "box:cham",
+   "when": "cham_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "box:plug",
+   "when": "plug_open",
+   "then": {
+    "tappable": false
+   },
+   "else": {
+    "tappable": true
+   }
+  },
+  {
+   "target": "hinge:plug.top",
+   "when": "plug_open",
+   "then": {
+    "hinge": 110
+   },
+   "else": {
+    "hinge": 0
+   },
+   "anim": 1.0
+  }
+ ],
+ "interactions": [
+  {
+   "on": "use",
+   "item": "bone_flute",
+   "ids": [
+    "flute_hole",
+    "plug",
+    "star"
+   ],
+   "do": [
+    {
+     "set": "plug_open"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "wait": 1.0
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "You blow. The star-stone takes the note and holds it, and the plug's lid rises on a pale stone.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "!plug_open",
+    "burned%5=0",
+    "star=0"
+   ]
+  },
+  {
+   "on": "use",
+   "item": "bone_flute",
+   "ids": [
+    "flute_hole",
+    "plug",
+    "star"
+   ],
+   "do": [
+    {
+     "set": "plug_open"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "wait": 1.0
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "You blow. The star-stone takes the note and holds it, and the plug's lid rises on a pale stone.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "!plug_open",
+    "burned%5=1",
+    "star=1"
+   ]
+  },
+  {
+   "on": "use",
+   "item": "bone_flute",
+   "ids": [
+    "flute_hole",
+    "plug",
+    "star"
+   ],
+   "do": [
+    {
+     "set": "plug_open"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "wait": 1.0
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "You blow. The star-stone takes the note and holds it, and the plug's lid rises on a pale stone.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "!plug_open",
+    "burned%5=2",
+    "star=2"
+   ]
+  },
+  {
+   "on": "use",
+   "item": "bone_flute",
+   "ids": [
+    "flute_hole",
+    "plug",
+    "star"
+   ],
+   "do": [
+    {
+     "set": "plug_open"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "wait": 1.0
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "You blow. The star-stone takes the note and holds it, and the plug's lid rises on a pale stone.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "!plug_open",
+    "burned%5=3",
+    "star=3"
+   ]
+  },
+  {
+   "on": "use",
+   "item": "bone_flute",
+   "ids": [
+    "flute_hole",
+    "plug",
+    "star"
+   ],
+   "do": [
+    {
+     "set": "plug_open"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "wait": 1.0
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "face": "top"
+    },
+    {
+     "say": "You blow. The star-stone takes the note and holds it, and the plug's lid rises on a pale stone.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "!plug_open",
+    "burned%5=4",
+    "star=4"
+   ]
+  },
+  {
+   "on": "use",
+   "item": "bone_flute",
+   "ids": [
+    "flute_hole",
+    "plug",
+    "star"
+   ],
+   "do": [
+    {
+     "sfx": "horn"
+    },
+    {
+     "shake": true
+    },
+    {
+     "say": "The flute shrieks in the hole. The star doesn't take the note."
+    }
+   ],
+   "when": "!plug_open"
+  },
+  {
+   "on": "tap",
+   "id": "flute_hole",
+   "do": [
+    {
+     "say": "A hole in the plug, sized for a mouthpiece."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hole_a",
+   "do": [
+    {
+     "sfx": "tone_3"
+    }
+   ],
+   "when": "!cham_open",
+   "handled": false
+  },
+  {
+   "on": "tap",
+   "id": "hole_b",
+   "do": [
+    {
+     "sfx": "tone_5"
+    }
+   ],
+   "when": "!cham_open",
+   "handled": false
+  },
+  {
+   "on": "tap",
+   "id": "hole_c",
+   "do": [
+    {
+     "sfx": "tone_6"
+    }
+   ],
+   "when": "!cham_open",
+   "handled": false
+  },
+  {
+   "on": "tap",
+   "id": "frag_part",
+   "do": [
+    {
+     "set": "frag5"
+    },
+    {
+     "fragment": true
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "frag5",
+      "Fragment V",
+      "Wren's fifth fragment, written on the back of the torn score: \"Every seal asks for something. The first ones asked for my time. This one asked for my words, and I gave them, page by page, to keep warm. By the seventh they will ask for things I do not know I have.\""
+     ]
+    },
+    {
+     "say": "The torn end of the score. On its back, in Wren's hand: a fragment."
+    }
+   ],
+   "when": [
+    "cham_open",
+    "!frag5"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "frozen_man",
+   "do": [
+    {
+     "say": "A man frozen into the wall, standing. Survey coat. His eyes are open. There is paper in his pocket, too deep in the ice to see."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "frozen_note",
+   "do": [
+    {
+     "journal": [
+      "halvorsen",
+      "Halvorsen's note",
+      "Through the ice, the note in Halvorsen's coat pocket: \"The stone in the plug turns one point for every page the hut's fire has eaten. I fed it four and turned it four. Then I blew. Then I understood, and stayed.\""
+     ]
+    },
+    {
+     "set": "note_read"
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "rope_ladder",
+   "do": [
+    {
+     "say": "The ladder back up to the hut. Not without the seal."
+    }
+   ],
+   "when": "!stone5_taken"
+  },
+  {
+   "on": "tap",
+   "id": "rope_ladder",
+   "do": [
+    {
+     "set": "left10"
+    },
+    {
+     "take": "bone_flute"
+    },
+    {
+     "complete_room": [
+      105,
+      "THE FIFTH SEAL",
+      "You climb out of the ice with the stone against your chest. Behind you, the chimes ring once on their own."
+     ]
+    }
+   ],
+   "when": "stone5_taken"
+  }
+ ],
+ "steps": [
+  {
+   "id": "score",
+   "done": "chimes_done",
+   "hints": [
+    "The torn score in your journal is for these chimes.",
+    "Play chimes 3, 1, 5, 2 (counting from the left). Then listen: the ice hums the rest; play what it hums."
+   ],
+   "solve": [
+    {
+     "set": "chimes_done"
+    }
+   ],
+   "said": "The ice splits open."
+  },
+  {
+   "id": "holes",
+   "done": "cham_open",
+   "hints": [
+    "Each hole in the glass chamber hums one note. You have heard these notes before.",
+    "Touch the holes in the order the ice hummed its notes: right, left, middle."
+   ],
+   "solve": [
+    {
+     "set": "cham_open"
+    }
+   ],
+   "said": "The chamber opens."
+  },
+  {
+   "id": "note",
+   "done": "note_read",
+   "hints": [
+    "The frozen man has something in his pocket.",
+    "Look at the frozen man with the Lens turned on."
+   ],
+   "solve": [
+    {
+     "journal": [
+      "halvorsen",
+      "Halvorsen's note",
+      "Through the ice, the note in Halvorsen's coat pocket: \"The stone in the plug turns one point for every page the hut's fire has eaten. I fed it four and turned it four. Then I blew. Then I understood, and stayed.\""
+     ]
+    },
+    {
+     "set": "note_read"
+    }
+   ],
+   "said": "His note is in your journal."
+  },
+  {
+   "id": "plug",
+   "done": "plug_open",
+   "hints": [
+    "Halvorsen's note says how far to turn the star in the plug.",
+    "Turn the star one point for every page you burned in the hut, then blow the bone flute into the hole."
+   ],
+   "solve": [
+    {
+     "set": "plug_open"
+    }
+   ],
+   "said": "The plug opens."
+  },
+  {
+   "id": "stone",
+   "done": "stone5_taken",
+   "hints": [
+    "The plug held the seal.",
+    "Take the stone from the plug."
+   ],
+   "solve": [
+    {
+     "give": "seal_stone5"
+    },
+    {
+     "set": "stone5_taken"
+    }
+   ],
+   "said": "The fifth seal is yours."
+  },
+  {
+   "id": "up",
+   "done": "left10",
+   "hints": [
+    "The ladder goes back up.",
+    "Climb the rope ladder."
+   ],
+   "solve": [
+    {
+     "set": "left10"
+    },
+    {
+     "complete_room": [
+      105,
+      "THE FIFTH SEAL",
+      "You climb out of the ice."
+     ]
+    }
+   ],
+   "said": "Up you go."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "chime_2"
+  ],
+  [
+   "tap",
+   "chime_0"
+  ],
+  [
+   "tap",
+   "chime_4"
+  ],
+  [
+   "tap",
+   "chime_1"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "shot",
+   "echo"
+  ],
+  [
+   "tap",
+   "chime_6"
+  ],
+  [
+   "tap",
+   "chime_3"
+  ],
+  [
+   "tap",
+   "chime_5"
+  ],
+  [
+   "wait",
+   2.0
+  ],
+  [
+   "expect",
+   "chimes_done"
+  ],
+  [
+   "tap",
+   "cham"
+  ],
+  [
+   "shot",
+   "chamber"
+  ],
+  [
+   "tap",
+   "hole_c"
+  ],
+  [
+   "tap",
+   "hole_a"
+  ],
+  [
+   "tap",
+   "hole_b"
+  ],
+  [
+   "wait",
+   1.5
+  ],
+  [
+   "expect",
+   "cham_open"
+  ],
+  [
+   "tap",
+   "frag_part"
+  ],
+  [
+   "expect",
+   "frag5"
+  ],
+  [
+   "back"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "tap",
+   "frozen_note"
+  ],
+  [
+   "expect",
+   "note_read"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "tap",
+   "plug"
+  ],
+  [
+   "shot",
+   "plug"
+  ],
+  [
+   "repeat",
+   6,
+   [
+    "use",
+    "bone_flute",
+    "flute_hole"
+   ],
+   [
+    "tap",
+    "star"
+   ]
+  ],
+  [
+   "wait",
+   2.0
+  ],
+  [
+   "expect",
+   "plug_open"
+  ],
+  [
+   "shot",
+   "plug_open"
+  ],
+  [
+   "tap",
+   "stone_part"
+  ],
+  [
+   "shot",
+   "after_stone"
+  ],
+  [
+   "expect",
+   "stone5_taken"
+  ],
+  [
+   "back"
+  ],
+  [
+   "tap",
+   "rope_ladder"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

@@ -9,7 +9,14 @@ extends Node3D
 const PixelBox = preload("res://scripts/pixel_box.gd")
 const DataRoom = preload("res://scripts/data_room.gd")
 const STAGE := Vector3(500, 0, 0)
-const SKIP_LABEL := "Skip to Seal II"
+const SKIP_LABEL := "Skip to a seal"
+## Main-menu shortcuts. Add a line here every time a seal ships: [label, first room, where you are].
+const SEAL_STARTS := [
+	["Seal II: Kingsport", 3, "The Kingsport light, after the first seal."],
+	["Seal III: Arkham Sanitarium", 5, "Arkham Sanitarium, after the second seal."],
+	["Seal IV: The Gardner farm", 7, "The Gardner farm, after the third seal."],
+	["Seal V: The ice", 9, "Hut 4, on the plateau, after the fourth seal."],
+]
 const HUD_TOP := 56.0
 const HUD_BOTTOM := 76.0
 const SNAP := PI / 2
@@ -104,12 +111,21 @@ func _ready() -> void:
 		if start >= 9:
 			for i in 8:
 				State.add_journal("old%d" % i, "Older notes, %d" % (i + 1), "Notes from earlier seals.")
+		if start == 10:
+			State.inventory.append("bone_flute")
+			State.flags["burned"] = 3
 		load_room(start)
 		_autotest()
 		return
 	var query := str(JavaScriptBridge.eval("location.search")) if OS.has_feature("web") else ""
-	if "seal=2" in query:
+	if "seal=" in query:
+		## Playtest link: ?seal=3 starts seal III as if the earlier seals were done.
 		drone.play()
+		var s := int(query.split("seal=")[1].split("&")[0])
+		for e in SEAL_STARTS:
+			if e[1] == s * 2 - 1:
+				_start_seal(e)
+				return
 		_skip_to_seal2()
 		return
 	if "room=" in query:
@@ -984,9 +1000,10 @@ func _dialog(title: String, text: String, buttons: Array) -> String:
 	body.size = Vector2(view_size.x - 32, 220)
 	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	root.add_child(body)
-	var y := 350.0
+	## long button lists (the seal picker) move up so they stay on screen
+	var y := minf(350.0, view_size.y - 16.0 - 32.0 * buttons.size())
 	for b in buttons:
-		var btn := _button(root, b, Vector2((view_size.x - 160) / 2, y), 160)
+		var btn := _button(root, b, Vector2((view_size.x - 200) / 2, y), 200)
 		btn.pressed.connect(func(): dialog_done.emit(b))
 		y += 32
 	if autotest:
@@ -1006,7 +1023,14 @@ func _title_screen(has_save: bool) -> void:
 	var choice: String = await _dialog("THE NINEFOLD SEAL", text, buttons)
 	drone.play()
 	if choice == SKIP_LABEL:
-		_skip_to_seal2()
+		var labels := []
+		for e in SEAL_STARTS:
+			labels.append(e[0])
+		var pick: String = await _dialog("SKIP TO A SEAL", "Start a seal as if the ones before it were done. Your saved game is replaced.", labels)
+		for e in SEAL_STARTS:
+			if e[0] == pick:
+				_start_seal(e)
+				return
 		return
 	if choice == "Start over":
 		State.reset()
@@ -1016,6 +1040,22 @@ func _title_screen(has_save: bool) -> void:
 
 
 ## Playtest shortcut: start seal II as if seal I were done. Also reachable with ?seal=2 in the URL.
+## Start a seal from the main menu: earlier seals placed, the Lens you'd have by then, old journal pages.
+func _start_seal(e: Array) -> void:
+	var first: int = e[1]
+	var done := (first - 1) / 2
+	State.reset()
+	State.inventory = ["lens2"] if first >= 9 else ["lens"]
+	State.fragments = done
+	for i in range(1, done + 1):
+		State.flags["seal%d_placed" % i] = true
+	for i in done * 2:
+		State.add_journal("old%d" % i, "Earlier notes, %d" % (i + 1), "Notes from the earlier seals.")
+	State.save_game()
+	load_room(first)
+	say(e[2], 5.0)
+
+
 func _skip_to_seal2() -> void:
 	State.reset()
 	State.inventory = ["lens", "seal_stone"]
