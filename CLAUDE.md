@@ -43,6 +43,7 @@ Escape rooms and nested puzzle boxes, The Room style, Lovecraftian. You play Eli
 - Everything the player can see responds to touch, even if only with a line of text. Dead taps read as bugs.
 - Floor and ceiling are seen from whichever wall you were facing, so their art can appear turned round: no text or digits there that change meaning upside down (6 and 9).
 - The first touch on a part of a piece of furniture zooms in; parts are worked up close. Furniture worked from the room view sets "zoom": false.
+- Fat fingers (Eric, Nov 2026): anything smaller than MIN_TAP (30 game px, about 44 pt on a phone) zooms in on the spot at the first touch instead of firing; a touch that hits nothing takes the nearest target within 22 px; small boxes open at 3x or 4x. Swiping while zoomed steps back out.
 Art brief (style, sizes, palette rules): https://claude.ai/artifact/7zvHBNiA8YfQN7kr6eGhwy
 
 ## Flags
@@ -50,5 +51,5 @@ Art brief (style, sizes, palette rules): https://claude.ai/artifact/7zvHBNiA8YfQ
 
 ## Verify every change
 - After adding art or sound: `godot --headless --path . --import` first.
-- `xvfb-run -a godot --path . --rendering-driver opengl3 -- --autotest` plays every room with real taps, saves screenshots to user://shots, prints AUTOTEST FAILS. It must be 0.
+- `xvfb-run -a godot --path . --rendering-driver opengl3 -- --autotest [--start=N] [--stop=M]` plays every room with real taps, saves screenshots to user://shots, prints AUTOTEST FAILS. It must be 0.
 - Rebuild web: `godot --headless --path . --export-release "Web" web/index.html`. Pushing to main deploys to Vercel.

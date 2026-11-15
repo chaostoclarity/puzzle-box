@@ -471,6 +471,8 @@ func run(actions: Array, node: Node = null) -> void:
 		if a.has("look"):
 			## turn the player's head: a wall letter, or "d"/"u" for floor and ceiling
 			var lw: String = a["look"]
+			if game.mode == game.Mode.ZOOM:
+				game._leave_zoom()
 			if lw == "d" or lw == "u":
 				game.set_pitch(1 if lw == "d" else -1)
 			else:

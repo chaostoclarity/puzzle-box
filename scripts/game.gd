@@ -39,6 +39,7 @@ var ROOMS := {}            ## room number -> JSON path, from data/rooms/index.js
 var stage: Node3D
 var room
 var mode := Mode.ROOM
+var test_stop := -1   ## autotest: stop when this room is reached (--stop=N)
 var return_mode := Mode.ROOM
 var view_size := Vector2(270, 480)
 var view := 0
@@ -106,6 +107,8 @@ func _ready() -> void:
 		State.reset()
 		var start := 1
 		for arg in OS.get_cmdline_user_args():
+			if arg.begins_with("--stop="):
+				test_stop = int(arg.substr(7))
 			if arg.begins_with("--start="):
 				start = int(arg.substr(8))
 		if start >= 3:
@@ -183,7 +186,14 @@ func _camera_target() -> Dictionary:
 		Mode.ZOOM:
 			return _zoom_frame(zoom_target)
 		_:
-			return {"size": view_size.x / 32.0, "pos": Vector3(STAGE.x, STAGE.y - _content_center_offset() / 32.0, 40)}
+			## small boxes come up bigger, so their parts are finger-sized
+			var k := 2.0
+			if not box_stack.is_empty():
+				var dm: Vector3 = _active_box().dims
+				var avail_h := view_size.y - HUD_TOP - HUD_BOTTOM
+				var big := maxf(dm.x, maxf(dm.y, dm.z))
+				k = clampf(floorf(minf(view_size.x * 0.9, avail_h * 0.9) / (big * 16.0)), 2.0, 4.0)
+			return {"size": view_size.x / (16.0 * k), "pos": Vector3(STAGE.x, STAGE.y - _content_center_offset() / (16.0 * k), 40)}
 
 
 func _zoom_frame(t: Node3D) -> Dictionary:
@@ -310,6 +320,9 @@ func _input(event: InputEvent) -> void:
 	elif event is InputEventScreenDrag and touch_down:
 		var d: Vector2 = event.position - touch_start
 		var in_play := touch_start.y > HUD_TOP and touch_start.y < view_size.y - HUD_BOTTOM
+		if drag_axis == Vector3.ZERO and d.length() > 8.0 and in_play and mode == Mode.ZOOM and not busy:
+			## a swipe while zoomed in steps back out to the room, so turning never gets stuck
+			_leave_zoom()
 		if drag_axis == Vector3.ZERO and d.length() > 8.0 and in_play and mode != Mode.ZOOM:
 			if mode == Mode.ROOM:
 				var vertical := absf(d.y) > absf(d.x)
@@ -420,6 +433,8 @@ func _tap(pos: Vector2, held_ms := 0) -> void:
 	if pos.y < HUD_TOP or pos.y > view_size.y - HUD_BOTTOM:
 		return
 	var hit := _pick(pos)
+	if hit.is_empty() or hit.collider.get_meta("id", "") == "":
+		hit = _near_pick(pos)   ## fat fingers: the nearest thing you could have meant
 	if hit.is_empty():
 		return
 	var id: String = hit.collider.get_meta("id", "")
@@ -445,6 +460,12 @@ func _tap(pos: Vector2, held_ms := 0) -> void:
 	if selected == "" and holder and mode == Mode.ROOM:
 		await zoom_to(holder)
 		return
+	# too small to hit with a finger from here: the first touch brings it up close
+	if mode != Mode.BOX and not id.begins_with("dive:"):
+		var need := _zoom_needed(hit.collider)
+		if need > 0.0:
+			await _zoom_point(hit.position, node, need)
+			return
 	if selected != "":
 		var item := selected
 		if await room.on_use(item, id, node):
@@ -487,6 +508,81 @@ func _pick(pos: Vector2) -> Dictionary:
 	return {}
 
 
+## Smallest comfortable target on screen, in game pixels (about 44 points on a phone).
+const MIN_TAP := 30.0
+
+
+## How far a target's smaller side reaches on screen right now, in game pixels.
+func _screen_px(collider: Node) -> float:
+	var cs := collider.find_children("*", "CollisionShape3D", true, false)
+	if cs.is_empty() or not (cs[0].shape is BoxShape3D):
+		return 999.0
+	var s: Vector3 = cs[0].shape.size * cs[0].global_transform.basis.get_scale()
+	var dims := [s.x, s.y, s.z]
+	dims.sort()
+	return dims[1] * view_size.x / camera.size
+
+
+## Zoom level (2 to 4) that would make this target big enough, or 0 if it already is (or can't get bigger).
+func _zoom_needed(collider: Node) -> float:
+	var px := _screen_px(collider)
+	if px >= MIN_TAP:
+		return 0.0
+	var k_now := view_size.x / camera.size / 16.0
+	if k_now >= 3.99:
+		return 0.0
+	var k := clampf(ceilf(k_now * MIN_TAP / maxf(px, 1.0)), maxf(2.0, k_now + 1.0), 4.0)
+	return k
+
+
+## Zoom in on a spot (the thing you touched and its neighbours) rather than activating a tiny target.
+func _zoom_point(at: Vector3, near: Node3D, k: float) -> void:
+	var anchor := Node3D.new()
+	anchor.set_meta("zoom", {"k": k, "w": 2.0, "h": 2.0})
+	anchor.set_meta("point_zoom", true)
+	near.add_child(anchor)
+	anchor.global_position = at
+	if zoom_target and zoom_target.has_meta("point_zoom"):
+		zoom_target.queue_free()
+	await zoom_to(anchor)
+
+
+## The tappable thing nearest the touch, within a fingertip, when the touch itself hit nothing.
+func _near_pick(pos: Vector2) -> Dictionary:
+	var best := {}
+	var best_d := 22.0
+	for id in room.ids:
+		var n: Node3D = room.ids[id]
+		if not is_instance_valid(n) or not n.is_visible_in_tree():
+			continue
+		var body: CollisionObject3D = null
+		for c in n.get_children():
+			if c is CollisionObject3D and c.has_meta("id"):
+				body = c
+				break
+		if body == null:
+			continue
+		var shapes := body.find_children("*", "CollisionShape3D", true, false)
+		if shapes.is_empty() or shapes[0].disabled:
+			continue
+		if mode == Mode.BOX:
+			if _box_of(n) != box_stack.back():
+				continue
+		else:
+			var w: String = room.wall_of(body)
+			if w != "" and not room.wall_facing(w):
+				continue
+			if _box_of(n) != "" and not n.has_meta("liftable"):
+				continue
+		if camera.is_position_behind(n.global_position):
+			continue
+		var d := camera.unproject_position(n.global_position).distance_to(pos)
+		if d < best_d:
+			best_d = d
+			best = {"collider": body, "position": n.global_position}
+	return best
+
+
 ## The piece of furniture a part belongs to, if it can be zoomed (null for the furniture itself).
 func _zoom_holder(node: Node) -> Node3D:
 	var n := node.get_parent()
@@ -516,6 +612,15 @@ func zoom_to(node: Node3D) -> void:
 	busy = false
 
 
+func _leave_zoom() -> void:
+	mode = Mode.ROOM
+	if zoom_target and zoom_target.has_meta("point_zoom"):
+		zoom_target.queue_free()
+	zoom_target = null
+	_frame_camera(true, 0.2)
+	_refresh_hud()
+
+
 func go_back() -> void:
 	if busy:
 		return
@@ -533,6 +638,8 @@ func go_back() -> void:
 			await exit_box()
 	elif mode == Mode.ZOOM:
 		mode = Mode.ROOM
+		if zoom_target and zoom_target.has_meta("point_zoom"):
+			zoom_target.queue_free()
 		zoom_target = null
 		await _frame_camera(true)
 	busy = false
@@ -1286,9 +1393,17 @@ func test_tap(id: String, offset := Vector2.ZERO) -> void:
 		if holder and mode == Mode.ROOM:
 			await zoom_to(holder)
 	await _wait(0.1)
-	var pos := camera.unproject_position(node.global_transform * Vector3(offset.x, offset.y, 0))
-	await _tap(pos)
+	await _tap_node(node, offset)
+
+
+## Tap a node as a player would: if the first touch only zooms in on it, touch it again.
+func _tap_node(node: Node3D, offset := Vector2.ZERO) -> void:
+	var before := zoom_target
+	await _tap(camera.unproject_position(node.global_transform * Vector3(offset.x, offset.y, 0)))
 	await _wait(0.35)
+	if zoom_target != before and zoom_target and zoom_target.has_meta("point_zoom"):
+		await _tap(camera.unproject_position(node.global_transform * Vector3(offset.x, offset.y, 0)))
+		await _wait(0.35)
 
 
 func _swipe(dx: float, dy := 0.0) -> void:
@@ -1338,8 +1453,7 @@ func _autotest() -> void:
 						test_fails.append("not holding %s for %s" % [a[1], a[2]])
 					selected = a[1]
 					_refresh_hud()
-					await _tap(camera.unproject_position(room.ids[a[2]].global_position))
-					await _wait(0.35)
+					await _tap_node(room.ids[a[2]])
 					selected = ""
 					_refresh_hud()
 				"tapat": await test_tap(a[1], a[2])
@@ -1359,9 +1473,7 @@ func _autotest() -> void:
 				"swipev": await _swipe(0.0, a[1])
 				"tapv":
 					## tap a target from the current view, as a player would after swiping
-					var tn: Node3D = room.ids[a[1]]
-					await _tap(camera.unproject_position(tn.global_position))
-					await _wait(0.35)
+					await _tap_node(room.ids[a[1]])
 				"hint":
 					await ask_hint()
 					await _wait(0.2)
@@ -1379,6 +1491,9 @@ func _autotest() -> void:
 			await _wait(0.25)
 			waited += 0.25
 		if State.room == n:
+			break
+		print("ROOM %d DONE fails so far: %s" % [n, str(test_fails)])
+		if State.room == test_stop:
 			break
 		await _wait(1.0)
 	await _shot("final")
