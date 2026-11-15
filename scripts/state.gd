@@ -24,6 +24,17 @@ func _ready() -> void:
 	ITEMS = JSON.parse_string(f.get_as_text())
 
 
+## Flags that carry from room to room. Everything else belongs to the room that set it.
+const CARRY := ["burned", "slots_given"]
+
+
+func clear_room_flags() -> void:
+	for k in flags.keys():
+		if not (k in CARRY or (k.begins_with("seal") and k.ends_with("_placed"))):
+			flags.erase(k)
+	save_game()
+
+
 func has(f: String) -> bool:
 	var v = flags.get(f, false)
 	if v is String:

@@ -1,0 +1,838 @@
+{
+ "title": "The Study (dreaming)",
+ "walls": "h2_wall_",
+ "floor": "h2_floor",
+ "ceiling": "h2_ceiling",
+ "intro": "Everything is very tidy.",
+ "on_enter": [
+  {
+   "set": "hour",
+   "value": 11
+  },
+  {
+   "journal": [
+    "dream15",
+    "The dream",
+    "I am in my study and it is tidy. The papers are squared, the ink is capped, the salt is gone from the door. The clock on the wall is running backwards. There is a note on the desk in my own hand that I did not write. I don't trust any of it."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "furniture",
+   "wall": "n",
+   "id": "cabinet",
+   "pos": [
+    0,
+    0
+   ],
+   "size": [
+    3.5,
+    6,
+    2
+   ],
+   "faces": {
+    "front": "cabinet_front",
+    "top": "dark_top_56x32",
+    "default": "dark_side_32x96"
+   },
+   "zoom": false
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "dd0",
+   "center": [
+    -1,
+    3.2
+   ],
+   "size": [
+    0.75,
+    0.75
+   ],
+   "tex": "ddial_0",
+   "depth": 2.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "dd1",
+   "center": [
+    0,
+    3.2
+   ],
+   "size": [
+    0.75,
+    0.75
+   ],
+   "tex": "ddial_0",
+   "depth": 2.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "dd2",
+   "center": [
+    1,
+    3.2
+   ],
+   "size": [
+    0.75,
+    0.75
+   ],
+   "tex": "ddial_0",
+   "depth": 2.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "dcab_lock",
+   "center": [
+    0,
+    2.1
+   ],
+   "size": [
+    2,
+    1
+   ],
+   "tex": "dcab_lock",
+   "depth": 2.05
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "dclock",
+   "center": [
+    -5,
+    10
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "dclock_11"
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "pendulum",
+   "center": [
+    -5,
+    7.3
+   ],
+   "size": [
+    1,
+    3
+   ],
+   "tex": "pendulum"
+  },
+  {
+   "type": "furniture",
+   "wall": "e",
+   "id": "tdesk",
+   "pos": [
+    -2,
+    0
+   ],
+   "size": [
+    7,
+    4,
+    2.5
+   ],
+   "faces": {
+    "front": "tdesk_front",
+    "top": "wood_top_112x40",
+    "default": "wood_side_40x64"
+   },
+   "zoom": false
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "dnote",
+   "center": [
+    -3.5,
+    4.6
+   ],
+   "size": [
+    2,
+    1.5
+   ],
+   "tex": "dnote",
+   "depth": 1.3,
+   "lens_hide": 3
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "ddrawer",
+   "center": [
+    -2,
+    2
+   ],
+   "size": [
+    2,
+    1.5
+   ],
+   "tex": "ddrawer",
+   "depth": 2.56
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "pinned",
+   "center": [
+    3,
+    9
+   ],
+   "size": [
+    2,
+    2
+   ],
+   "tex": "pinned_lens",
+   "lens": 3
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "snow_window",
+   "center": [
+    0,
+    12
+   ],
+   "size": [
+    4,
+    6
+   ],
+   "tex": "window_snow"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "dmirror",
+   "center": [
+    -3,
+    10
+   ],
+   "size": [
+    3,
+    5
+   ],
+   "tex": "dmirror"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "hdoor",
+   "center": [
+    3.5,
+    4
+   ],
+   "size": [
+    4.5,
+    8
+   ],
+   "tex": "door",
+   "depth": 0.05
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "tick",
+   "flag": "hour",
+   "every": 1,
+   "step": -1,
+   "wrap": 12,
+   "while": "!clock_stopped"
+  },
+  {
+   "kind": "cycler",
+   "part": "dd0",
+   "flag": "dd0",
+   "count": 10,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "ddial_0",
+    "ddial_1",
+    "ddial_2",
+    "ddial_3",
+    "ddial_4",
+    "ddial_5",
+    "ddial_6",
+    "ddial_7",
+    "ddial_8",
+    "ddial_9"
+   ],
+   "lock": "cab_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "dd1",
+   "flag": "dd1",
+   "count": 10,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "ddial_0",
+    "ddial_1",
+    "ddial_2",
+    "ddial_3",
+    "ddial_4",
+    "ddial_5",
+    "ddial_6",
+    "ddial_7",
+    "ddial_8",
+    "ddial_9"
+   ],
+   "lock": "cab_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "dd2",
+   "flag": "dd2",
+   "count": 10,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "ddial_0",
+    "ddial_1",
+    "ddial_2",
+    "ddial_3",
+    "ddial_4",
+    "ddial_5",
+    "ddial_6",
+    "ddial_7",
+    "ddial_8",
+    "ddial_9"
+   ],
+   "lock": "cab_open"
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "dd0",
+    "dd1",
+    "dd2"
+   ],
+   "code": [
+    4,
+    3,
+    8
+   ],
+   "commit": "dcab_lock",
+   "lock": "cab_open",
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The lock holds. In the dream, it holds very politely."
+    }
+   ],
+   "do": [
+    {
+     "set": "cab_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "give": "candle"
+    },
+    {
+     "say": "The cabinet's lock gives. There are no sockets in the dream cabinet: only a stub of candle with notches scratched down its side.",
+     "secs": 5
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "dclock",
+   "when": null,
+   "then": {
+    "texture": "dclock_{hour:11}"
+   }
+  },
+  {
+   "target": "pendulum",
+   "when": "clock_stopped",
+   "then": {
+    "texture": "pendulum_stopped"
+   },
+   "else": {
+    "texture": "pendulum"
+   }
+  },
+  {
+   "target": "ddrawer",
+   "when": "drawer_open",
+   "then": {
+    "texture": "ddrawer_open"
+   },
+   "else": {
+    "texture": "ddrawer"
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "tap",
+   "id": "dmirror",
+   "do": [
+    {
+     "say": "The candle is lit. The mirror wants it."
+    }
+   ],
+   "when": "item:candle"
+  },
+  {
+   "on": "tap",
+   "id": "pendulum",
+   "do": [
+    {
+     "set": "clock_stopped"
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "set": "drawer_open"
+    },
+    {
+     "sfx": "slide"
+    },
+    {
+     "say": "You catch the pendulum. The hands stop at three, and the desk drawer slides open by itself.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "!clock_stopped",
+    "hour=3"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "pendulum",
+   "do": [
+    {
+     "set": "clock_stopped"
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "You catch the pendulum and the hands stop. Nothing else happens."
+    }
+   ],
+   "when": [
+    "!clock_stopped",
+    "!drawer_open"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "pendulum",
+   "do": [
+    {
+     "set": "clock_stopped",
+     "value": false
+    },
+    {
+     "sfx": "tick"
+    },
+    {
+     "say": "You let it go. It swings, and the hands start back the wrong way."
+    }
+   ],
+   "when": [
+    "clock_stopped",
+    "!drawer_open"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "pendulum",
+   "do": [
+    {
+     "say": "Stopped at three."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "dclock",
+   "do": [
+    {
+     "say": "The clock is running backwards: the hour hand goes back one hour every time you do anything."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "dmirror",
+   "do": [
+    {
+     "set": "mirror_seen"
+    },
+    {
+     "say": "In the mirror, the study is a mess, cold, and there is a man asleep at the desk: you. The clock in the mirror has stopped. Its hand points to the left, at the numeral you'd read as IX if it weren't backwards.",
+     "secs": 6
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "dnote",
+   "do": [
+    {
+     "set": "note_read"
+    },
+    {
+     "say": "A neat note in your own hand: SLEEP WELL. 2 2 2. You don't remember writing it. The dream is very tidy."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "pinned",
+   "do": [
+    {
+     "say": "Through dream sight, a scrap pinned to the real wall: 4, then something torn, then 8. MID IS WOKE: the middle one is the hour you woke.",
+     "secs": 6
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "ddrawer",
+   "do": [
+    {
+     "say": "A desk drawer, shut. It has no keyhole."
+    }
+   ],
+   "when": "!drawer_open"
+  },
+  {
+   "on": "tap",
+   "id": "ddrawer",
+   "do": [
+    {
+     "set": "glass_taken"
+    },
+    {
+     "give": "dream_glass"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "In the drawer: a disc of violet glass, soft as a bubble. Wren's mark on the rim."
+    }
+   ],
+   "when": [
+    "drawer_open",
+    "!glass_taken"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "ddrawer",
+   "do": [
+    {
+     "say": "Empty."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "snow_window",
+   "do": [
+    {
+     "say": "Snow on Garrison Street, falling up."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "hdoor",
+   "do": [
+    {
+     "say": "The door opens on the same study, tidier still. There's no way out of a dream through a door."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "cabinet",
+   "do": [
+    {
+     "say": "Wren's cabinet, but with no sockets. A dial lock where the drawer should be."
+    }
+   ],
+   "handled": false
+  },
+  {
+   "on": "use",
+   "item": "candle",
+   "ids": [
+    "dmirror"
+   ],
+   "do": [
+    {
+     "set": "left15"
+    },
+    {
+     "take": "candle"
+    },
+    {
+     "give": "candle"
+    },
+    {
+     "complete_room": [
+      16,
+      "THE CELLAR",
+      "You hold the candle to the mirror and the man asleep in it opens his eyes. You step through. There are stairs, going down, under the house, under the dream."
+     ]
+    }
+   ]
+  }
+ ],
+ "steps": [
+  {
+   "id": "mirror",
+   "done": "mirror_seen",
+   "hints": [
+    "The dream is tidy. The truth is somewhere it can't tidy.",
+    "Look in the mirror on the south wall."
+   ],
+   "solve": [
+    {
+     "set": "mirror_seen"
+    }
+   ],
+   "said": "The mirror shows the waking study."
+  },
+  {
+   "id": "clock",
+   "done": "drawer_open",
+   "hints": [
+    "The clock runs backwards one hour every time you do something. The mirror shows the hour the real clock stopped.",
+    "In the mirror the hand points left, but the mirror is backwards: it's three. Count your moves so the hand reaches III, then catch the pendulum."
+   ],
+   "solve": [
+    {
+     "set": "hour",
+     "value": 3
+    },
+    {
+     "set": "clock_stopped"
+    },
+    {
+     "set": "drawer_open"
+    }
+   ],
+   "said": "The drawer opens."
+  },
+  {
+   "id": "glass",
+   "done": "glass_taken",
+   "hints": [
+    "Something is in the desk drawer.",
+    "Take what's in the desk drawer."
+   ],
+   "solve": [
+    {
+     "give": "dream_glass"
+    },
+    {
+     "set": "glass_taken"
+    }
+   ],
+   "said": "Dream glass."
+  },
+  {
+   "id": "lens3",
+   "done": "item:lens3",
+   "hints": [
+    "The glass is the third piece of the Lens.",
+    "Put the dream glass and the Lens together in your tray."
+   ],
+   "solve": [
+    {
+     "take": "dream_glass"
+    },
+    {
+     "take": "lens2"
+    },
+    {
+     "give": "lens3"
+    }
+   ],
+   "said": "Dream sight."
+  },
+  {
+   "id": "cab",
+   "done": "cab_open",
+   "hints": [
+    "The note on the desk is the dream's. Dream sight shows another note.",
+    "With the Lens on, read the scrap on the east wall: 4, the hour you woke (3), 8. Set the cabinet's dials to 4 3 8 and press the lock."
+   ],
+   "solve": [
+    {
+     "set": "cab_open"
+    },
+    {
+     "give": "candle"
+    }
+   ],
+   "said": "A candle."
+  },
+  {
+   "id": "down",
+   "done": "left15",
+   "hints": [
+    "The mirror is the way deeper.",
+    "Use the candle on the mirror."
+   ],
+   "solve": [
+    {
+     "set": "left15"
+    },
+    {
+     "complete_room": [
+      16,
+      "THE CELLAR",
+      "Deeper."
+     ]
+    }
+   ],
+   "said": "Down."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "dnote"
+  ],
+  [
+   "tap",
+   "dmirror"
+  ],
+  [
+   "tap",
+   "snow_window"
+  ],
+  [
+   "tap",
+   "dclock"
+  ],
+  [
+   "tap",
+   "ddrawer"
+  ],
+  [
+   "tap",
+   "hdoor"
+  ],
+  [
+   "tap",
+   "dclock"
+  ],
+  [
+   "tap",
+   "dmirror"
+  ],
+  [
+   "expect",
+   "hour=3"
+  ],
+  [
+   "tap",
+   "pendulum"
+  ],
+  [
+   "expect",
+   "drawer_open"
+  ],
+  [
+   "tap",
+   "ddrawer"
+  ],
+  [
+   "combine",
+   "dream_glass",
+   "lens2"
+  ],
+  [
+   "expect",
+   "item:lens3"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "shot",
+   "dream_sight"
+  ],
+  [
+   "tap",
+   "pinned"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "repeat",
+   4,
+   [
+    "tap",
+    "dd0"
+   ]
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "dd1"
+   ]
+  ],
+  [
+   "repeat",
+   8,
+   [
+    "tap",
+    "dd2"
+   ]
+  ],
+  [
+   "tap",
+   "dcab_lock"
+  ],
+  [
+   "expect",
+   "cab_open"
+  ],
+  [
+   "use",
+   "candle",
+   "dmirror"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

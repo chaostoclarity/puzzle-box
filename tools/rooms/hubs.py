@@ -10,7 +10,7 @@ def sockets():
 
 def hub(n):
     first = n == 1
-    stone = {1: "seal_stone", 2: "seal_stone2", 3: "seal_stone3", 4: "seal_stone4", 5: "seal_stone5", 6: "seal_stone6", 7: "seal_stone7"}[n]
+    stone = {1: "seal_stone", 2: "seal_stone2", 3: "seal_stone3", 4: "seal_stone4", 5: "seal_stone5", 6: "seal_stone6", 7: "seal_stone7", 8: "seal_stone8"}[n]
     pre = "h1_" if first else "h2_"
     objs = [
         {"type": "furniture", "wall": "n", "id": "cabinet", "pos": [0, 0], "size": [3.5, 6, 2],
@@ -65,6 +65,12 @@ def hub(n):
         place_j = journal("placed7", "The seventh socket", "Seven. The cabinet played the street back to me when the stone went in, every note, backwards and forwards at once. Two left. I can't stop now and I don't want to.")
         card = ("END OF ACT III: OBSESSION", "Seven seals broken. Two remain.\n\nAct IV: Madness. The drawer is empty. Then you look again and the drawer is your study, very small, with a very small man asleep at the desk.\n\nWren's fragments found: {fragments} of 9.{bargains_line}")
         read_j = journal("dream", "The drawer", "Inside the drawer, my study, perfect and tiny, and me in it, asleep at the desk. The eighth is there. I have to go to sleep to get it.")
+        next_room = 15
+    elif n == 8:
+        enter = journal("home8", "Home, the eighth time", "I woke at the desk. The clock goes forwards. I don't trust that either. I count everything now: steps, stairs, the times I've closed my eyes.")
+        place_j = journal("placed8", "The eighth socket", "Eight. One socket left, the middle one, and it is not a socket. It is a keyhole, and it is looking at me.")
+        card = ("SEAL VIII OF IX BROKEN", "Eight seals broken. One remains.\n\nThe drawer opens on stairs going down into green water, and a smell of the sea.\n\nWren's fragments found: {fragments} of 9.{bargains_line}")
+        read_j = journal("rlyeh", "The last stair", "The drawer is not a drawer any more. It is a stair, going down, wet, and the angles of it are wrong. The ninth is at the bottom. Wren never wrote about the ninth. I think he couldn't.")
         next_room = 99
     else:
         enter = journal("home2", "Home again", "I have not opened the post in a week. I covered the mirror; I kept seeing the lamp room in it. The landlady asked about the salt by the door and I told her it was for the ice. There is no ice.")
@@ -100,5 +106,5 @@ def hub(n):
     room = {"title": "Thorne's Study", "walls": pre + "wall_", "floor": pre + "floor", "ceiling": pre + "ceiling",
             "on_enter": [enter], "objects": objs, "bindings": bindings, "interactions": interactions, "steps": steps, "walkthrough": walk}
     J(OUT + "hub%d_thorne.json" % n, room)
-hub(1); hub(2); hub(3); hub(4); hub(5); hub(6); hub(7)
+hub(1); hub(2); hub(3); hub(4); hub(5); hub(6); hub(7); hub(8)
 print("hubs ok")

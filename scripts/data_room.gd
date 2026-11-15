@@ -84,6 +84,9 @@ func _build_object(o: Dictionary) -> void:
 				q.add_to_group("lens_only")
 				q.set_meta("lens_level", int(o["lens"]) if not (o["lens"] is bool) else 1)
 				q.set_meta("lens_tappable", o.get("tappable", true))
+			if o.has("lens_hide"):
+				q.add_to_group("lens_hide")
+				q.set_meta("lens_level", int(o["lens_hide"]))
 			nodes[o["id"]] = q
 		"box":
 			var b := _make_box(o)
@@ -918,6 +921,21 @@ func on_moved() -> void:
 				if age >= int(p["after"]):
 					State.flags.erase(key)
 					to_run.append(p)
+			"loop":
+				## {"kind":"loop","every":12,"flag":"loop","max":4,"until":"door_open","reset":[flags],"say":".."}:
+				## every N moves the room starts over: the reset flags are undone and the loop count goes up
+				if p.has("until") and cond(p["until"]):
+					continue
+				var lk: String = p["flag"] + "#"
+				var lc := int(State.flag_value(lk, 0)) + 1
+				if lc >= int(p["every"]):
+					lc = 0
+					State.flags[p["flag"]] = mini(int(State.flag_value(p["flag"], 0)) + 1, int(p.get("max", 99)))
+					for f in p.get("reset", []):
+						State.flags.erase(f)
+					State.save_game()
+					await run(p.get("do", []))
+				State.flags[lk] = lc
 			"tick":
 				## {"kind":"tick","flag":"heat","every":6,"step":-1,"min":0}: the hut cools as you work
 				if not cond(p.get("while")):
@@ -927,6 +945,8 @@ func on_moved() -> void:
 				if cnt >= int(p["every"]):
 					cnt = 0
 					var v := clampi(int(State.flag_value(p["flag"], 0)) + int(p.get("step", -1)), int(p.get("min", 0)), int(p.get("max", 99)))
+					if p.has("wrap"):
+						v = posmod(int(State.flag_value(p["flag"], 0)) + int(p.get("step", -1)), int(p["wrap"]))   ## a clock
 					if v != int(State.flag_value(p["flag"], 0)):
 						State.flags[p["flag"]] = v
 						if p.has("say"):

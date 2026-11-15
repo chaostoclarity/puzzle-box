@@ -201,7 +201,21 @@
  ],
  "lens2": [
   "Wren's Lens, doubled",
-  "Two green lenses, one behind the other. Through them, solid things go thin."
+  "Two green lenses, one behind the other. Through them, solid things go thin.",
+  {
+   "combine": {
+    "dream_glass": {
+     "makes": "lens3",
+     "say": "The dream glass slides in behind the other two. Through all three, the room is the room again: messy, cold, and you asleep in it.",
+     "sfx": "lens",
+     "journal": [
+      "lens3",
+      "Dream sight",
+      "The third glass. Through Wren's Lens with all three discs I see what the dream is covering: the study as it really is. Wren called it dream sight. The tidy room is the lie."
+     ]
+    }
+   }
+  }
  ],
  "seal_stone4": [
   "The fourth seal",
@@ -292,5 +306,35 @@
  "seal_stone7": [
   "The seventh seal",
   "A violet stone. When you hold it to your ear you hear the street."
+ ],
+ "dream_glass": [
+  "Dream glass",
+  "A disc of violet glass, soft as a soap bubble and not breaking. It fits behind Wren's Lens.",
+  {
+   "combine": {
+    "lens2": {
+     "makes": "lens3",
+     "say": "The dream glass slides in behind the other two. Through all three, the room is the room again: messy, cold, and you asleep in it.",
+     "sfx": "lens",
+     "journal": [
+      "lens3",
+      "Dream sight",
+      "The third glass. Through Wren's Lens with all three discs I see what the dream is covering: the study as it really is. Wren called it dream sight. The tidy room is the lie."
+     ]
+    }
+   }
+  }
+ ],
+ "lens3": [
+  "Wren's Lens, three times",
+  "Wren's Lens with three discs behind it. Dream sight: through it, the dream drops away."
+ ],
+ "candle": [
+  "Candle",
+  "A stub of candle from the dream cabinet. Five notch marks are scratched down its side, for cutting."
+ ],
+ "seal_stone8": [
+  "The eighth seal",
+  "A dark stone with a pale eye in it that closes when you look at it."
  ]
 }

@@ -18,6 +18,7 @@ const SEAL_STARTS := [
 	["Seal V: The ice", 9, "Hut 4, on the plateau, after the fourth seal."],
 	["Seal VI: The city under the sand", 11, "The city under the sand, after the fifth seal."],
 	["Seal VII: The street in Paris", 13, "The violist's garret, after the sixth seal."],
+	["Seal VIII: The dream", 15, "Your own study, in a dream, after the seventh seal."],
 ]
 const HUD_TOP := 56.0
 const HUD_BOTTOM := 76.0
@@ -113,6 +114,8 @@ func _ready() -> void:
 		if start >= 9:
 			for i in 8:
 				State.add_journal("old%d" % i, "Older notes, %d" % (i + 1), "Notes from earlier seals.")
+		if start == 16:
+			State.inventory = ["lens3", "candle"]
 		if start == 14:
 			State.inventory.append("vane_cock")
 		if start == 10:
@@ -244,6 +247,7 @@ func complete_room(next: int, card_title: String, card_text: String) -> void:
 	busy = true
 	await _fade_to(1.0, 0.8)
 	if next in ROOMS:
+		State.clear_room_flags()   ## each room's flags are its own; only a few carry on
 		load_room(next)
 		await _fade_to(0.0, 0.8)
 		busy = false

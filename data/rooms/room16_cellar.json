@@ -1,0 +1,980 @@
+{
+ "title": "The Cellar",
+ "walls": "r16_wall_",
+ "floor": "r16_floor",
+ "ceiling": "r16_ceiling",
+ "intro": "You have been here before.",
+ "on_enter": [
+  {
+   "set": "loop",
+   "value": 0
+  },
+  {
+   "journal": [
+    "cellar",
+    "The cellar",
+    "Under the dream study, a cellar my house does not have. Wine racks, a coal chute, a drain. I have the strangest feeling I have counted these bricks before."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "wine_rack",
+   "center": [
+    0,
+    4
+   ],
+   "size": [
+    6,
+    7
+   ],
+   "tex": "wine_rack"
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "label_1",
+   "center": [
+    1.5,
+    4.5
+   ],
+   "size": [
+    1.25,
+    0.75
+   ],
+   "tex": "label_1",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "jar_shelf",
+   "center": [
+    -5,
+    7
+   ],
+   "size": [
+    6,
+    2
+   ],
+   "tex": "jar_shelf"
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "candle16",
+   "center": [
+    -5,
+    8.6
+   ],
+   "size": [
+    1,
+    3
+   ],
+   "tex": "dcandle_0",
+   "depth": 0.3
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "coal_chute",
+   "center": [
+    0,
+    8
+   ],
+   "size": [
+    4,
+    4
+   ],
+   "tex": "coal_chute"
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "label_2",
+   "center": [
+    0,
+    7
+   ],
+   "size": [
+    1.5,
+    0.75
+   ],
+   "tex": "label_2",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "wren16",
+   "center": [
+    -4.5,
+    5
+   ],
+   "size": [
+    3,
+    4
+   ],
+   "tex": "wren_lens3",
+   "lens": 3
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "grate",
+   "center": [
+    0,
+    3
+   ],
+   "size": [
+    3,
+    3
+   ],
+   "tex": "cellar_grate"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "label_3",
+   "center": [
+    0,
+    3
+   ],
+   "size": [
+    2,
+    0.75
+   ],
+   "tex": "label_3",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "cellar_door",
+   "center": [
+    0,
+    4.5
+   ],
+   "size": [
+    5,
+    9
+   ],
+   "tex": "cellar_door"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "cdl0",
+   "center": [
+    -1,
+    5.5
+   ],
+   "size": [
+    0.75,
+    0.75
+   ],
+   "tex": "ddial_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "cdl1",
+   "center": [
+    0,
+    5.5
+   ],
+   "size": [
+    0.75,
+    0.75
+   ],
+   "tex": "ddial_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "cdl2",
+   "center": [
+    1,
+    5.5
+   ],
+   "size": [
+    0.75,
+    0.75
+   ],
+   "tex": "ddial_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "handle16",
+   "center": [
+    1.8,
+    4
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "cellar_handle",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "stone8",
+   "center": [
+    0,
+    1.2
+   ],
+   "size": [
+    1.5,
+    1.5
+   ],
+   "tex": "item_seal_stone8",
+   "depth": 0.08
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "loop",
+   "every": 12,
+   "flag": "loop",
+   "max": 4,
+   "until": "door_open",
+   "reset": [
+    "cdl0",
+    "cdl1",
+    "cdl2",
+    "chute_open",
+    "grate_open"
+   ],
+   "do": [
+    {
+     "sfx": "wind"
+    },
+    {
+     "shake": true
+    },
+    {
+     "say": "The candle gutters. You are standing at the foot of the cellar stairs again, and everything you did is undone. Only the candle remembers: it is a notch shorter.",
+     "secs": 5
+    },
+    {
+     "refresh": true
+    }
+   ]
+  },
+  {
+   "kind": "cycler",
+   "part": "cdl0",
+   "flag": "cdl0",
+   "count": 10,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "ddial_0",
+    "ddial_1",
+    "ddial_2",
+    "ddial_3",
+    "ddial_4",
+    "ddial_5",
+    "ddial_6",
+    "ddial_7",
+    "ddial_8",
+    "ddial_9"
+   ],
+   "lock": "door_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "cdl1",
+   "flag": "cdl1",
+   "count": 10,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "ddial_0",
+    "ddial_1",
+    "ddial_2",
+    "ddial_3",
+    "ddial_4",
+    "ddial_5",
+    "ddial_6",
+    "ddial_7",
+    "ddial_8",
+    "ddial_9"
+   ],
+   "lock": "door_open"
+  },
+  {
+   "kind": "cycler",
+   "part": "cdl2",
+   "flag": "cdl2",
+   "count": 10,
+   "spin": false,
+   "sfx": "tick",
+   "textures": [
+    "ddial_0",
+    "ddial_1",
+    "ddial_2",
+    "ddial_3",
+    "ddial_4",
+    "ddial_5",
+    "ddial_6",
+    "ddial_7",
+    "ddial_8",
+    "ddial_9"
+   ],
+   "lock": "door_open"
+  },
+  {
+   "kind": "combo",
+   "flags": [
+    "cdl0",
+    "cdl1",
+    "cdl2"
+   ],
+   "code": [
+    3,
+    1,
+    2
+   ],
+   "commit": "handle16",
+   "lock": "door_open",
+   "fail": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The handle won't turn."
+    }
+   ],
+   "do": [
+    {
+     "set": "door_open"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "The handle turns. The door opens on a stair going up, and on the bottom step, a dark stone with an eye in it. The candle steadies. The loop has let go.",
+     "secs": 6
+    }
+   ]
+  },
+  {
+   "kind": "pickup",
+   "part": "stone8",
+   "item": "seal_stone8",
+   "flag": "stone8_taken",
+   "show_if": "door_open",
+   "then": [
+    {
+     "say": "The eighth seal. Its eye closes as you pick it up."
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "candle16",
+   "when": null,
+   "then": {
+    "texture": "dcandle_{loop:4}"
+   }
+  },
+  {
+   "target": "label_1",
+   "when": "loop=0",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "label_2",
+   "when": [
+    "loop=1",
+    "chute_open"
+   ],
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "label_3",
+   "when": [
+    "loop=2",
+    "grate_open"
+   ],
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "cellar_door",
+   "when": "loop>2",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "cellar_door",
+   "when": "door_open",
+   "then": {
+    "texture": "cellar_door_open"
+   },
+   "else": {
+    "texture": "cellar_door"
+   }
+  },
+  {
+   "target": "handle16",
+   "when": [
+    "loop>2",
+    "!door_open"
+   ],
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "cdl0",
+   "when": [
+    "loop>2",
+    "!door_open"
+   ],
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "cdl1",
+   "when": [
+    "loop>2",
+    "!door_open"
+   ],
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "cdl2",
+   "when": [
+    "loop>2",
+    "!door_open"
+   ],
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "tap",
+   "id": "label_1",
+   "do": [
+    {
+     "set": "seen1"
+    },
+    {
+     "say": "A label on a bottle, in chalk: I 3. The first is three."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "label_2",
+   "do": [
+    {
+     "set": "seen2"
+    },
+    {
+     "say": "Chalked inside the chute: II 1. The second is one."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "label_3",
+   "do": [
+    {
+     "set": "seen3"
+    },
+    {
+     "say": "Scratched under the grate: III 2. The third is two."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "wine_rack",
+   "do": [
+    {
+     "say": "A wine rack. Every bottle is the same vintage: a year that hasn't happened."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "jar_shelf",
+   "do": [
+    {
+     "say": "Jars of preserves, all labelled in your handwriting, all empty."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "candle16",
+   "do": [
+    {
+     "say": "Your candle, on the shelf where you didn't put it. Five notches down its side. Every time the cellar starts over, it burns down one."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "coal_chute",
+   "do": [
+    {
+     "set": "chute_open"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "You heave the chute's hatch open. Coal dust and cold air."
+    }
+   ],
+   "when": "!chute_open"
+  },
+  {
+   "on": "tap",
+   "id": "coal_chute",
+   "do": [
+    {
+     "say": "The coal chute, open. It goes up to a street that isn't there."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "grate",
+   "do": [
+    {
+     "set": "grate_open"
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "You prise the drain grate up an inch and wedge it."
+    }
+   ],
+   "when": "!grate_open"
+  },
+  {
+   "on": "tap",
+   "id": "grate",
+   "do": [
+    {
+     "say": "The drain grate, wedged up. Water moving far below."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "wren16",
+   "do": [
+    {
+     "set": "frag8"
+    },
+    {
+     "fragment": true
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "frag8",
+      "Fragment VIII",
+      "Through dream sight, on the cellar brick in Wren's hand: WAKE UP ELIAS IT IS ONLY A LOOP. And under it, smaller: \"It isn't only a loop. It is the eighth seal, and it keeps whoever can't count. Count.\""
+     ]
+    },
+    {
+     "say": "Through dream sight, on the brick: WAKE UP ELIAS IT IS ONLY A LOOP. In Wren's hand.",
+     "secs": 5
+    }
+   ],
+   "when": "!frag8"
+  },
+  {
+   "on": "tap",
+   "id": "wren16",
+   "do": [
+    {
+     "say": "WAKE UP ELIAS IT IS ONLY A LOOP."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "cellar_door",
+   "do": [
+    {
+     "set": "left16"
+    },
+    {
+     "take": "candle"
+    },
+    {
+     "complete_room": [
+      108,
+      "THE EIGHTH SEAL",
+      "You climb the stair, and climb, and wake at your desk with your cheek on the blotter and a dark stone in your fist. The clock is going forwards again."
+     ]
+    }
+   ],
+   "when": "stone8_taken"
+  },
+  {
+   "on": "tap",
+   "id": "cellar_door",
+   "do": [
+    {
+     "say": "A door at the foot of the stairs, with three dials and a handle."
+    }
+   ]
+  }
+ ],
+ "steps": [
+  {
+   "id": "count",
+   "done": [
+    "any",
+    "loop>0",
+    "seen1"
+   ],
+   "hints": [
+    "The cellar starts over every twelve things you do. Look around before it does.",
+    "Read the chalk on the bottle in the wine rack (north wall)."
+   ],
+   "solve": [
+    {
+     "set": "seen1"
+    }
+   ],
+   "said": "The first is three."
+  },
+  {
+   "id": "loop1",
+   "done": [
+    "any",
+    "seen2",
+    "loop>1"
+   ],
+   "hints": [
+    "Each time round, something different shows. Undo the cellar on purpose: do twelve things.",
+    "On the second time round, open the coal chute (east wall) and read inside it."
+   ],
+   "solve": [
+    {
+     "set": "seen2"
+    }
+   ],
+   "said": "The second is one."
+  },
+  {
+   "id": "loop2",
+   "done": [
+    "any",
+    "seen3",
+    "loop>2"
+   ],
+   "hints": [
+    "The third time round, look low.",
+    "Prise up the drain grate on the west wall and read under it."
+   ],
+   "solve": [
+    {
+     "set": "seen3"
+    }
+   ],
+   "said": "The third is two."
+  },
+  {
+   "id": "frag",
+   "done": "frag8",
+   "hints": [
+    "Something is written on the cellar wall that only dream sight shows.",
+    "Look at the east wall with the Lens on."
+   ],
+   "solve": [
+    {
+     "set": "frag8"
+    },
+    {
+     "fragment": true
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "frag8",
+      "Fragment VIII",
+      "Through dream sight, on the cellar brick in Wren's hand: WAKE UP ELIAS IT IS ONLY A LOOP. And under it, smaller: \"It isn't only a loop. It is the eighth seal, and it keeps whoever can't count. Count.\""
+     ]
+    },
+    {
+     "say": "Through dream sight, on the brick: WAKE UP ELIAS IT IS ONLY A LOOP. In Wren's hand.",
+     "secs": 5
+    }
+   ],
+   "said": "Fragment VIII."
+  },
+  {
+   "id": "door",
+   "done": "door_open",
+   "hints": [
+    "The fourth time round there's a door. You have twelve moves before it's gone again.",
+    "Set the door's dials to 3, 1, 2 (seven moves with the handle) and turn the handle."
+   ],
+   "solve": [
+    {
+     "set": "loop",
+     "value": 3
+    },
+    {
+     "set": "door_open"
+    }
+   ],
+   "said": "The door opens."
+  },
+  {
+   "id": "stone",
+   "done": "stone8_taken",
+   "hints": [
+    "The stone is on the bottom step.",
+    "Take the stone."
+   ],
+   "solve": [
+    {
+     "give": "seal_stone8"
+    },
+    {
+     "set": "stone8_taken"
+    }
+   ],
+   "said": "The eighth seal."
+  },
+  {
+   "id": "up",
+   "done": "left16",
+   "hints": [
+    "The stair goes up.",
+    "Go through the door."
+   ],
+   "solve": [
+    {
+     "set": "left16"
+    },
+    {
+     "complete_room": [
+      108,
+      "THE EIGHTH SEAL",
+      "You wake."
+     ]
+    }
+   ],
+   "said": "Awake."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "label_1"
+  ],
+  [
+   "repeat",
+   11,
+   [
+    "tap",
+    "wine_rack"
+   ]
+  ],
+  [
+   "expect",
+   "loop=1"
+  ],
+  [
+   "shot",
+   "loop1"
+  ],
+  [
+   "tap",
+   "coal_chute"
+  ],
+  [
+   "tap",
+   "label_2"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "tap",
+   "wren16"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "expect",
+   "frag8"
+  ],
+  [
+   "repeat",
+   9,
+   [
+    "tap",
+    "coal_chute"
+   ]
+  ],
+  [
+   "expect",
+   "loop=2"
+  ],
+  [
+   "tap",
+   "grate"
+  ],
+  [
+   "tap",
+   "label_3"
+  ],
+  [
+   "repeat",
+   10,
+   [
+    "tap",
+    "grate"
+   ]
+  ],
+  [
+   "expect",
+   "loop=3"
+  ],
+  [
+   "shot",
+   "door"
+  ],
+  [
+   "repeat",
+   3,
+   [
+    "tap",
+    "cdl0"
+   ]
+  ],
+  [
+   "tap",
+   "cdl1"
+  ],
+  [
+   "repeat",
+   2,
+   [
+    "tap",
+    "cdl2"
+   ]
+  ],
+  [
+   "tap",
+   "handle16"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "expect",
+   "door_open"
+  ],
+  [
+   "shot",
+   "open"
+  ],
+  [
+   "tap",
+   "stone8"
+  ],
+  [
+   "expect",
+   "stone8_taken"
+  ],
+  [
+   "tap",
+   "cellar_door"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

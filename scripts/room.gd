@@ -143,6 +143,11 @@ func set_lens(on: bool) -> void:
 		var show: bool = on and not gone and level >= need
 		n.visible = show
 		PixelBox.set_tappable(n, show and n.get_meta("lens_tappable", true))
+	## "lens_hide": things that exist only in the dream; Dream sight (Lens 3) shows the room without them
+	for n in get_tree().get_nodes_in_group("lens_hide"):
+		var hide: bool = on and level >= int(n.get_meta("lens_level", 3))
+		n.visible = not hide and not n.get_meta("gone", false)
+		PixelBox.set_tappable(n, not hide)
 
 
 func current_step() -> Dictionary:

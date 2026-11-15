@@ -27,7 +27,7 @@ Escape rooms and nested puzzle boxes, The Room style, Lovecraftian. You play Eli
 - Rooms are boxes too: four walls plus optional floor and ceiling (drag up and down to see them).
 
 ## Adding a room or a puzzle
-1. Art in tools/make_room_art.py (seal I), tools/make_seal2_art.py (seal II), tools/make_seal3_art.py (seal III), tools/make_seal4_art.py, tools/make_seal5_art.py, tools/make_seal6_art.py, tools/make_seal7_art.py, tools/make_sealN_art.py (room authoring scripts in tools/rooms/) for later seals; shared helpers in tools/artkit.py. 16 texels per unit. New color ramps: `python3 tools/art_lint.py palette` rebuilds the palette. Run it, then `python3 tools/art_lint.py check` (must be 0 problems).
+1. Art in tools/make_room_art.py (seal I), tools/make_seal2_art.py (seal II), tools/make_seal3_art.py (seal III), tools/make_seal4_art.py, tools/make_seal5_art.py, tools/make_seal6_art.py, tools/make_seal7_art.py, tools/make_seal8_art.py, tools/make_sealN_art.py (room authoring scripts in tools/rooms/) for later seals; shared helpers in tools/artkit.py. 16 texels per unit. New color ramps: `python3 tools/art_lint.py palette` rebuilds the palette. Run it, then `python3 tools/art_lint.py check` (must be 0 problems).
 2. Describe it in the room's JSON: objects, puzzles, bindings (every visual follows flags), interactions.
 3. Main-path puzzles get a step: done condition, two hints, and the solve actions the Whisper's bargain uses.
 4. walkthrough: the real taps that solve it. The autotest plays it.
@@ -44,6 +44,9 @@ Escape rooms and nested puzzle boxes, The Room style, Lovecraftian. You play Eli
 - Floor and ceiling are seen from whichever wall you were facing, so their art can appear turned round: no text or digits there that change meaning upside down (6 and 9).
 - The first touch on a part of a piece of furniture zooms in; parts are worked up close. Furniture worked from the room view sets "zoom": false.
 Art brief (style, sizes, palette rules): https://claude.ai/artifact/7zvHBNiA8YfQN7kr6eGhwy
+
+## Flags
+- Each room's flags are its own: moving to the next room clears them (State.clear_room_flags). Only State.CARRY flags and sealN_placed carry on. A room that needs something from an earlier room gets it as an item or a CARRY flag.
 
 ## Verify every change
 - After adding art or sound: `godot --headless --path . --import` first.
