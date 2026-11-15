@@ -19,6 +19,7 @@ const SEAL_STARTS := [
 	["Seal VI: The city under the sand", 11, "The city under the sand, after the fifth seal."],
 	["Seal VII: The street in Paris", 13, "The violist's garret, after the sixth seal."],
 	["Seal VIII: The dream", 15, "Your own study, in a dream, after the seventh seal."],
+	["Seal IX: The last stair", 17, "The drowned stair, after the eighth seal."],
 ]
 const HUD_TOP := 56.0
 const HUD_BOTTOM := 76.0
@@ -114,6 +115,9 @@ func _ready() -> void:
 		if start >= 9:
 			for i in 8:
 				State.add_journal("old%d" % i, "Older notes, %d" % (i + 1), "Notes from earlier seals.")
+		if start >= 17:
+			State.inventory = ["lens3"]
+			State.flags["slots_given"] = 1
 		if start == 16:
 			State.inventory = ["lens3", "candle"]
 		if start == 14:
@@ -817,6 +821,7 @@ func _refresh_hud() -> void:
 	back_btn.visible = mode != Mode.ROOM
 	title_lbl.visible = mode == Mode.ROOM
 	lens_btn.visible = lens_level() > 0
+	hint_btn.visible = not State.has("hints_burned")
 	lens_btn.text = "[ Lens: on ]" if lens_on else "[ Lens ]"
 	for i in 8:
 		var frame: ColorRect = slots[i]["frame"]
@@ -926,6 +931,9 @@ func select_item(item: String) -> void:
 
 func ask_hint() -> void:
 	idle = 0.0
+	if State.has("hints_burned"):
+		say("You gave your hints to the Whisper. There is no one left to ask.")
+		return
 	var s: Dictionary = room.current_step()
 	if s.is_empty():
 		say("There is nothing more to find here.")
@@ -937,15 +945,18 @@ func ask_hint() -> void:
 		return
 	play("whisper")
 	var choice: String = await _dialog("The Whisper",
-		"A voice behind your eyes, patient as deep water:\n\n\"Let me. It is a small thing. It will cost you one page.\"",
+		"A voice behind your eyes, patient as deep water:\n\n\"Let me. It is a small thing. It will cost you one page.\"" if not State.mercy else
+		"A voice behind your eyes, patient as deep water:\n\n\"Let me. This once, it costs you nothing.\"",
 		["Accept", "Refuse"])
 	if choice == "Accept":
 		await bargain(s)
 
 
 func bargain(s: Dictionary) -> void:
-	State.bargains += 1
-	var torn := State.tear_page()
+	var torn := ""
+	if not State.mercy:
+		State.bargains += 1
+		torn = State.tear_page()
 	if mode == Mode.BOX:
 		await exit_box()
 	await (s["solve"] as Callable).call()
@@ -1032,8 +1043,15 @@ func _title_screen(has_save: bool) -> void:
 	var text := "Arkham, Massachusetts. Winter, 1927.\n\nProfessor Hollis Wren has vanished from his locked study. He left you a black cabinet with nine seals, and a letter.\n\nDrag sideways to turn to the next wall, up or down to look at the floor and ceiling. Touch things to examine them."
 	var buttons := ["Continue", "Start over"] if has_save else ["Begin"]
 	buttons.append(SKIP_LABEL)
+	buttons.append("Mercy: on" if State.mercy else "Mercy: off")
 	var choice: String = await _dialog("THE NINEFOLD SEAL", text, buttons)
 	drone.play()
+	if choice.begins_with("Mercy"):
+		State.mercy = not State.mercy
+		State.save_game()
+		await _dialog("MERCY", "Mercy is on. The Whisper's help costs nothing: no pages torn, no bargains counted. The ending is kinder." if State.mercy else "Mercy is off. The Whisper's help costs a page of your journal, and it remembers.", ["Back"])
+		await _title_screen(has_save)
+		return
 	if choice == SKIP_LABEL:
 		var labels := []
 		for e in SEAL_STARTS:
@@ -1057,8 +1075,10 @@ func _start_seal(e: Array) -> void:
 	var first: int = e[1]
 	var done := (first - 1) / 2
 	State.reset()
-	State.inventory = ["lens2"] if first >= 9 else ["lens"]
+	State.inventory = ["lens3"] if first >= 17 else (["lens2"] if first >= 9 else ["lens"])
 	State.fragments = done
+	if first >= 13:
+		State.flags["slots_given"] = 1   ## the keepers took a tray slot in seal VI
 	for i in range(1, done + 1):
 		State.flags["seal%d_placed" % i] = true
 	for i in done * 2:

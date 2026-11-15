@@ -15,6 +15,8 @@ var flags := {}
 var inventory: Array = []
 var journal: Array = []
 var bargains := 0
+## Mercy: the Whisper helps for free (no page, no bargain counted). A setting, kept across new games.
+var mercy := false
 var fragments := 0
 var saving := true
 
@@ -25,7 +27,7 @@ func _ready() -> void:
 
 
 ## Flags that carry from room to room. Everything else belongs to the room that set it.
-const CARRY := ["burned", "slots_given"]
+const CARRY := ["burned", "slots_given", "hints_burned"]
 
 
 func clear_room_flags() -> void:
@@ -117,7 +119,7 @@ func save_game() -> void:
 	if not saving:
 		return
 	var data := {"v": VERSION, "room": room, "flags": flags, "inventory": inventory,
-		"journal": journal, "bargains": bargains, "fragments": fragments}
+		"journal": journal, "bargains": bargains, "fragments": fragments, "mercy": mercy}
 	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if f:
 		f.store_string(JSON.stringify(data))
@@ -138,5 +140,6 @@ func load_game() -> bool:
 	journal = data.get("journal", [])
 	bargains = int(data.get("bargains", 0))
 	fragments = int(data.get("fragments", 0))
+	mercy = bool(data.get("mercy", false))
 	changed.emit()
 	return true

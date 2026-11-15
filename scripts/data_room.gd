@@ -40,6 +40,8 @@ func build() -> void:
 			"done": func(): return cond(spec["done"]),
 			"solve": func(): await run(spec["solve"])})
 	walkthrough = _walkthrough(data.get("walkthrough", []))
+	if not State.flags.has("facing"):
+		State.flags["facing"] = "nesw"[game.view]
 	for a in data.get("on_enter", []):
 		if a.has("set") and not State.flags.has(a["set"]):
 			State.flags[a["set"]] = a.get("value", true)
@@ -183,6 +185,8 @@ func cond(c) -> bool:
 		return game.lens_on
 	if s.begins_with("item:"):
 		return State.has_item(s.substr(5))
+	if s.begins_with("facing="):
+		return "nesw"[game.view] == s.substr(7)   ## live, not a stored flag
 	for op in ["==", "<", ">"]:
 		if op in s:
 			## "wl==wr", "wl<wr", "sand>2": compare two flags, or a flag with a number
@@ -247,6 +251,12 @@ func _swap(p: Dictionary, id: String) -> void:
 
 
 func _num(x: String) -> int:
+	match x:
+		"fragments": return State.fragments
+		"bargains": return State.bargains
+		"held": return State.inventory.size()   ## how many tray slots are full
+		"given": return int(State.flag_value("slots_given", 0))
+		"mercy": return 1 if State.mercy else 0
 	return int(x) if x.is_valid_int() else int(State.flag_value(x, 0))
 
 
@@ -458,6 +468,10 @@ func run(actions: Array, node: Node = null) -> void:
 			await game.show_face(a["face"])
 		if a.has("say"):
 			game.say(_fill(a["say"]), float(a.get("secs", 3.5)))
+		if a.has("lens_off"):
+			game.lens_on = false
+			set_lens(false)
+			game._refresh_hud()
 		if a.has("complete_room"):
 			var c: Array = a["complete_room"]
 			game.complete_room.call_deferred(int(c[0]), _fill(c[1]), _fill(c[2]))
@@ -807,6 +821,8 @@ func _check_beams() -> void:
 
 
 func on_lens_changed() -> void:
+	if data.has("lens_socket") and game.lens_on and cond(data["lens_socket"]["when"]):
+		await run(data["lens_socket"]["do"])
 	for p in puzzles:
 		if p["kind"] == "beam":
 			_draw_beam(p)
@@ -890,6 +906,12 @@ func _toggle(p: Dictionary, i: int, node: Node3D) -> void:
 
 func on_turned() -> void:
 	State.flags["facing"] = "nesw"[game.view]   ## "facing=e": which wall you're looking at
+	if data.has("gravity"):
+		## gravity follows the face you look at: the marble rolls toward the wall you turn to
+		State.flags["gravity"] = State.flags["facing"]
+		for p in puzzles:
+			if p.get("id", "") == data["gravity"] and not (p.has("lock") and cond(p["lock"])):
+				await _roll(p, State.flags["facing"], _part(p["token"]))
 	if data.has("street"):
 		_walk_street()
 	await refresh(false)

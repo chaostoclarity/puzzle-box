@@ -1,0 +1,664 @@
+{
+ "title": "The Last Stair",
+ "walls": "r17_wall_",
+ "floor": "r17_floor",
+ "ceiling": "r17_ceiling",
+ "intro": "Down is wherever you look.",
+ "gravity": "maze",
+ "on_enter": [
+  {
+   "journal": [
+    "stair",
+    "The last stair",
+    "The drawer's stair came out in a chamber of green stone where no angle is right. When I turn my head, the dust on the floor slides after my eyes. Down is wherever I look."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "box",
+   "name": "slab",
+   "wall": "d",
+   "pos": [
+    0,
+    7.5
+   ],
+   "depth": 0.6,
+   "scale": 0.5,
+   "view": "top",
+   "size": [
+    6,
+    2,
+    6
+   ],
+   "faces": {
+    "front": "slab_front",
+    "back": "slab_front",
+    "left": "slab_side",
+    "right": "slab_side",
+    "top": "slab_top",
+    "bottom": "slab_bottom"
+   },
+   "blocker": "slab",
+   "parts": [
+    {
+     "face": "top",
+     "uv": [
+      -2,
+      2
+     ],
+     "size": [
+      0.75,
+      0.75
+     ],
+     "tex": "marble",
+     "id": "marble",
+     "depth": 0.05,
+     "tappable": false
+    }
+   ]
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "dust_n",
+   "center": [
+    0,
+    12.5
+   ],
+   "size": [
+    6,
+    2
+   ],
+   "tex": "dust_n",
+   "depth": 0.02,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "dust_e",
+   "center": [
+    0,
+    12.5
+   ],
+   "size": [
+    6,
+    2
+   ],
+   "tex": "dust_e",
+   "depth": 0.02,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "dust_s",
+   "center": [
+    0,
+    12.5
+   ],
+   "size": [
+    6,
+    2
+   ],
+   "tex": "dust_s",
+   "depth": 0.02,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "dust_w",
+   "center": [
+    0,
+    12.5
+   ],
+   "size": [
+    6,
+    2
+   ],
+   "tex": "dust_w",
+   "depth": 0.02,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "u",
+   "id": "ceil_door",
+   "center": [
+    0,
+    7.5
+   ],
+   "size": [
+    5,
+    5
+   ],
+   "tex": "ceil_door"
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "niche_dream",
+   "center": [
+    0,
+    6
+   ],
+   "size": [
+    4,
+    6
+   ],
+   "tex": "niche_dream",
+   "depth": 0.02
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "wall_slab",
+   "center": [
+    0,
+    6
+   ],
+   "size": [
+    4,
+    6
+   ],
+   "tex": "wall_slab",
+   "depth": 0.04,
+   "lens_hide": 3
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "wrong_stair",
+   "center": [
+    0,
+    5
+   ],
+   "size": [
+    6,
+    10
+   ],
+   "tex": "wrong_stair"
+  }
+ ],
+ "puzzles": [
+  {
+   "kind": "roll",
+   "id": "maze",
+   "box": "slab",
+   "face": "top",
+   "cols": 5,
+   "rows": 5,
+   "cell": 1.0,
+   "center": [
+    0,
+    0
+   ],
+   "token": "marble",
+   "flag": "marble",
+   "start": [
+    0,
+    0
+   ],
+   "walls": [
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     2,
+     4
+    ]
+   ],
+   "goal": [
+    4,
+    4
+   ],
+   "done": "marble_home",
+   "lock": "marble_home",
+   "buttons": {},
+   "do": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "wait": 0.4
+    },
+    {
+     "sfx": "crack"
+    },
+    {
+     "shake": true
+    },
+    {
+     "say": "Somewhere you can't see, the marble drops into the hole. Above you, in the ceiling, a bar scrapes back.",
+     "secs": 5
+    }
+   ]
+  }
+ ],
+ "bindings": [
+  {
+   "target": "dust_n",
+   "when": "gravity=n",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "dust_e",
+   "when": "gravity=e",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "dust_s",
+   "when": "gravity=s",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "dust_w",
+   "when": "gravity=w",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "ceil_door",
+   "when": "ceil_open",
+   "then": {
+    "texture": "ceil_door_open"
+   },
+   "else": {
+    "texture": "ceil_door"
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "use",
+   "item": "elder_sign",
+   "ids": [
+    "ceil_door"
+   ],
+   "do": [
+    {
+     "take": "elder_sign"
+    },
+    {
+     "set": "ceil_open"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "shake": true
+    },
+    {
+     "say": "You press the sign to the stone. The door in the ceiling swings down, which is up, and green water stands in it without falling.",
+     "secs": 5
+    }
+   ],
+   "when": "marble_home"
+  },
+  {
+   "on": "use",
+   "item": "elder_sign",
+   "ids": [
+    "ceil_door"
+   ],
+   "do": [
+    {
+     "shake": true
+    },
+    {
+     "say": "The sign holds the door, but the door is still barred from the other side."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "ceil_door",
+   "do": [
+    {
+     "set": "left17"
+    },
+    {
+     "complete_room": [
+      18,
+      "INSIDE THE CABINET",
+      "You climb up into the water and fall down out of it, into a small wooden room lined with sockets. You know this wood. You are inside Wren's cabinet."
+     ]
+    }
+   ],
+   "when": "ceil_open"
+  },
+  {
+   "on": "tap",
+   "id": "ceil_door",
+   "do": [
+    {
+     "say": "A door in the ceiling, barred, with a five-armed sign worn into it."
+    }
+   ],
+   "when": "!marble_home"
+  },
+  {
+   "on": "tap",
+   "id": "ceil_door",
+   "do": [
+    {
+     "say": "The bar is gone. The door wants the sign it was carved with."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "niche_dream",
+   "do": [
+    {
+     "set": "frag9"
+    },
+    {
+     "fragment": true
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "frag9",
+      "Fragment IX",
+      "In the hollow the dream hid, scratched by Wren with a nail: \"I got this far in my sleep, every night for a year. The last seal is not a place. It is the cabinet, and the cabinet is a mind, and it wants what you use to see and what you use to ask. Give it those and keep the rest. Elias, keep the rest.\""
+     ]
+    },
+    {
+     "say": "Scratched in the hollow, in Wren's hand: the last fragment.",
+     "secs": 4
+    },
+    {
+     "set": "sign_taken"
+    },
+    {
+     "give": "elder_sign"
+    },
+    {
+     "say": "In the hollow behind the dream: the Elder Sign, and Wren's last fragment.",
+     "secs": 5
+    }
+   ],
+   "when": "!sign_taken"
+  },
+  {
+   "on": "tap",
+   "id": "niche_dream",
+   "do": [
+    {
+     "say": "An empty hollow."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "wall_slab",
+   "do": [
+    {
+     "say": "A slab of green stone, fitted too well. It looks like it was dreamed there."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "wrong_stair",
+   "do": [
+    {
+     "say": "A stair. It goes down. When you look along it, it goes up. Whichever way you look is down."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "slab",
+   "do": [
+    {
+     "say": "A slab with a maze cut in its face and a pale marble in it. It rolls toward whichever way you look."
+    }
+   ],
+   "handled": false
+  }
+ ],
+ "steps": [
+  {
+   "id": "dust",
+   "done": [
+    "any",
+    "gravity=e",
+    "gravity=s",
+    "gravity=w",
+    "gravity=n"
+   ],
+   "hints": [
+    "Things here fall toward whichever wall you look at. Watch the dust on the floor.",
+    "Turn to another wall, then look down at the dust and the marble."
+   ],
+   "solve": [
+    {
+     "set": "gravity",
+     "value": "e"
+    }
+   ],
+   "said": "The dust moves."
+  },
+  {
+   "id": "maze",
+   "done": "marble_home",
+   "hints": [
+    "Roll the marble into the hole by turning to face walls.",
+    "Face south, then east, then south, then east."
+   ],
+   "solve": [
+    {
+     "set": "marble",
+     "value": "4,4"
+    },
+    {
+     "set": "marble_home"
+    }
+   ],
+   "said": "The marble drops."
+  },
+  {
+   "id": "sign",
+   "done": "sign_taken",
+   "hints": [
+    "The west wall is not all there. Something is dreamed over it.",
+    "Look at the west wall with dream sight (Lens on) and touch the hollow."
+   ],
+   "solve": [
+    {
+     "set": "frag9"
+    },
+    {
+     "fragment": true
+    },
+    {
+     "sfx": "reveal"
+    },
+    {
+     "journal": [
+      "frag9",
+      "Fragment IX",
+      "In the hollow the dream hid, scratched by Wren with a nail: \"I got this far in my sleep, every night for a year. The last seal is not a place. It is the cabinet, and the cabinet is a mind, and it wants what you use to see and what you use to ask. Give it those and keep the rest. Elias, keep the rest.\""
+     ]
+    },
+    {
+     "say": "Scratched in the hollow, in Wren's hand: the last fragment.",
+     "secs": 4
+    },
+    {
+     "set": "sign_taken"
+    },
+    {
+     "give": "elder_sign"
+    }
+   ],
+   "said": "The Elder Sign."
+  },
+  {
+   "id": "door",
+   "done": "ceil_open",
+   "hints": [
+    "The ceiling door is carved with the same sign.",
+    "Look up and use the Elder Sign on the ceiling door."
+   ],
+   "solve": [
+    {
+     "take": "elder_sign"
+    },
+    {
+     "set": "ceil_open"
+    }
+   ],
+   "said": "The door opens."
+  },
+  {
+   "id": "up",
+   "done": "left17",
+   "hints": [
+    "The door is open.",
+    "Touch the open door in the ceiling."
+   ],
+   "solve": [
+    {
+     "set": "left17"
+    },
+    {
+     "complete_room": [
+      18,
+      "INSIDE THE CABINET",
+      "You go through."
+     ]
+    }
+   ],
+   "said": "Through."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "swipe",
+   -200
+  ],
+  [
+   "swipe",
+   -200
+  ],
+  [
+   "swipe",
+   200
+  ],
+  [
+   "swipe",
+   -200
+  ],
+  [
+   "swipe",
+   200
+  ],
+  [
+   "expect",
+   "marble_home"
+  ],
+  [
+   "tapv",
+   "slab"
+  ],
+  [
+   "shot",
+   "slab"
+  ],
+  [
+   "back"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "tap",
+   "niche_dream"
+  ],
+  [
+   "lens",
+   false
+  ],
+  [
+   "expect",
+   "sign_taken"
+  ],
+  [
+   "use",
+   "elder_sign",
+   "ceil_door"
+  ],
+  [
+   "expect",
+   "ceil_open"
+  ],
+  [
+   "tap",
+   "ceil_door"
+  ],
+  [
+   "wait",
+   2.0
+  ]
+ ]
+}

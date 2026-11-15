@@ -1,0 +1,1314 @@
+{
+ "title": "Inside the Cabinet",
+ "walls": "r18_wall_",
+ "floor": "r18_floor",
+ "ceiling": "r18_ceiling",
+ "intro": "It knows you.",
+ "lens_socket": {
+  "when": [
+   "facing=n",
+   "!socket_full"
+  ],
+  "do": [
+   {
+    "take": "lens3"
+   },
+   {
+    "set": "socket_full"
+   },
+   {
+    "lens_off": true
+   },
+   {
+    "sfx": "lens"
+   },
+   {
+    "shake": true
+   },
+   {
+    "say": "The moment you raise the Lens, the socket pulls it out of your hand and into the wall. The Lens button goes dark. Brass tumblers rise out of the east wall.",
+    "secs": 6
+   }
+  ]
+ },
+ "on_enter": [
+  {
+   "journal": [
+    "cabinet",
+    "Inside the cabinet",
+    "I am inside Wren's cabinet. The walls are the wood I carried up three flights. There are sockets everywhere, and none of them are for stones."
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "lens_socket",
+   "center": [
+    0,
+    6
+   ],
+   "size": [
+    6,
+    2
+   ],
+   "tex": "lens_socket"
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "tumbler_panel",
+   "center": [
+    0,
+    6
+   ],
+   "size": [
+    9,
+    4
+   ],
+   "tex": "tumbler_panel"
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "tum0",
+   "center": [
+    -3.5625,
+    6.5
+   ],
+   "size": [
+    0.75,
+    2
+   ],
+   "tex": "tumbler_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "tum1",
+   "center": [
+    -2.5625,
+    6.5
+   ],
+   "size": [
+    0.75,
+    2
+   ],
+   "tex": "tumbler_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "tum2",
+   "center": [
+    -1.5625,
+    6.5
+   ],
+   "size": [
+    0.75,
+    2
+   ],
+   "tex": "tumbler_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "tum3",
+   "center": [
+    -0.5625,
+    6.5
+   ],
+   "size": [
+    0.75,
+    2
+   ],
+   "tex": "tumbler_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "tum4",
+   "center": [
+    0.4375,
+    6.5
+   ],
+   "size": [
+    0.75,
+    2
+   ],
+   "tex": "tumbler_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "tum5",
+   "center": [
+    1.4375,
+    6.5
+   ],
+   "size": [
+    0.75,
+    2
+   ],
+   "tex": "tumbler_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "tum6",
+   "center": [
+    2.4375,
+    6.5
+   ],
+   "size": [
+    0.75,
+    2
+   ],
+   "tex": "tumbler_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "tum7",
+   "center": [
+    3.4375,
+    6.5
+   ],
+   "size": [
+    0.75,
+    2
+   ],
+   "tex": "tumbler_0",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "tumbler_key",
+   "center": [
+    0,
+    3.5
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "tumbler_key",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "whisper_mouth",
+   "center": [
+    0,
+    6
+   ],
+   "size": [
+    4,
+    3
+   ],
+   "tex": "whisper_mouth"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "ninth_door",
+   "center": [
+    0,
+    5
+   ],
+   "size": [
+    4,
+    6
+   ],
+   "tex": "ninth_door"
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "tooth_bin",
+   "center": [
+    4,
+    2
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "tooth_bin",
+   "depth": 0.05
+  },
+  {
+   "type": "sprite",
+   "wall": "s",
+   "id": "tooth_a",
+   "center": [
+    -4,
+    3
+   ],
+   "size": [
+    1.25,
+    1.25
+   ],
+   "tex": "tooth_a",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "w",
+   "id": "tooth_b",
+   "center": [
+    3,
+    2
+   ],
+   "size": [
+    1.25,
+    1.25
+   ],
+   "tex": "tooth_b",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "tooth_c",
+   "center": [
+    4.5,
+    2
+   ],
+   "size": [
+    1.25,
+    1.25
+   ],
+   "tex": "tooth_c",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "e",
+   "id": "tooth_d",
+   "center": [
+    -5.5,
+    2
+   ],
+   "size": [
+    1.25,
+    1.25
+   ],
+   "tex": "tooth_d",
+   "depth": 0.06
+  },
+  {
+   "type": "sprite",
+   "wall": "d",
+   "id": "tooth_e",
+   "center": [
+    3,
+    10
+   ],
+   "size": [
+    1.25,
+    1.25
+   ],
+   "tex": "tooth_e",
+   "depth": 0.06
+  }
+ ],
+ "puzzles": [],
+ "bindings": [
+  {
+   "target": "lens_socket",
+   "when": "socket_full",
+   "then": {
+    "texture": "lens_socket_full"
+   },
+   "else": {
+    "texture": "lens_socket"
+   }
+  },
+  {
+   "target": "tumbler_panel",
+   "when": "socket_full",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tumbler_key",
+   "when": [
+    "socket_full",
+    "!tumblers_done"
+   ],
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "whisper_mouth",
+   "when": "tumblers_done",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "whisper_mouth",
+   "when": "hints_burned",
+   "then": {
+    "texture": "whisper_fed"
+   },
+   "else": {
+    "texture": "whisper_mouth"
+   }
+  },
+  {
+   "target": "ninth_door",
+   "when": "hints_burned",
+   "then": {
+    "texture": "ninth_door_open"
+   },
+   "else": {
+    "texture": "ninth_door"
+   }
+  },
+  {
+   "target": "tum0",
+   "when": "socket_full",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tum1",
+   "when": "socket_full",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tum2",
+   "when": "socket_full",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tum3",
+   "when": "socket_full",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tum4",
+   "when": "socket_full",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tum5",
+   "when": "socket_full",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tum6",
+   "when": "socket_full",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tum7",
+   "when": "socket_full",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tum0",
+   "when": [
+    "any",
+    "held>0",
+    "given>7"
+   ],
+   "then": {
+    "texture": "tumbler_1"
+   },
+   "else": {
+    "texture": "tumbler_0"
+   }
+  },
+  {
+   "target": "tum1",
+   "when": [
+    "any",
+    "held>1",
+    "given>6"
+   ],
+   "then": {
+    "texture": "tumbler_1"
+   },
+   "else": {
+    "texture": "tumbler_0"
+   }
+  },
+  {
+   "target": "tum2",
+   "when": [
+    "any",
+    "held>2",
+    "given>5"
+   ],
+   "then": {
+    "texture": "tumbler_1"
+   },
+   "else": {
+    "texture": "tumbler_0"
+   }
+  },
+  {
+   "target": "tum3",
+   "when": [
+    "any",
+    "held>3",
+    "given>4"
+   ],
+   "then": {
+    "texture": "tumbler_1"
+   },
+   "else": {
+    "texture": "tumbler_0"
+   }
+  },
+  {
+   "target": "tum4",
+   "when": [
+    "any",
+    "held>4",
+    "given>3"
+   ],
+   "then": {
+    "texture": "tumbler_1"
+   },
+   "else": {
+    "texture": "tumbler_0"
+   }
+  },
+  {
+   "target": "tum5",
+   "when": [
+    "any",
+    "held>5",
+    "given>2"
+   ],
+   "then": {
+    "texture": "tumbler_1"
+   },
+   "else": {
+    "texture": "tumbler_0"
+   }
+  },
+  {
+   "target": "tum6",
+   "when": [
+    "any",
+    "held>6",
+    "given>1"
+   ],
+   "then": {
+    "texture": "tumbler_1"
+   },
+   "else": {
+    "texture": "tumbler_0"
+   }
+  },
+  {
+   "target": "tum7",
+   "when": [
+    "any",
+    "held>7",
+    "given>0"
+   ],
+   "then": {
+    "texture": "tumbler_1"
+   },
+   "else": {
+    "texture": "tumbler_0"
+   }
+  },
+  {
+   "target": "tooth_a",
+   "when": "!took_a",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tooth_b",
+   "when": "!took_b",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tooth_c",
+   "when": "!took_c",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tooth_d",
+   "when": "!took_d",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  },
+  {
+   "target": "tooth_e",
+   "when": "!took_e",
+   "then": {
+    "visible": true,
+    "tappable": true
+   },
+   "else": {
+    "visible": false,
+    "tappable": false
+   }
+  }
+ ],
+ "interactions": [
+  {
+   "on": "tap",
+   "id": "ninth_door",
+   "do": [
+    {
+     "set": "finished"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "complete_room": [
+      99,
+      "THE NINTH SEAL",
+      "The door's eye opens and looks at you, and you look back with Wren's nine fragments in your head like a lamp. The cabinet knows them. It knows him. It lets the ninth seal close instead of break.\n\nYou wake on Garrison Street in the spring. The cabinet is a cabinet. In its drawer, a letter in Wren's hand, dated tomorrow: \"Thank you for keeping the rest.\""
+     ]
+    }
+   ],
+   "when": [
+    "hints_burned",
+    "fragments>7"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "ninth_door",
+   "do": [
+    {
+     "set": "finished"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "complete_room": [
+      99,
+      "THE VESSEL",
+      "The door's eye opens, and the Whisper is behind it, and it has your pages. All the ones you gave it. It reads them back to you in your own voice until you can't tell which of you is reading.\n\nOn Garrison Street, a professor goes back to his lectures. He is very calm now. The landlady says he hums."
+     ]
+    }
+   ],
+   "when": [
+    "hints_burned",
+    "bargains>2",
+    "mercy==0"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "ninth_door",
+   "do": [
+    {
+     "set": "finished"
+    },
+    {
+     "sfx": "horn"
+    },
+    {
+     "complete_room": [
+      99,
+      "THE KEEPER",
+      "The door's eye opens and you step through, and the cabinet closes around you like a hand. There is room in here for one keeper. Wren left it empty for you.\n\nSomewhere, a young man carries a black cabinet up three flights of stairs and tells his landlady it is a wardrobe."
+     ]
+    }
+   ],
+   "when": [
+    "hints_burned"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "ninth_door",
+   "do": [
+    {
+     "say": "A door with an eye in it. The eye is shut."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "lens_socket",
+   "do": [
+    {
+     "say": "A socket in the wood, shaped exactly like the Lens button you use. Not like the Lens: like the button."
+    }
+   ],
+   "when": "!socket_full"
+  },
+  {
+   "on": "tap",
+   "id": "lens_socket",
+   "do": [
+    {
+     "say": "Your Lens is in the wall now. You see a little less. You see enough."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tumbler_panel",
+   "do": [
+    {
+     "say": "Eight brass tumblers in a row, one for each slot of your tray. Under them, eight dots; four are filled: the first three, and the last."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tum0",
+   "do": [
+    {
+     "say": "Tumbler 1. It's up when slot 1 of your tray is full."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tum1",
+   "do": [
+    {
+     "say": "Tumbler 2. It's up when slot 2 of your tray is full."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tum2",
+   "do": [
+    {
+     "say": "Tumbler 3. It's up when slot 3 of your tray is full."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tum3",
+   "do": [
+    {
+     "say": "Tumbler 4. It's up when slot 4 of your tray is full."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tum4",
+   "do": [
+    {
+     "say": "Tumbler 5. It's up when slot 5 of your tray is full."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tum5",
+   "do": [
+    {
+     "say": "Tumbler 6. It's up when slot 6 of your tray is full."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tum6",
+   "do": [
+    {
+     "say": "Tumbler 7. It's up when slot 7 of your tray is full."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tum7",
+   "do": [
+    {
+     "say": "Tumbler 8. It's up when slot 8 of your tray is full."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tumbler_key",
+   "do": [
+    {
+     "set": "tumblers_done"
+    },
+    {
+     "sfx": "unlock"
+    },
+    {
+     "wait": 0.5
+    },
+    {
+     "sfx": "whisper"
+    },
+    {
+     "say": "The tumblers line up with your tray and the key turns. On the west wall, a mouth opens in the wood.",
+     "secs": 5
+    }
+   ],
+   "when": [
+    "held==3",
+    "given==1",
+    "!tumblers_done"
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tumbler_key",
+   "do": [
+    {
+     "sfx": "thunk"
+    },
+    {
+     "say": "The key won't turn. The tumblers aren't right."
+    }
+   ],
+   "when": "!tumblers_done"
+  },
+  {
+   "on": "tap",
+   "id": "whisper_mouth",
+   "do": [
+    {
+     "ask": [
+      "The Whisper",
+      "\"You have asked me for help with that little word at the corner of your eye. Give it to me. Never ask again, and I will open the last door.\"",
+      [
+       "Give up hints",
+       "Not yet"
+      ]
+     ]
+    },
+    {
+     "set": "hints_burned"
+    },
+    {
+     "sfx": "flame"
+    },
+    {
+     "wait": 0.5
+    },
+    {
+     "sfx": "creak"
+    },
+    {
+     "say": "The Hint button burns away at the edge of your sight. The eye in the south door opens.",
+     "secs": 5
+    }
+   ],
+   "when": "!hints_burned"
+  },
+  {
+   "on": "tap",
+   "id": "whisper_mouth",
+   "do": [
+    {
+     "say": "The mouth is full and quiet."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tooth_a",
+   "do": [
+    {
+     "set": "took_a"
+    },
+    {
+     "give": "tooth_a"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "A brass tooth from the cabinet's insides."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tooth_b",
+   "do": [
+    {
+     "set": "took_b"
+    },
+    {
+     "give": "tooth_b"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "A brass tooth from the cabinet's insides."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tooth_c",
+   "do": [
+    {
+     "set": "took_c"
+    },
+    {
+     "give": "tooth_c"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "A brass tooth from the cabinet's insides."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tooth_d",
+   "do": [
+    {
+     "set": "took_d"
+    },
+    {
+     "give": "tooth_d"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "A brass tooth from the cabinet's insides."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tooth_e",
+   "do": [
+    {
+     "set": "took_e"
+    },
+    {
+     "give": "tooth_e"
+    },
+    {
+     "sfx": "pickup"
+    },
+    {
+     "say": "A brass tooth from the cabinet's insides."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "tooth_a",
+   "ids": [
+    "tooth_bin"
+   ],
+   "do": [
+    {
+     "take": "tooth_a"
+    },
+    {
+     "sfx": "click"
+    },
+    {
+     "say": "The tooth drops into the box and is gone."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "tooth_b",
+   "ids": [
+    "tooth_bin"
+   ],
+   "do": [
+    {
+     "take": "tooth_b"
+    },
+    {
+     "sfx": "click"
+    },
+    {
+     "say": "The tooth drops into the box and is gone."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "tooth_c",
+   "ids": [
+    "tooth_bin"
+   ],
+   "do": [
+    {
+     "take": "tooth_c"
+    },
+    {
+     "sfx": "click"
+    },
+    {
+     "say": "The tooth drops into the box and is gone."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "tooth_d",
+   "ids": [
+    "tooth_bin"
+   ],
+   "do": [
+    {
+     "take": "tooth_d"
+    },
+    {
+     "sfx": "click"
+    },
+    {
+     "say": "The tooth drops into the box and is gone."
+    }
+   ]
+  },
+  {
+   "on": "use",
+   "item": "tooth_e",
+   "ids": [
+    "tooth_bin"
+   ],
+   "do": [
+    {
+     "take": "tooth_e"
+    },
+    {
+     "sfx": "click"
+    },
+    {
+     "say": "The tooth drops into the box and is gone."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "tooth_bin",
+   "do": [
+    {
+     "say": "A little box in the wall with a slot. It will take anything brass."
+    }
+   ]
+  }
+ ],
+ "steps": [
+  {
+   "id": "socket",
+   "done": "socket_full",
+   "hints": [
+    "The north wall has a socket shaped like something you use, not something you hold.",
+    "Face the north wall and turn your Lens on."
+   ],
+   "solve": [
+    {
+     "take": "lens3"
+    },
+    {
+     "set": "socket_full"
+    },
+    {
+     "lens_off": true
+    }
+   ],
+   "said": "The Lens is taken."
+  },
+  {
+   "id": "teeth",
+   "done": [
+    "any",
+    "held>2",
+    "tumblers_done"
+   ],
+   "hints": [
+    "The tumblers follow your tray. Brass teeth are scattered round the cabinet.",
+    "Pick up the brass teeth: one on every wall and one on the floor."
+   ],
+   "solve": [
+    {
+     "give": "tooth_a"
+    },
+    {
+     "give": "tooth_b"
+    },
+    {
+     "give": "tooth_c"
+    },
+    {
+     "set": "took_a"
+    },
+    {
+     "set": "took_b"
+    },
+    {
+     "set": "took_c"
+    }
+   ],
+   "said": "Teeth."
+  },
+  {
+   "id": "tumblers",
+   "done": "tumblers_done",
+   "hints": [
+    "The engraving wants the first three tumblers up and the last. The last is the slot you gave away.",
+    "Hold exactly three things (drop extra teeth in the little box on the south wall), then turn the key."
+   ],
+   "solve": [
+    {
+     "set": "tumblers_done"
+    }
+   ],
+   "said": "The key turns."
+  },
+  {
+   "id": "burn",
+   "done": "hints_burned",
+   "hints": [
+    "The mouth wants the thing you ask it with.",
+    "Touch the mouth and give up your hints."
+   ],
+   "solve": [
+    {
+     "set": "hints_burned"
+    }
+   ],
+   "said": "Done."
+  },
+  {
+   "id": "end",
+   "done": "finished",
+   "hints": [
+    "The last door is open.",
+    "Go through the door with the eye."
+   ],
+   "solve": [
+    {
+     "set": "finished"
+    }
+   ],
+   "said": "The end."
+  }
+ ],
+ "walkthrough": [
+  [
+   "shot",
+   "start"
+  ],
+  [
+   "tap",
+   "lens_socket"
+  ],
+  [
+   "lens",
+   true
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "expect",
+   "socket_full"
+  ],
+  [
+   "shot",
+   "socket"
+  ],
+  [
+   "tap",
+   "tooth_a"
+  ],
+  [
+   "tap",
+   "tooth_b"
+  ],
+  [
+   "tap",
+   "tooth_c"
+  ],
+  [
+   "tap",
+   "tooth_d"
+  ],
+  [
+   "tap",
+   "tooth_e"
+  ],
+  [
+   "tap",
+   "tumbler_key"
+  ],
+  [
+   "shot",
+   "tumblers5"
+  ],
+  [
+   "use",
+   "tooth_d",
+   "tooth_bin"
+  ],
+  [
+   "use",
+   "tooth_e",
+   "tooth_bin"
+  ],
+  [
+   "tap",
+   "tumbler_key"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "expect",
+   "tumblers_done"
+  ],
+  [
+   "shot",
+   "tumblers3"
+  ],
+  [
+   "tap",
+   "whisper_mouth"
+  ],
+  [
+   "wait",
+   1.0
+  ],
+  [
+   "expect",
+   "hints_burned"
+  ],
+  [
+   "tap",
+   "ninth_door"
+  ],
+  [
+   "wait",
+   3.0
+  ]
+ ]
+}

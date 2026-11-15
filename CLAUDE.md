@@ -27,7 +27,7 @@ Escape rooms and nested puzzle boxes, The Room style, Lovecraftian. You play Eli
 - Rooms are boxes too: four walls plus optional floor and ceiling (drag up and down to see them).
 
 ## Adding a room or a puzzle
-1. Art in tools/make_room_art.py (seal I), tools/make_seal2_art.py (seal II), tools/make_seal3_art.py (seal III), tools/make_seal4_art.py, tools/make_seal5_art.py, tools/make_seal6_art.py, tools/make_seal7_art.py, tools/make_seal8_art.py, tools/make_sealN_art.py (room authoring scripts in tools/rooms/) for later seals; shared helpers in tools/artkit.py. 16 texels per unit. New color ramps: `python3 tools/art_lint.py palette` rebuilds the palette. Run it, then `python3 tools/art_lint.py check` (must be 0 problems).
+1. Art in tools/make_room_art.py (seal I), tools/make_seal2_art.py (seal II), tools/make_seal3_art.py (seal III), tools/make_seal4_art.py, tools/make_seal5_art.py, tools/make_seal6_art.py, tools/make_seal7_art.py, tools/make_seal8_art.py, tools/make_seal9_art.py (room authoring scripts in tools/rooms/) for later seals; shared helpers in tools/artkit.py. 16 texels per unit. New color ramps: `python3 tools/art_lint.py palette` rebuilds the palette. Run it, then `python3 tools/art_lint.py check` (must be 0 problems).
 2. Describe it in the room's JSON: objects, puzzles, bindings (every visual follows flags), interactions.
 3. Main-path puzzles get a step: done condition, two hints, and the solve actions the Whisper's bargain uses.
 4. walkthrough: the real taps that solve it. The autotest plays it.

@@ -71,7 +71,7 @@ def hub(n):
         place_j = journal("placed8", "The eighth socket", "Eight. One socket left, the middle one, and it is not a socket. It is a keyhole, and it is looking at me.")
         card = ("SEAL VIII OF IX BROKEN", "Eight seals broken. One remains.\n\nThe drawer opens on stairs going down into green water, and a smell of the sea.\n\nWren's fragments found: {fragments} of 9.{bargains_line}")
         read_j = journal("rlyeh", "The last stair", "The drawer is not a drawer any more. It is a stair, going down, wet, and the angles of it are wrong. The ninth is at the bottom. Wren never wrote about the ninth. I think he couldn't.")
-        next_room = 99
+        next_room = 17
     else:
         enter = journal("home2", "Home again", "I have not opened the post in a week. I covered the mirror; I kept seeing the lamp room in it. The landlady asked about the salt by the door and I told her it was for the ice. There is no ice.")
         place_j = journal("placed2", "The second socket", "Two stones now. The cabinet hums when I am out of the room and stops when I come back, like a conversation that falls silent when you enter.\n\nThe drawer opened again.")
