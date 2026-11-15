@@ -468,6 +468,14 @@ func run(actions: Array, node: Node = null) -> void:
 			await game.show_face(a["face"])
 		if a.has("say"):
 			game.say(_fill(a["say"]), float(a.get("secs", 3.5)))
+		if a.has("look"):
+			## turn the player's head: a wall letter, or "d"/"u" for floor and ceiling
+			var lw: String = a["look"]
+			if lw == "d" or lw == "u":
+				game.set_pitch(1 if lw == "d" else -1)
+			else:
+				await game.set_view(WALLS.find(lw))
+				game.set_pitch(0)
 		if a.has("lens_off"):
 			game.lens_on = false
 			set_lens(false)

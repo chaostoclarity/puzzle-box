@@ -9,6 +9,7 @@ objs = [
   "faces": {"front": "slab_front", "back": "slab_front", "left": "slab_side", "right": "slab_side", "top": "slab_top", "bottom": "slab_bottom"},
   "blocker": "slab", "parts": [part("top", [-2.5, 2.5], [0.75, 0.75], "marble", "marble", depth=0.05, tappable=False)]},
 ] + [sprite("d", "dust_%s" % k, [0, 12.5], [6, 2], "dust_" + k, depth=0.02, tappable=False) for k in "nesw"] + [
+ sprite("n", "n_dust", [0, 1.5], [6, 2], "dust_s", tappable=True),
  sprite("u", "ceil_door", [0, 7.5], [5, 5], "ceil_door"),
  sprite("w", "niche_dream", [0, 6], [4, 6], "niche_dream", depth=0.02),
  dict(sprite("w", "wall_slab", [0, 6], [4, 6], "wall_slab", depth=0.04), lens_hide=3),
@@ -30,6 +31,7 @@ interactions = [
  tap("ceil_door", [say("The bar is gone. The door wants the sign it was carved with.")]),
  tap("niche_dream", FRAG + [{"set": "sign_taken"}, {"give": "elder_sign"}, say("In the hollow behind the dream: the Elder Sign, and Wren's last fragment.", 5)], when="!sign_taken"),
  tap("niche_dream", [say("An empty hollow.")]),
+ tap("n_dust", [say("Dust slides down the wall and across the floor toward you, following your eyes. Look down: there's a slab in the floor with a marble in it.", 5)]),
  tap("wall_slab", [say("A slab of green stone, fitted too well. It looks like it was dreamed there.")]),
  tap("wrong_stair", [{"set": "marble", "value": "0,0"}, {"sfx": "slide"}, {"refresh": True}, say("You go down the stair and arrive back at its top, in this room, as if you never left. Behind you, the marble rattles back to its corner of the slab.", 5)], when="!marble_home"),
  tap("wrong_stair", [say("A stair. It goes down. When you look along it, it goes up. Whichever way you look is down.")]),

@@ -480,11 +480,14 @@
      "sfx": "wind"
     },
     {
-     "shake": true
-    },
-    {
      "set": "win",
      "value": "void"
+    },
+    {
+     "look": "n"
+    },
+    {
+     "shake": true
     },
     {
      "say": "The fifth note and the window bursts open on its own. There is no street outside. There is nothing outside, only a dark full of moving lights, and it is listening. Shut it.",

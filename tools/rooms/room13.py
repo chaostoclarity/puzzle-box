@@ -30,7 +30,7 @@ puzzles = [
  {"kind": "pickup", "part": "bow_part", "item": "bow", "flag": "bow_taken", "show_if": "case_open", "then": [say("The bow. Its hair is dry as straw.")]},
  {"kind": "sequence", "parts": {"vs%d" % k: str(k) for k in range(4)}, "tex": {"vs%d" % k: "vstring_%d" % k for k in range(4)}, "pulled_suffix": "_hum",
   "order": "21031", "flag": "tune", "silent": True, "repeat": True, "lock": ["any", "!viol_ready", "played"],
-  "do": [{"set": "played"}, {"sfx": "wind"}, {"shake": True}, {"set": "win", "value": "void"},
+  "do": [{"set": "played"}, {"sfx": "wind"}, {"set": "win", "value": "void"}, {"look": "n"}, {"shake": True},
          say("The fifth note and the window bursts open on its own. There is no street outside. There is nothing outside, only a dark full of moving lights, and it is listening. Shut it.", 6)],
   "fail": [{"sfx": "creak"}, say("Wrong. The notes go sour, and something outside the window shifts.")]},
 ]

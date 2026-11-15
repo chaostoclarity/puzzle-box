@@ -115,9 +115,10 @@ func _ready() -> void:
 		if start >= 9:
 			for i in 8:
 				State.add_journal("old%d" % i, "Older notes, %d" % (i + 1), "Notes from earlier seals.")
+		if start >= 13:
+			State.flags["slots_given"] = 1
 		if start >= 17:
 			State.inventory = ["lens3"]
-			State.flags["slots_given"] = 1
 		if start == 16:
 			State.inventory = ["lens3", "candle"]
 		if start == 14:

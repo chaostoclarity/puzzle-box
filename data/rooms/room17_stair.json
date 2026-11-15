@@ -124,6 +124,21 @@
   },
   {
    "type": "sprite",
+   "wall": "n",
+   "id": "n_dust",
+   "center": [
+    0,
+    1.5
+   ],
+   "size": [
+    6,
+    2
+   ],
+   "tex": "dust_s",
+   "tappable": true
+  },
+  {
+   "type": "sprite",
    "wall": "u",
    "id": "ceil_door",
    "center": [
@@ -451,6 +466,16 @@
    "do": [
     {
      "say": "An empty hollow."
+    }
+   ]
+  },
+  {
+   "on": "tap",
+   "id": "n_dust",
+   "do": [
+    {
+     "say": "Dust slides down the wall and across the floor toward you, following your eyes. Look down: there's a slab in the floor with a marble in it.",
+     "secs": 5
     }
    ]
   },
