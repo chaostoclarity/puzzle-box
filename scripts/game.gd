@@ -701,12 +701,19 @@ func play(n: String, db := 0.0) -> void:
 
 # ---------------- HUD ----------------
 
+## Text size for reading (messages, dialogs, journal, examine). HUD buttons stay at 16 to fit.
+const READ_SIZE := 20
+
+
 func _label(text: String, size := 16, col := INK) -> Label:
 	var l := Label.new()
 	l.text = text
 	l.add_theme_font_override("font", font)
 	l.add_theme_font_size_override("font_size", size)
 	l.add_theme_color_override("font_color", col)
+	## a dark rim so text reads over any background
+	l.add_theme_color_override("font_outline_color", Color(0.03, 0.02, 0.02))
+	l.add_theme_constant_override("outline_size", 4)
 	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return l
 
@@ -748,9 +755,16 @@ func _build_hud() -> void:
 	journal_btn = _label("Journal", 16, BRASS)
 	journal_btn.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	hud_root.add_child(journal_btn)
-	msg_lbl = _label("", 16, INK)
+	msg_lbl = _label("", READ_SIZE, INK)
 	msg_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	msg_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var panel := StyleBoxFlat.new()   ## a dark banner behind messages, so they read over snow and plaster
+	panel.bg_color = Color(0.05, 0.035, 0.03, 0.88)
+	panel.border_color = Color(0.45, 0.32, 0.14)
+	panel.set_border_width_all(1)
+	panel.set_content_margin_all(5)
+	msg_lbl.add_theme_stylebox_override("normal", panel)
+	msg_lbl.modulate.a = 0.0
 	hud_root.add_child(msg_lbl)
 
 	tray_bg = ColorRect.new()
@@ -804,8 +818,8 @@ func _layout_hud() -> void:
 	title_lbl.size = Vector2(vs.x, 18)
 	journal_btn.position = Vector2(vs.x - 64, 2)
 	journal_btn.size = Vector2(60, 18)
-	msg_lbl.position = Vector2(8, 24)
-	msg_lbl.size = Vector2(vs.x - 16, 32)
+	msg_lbl.position = Vector2(4, 26)
+	msg_lbl.size = Vector2(vs.x - 8, 32)
 	tray_bg.position = Vector2(0, vs.y - HUD_BOTTOM)
 	tray_bg.size = Vector2(vs.x, HUD_BOTTOM)
 	lens_btn.position = Vector2(6, vs.y - HUD_BOTTOM + 2)
@@ -1009,23 +1023,39 @@ func _close_overlay(root: Control) -> void:
 	touch_down = false
 
 
+## Height a wrapped label of this text will take (measured a little narrow, to be safe).
+func _text_h(text: String, w: float, size: int) -> float:
+	var lines := 0
+	for para in text.split("\n"):
+		lines += maxi(1, ceili(font.get_string_size(para, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x / (w - 24.0)))
+	return lines * (font.get_height(size) + 2) + 6
+
+
 ## A modal card with a title, some text and buttons. Returns the chosen button's text.
 func _dialog(title: String, text: String, buttons: Array) -> String:
 	var root := _overlay_root()
-	var t := _label(title, 16, BRASS)
-	t.position = Vector2(12, 90)
-	t.size = Vector2(view_size.x - 24, 20)
+	## lay the card out from the bottom: buttons, then as much room for the text as it needs
+	var y := minf(350.0, view_size.y - 16.0 - 32.0 * buttons.size())
+	var w := view_size.x - 28
+	var size := READ_SIZE
+	var h := _text_h(text, w, size)
+	var top := 34.0
+	if h > y - top - 40:
+		size = 16   ## a long card falls back to the small size rather than run under the buttons
+		h = _text_h(text, w, size)
+	var body_y := clampf(y - 12 - h, top + 30, 120)
+	var t := _label(title, READ_SIZE, BRASS)
+	t.position = Vector2(12, body_y - 30)
+	t.size = Vector2(view_size.x - 24, 22)
 	t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	root.add_child(t)
-	var body := _label(text, 16, INK)
+	var body := _label(text, size, INK)
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	body.custom_minimum_size = Vector2(view_size.x - 32, 0)
-	body.position = Vector2(16, 120)
-	body.size = Vector2(view_size.x - 32, 220)
+	body.custom_minimum_size = Vector2(w, 0)
+	body.position = Vector2(14, body_y)
+	body.size = Vector2(w, h)
 	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	root.add_child(body)
-	## long button lists (the seal picker) move up so they stay on screen
-	var y := minf(350.0, view_size.y - 16.0 - 32.0 * buttons.size())
 	for b in buttons:
 		var btn := _button(root, b, Vector2((view_size.x - 200) / 2, y), 200)
 		btn.pressed.connect(func(): dialog_done.emit(b))
@@ -1111,12 +1141,12 @@ func open_journal() -> void:
 	box.add_theme_constant_override("separation", 6)
 	scroll.add_child(box)
 	if State.journal.is_empty():
-		box.add_child(_label("Nothing yet.", 16, DIM_INK))
+		box.add_child(_label("Nothing yet.", READ_SIZE, DIM_INK))
 	for i in range(State.journal.size() - 1, -1, -1):
 		var e: Dictionary = State.journal[i]
-		var h := _label(e["title"], 16, BRASS)
+		var h := _label(e["title"], READ_SIZE, BRASS)
 		box.add_child(h)
-		var body := _label("[This page has been torn out.]" if e["torn"] else e["text"], 16, DIM_INK if e["torn"] else INK)
+		var body := _label("[This page has been torn out.]" if e["torn"] else e["text"], READ_SIZE, DIM_INK if e["torn"] else INK)
 		body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		body.custom_minimum_size = Vector2(view_size.x - 32, 0)
 		box.add_child(body)
@@ -1154,7 +1184,7 @@ func examine(item: String) -> void:
 	name.size = Vector2(view_size.x - 20, 18)
 	name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	root.add_child(name)
-	var desc := _label(State.ITEMS[item][1], 16, INK)
+	var desc := _label(State.ITEMS[item][1], READ_SIZE, INK)
 	desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	desc.custom_minimum_size = Vector2(view_size.x - 32, 0)
 	desc.position = Vector2(16, 294)
