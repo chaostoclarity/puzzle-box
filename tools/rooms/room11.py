@@ -1,16 +1,16 @@
 from common import *
 OUT = "/home/claude/pb-repo/data/rooms/"
 TILE_START = [1, 3, 2, 1]
-TC = [(-0.625, 0.625), (0.625, 0.625), (-0.625, -0.625), (0.625, -0.625)]
+TC = [(-1, 1), (1, 1), (-1, -1), (1, -1)]
 objs = [
  sprite("n", "low_door", [0, 2], [5, 4], "low_door"),
- sprite("n", "lintel", [0, 5], [4, 2], "lintel"),
- sprite("n", "lintel_lens", [0, 5], [4, 2], "lintel_lens", depth=0.06, lens=2),
- sprite("n", "gpanel", [4.75, 3], [3, 3], "gpanel"),
-] + [sprite("n", "gtile_%d" % q, [4.75 + TC[q][0], 3.2 + TC[q][1]], [1.25, 1.25], "gtile_%d_%d" % (q, TILE_START[q]), depth=0.06) for q in range(4)] + [
- sprite("n", "gpanel_key", [4.75, 1.95], [0.75, 0.75], "gpanel_key", depth=0.06),
+ sprite("n", "lintel", [0, 6], [6, 3], "lintel"),
+ sprite("n", "lintel_lens", [0, 6], [6, 3], "lintel_lens", depth=0.06, lens=2),
+ sprite("n", "gpanel", [5, 4.5], [5, 5], "gpanel"),
+] + [sprite("n", "gtile_%d" % q, [5 + TC[q][0], 4.5 + TC[q][1]], [2, 2], "gtile_%d_%d" % (q, TILE_START[q]), depth=0.06) for q in range(4)] + [
+ sprite("n", "gpanel_key", [5, 1.2], [1, 1], "gpanel_key", depth=0.06),
  sprite("e", "plinth", [0, 1.5], [3, 3], "plinth"),
- sprite("e", "hglass", [0, 5], [2, 4], "hglass_0_0", depth=0.3),
+ sprite("e", "hglass", [0, 6], [3, 6], "hglass_0_0", depth=0.3),
  sprite("s", "niche", [0, 5], [4, 4], "niche"),
  sprite("w", "altar", [0, 1.5], [7, 3], "altar_front"),
  sprite("w", "altar_glyph", [0, 1.6], [1, 1], "altar_glyph", depth=0.06),

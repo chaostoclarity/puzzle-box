@@ -105,7 +105,7 @@ save(case_face(96, 64, 143), "spec_back"); save(case_face(64, 64, 144), "spec_si
 save(new(96, 64, (14, 26, 36)), "spec_liner")
 for col, nm in ((RED2, "r"), (BLU2, "b"), (GRN2, "g")):
     for k in range(10):
-        dd = new(16, 16); d = ImageDraw.Draw(dd); d.ellipse([0, 0, 15, 15], fill=col); d.ellipse([2, 2, 13, 13], fill=PAPER[2]); text(dd, 6, 5, str(k), INK); save(dd, "cdial_%s_%d" % (nm, k))
+        dd = new(16, 16); d = ImageDraw.Draw(dd); d.ellipse([0, 0, 15, 15], fill=col); d.ellipse([2, 2, 13, 13], fill=PAPER[2]); text(dd, 5, 3, str(k), INK, 2); save(dd, "cdial_%s_%d" % (nm, k))
 cl = new(16, 8); d = ImageDraw.Draw(cl); d.rectangle([0, 1, 15, 6], fill=BRASS[2], outline=BRASS[0]); save(cl, "spec_latch")
 
 # ================= room 10: the ice shaft =================
@@ -130,7 +130,7 @@ for k in range(7):
     ln = 40 + k * 6
     ch = new(16, 112); d = ImageDraw.Draw(ch)
     d.polygon([(2, 0), (13, 0), (8, ln)], fill=ICE[3], outline=ICE[2]); d.line([5, 2, 7, ln - 10], fill=FROST[2])
-    text(ch, 6, 104, str(k + 1), FROST[2])
+    pl = new(16, 16); dp = ImageDraw.Draw(pl); dp.rectangle([0, 0, 15, 15], fill=ICE[0], outline=FROST[2]); text(pl, 5, 3, str(k + 1), FROST[2], 2); save(pl, "chime_no_%d" % k)
     save(ch, "chime_%d" % k)
 fz = new(48, 96); d = ImageDraw.Draw(fz)
 d.rectangle([0, 0, 47, 95], fill=ICE[2]); d.ellipse([14, 8, 33, 28], fill=(90, 80, 70)); d.rectangle([10, 28, 37, 80], fill=(60, 40, 30)); d.rectangle([12, 80, 35, 95], fill=(40, 30, 24))

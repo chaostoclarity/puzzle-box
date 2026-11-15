@@ -6,10 +6,10 @@ FRAG = [{"set": "frag6"}, {"fragment": True}, {"sfx": "reveal"},
         journal("frag6", "Fragment VI", "Through the Lens, on the keeper's wrappings, written over and over in my own hand: E.T. HERE. And under it, Wren's: \"I saw this too, in my dream of the hall, and the initials were mine. They write whoever comes. I think they are telling us where we will be kept.\""),
         say("Through the Lens, on the wrappings, in your own handwriting: E.T. HERE.", 5)]
 objs = [
- sprite("n", "mural_frame", [0, 13], [11, 4], "mural_frame"),
-] + [sprite("n", "m%d" % i, [-4 + i * 2, 13], [2, 3], "mural_0", depth=0.06) for i in range(5)] + [
- sprite("n", "mural_stone", [5, 10.4], [1, 1], "mural_stone", depth=0.06),
- sprite("n", "mural_hand", [0, 9], [2, 3], "mural_hand", depth=0.06),
+ sprite("n", "mural_frame", [0, 11.5], [14.5, 5], "mural_frame"),
+] + [sprite("n", "m%d" % i, [(i - 2) * 2.85, 11.5], [2.75, 4], "mural_0", depth=0.06) for i in range(5)] + [
+ sprite("n", "mural_stone", [6, 8], [1.25, 1.25], "mural_stone", depth=0.06),
+ sprite("n", "mural_hand", [0, 6], [2.75, 4], "mural_hand", depth=0.06),
  {"type": "furniture", "wall": "e", "id": "coffin", "pos": [0, 0], "size": [4, 8, 2], "faces": {"front": "coffin_front", "top": "crypt_top_64x32", "default": "crypt_side_32x128"},
   "zoom": {"k": 3}, "parts": [part("front", [FX[i], 0.75], [0.6, 0.6], "finger", "f%d" % (i + 1), depth=0.04) for i in range(7)] +
                          [part("front", [0, -2.75], [2, 0.75], "clear", "plate", depth=0.04)]},

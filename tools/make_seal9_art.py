@@ -40,18 +40,24 @@ save(cdoor(False), "ceil_door"); save(cdoor(True), "ceil_door_open")
 # the gravity slab: a 5 x 5 maze cut in its face, a pale marble, and a sink hole
 SLAB = {"cols": 6, "rows": 6, "walls": [[0, 2], [0, 3], [0, 5], [1, 0], [1, 4], [2, 5], [3, 0], [3, 3], [4, 0], [5, 3]], "goal": [5, 5]}
 def slab_face():
-    img = face(96, 96, CYC, 308, 3); d = ImageDraw.Draw(img)
-    x0, y0, cs = 0, 0, 16
+    """Flat and high contrast: pale raised blocks, dark channels the marble runs in, a ringed hole."""
+    img = new(96, 96, (16, 22, 22)); d = ImageDraw.Draw(img); cs = 16
     for r in range(6):
         for c in range(6):
-            if [c, r] in SLAB["walls"]: d.rectangle([x0 + c * cs, y0 + r * cs, x0 + c * cs + cs - 1, y0 + r * cs + cs - 1], fill=CYC[3], outline=CYC[4])
-            else: d.rectangle([x0 + c * cs + 1, y0 + r * cs + 1, x0 + c * cs + cs - 2, y0 + r * cs + cs - 2], fill=CYC[1])
-    gx, gy = SLAB["goal"]; d.ellipse([x0 + gx * cs + 3, y0 + gy * cs + 3, x0 + gx * cs + 12, y0 + gy * cs + 12], fill=(0, 0, 0))
+            x, y = c * cs, r * cs
+            if [c, r] in SLAB["walls"]:
+                d.rectangle([x, y, x + cs - 1, y + cs - 1], fill=(150, 168, 156), outline=(70, 84, 76))
+                d.line([x + 1, y + 1, x + cs - 2, y + 1], fill=(200, 214, 204))
+            else:
+                d.rectangle([x + 1, y + 1, x + cs - 2, y + cs - 2], outline=(30, 40, 40))
+    gx, gy = SLAB["goal"]; x, y = gx * cs, gy * cs
+    d.ellipse([x + 2, y + 2, x + 13, y + 13], fill=(0, 0, 0), outline=(230, 190, 80))
+    d.rectangle([0, 0, 95, 95], outline=(150, 168, 156))
     return img
 save(slab_face(), "slab_top")
 for k, s in (("side", 309), ("front", 310)): save(face(96, 32, CYC, s, 2), "slab_" + k)
 save(face(96, 96, CYC, 311, 2), "slab_bottom")
-m = new(12, 12); d = ImageDraw.Draw(m); d.ellipse([1, 1, 10, 10], fill=PALE, outline=CYC[0]); d.point((4, 4), fill=(255, 255, 255)); save(m, "marble")
+m = new(12, 12); d = ImageDraw.Draw(m); d.ellipse([0, 0, 11, 11], fill=(250, 250, 240), outline=(40, 40, 40)); d.rectangle([3, 3, 4, 4], fill=(255, 255, 255)); save(m, "marble")
 def dust(dirn):
     img = new(96, 32); d = ImageDraw.Draw(img); rnd = random.Random(312)
     for i in range(40):

@@ -2,7 +2,8 @@ from common import *
 OUT = "/home/claude/pb-repo/data/rooms/"
 ORDER = "2041635"   # chimes 3 1 5 2 from the score, then 7 4 6 from the ice
 HALV = journal("halvorsen", "Halvorsen's note", "Through the ice, the note in Halvorsen's coat pocket: \"The stone in the plug turns one point for every page the hut's fire has eaten. I fed it four and turned it four. Then I blew. Then I understood, and stayed.\"")
-CH = [sprite("n", "chime_%d" % k, [-4.5 + k * 1.5, 13.5], [1, 7], "chime_%d" % k, depth=0.1) for k in range(7)]
+CH = [sprite("n", "chime_%d" % k, [-4.5 + k * 1.5, 13.5], [1, 7], "chime_%d" % k, depth=0.1) for k in range(7)] + \
+     [sprite("n", "chime_no_%d" % k, [-4.5 + k * 1.5, 9.3], [1, 1], "chime_no_%d" % k, depth=0.1, tappable=False) for k in range(7)]
 objs = CH + [
  sprite("e", "frozen_man", [-3, 3], [3, 6], "frozen_man"),
  sprite("e", "frozen_note", [-3, 3], [3, 6], "frozen_note", depth=0.12, lens=2),

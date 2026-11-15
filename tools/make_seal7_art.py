@@ -58,8 +58,8 @@ def viol():
     return img
 save(viol(), "viol")
 for k in range(4):
-    s_ = new(4, 96); d = ImageDraw.Draw(s_); d.line([1, 0, 1, 95], fill=SILVER[2 + k % 2]); save(s_, "vstring_%d" % k)
-    s_ = new(4, 96); d = ImageDraw.Draw(s_); [d.point((0 + (y // 3) % 3, y), fill=GLOW) for y in range(96)]; save(s_, "vstring_%d_hum" % k)
+    s_ = new(8, 96); d = ImageDraw.Draw(s_); d.rectangle([2, 0, 5, 95], fill=(40, 30, 20)); d.rectangle([3, 0, 4, 95], fill=(236, 230, 210)); save(s_, "vstring_%d" % k)
+    s_ = new(8, 96); d = ImageDraw.Draw(s_); [d.rectangle([1 + (y // 4) % 3 * 2, y, 2 + (y // 4) % 3 * 2, y], fill=GLOW) for y in range(96)]; save(s_, "vstring_%d_hum" % k)
 nb = new(40, 28); d = ImageDraw.Draw(nb); d.rectangle([0, 0, 39, 27], fill=IVORY[2], outline=INK); d.line([20, 0, 20, 27], fill=INK)
 for y in range(5, 25, 4): d.line([3, y, 17, y], fill=IVORY[0]); d.line([23, y, 36, y], fill=IVORY[0])
 save(nb, "notebook")
@@ -122,14 +122,20 @@ c = new(240, 240, NIGHT[0]); rnd = random.Random(273); d = ImageDraw.Draw(c)
 for i in range(200): d.point((rnd.randrange(240), rnd.randrange(240)), fill=(220, 220, 240))
 save(c, "r14_ceiling")
 def vane(k):
-    img = new(48, 48); d = ImageDraw.Draw(img); a = math.radians(-90 + k * 45); c = 23.5
-    x1, y1 = c + 20 * math.cos(a), c + 20 * math.sin(a); x0, y0 = c - 16 * math.cos(a), c - 16 * math.sin(a)
-    d.line([x0, y0, x1, y1], fill=INK, width=2); d.polygon([(x1, y1), (x1 - 6 * math.cos(a - 0.5), y1 - 6 * math.sin(a - 0.5)), (x1 - 6 * math.cos(a + 0.5), y1 - 6 * math.sin(a + 0.5))], fill=INK)
-    d.ellipse([c - 5, c - 9, c + 5, c + 1], fill=RED3)   # the cock
+    """64 x 64: a bold gold arrow with the cock on it, pointing k eighths clockwise from N."""
+    img = new(64, 64); d = ImageDraw.Draw(img); a = math.radians(-90 + k * 45); c = 31.5
+    gold, dark = (240, 196, 80), (60, 40, 10)
+    tip = (c + 26 * math.cos(a), c + 26 * math.sin(a)); tail = (c - 22 * math.cos(a), c - 22 * math.sin(a))
+    d.line([tail, tip], fill=dark, width=7); d.line([tail, tip], fill=gold, width=4)
+    p = [(tip[0] + 2 * math.cos(a), tip[1] + 2 * math.sin(a)), (tip[0] - 10 * math.cos(a - 0.55), tip[1] - 10 * math.sin(a - 0.55)), (tip[0] - 10 * math.cos(a + 0.55), tip[1] - 10 * math.sin(a + 0.55))]
+    d.polygon(p, fill=gold, outline=dark)
+    fx, fy = tail; d.polygon([(fx, fy), (fx - 8 * math.cos(a - 0.9), fy - 8 * math.sin(a - 0.9)), (fx - 8 * math.cos(a + 0.9), fy - 8 * math.sin(a + 0.9))], fill=gold, outline=dark)
+    d.ellipse([c - 7, c - 7, c + 7, c + 7], fill=RED3, outline=dark); d.point((c + 3 * math.cos(a), c + 3 * math.sin(a)), fill=(255, 255, 255))
     return img
 for k in range(8): save(vane(k), "vane_%d" % k)
-vb = new(48, 48); d = ImageDraw.Draw(vb); d.line([23, 10, 23, 47], fill=INK, width=2)
-for txt, (dx, dy) in (("N", (0, -20)), ("E", (20, 0)), ("S", (0, 20)), ("O", (-20, 0))): text(vb, 22 + dx, 22 + dy, txt, IVORY[2])
+vb = new(64, 64); d = ImageDraw.Draw(vb); d.line([31, 14, 31, 63], fill=(60, 40, 10), width=3)
+for txt, (dx, dy) in (("N", (0, -26)), ("E", (26, 0)), ("S", (0, 26)), ("O", (-26, 0))):
+    d.rectangle([31 + dx - 5, 31 + dy - 6, 31 + dx + 5, 31 + dy + 6], fill=(30, 26, 40)); text(vb, 31 + dx - 2, 31 + dy - 4, txt, (244, 226, 176), 2) if False else text(vb, 31 + dx - 3, 31 + dy - 5, txt, (244, 226, 176), 2)
 save(vb, "vane_bare")
 rope = new(8, 96); d = ImageDraw.Draw(rope); d.line([3, 0, 4, 95], fill=(150, 120, 80), width=2); d.ellipse([0, 86, 7, 95], fill=(120, 90, 60)); save(rope, "bell_rope")
 # music box on the cobbles: four keys and a crank

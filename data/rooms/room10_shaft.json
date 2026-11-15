@@ -121,6 +121,118 @@
   },
   {
    "type": "sprite",
+   "wall": "n",
+   "id": "chime_no_0",
+   "center": [
+    -4.5,
+    9.3
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "chime_no_0",
+   "depth": 0.1,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_no_1",
+   "center": [
+    -3.0,
+    9.3
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "chime_no_1",
+   "depth": 0.1,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_no_2",
+   "center": [
+    -1.5,
+    9.3
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "chime_no_2",
+   "depth": 0.1,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_no_3",
+   "center": [
+    0.0,
+    9.3
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "chime_no_3",
+   "depth": 0.1,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_no_4",
+   "center": [
+    1.5,
+    9.3
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "chime_no_4",
+   "depth": 0.1,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_no_5",
+   "center": [
+    3.0,
+    9.3
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "chime_no_5",
+   "depth": 0.1,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
+   "wall": "n",
+   "id": "chime_no_6",
+   "center": [
+    4.5,
+    9.3
+   ],
+   "size": [
+    1,
+    1
+   ],
+   "tex": "chime_no_6",
+   "depth": 0.1,
+   "tappable": false
+  },
+  {
+   "type": "sprite",
    "wall": "e",
    "id": "frozen_man",
    "center": [

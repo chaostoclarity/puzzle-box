@@ -5,7 +5,7 @@ FRAG = [{"set": "frag9"}, {"fragment": True}, {"sfx": "reveal"},
         journal("frag9", "Fragment IX", "In the hollow the dream hid, scratched by Wren with a nail: \"I got this far in my sleep, every night for a year. The last seal is not a place. It is the cabinet, and the cabinet is a mind, and it wants what you use to see and what you use to ask. Give it those and keep the rest. Elias, keep the rest.\""),
         say("Scratched in the hollow, in Wren's hand: the last fragment.", 4)]
 objs = [
- {"type": "box", "name": "slab", "wall": "d", "pos": [0, 7.5], "depth": 0.6, "scale": 0.5, "view": "top", "size": [6, 2, 6],
+ {"type": "box", "name": "slab", "wall": "d", "pos": [0, 7.5], "depth": 0.85, "scale": 0.8, "view": "top", "size": [6, 2, 6],
   "faces": {"front": "slab_front", "back": "slab_front", "left": "slab_side", "right": "slab_side", "top": "slab_top", "bottom": "slab_bottom"},
   "blocker": "slab", "parts": [part("top", [-2.5, 2.5], [0.75, 0.75], "marble", "marble", depth=0.05, tappable=False)]},
 ] + [sprite("d", "dust_%s" % k, [0, 12.5], [6, 2], "dust_" + k, depth=0.02, tappable=False) for k in "nesw"] + [

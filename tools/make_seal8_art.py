@@ -43,7 +43,7 @@ hd = new(32, 24); d = ImageDraw.Draw(hd); d.rectangle([0, 0, 31, 23], fill=WOOD[
 hd = new(32, 24, (10, 6, 4)); d = ImageDraw.Draw(hd); d.rectangle([0, 0, 31, 23], outline=WOOD[0]); save(hd, "ddrawer_open")
 dl = new(48, 24); d = ImageDraw.Draw(dl); d.rectangle([0, 0, 47, 23], fill=WOOD[1], outline=WOOD[0]); d.rectangle([18, 9, 29, 14], fill=BRASS[2]); save(dl, "dcab_lock")
 for k in range(10):
-    dd = new(16, 16); d = ImageDraw.Draw(dd); d.ellipse([0, 0, 15, 15], fill=BRASS[2], outline=BRASS[0]); d.ellipse([2, 2, 13, 13], fill=IVORY[2]); text(dd, 6, 5, str(k), INK); save(dd, "ddial_%d" % k)
+    dd = new(16, 16); d = ImageDraw.Draw(dd); d.ellipse([0, 0, 15, 15], fill=BRASS[2], outline=BRASS[0]); d.ellipse([2, 2, 13, 13], fill=IVORY[2]); text(dd, 5, 3, str(k), INK, 2); save(dd, "ddial_%d" % k)
 def candle(n, lit=True):
     img = new(16, 48); d = ImageDraw.Draw(img); top = 10 + n * 6
     d.rectangle([4, top, 11, 45], fill=WAX[1], outline=WAX[0]); d.rectangle([1, 44, 14, 47], fill=BRASS[1])

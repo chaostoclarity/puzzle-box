@@ -7,8 +7,8 @@ for f in FACADES:
     for w in W:
         objs.append(sprite(w, "fac_%s_%s" % (f, w), [0, 11], [15, 22], "fac_" + f, depth=0.02))
 for w in W:
-    objs.append(sprite(w, "vane_%s" % w, [0, 17.6], [3, 3], "vane_bare", depth=0.05))
-    objs.append(sprite(w, "rope_%s" % w, [1.9, 9.5], [0.5, 6], "bell_rope", depth=0.05))
+    objs.append(sprite(w, "vane_%s" % w, [0, 14.5], [4, 4], "vane_bare", depth=0.05))
+    objs.append(sprite(w, "rope_%s" % w, [1.9, 9.5], [1, 6], "bell_rope", depth=0.05))
 objs.append({"type": "box", "name": "mbox", "wall": "d", "pos": [0, 7.5], "depth": 1.0, "scale": 0.4, "view": "front", "size": [6, 4, 4],
   "faces": {"front": "mbox_front", "back": "mbox_back", "left": "mbox_side", "right": "mbox_side", "top": "mbox_top", "bottom": "mbox_top"},
   "liner": "mbox_liner", "liner_skip": ["top"], "hinges": [["top", "top"]], "blocker": "mbox",

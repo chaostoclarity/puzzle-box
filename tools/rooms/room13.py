@@ -1,14 +1,14 @@
 from common import *
 OUT = "/home/claude/pb-repo/data/rooms/"
 NOTE = journal("violist", "The violist's notebook", "The notebook on the bed, in a cramped French hand, the English underneath in pencil (Wren's):\n\n\"I play it every night so that the window stays shut. D, A, E, G, A. If I stop, it opens.\"\n\n\"The case: tune its wires to the fork, then the fork less two, then the fork and one more.\"\n\n\"I have strung her my own way. The case remembers how.\"")
-SX = [-0.5, -0.125, 0.125, 0.5]
+SX = [-0.75, -0.25, 0.25, 0.75]
 objs = [
  sprite("n", "gwin", [0, 11], [5, 6], "gwin_street"),
  {"type": "furniture", "wall": "n", "id": "gdesk", "pos": [0, 0], "size": [6, 4, 2], "faces": {"front": "gdesk_front", "top": "roof_top_96x32", "default": "roof_side_32x64"}, "zoom": False},
  sprite("n", "fork", [2, 5.5], [1, 3], "fork", depth=1.3),
  sprite("n", "fork_lens", [2, 5.5], [1, 3], "fork_lens", depth=1.35, lens=2),
  sprite("e", "viol", [0, 4.5], [4, 9], "viol", depth=0.3),
-] + [sprite("e", "vs%d" % k, [SX[k], 6.6], [0.25, 6], "vstring_%d" % k, depth=0.35) for k in range(4)] + [
+] + [sprite("e", "vs%d" % k, [SX[k], 6.6], [0.5, 6], "vstring_%d" % k, depth=0.35) for k in range(4)] + [
  sprite("s", "gdoor", [4, 4.5], [4, 9], "gdoor"),
  sprite("s", "hatch", [-3, 5], [3, 3], "dumb_hatch"),
  sprite("w", "gbed", [0, 1.5], [7, 3], "gbed"),

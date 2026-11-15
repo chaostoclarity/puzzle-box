@@ -16,12 +16,12 @@ def face(w, h, pal, seed, band=2):
     img = grain(w, h, pal, seed); bevel(img, pal, band); return img
 
 def numeral(img, x, y, n, col):
-    """Dots and bars, read left to right: bars first (3 each), then dots."""
+    """Dots and bars, read left to right: bars first (3 each), then dots. Bars are 2 wide and 7 tall, dots 2 x 2."""
     d = ImageDraw.Draw(img); cx = x
     for _ in range(n // 3):
         d.rectangle([cx, y, cx + 1, y + 6], fill=col); cx += 3
     for _ in range(n % 3):
-        d.rectangle([cx, y + 2, cx + 1, y + 3], fill=col); cx += 3
+        d.rectangle([cx, y + 2, cx + 1, y + 4], fill=col); cx += 3
     return cx - x
 
 def numeral_w(n): return 3 * (n // 3 + n % 3) - 1
@@ -61,49 +61,69 @@ def low_door(open_):
     return img
 save(low_door(False), "low_door"); save(low_door(True), "low_door_open")
 # lintel glyph: a 2x2 picture; the panel tiles must match it
+# The keepers' glyph: 64 x 64, heavy strokes, no two quarters alike in any turn.
+def make_glyph():
+    g = new(64, 64); d = ImageDraw.Draw(g)
+    d.arc([8, 6, 56, 54], 180, 360, fill=INK, width=5)       # a dome over the top half
+    d.rectangle([30, 30, 34, 60], fill=INK)                   # a stem down the middle
+    d.rectangle([4, 42, 26, 46], fill=INK)                    # a bar to the left
+    d.ellipse([42, 36, 54, 48], fill=INK)                     # an eye to the right
+    d.line([40, 54, 58, 60], fill=INK, width=4)               # a tail, bottom right
+    d.rectangle([12, 14, 18, 20], fill=INK)                   # a notch, top left
+    return g
+GLYPH = make_glyph()
+STONE_T = (214, 186, 136); STONE_E = (120, 92, 58)
 def lintel_glyph(eroded):
-    img = new(64, 32); d = ImageDraw.Draw(img); d.rectangle([0, 0, 63, 31], fill=SAND[2], outline=SAND[0])
-    g = new(32, 32); gd = ImageDraw.Draw(g)
-    gd.arc([4, 4, 27, 27], 180, 360, fill=INK, width=2); gd.line([16, 16, 16, 30], fill=INK, width=2); gd.line([2, 22, 12, 22], fill=INK, width=2); gd.ellipse([20, 18, 26, 24], fill=INK)
-    big = g.resize((28, 28), Image.NEAREST); img.paste(big, (18, 2), big)
+    img = new(96, 48); d = ImageDraw.Draw(img); d.rectangle([0, 0, 95, 47], fill=STONE_T, outline=STONE_E, width=2)
+    g = GLYPH.resize((44, 44), Image.NEAREST); img.paste(g, (26, 2), g)
     if eroded:
         px = img.load(); rnd = random.Random(208)
-        for y in range(32):
-            for x in range(64):
-                if rnd.random() < 0.55 and px[x, y][:3] == INK: px[x, y] = SAND[2] + (255,)
-    return img, g
-lg, GLYPH = lintel_glyph(True); save(lg, "lintel"); save(lintel_glyph(False)[0], "lintel_lens")
-gl = new(64, 32); d = ImageDraw.Draw(gl); big = GLYPH.resize((28, 28), Image.NEAREST); tmp = new(64, 32); tmp.paste(big, (18, 2), big)
-pxs = tmp.load(); px = gl.load()
-for y in range(32):
-    for x in range(64):
-        if pxs[x, y][3]: px[x, y] = GLOW + (255,)
+        for y in range(48):
+            for x in range(96):
+                if rnd.random() < 0.6 and px[x, y][:3] == INK: px[x, y] = STONE_T + (255,)
+    return img
+save(lintel_glyph(True), "lintel"); save(lintel_glyph(False), "lintel_lens")
+gl = new(96, 48); px = gl.load(); src = lintel_glyph(False).load()
+for y in range(48):
+    for x in range(96):
+        if src[x, y][:3] == INK: px[x, y] = GLOW + (255,)
 save(gl, "lintel_glow")
-# the 4 tiles: quarters of the glyph, each can be turned
-for q, (ox, oy) in enumerate(((0, 0), (16, 0), (0, 16), (16, 16))):
-    t = face(20, 20, SAND, 209 + q, 1); part_ = GLYPH.crop((ox, oy, ox + 16, oy + 16))
+# the 4 tiles: quarters of the glyph on plain stone, each can be turned
+for q, (ox, oy) in enumerate(((0, 0), (32, 0), (0, 32), (32, 32))):
+    part_ = GLYPH.crop((ox, oy, ox + 32, oy + 32))
     for r in range(4):
-        tt = t.copy(); rp = part_.rotate(-90 * r); tt.paste(rp, (2, 2), rp); save(tt, "gtile_%d_%d" % (q, r))
-save(face(48, 48, SAND, 213, 2), "gpanel")
-gk = new(12, 12); d = ImageDraw.Draw(gk); d.ellipse([0, 0, 11, 11], fill=BRONZE[2], outline=BRONZE[0]); d.ellipse([4, 4, 7, 7], fill=BRONZE[0]); save(gk, "gpanel_key")
+        tt = new(32, 32); d = ImageDraw.Draw(tt); d.rectangle([0, 0, 31, 31], fill=STONE_T, outline=STONE_E)
+        rp = part_.rotate(-90 * r); tt.paste(rp, (0, 0), rp); d.rectangle([0, 0, 31, 31], outline=STONE_E)
+        save(tt, "gtile_%d_%d" % (q, r))
+gp = new(80, 80); d = ImageDraw.Draw(gp); d.rectangle([0, 0, 79, 79], fill=SAND[1], outline=SAND[0], width=2); d.rectangle([6, 6, 73, 73], fill=STONE_E); save(gp, "gpanel")
+gk = new(16, 16); d = ImageDraw.Draw(gk); d.ellipse([0, 0, 15, 15], fill=BRONZE[3], outline=BRONZE[0]); d.ellipse([5, 5, 10, 10], fill=BRONZE[0]); save(gk, "gpanel_key")
 # hourglass on a plinth: u = weight end up (1) or down (0); s = sand left in the top bulb, 0..5
-def hglass(u, s):
-    img = new(32, 64); d = ImageDraw.Draw(img)
-    d.rectangle([2, 0, 29, 4], fill=BRONZE[2]); d.rectangle([2, 59, 29, 63], fill=BRONZE[2])
-    for x in (3, 28): d.line([x, 5, x, 58], fill=BRONZE[1])
-    d.polygon([(6, 5), (25, 5), (17, 31), (14, 31)], fill=(200, 220, 220), outline=SILVER[1])
-    d.polygon([(14, 32), (17, 32), (25, 58), (6, 58)], fill=(200, 220, 220), outline=SILVER[1])
-    top_sand, bot_sand = s, 5 - s
-    if top_sand: d.polygon([(8 + (5 - top_sand), 30 - top_sand * 4), (23 - (5 - top_sand), 30 - top_sand * 4), (17, 31), (14, 31)], fill=DUNE[2])
-    if bot_sand: d.polygon([(7, 58), (24, 58), (24 - bot_sand, 58 - bot_sand * 4), (7 + bot_sand, 58 - bot_sand * 4)], fill=DUNE[2])
-    if bot_sand and bot_sand < 5: d.line([15, 32, 15, 57], fill=DUNE[1])
-    wy = 8 if u else 50
-    if u and s >= 4 or (not u and 5 - s >= 3): d.rectangle([13, wy, 18, wy + 4], fill=BRONZE[1])   # weight half buried
-    else: d.rectangle([12, wy, 19, wy + 5], fill=BRONZE[3], outline=BRONZE[0])
+def hglass(u, s, taken=False):
+    """48 x 96: bronze frame, two clear bulbs, sand, and the stranded weight drawn big."""
+    img = new(48, 96); d = ImageDraw.Draw(img)
+    d.rectangle([2, 0, 45, 6], fill=BRONZE[3], outline=BRONZE[0]); d.rectangle([2, 89, 45, 95], fill=BRONZE[3], outline=BRONZE[0])
+    for x in (4, 43): d.rectangle([x - 1, 7, x + 1, 88], fill=BRONZE[2])
+    glass = (210, 232, 236)
+    d.polygon([(9, 7), (38, 7), (26, 46), (21, 46)], fill=glass, outline=(90, 110, 120))
+    d.polygon([(21, 49), (26, 49), (38, 88), (9, 88)], fill=glass, outline=(90, 110, 120))
+    sand = (226, 176, 92)
+    if s:   # sand in the top bulb, s of 5
+        top = 45 - s * 7; half = int(2 + (45 - top) * 0.36)
+        d.polygon([(23.5 - half, top), (23.5 + half, top), (26, 45), (21, 45)], fill=sand)
+    b = 5 - s
+    if b:
+        top = 88 - b * 7; half = int(14 - (88 - top) * 0.2)
+        d.polygon([(10, 88), (37, 88), (23.5 + half, top), (23.5 - half, top)], fill=sand)
+    if 0 < b < 5: d.line([23, 47, 23, 87], fill=sand)
+    if not taken:
+        wy = 10 if u else 78
+        buried = (u and s >= 3) or (not u and b >= 2)
+        d.rectangle([17, wy, 30, wy + 8], fill=BRONZE[3] if not buried else BRONZE[1], outline=INK)
+        if not buried: d.rectangle([22, wy - 3, 25, wy], fill=BRONZE[2])
     return img
 for u in (0, 1):
     for s in range(6): save(hglass(u, s), "hglass_%d_%d" % (u, s))
-save(hglass(1, 0).crop((0, 0, 32, 64)), "hglass_taken"); im = Image.open(os.path.join(OUT, "hglass_taken.png")); d = ImageDraw.Draw(im); d.rectangle([11, 7, 20, 14], fill=(200, 220, 220)); im.save(os.path.join(OUT, "hglass_taken.png"))
+save(hglass(1, 0, True), "hglass_taken")
 pl = face(48, 48, SAND, 214, 2); save(pl, "plinth")
 # offering niche: a carved mouth with a hand cut into the lip
 def niche(open_):
@@ -146,37 +166,37 @@ save(f, "r12_floor")
 c = grain(240, 240, CRYPT, 226); d = ImageDraw.Draw(c); d.ellipse([70, 70, 169, 169], outline=CRYPT[4]); save(c, "r12_ceiling")
 # mural strip: five panels, each the city with the sand higher (0 = no sand, 4 = buried)
 def mural(k):
-    img = new(32, 48, SKY[1]); d = ImageDraw.Draw(img); d.rectangle([0, 0, 31, 47], outline=OCHRE)
-    for i, (x, h) in enumerate(((4, 18), (11, 26), (19, 14), (24, 22))):
-        d.rectangle([x, 44 - h, x + 5, 44], fill=TEAL if k < 4 else SAND[1]); d.rectangle([x + 2, 40 - h // 2, x + 3, 42 - h // 2], fill=OCHRE)
+    """44 x 64. The city, and the sand rising over it: no sand (0) to buried (4)."""
+    img = new(44, 64, (40, 60, 92)); d = ImageDraw.Draw(img)
+    for i in range(8): d.point(((i * 13) % 40 + 2, (i * 7) % 18 + 2), fill=(230, 230, 240))
+    towers = ((3, 30), (11, 42), (20, 24), (27, 36), (35, 28))
+    for x, h in towers:
+        d.rectangle([x, 60 - h, x + 6, 60], fill=TEAL, outline=(20, 60, 56))
+        d.rectangle([x + 2, 60 - h + 4, x + 4, 60 - h + 7], fill=OCHRE)
+    if k == 0:   # keepers in the street
+        for x in (8, 18, 30): d.ellipse([x, 54, x + 5, 59], fill=OCHRE)
     if k:
-        sand_h = [0, 8, 16, 26, 40][k]
-        d.polygon([(1, 46), (30, 46), (30, 46 - sand_h), (16, 46 - sand_h - 4), (1, 46 - sand_h + 2)], fill=DUNE[1])
-    if k == 0:   # the keepers in the street
-        d.ellipse([14, 36, 20, 42], fill=OCHRE)
-    if k == 4: d.ellipse([13, 4, 19, 10], fill=(220, 210, 160))
+        top = [60, 48, 36, 22, 2][k]
+        d.polygon([(0, 63), (43, 63), (43, top + 4), (30, top), (14, top + 6), (0, top + 2)], fill=(214, 172, 104), outline=(150, 110, 60))
+    d.rectangle([0, 0, 43, 63], outline=OCHRE, width=2)
     return img
 for k in range(5): save(mural(k), "mural_%d" % k)
-mf = new(176, 64); d = ImageDraw.Draw(mf); d.rectangle([0, 0, 175, 63], fill=CRYPT[2], outline=OCHRE); save(mf, "mural_frame")
+mf = new(232, 80); d = ImageDraw.Draw(mf); d.rectangle([0, 0, 231, 79], fill=CRYPT[1], outline=OCHRE, width=2); save(mf, "mural_frame")
 ms = new(16, 16); d = ImageDraw.Draw(ms); d.ellipse([0, 0, 15, 15], fill=OCHRE, outline=CRYPT[0]); d.ellipse([5, 5, 10, 10], fill=CRYPT[0]); save(ms, "mural_stone")
-# the hidden panel: a seven-fingered hand; five fingers marked with the order to press them
+# the hidden panel: a seven-fingered hand; five fingers marked, in dots and bars, with the order to press them
 ORDER = [5, 2, 7, 1, 4]   # fingers (1..7, left to right) in the order to press
-hp = new(32, 48, SKY[0]); d = ImageDraw.Draw(hp); d.rectangle([0, 0, 31, 47], outline=OCHRE)
-d.ellipse([6, 26, 25, 44], fill=TEAL)
-fx = [4, 8, 12, 16, 20, 24, 28]
+hp = new(44, 64, (30, 44, 70)); d = ImageDraw.Draw(hp)
+d.ellipse([6, 36, 37, 60], fill=TEAL, outline=(20, 60, 56))
+fx = [5, 10, 16, 21, 27, 32, 38]
 for i, x in enumerate(fx):
-    d.line([x, 30, x, 12 - (i % 3) * 2], fill=TEAL, width=2)
+    tip = 20 - (3 - abs(i - 3)) * 2
+    d.rectangle([x - 1, tip, x + 1, 42], fill=TEAL)
 for step_, finger in enumerate(ORDER):
-    x = fx[finger - 1]; numeral(hp, x - 1, 2, step_ + 1, OCHRE) if step_ + 1 < 3 else None
-save(hp, "mural_hand_base")
-# draw each marker small above its finger: number of the step in dots/bars, stacked vertically for room
-hp = Image.open(os.path.join(OUT, "mural_hand_base.png")); d = ImageDraw.Draw(hp)
-d.rectangle([1, 1, 30, 11], fill=SKY[0])
-for step_, finger in enumerate(ORDER):
-    x = fx[finger - 1] - 1; n = step_ + 1; y = 1
-    for _ in range(n // 3): d.rectangle([x, y, x + 2, y], fill=OCHRE); y += 2
-    for _ in range(n % 3): d.point((x + 1, y), fill=OCHRE); y += 2
-save(hp, "mural_hand"); os.remove(os.path.join(OUT, "mural_hand_base.png"))
+    x = fx[finger - 1]; n = step_ + 1; y = 2
+    for _ in range(n // 3): d.rectangle([x - 2, y, x + 2, y + 1], fill=(244, 226, 176)); y += 3
+    for _ in range(n % 3): d.rectangle([x - 1, y, x, y + 1], fill=(244, 226, 176)); y += 3
+d.rectangle([0, 0, 43, 63], outline=OCHRE, width=2)
+save(hp, "mural_hand")
 # upright coffin: a keeper's case, low and long, standing at a slant
 def coffin_front(open_):
     img = face(64, 128, CRYPT, 227, 3); d = ImageDraw.Draw(img)
@@ -202,12 +222,16 @@ fp = new(12, 12); d = ImageDraw.Draw(fp); d.ellipse([0, 0, 11, 11], fill=OCHRE, 
 for k, s in (("back", 230), ("side", 231), ("top", 232), ("front", 233)):
     save(face(96, 96, BRONZE, s, 3), "reli_" + k)
 save(new(96, 96, (16, 10, 8)), "reli_liner")
-def ring(size, r, seed):
+def ring(size, r, seed, band=11):
+    """A flat dark band with bold ivory numerals, so the dots and bars read at a glance."""
     img = new(size, size); d = ImageDraw.Draw(img); c = (size - 1) / 2
-    d.ellipse([0, 0, size - 1, size - 1], fill=BRONZE[1], outline=BRONZE[0]); d.ellipse([c - r + 7, c - r + 7, c + r - 7, c + r - 7], fill=T)
+    d.ellipse([0, 0, size - 1, size - 1], fill=(36, 22, 12), outline=BRONZE[3])
+    d.ellipse([c - r + band, c - r + band, c + r - band, c + r - band], fill=T, outline=BRONZE[3])
     for k in range(8):
-        a = math.radians(-90 - k * 45); x, y = c + (r - 4) * math.cos(a), c + (r - 4) * math.sin(a)
-        n = k + 1; w = numeral_w(n); numeral(img, int(x - w / 2), int(y - 3), n, BRONZE[4])
+        a = math.radians(-90 - k * 45 - 22.5)   # a thin divider between numerals
+        d.line([c + (r - band) * math.cos(a), c + (r - band) * math.sin(a), c + (r - 1) * math.cos(a), c + (r - 1) * math.sin(a)], fill=BRONZE[1])
+        a = math.radians(-90 - k * 45); x, y = c + (r - band / 2) * math.cos(a), c + (r - band / 2) * math.sin(a)
+        n = k + 1; w = numeral_w(n); numeral(img, int(round(x - w / 2)), int(round(y - 3)), n, (244, 226, 176))
     return img
 save(ring(72, 36, 234), "rring_o"); save(ring(48, 24, 235), "rring_i")
 rp = new(12, 12); d = ImageDraw.Draw(rp); d.polygon([(6, 0), (11, 11), (0, 11)], fill=BLOOD); save(rp, "reli_pin")
