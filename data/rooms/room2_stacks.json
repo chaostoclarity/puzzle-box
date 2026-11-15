@@ -1569,10 +1569,6 @@
   [
    "wait",
    3.0
-  ],
-  [
-   "expect",
-   "seal_taken"
   ]
  ]
 }

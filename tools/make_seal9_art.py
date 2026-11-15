@@ -38,13 +38,12 @@ def cdoor(open_):
     return img
 save(cdoor(False), "ceil_door"); save(cdoor(True), "ceil_door_open")
 # the gravity slab: a 5 x 5 maze cut in its face, a pale marble, and a sink hole
-SLAB = {"cols": 5, "rows": 5, "walls": [[1, 0], [3, 1], [1, 2], [2, 2], [4, 3], [0, 4], [2, 4]], "goal": [4, 4]}
+SLAB = {"cols": 6, "rows": 6, "walls": [[0, 2], [0, 3], [0, 5], [1, 0], [1, 4], [2, 5], [3, 0], [3, 3], [4, 0], [5, 3]], "goal": [5, 5]}
 def slab_face():
     img = face(96, 96, CYC, 308, 3); d = ImageDraw.Draw(img)
-    x0, y0, cs = 8, 8, 16
-    d.rectangle([x0 - 1, y0 - 1, x0 + cs * 5, y0 + cs * 5], fill=CYC[0])
-    for r in range(5):
-        for c in range(5):
+    x0, y0, cs = 0, 0, 16
+    for r in range(6):
+        for c in range(6):
             if [c, r] in SLAB["walls"]: d.rectangle([x0 + c * cs, y0 + r * cs, x0 + c * cs + cs - 1, y0 + r * cs + cs - 1], fill=CYC[3], outline=CYC[4])
             else: d.rectangle([x0 + c * cs + 1, y0 + r * cs + 1, x0 + c * cs + cs - 2, y0 + r * cs + cs - 2], fill=CYC[1])
     gx, gy = SLAB["goal"]; d.ellipse([x0 + gx * cs + 3, y0 + gy * cs + 3, x0 + gx * cs + 12, y0 + gy * cs + 12], fill=(0, 0, 0))

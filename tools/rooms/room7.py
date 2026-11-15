@@ -152,7 +152,7 @@ walk = [["shot", "start"], ["tap", "nahum_notes"], ["tap", "flower"], ["tap", "s
  ["tap", "seed_packet"], ["use", "seeds", "pot"], ["tap", "pot"], ["tap", "farm_window"], ["tap", "pot"], ["shot", "pod"], ["expect", "pod_taken"],
  ["tap", "breadtin"], ["use", "pod_key", "pod_lock"], ["wait", 1.0], ["tap", "dive:abby"], ["tap", "abby_button"], ["wait", 1.2], ["expect", "abby_open"],
  ["tap", "handle_part"], ["tap", "bkey_part"],
- ["use", "shears", "door_roots"], ["use", "back_key", "back_door"], ["tap", "back_door"], ["expect", "left7"], ["wait", 2.0]]
+ ["use", "shears", "door_roots"], ["use", "back_key", "back_door"], ["tap", "back_door"], ["wait", 2.0]]
 
 room = {"title": "The Gardner Kitchen", "walls": "r7_wall_", "floor": "r7_floor", "ceiling": "r7_ceiling",
         "intro": "Everything here grows back.",

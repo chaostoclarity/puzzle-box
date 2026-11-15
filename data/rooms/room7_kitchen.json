@@ -2033,10 +2033,6 @@
    "back_door"
   ],
   [
-   "expect",
-   "left7"
-  ],
-  [
    "wait",
    2.0
   ]

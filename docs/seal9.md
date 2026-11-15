@@ -2,7 +2,7 @@
 
 ## Room 17, the last stair (room option "gravity")
 - Down is wherever you look: every turn rolls the slab's marble toward the wall you now face. Dust on the floor shows the last direction.
-- The maze on the slab: face S, E, S, E to sink the marble. That unbars the ceiling door.
+- The maze on the slab (6x6): from north, E S E S W S E S E S, a quarter turn at a time. The wrong stair on the south wall resets the marble. Sinking it unbars the ceiling door.
 - Dream sight hides the dreamed slab on the west wall: behind it, the Elder Sign and fragment IX.
 - Elder Sign on the ceiling door; go through into the cabinet.
 
